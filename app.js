@@ -1,6 +1,6 @@
-// 2026 Northern Light Tour Application Script (AES Decryption Enabled)
+// 2026 Northern Light Tour Application Script (AES Decrypted Engine)
 
-let globalItineraryData = null;
+let globalPayload = null;
 
 document.addEventListener('DOMContentLoaded', () => {
   initPasswordProtection();
@@ -25,12 +25,10 @@ function initPasswordProtection() {
     }
   }
 
-  // Focus first digit input
   if (pinInputs.length > 0) {
     pinInputs[0].focus();
   }
 
-  // Handle pin digit navigation
   pinInputs.forEach((input, idx) => {
     input.addEventListener('input', (e) => {
       const val = e.target.value;
@@ -83,15 +81,15 @@ function tryDecryptAndRender(pin) {
     const bytes = CryptoJS.AES.decrypt(encryptedItineraryData, pin);
     const decryptedText = bytes.toString(CryptoJS.enc.Utf8);
     
-    if (decryptedText && decryptedText.trim().startsWith('[')) {
-      globalItineraryData = JSON.parse(decryptedText);
-      
-      // Render whichever page view is active
+    if (decryptedText && decryptedText.trim().startsWith('{')) {
+      globalPayload = JSON.parse(decryptedText);
+      const itineraryData = globalPayload.days;
+
       if (document.getElementById('map')) {
-        initItineraryMap(globalItineraryData);
+        initItineraryMap(itineraryData);
       }
       if (document.getElementById('tour-package-content')) {
-        renderTourPackageCards(globalItineraryData);
+        renderTourPackageView(globalPayload);
       }
       return true;
     }
@@ -108,10 +106,8 @@ function initItineraryMap(itineraryData) {
 
   if (!mapElem || typeof L === 'undefined' || !itineraryData) return;
 
-  // Clear existing elements if re-rendering
   if (listElem) listElem.innerHTML = '';
 
-  // Initialize Leaflet Map centered on Lapland/Nordics
   const map = L.map('map').setView([65.8252, 23.6886], 5);
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -127,7 +123,6 @@ function initItineraryMap(itineraryData) {
 
     let markerColor = '#2563eb';
     if (day.hotelStatus === 'confirmed') markerColor = '#16a34a';
-    if (day.hotelStatus === 'shortlisted') markerColor = '#d97706';
 
     const customIcon = L.divIcon({
       className: 'custom-map-pin',
@@ -151,7 +146,6 @@ function initItineraryMap(itineraryData) {
     marker.bindPopup(popupContent);
     markers.push(marker);
 
-    // Sidebar Item
     if (listElem) {
       const item = document.createElement('div');
       item.className = 'day-item';
@@ -184,25 +178,76 @@ function initItineraryMap(itineraryData) {
   map.fitBounds(polyline.getBounds(), { padding: [40, 40] });
 }
 
-// Render Tour Package Cards for tour_package.html
-function renderTourPackageCards(itineraryData) {
+// Render Tour Package View for tour_package.html
+function renderTourPackageView(payload) {
   const container = document.getElementById('tour-package-content');
   const navContainer = document.getElementById('sidebar-nav-ul');
-  if (!container || !itineraryData) return;
+  if (!container || !payload) return;
+
+  const itineraryData = payload.days;
 
   container.innerHTML = '';
   if (navContainer) navContainer.innerHTML = '';
 
-  itineraryData.forEach((d) => {
-    if (navContainer) {
+  // 1. Sidebar Nav
+  if (navContainer) {
+    itineraryData.forEach(d => {
       const li = document.createElement('li');
       li.innerHTML = `<a href="#day-${d.day}">Day ${d.day}: ${d.location.split(',')[0]}</a>`;
       navContainer.appendChild(li);
-    }
+    });
+    const extraLi1 = document.createElement('li');
+    extraLi1.innerHTML = `<a href="#emergency-section" style="color: #dc2626; font-weight:600;"><i class="fa-solid fa-triangle-exclamation"></i> Emergency & Safety</a>`;
+    navContainer.appendChild(extraLi1);
+    const extraLi2 = document.createElement('li');
+    extraLi2.innerHTML = `<a href="#packing-section" style="color: #16a34a; font-weight:600;"><i class="fa-solid fa-suitcase"></i> Packing Checklist</a>`;
+    navContainer.appendChild(extraLi2);
+  }
 
+  // 2. Day Cards
+  itineraryData.forEach((d) => {
     const statusCls = d.hotelStatus;
-    const statusLabel = statusCls === 'confirmed' ? '✅ Confirmed' : (statusCls === 'shortlisted' ? '⚠️ Shortlisted' : '📌 Booking Pending');
+    const statusLabel = statusCls === 'confirmed' ? '✅ Confirmed' : '📌 Booking Pending';
     const tagsHtml = (d.tags || []).map(t => `<span class="chip">#${t}</span>`).join('');
+
+    // Hourly schedule
+    const hourlyHtml = (d.hourlySchedule || []).map(h => `
+      <div style="display: flex; gap: 12px; margin-bottom: 8px; font-size: 0.88rem;">
+        <span style="font-weight: 700; color: #2563eb; width: 100px; flex-shrink: 0;">${h.time}</span>
+        <span style="color: #334155;">${h.activity}</span>
+      </div>
+    `).join('');
+
+    // Hotel links
+    const hotelLinksHtml = (d.hotelLinks || []).map(hl => `
+      <a href="${hl.url}" target="_blank" class="action-btn blue" style="font-size: 11px; padding: 4px 8px; margin-top: 4px; display: inline-flex;"><i class="fa-solid fa-arrow-up-right-from-square"></i> Book ${hl.name}</a>
+    `).join(' ');
+
+    // Tickets & Costs
+    const ticketsHtml = (d.ticketCosts || []).map(t => `
+      <div style="display: flex; justify-content: space-between; align-items: center; background: white; padding: 8px 12px; border-radius: 6px; margin-bottom: 6px; font-size: 0.85rem; border: 1px solid #e2e8f0;">
+        <span><strong>${t.item}</strong> (${t.cost})</span>
+        <a href="${t.url}" target="_blank" class="action-btn green" style="font-size: 11px; padding: 3px 8px;"><i class="fa-solid fa-ticket"></i> Buy Ticket</a>
+      </div>
+    `).join('');
+
+    // Operator Comparisons
+    const opsHtml = (d.operatorComparisons || []).map(o => `
+      <div style="background: #fff7ed; border-left: 3px solid #ea580c; padding: 10px; border-radius: 6px; margin-top: 8px; font-size: 0.85rem;">
+        <strong><i class="fa-solid fa-code-compare"></i> ${o.activity} Operator Comparison:</strong><br/>
+        &bull; <strong>Option 1:</strong> ${o.op1}<br/>
+        &bull; <strong>Option 2:</strong> ${o.op2}<br/>
+        <span style="color: #16a34a; font-weight: 700;">★ Recommended: ${o.rec}</span>
+      </div>
+    `).join('');
+
+    // Aurora Spots
+    const auroraHtml = (d.auroraSpots || []).map(a => `
+      <div style="background: #0f172a; color: #f8fafc; padding: 10px 14px; border-radius: 8px; margin-top: 10px; font-size: 0.85rem;">
+        <span style="color: #38bdf8; font-weight: 700;"><i class="fa-solid fa-meteor"></i> Self-Drive Aurora Spot: ${a.name}</span><br/>
+        <span style="color: #cbd5e1;">${a.desc}</span>
+      </div>
+    `).join('');
 
     const card = document.createElement('div');
     card.id = `day-${d.day}`;
@@ -225,24 +270,99 @@ function renderTourPackageCards(itineraryData) {
           <span>Accommodation: ${d.hotel}</span>
           <span class="badge-tag ${statusCls}">${statusLabel}</span>
         </div>
-        <div style="font-size: 0.85rem; color: #475569; margin-left: 24px;">
-          <strong>Booking Reference:</strong> ${d.bookingRef}
+        <div style="font-size: 0.85rem; color: #475569; margin-left: 24px; margin-bottom: 6px;">
+          <strong>Booking Ref / Status:</strong> ${d.bookingRef}
         </div>
+        ${hotelLinksHtml ? `<div style="margin-left: 24px;">${hotelLinksHtml}</div>` : ''}
       </div>
 
-      <div style="margin-bottom: 12px; color: #334155; font-size: 0.95rem;">
-        <strong><i class="fa-solid fa-compass" style="color: #2563eb; margin-right: 6px;"></i>Key Activities & Sights:</strong><br/>
+      <div style="margin-bottom: 15px; color: #334155; font-size: 0.95rem;">
+        <strong><i class="fa-solid fa-compass" style="color: #2563eb; margin-right: 6px;"></i>Key Highlights:</strong><br/>
         ${d.activities}
       </div>
 
-      <div style="font-size: 0.88rem; color: #64748b; background: #f1f5f9; padding: 10px 14px; border-radius: 6px; margin-top: 10px;">
-        <strong><i class="fa-solid fa-clipboard-list" style="margin-right: 6px;"></i>Logistics & Notes:</strong> ${d.scheduleNotes}
+      <div class="info-block" style="background: #f8fafc;">
+        <div class="info-block-title"><i class="fa-solid fa-clock" style="color: #2563eb;"></i> Hourly Schedule Breakdown:</div>
+        ${hourlyHtml}
       </div>
 
-      <div class="tag-list">
+      ${ticketsHtml ? `
+        <div class="info-block" style="background: #f0fdf4;">
+          <div class="info-block-title"><i class="fa-solid fa-ticket" style="color: #16a34a;"></i> Required Tickets & Booking Links:</div>
+          ${ticketsHtml}
+        </div>
+      ` : ''}
+
+      ${opsHtml}
+      ${auroraHtml}
+
+      <div class="tag-list" style="margin-top: 15px;">
         ${tagsHtml}
       </div>
     `;
     container.appendChild(card);
   });
+
+  // 3. Emergency & Safety Section
+  if (payload.emergencyGuide) {
+    const eg = payload.emergencyGuide;
+    const emergencyCard = document.createElement('div');
+    emergencyCard.id = 'emergency-section';
+    emergencyCard.className = 'day-card';
+    emergencyCard.style.borderLeft = '4px solid #dc2626';
+    emergencyCard.innerHTML = `
+      <h2 style="margin-top:0; color: #dc2626;"><i class="fa-solid fa-shield-halved"></i> Emergency Contacts & Winter Driving Unstuck Guide</h2>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-bottom: 20px;">
+        ${eg.contacts.map(c => `
+          <div style="background: #fef2f2; padding: 12px; border-radius: 8px; border: 1px solid #fecaca;">
+            <div style="font-weight: 700; color: #991b1b; font-size: 14px;">${c.country}: ${c.number}</div>
+            <div style="font-size: 12px; color: #7f1d1d;">${c.desc}</div>
+          </div>
+        `).join('')}
+      </div>
+
+      <div class="info-block" style="background: #fffbeb; border: 1px solid #fde68a;">
+        <div class="info-block-title" style="color: #b45309;"><i class="fa-solid fa-snowflake"></i> How to Get Unstuck in Deep Snow (6 Steps):</div>
+        <ol style="margin: 0; padding-left: 20px; font-size: 0.88rem; color: #78350f;">
+          ${eg.unstuckSteps.map(s => `<li style="margin-bottom: 6px;">${s}</li>`).join('')}
+        </ol>
+      </div>
+
+      <div class="info-block" style="background: #f8fafc;">
+        <div class="info-block-title"><i class="fa-solid fa-triangle-exclamation"></i> Winter Driving Do's & Don'ts:</div>
+        <ul style="margin: 0; padding-left: 20px; font-size: 0.88rem; color: #334155;">
+          ${eg.dosAndDonts.map(d => `<li style="margin-bottom: 4px;">${d}</li>`).join('')}
+        </ul>
+      </div>
+    `;
+    container.appendChild(emergencyCard);
+  }
+
+  // 4. Packing Checklist Section
+  if (payload.packingChecklist) {
+    const packingCard = document.createElement('div');
+    packingCard.id = 'packing-section';
+    packingCard.className = 'day-card';
+    packingCard.style.borderLeft = '4px solid #16a34a';
+    packingCard.innerHTML = `
+      <h2 style="margin-top:0; color: #16a34a;"><i class="fa-solid fa-suitcase"></i> Comprehensive Arctic Packing Checklist</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+        ${payload.packingChecklist.map(cat => `
+          <div style="background: #f0fdf4; padding: 15px; border-radius: 10px; border: 1px solid #bbf7d0;">
+            <h4 style="margin: 0 0 10px 0; color: #15803d;"><i class="fa-solid fa-check-double"></i> ${cat.cat}</h4>
+            <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.85rem; color: #166534;">
+              ${cat.items.map(item => `
+                <li style="margin-bottom: 6px; display: flex; align-items: center; gap: 8px;">
+                  <input type="checkbox" style="cursor: pointer;">
+                  <span>${item}</span>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+        `).join('')}
+      </div>
+    `;
+    container.appendChild(packingCard);
+  }
 }
