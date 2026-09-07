@@ -1,11 +1,12 @@
-// 2026 Northern Light Tour Application Script
+// 2026 Northern Light Tour Application Script (AES Decryption Enabled)
+
+let globalItineraryData = null;
 
 document.addEventListener('DOMContentLoaded', () => {
   initPasswordProtection();
-  initItineraryApp();
 });
 
-// Password Protection Logic (PIN: 8520)
+// Password Protection & AES Decryption (PIN: 8520)
 function initPasswordProtection() {
   const authOverlay = document.getElementById('auth-overlay');
   const authModal = document.getElementById('auth-modal');
@@ -15,13 +16,16 @@ function initPasswordProtection() {
 
   if (!authOverlay) return;
 
-  // Check existing session
-  if (sessionStorage.getItem('auth_passed') === 'true') {
-    authOverlay.style.display = 'none';
-    return;
+  // Check saved session PIN
+  const savedPin = sessionStorage.getItem('auth_pin');
+  if (savedPin) {
+    if (tryDecryptAndRender(savedPin)) {
+      authOverlay.style.display = 'none';
+      return;
+    }
   }
 
-  // Focus first digit
+  // Focus first digit input
   if (pinInputs.length > 0) {
     pinInputs[0].focus();
   }
@@ -56,25 +60,56 @@ function initPasswordProtection() {
     let enteredPin = '';
     pinInputs.forEach(i => enteredPin += i.value.trim());
 
-    if (enteredPin === '8520') {
+    if (tryDecryptAndRender(enteredPin)) {
       sessionStorage.setItem('auth_passed', 'true');
+      sessionStorage.setItem('auth_pin', enteredPin);
       authOverlay.style.display = 'none';
     } else {
       authErrorMsg.style.display = 'block';
-      authModal.classList.add('shake');
-      setTimeout(() => authModal.classList.remove('shake'), 500);
+      if (authModal) {
+        authModal.classList.add('shake');
+        setTimeout(() => authModal.classList.remove('shake'), 500);
+      }
       pinInputs.forEach(i => i.value = '');
-      pinInputs[0].focus();
+      if (pinInputs.length > 0) pinInputs[0].focus();
     }
   }
 }
 
-// Map & Itinerary Application Logic
-function initItineraryApp() {
+function tryDecryptAndRender(pin) {
+  if (typeof encryptedItineraryData === 'undefined' || typeof CryptoJS === 'undefined') return false;
+
+  try {
+    const bytes = CryptoJS.AES.decrypt(encryptedItineraryData, pin);
+    const decryptedText = bytes.toString(CryptoJS.enc.Utf8);
+    
+    if (decryptedText && decryptedText.trim().startsWith('[')) {
+      globalItineraryData = JSON.parse(decryptedText);
+      
+      // Render whichever page view is active
+      if (document.getElementById('map')) {
+        initItineraryMap(globalItineraryData);
+      }
+      if (document.getElementById('tour-package-content')) {
+        renderTourPackageCards(globalItineraryData);
+      }
+      return true;
+    }
+  } catch (e) {
+    console.error('Decryption failed:', e);
+  }
+  return false;
+}
+
+// Map & Itinerary Application Logic for index.html
+function initItineraryMap(itineraryData) {
   const mapElem = document.getElementById('map');
   const listElem = document.getElementById('itinerary-list');
 
-  if (!mapElem || typeof L === 'undefined' || typeof itineraryData === 'undefined') return;
+  if (!mapElem || typeof L === 'undefined' || !itineraryData) return;
+
+  // Clear existing elements if re-rendering
+  if (listElem) listElem.innerHTML = '';
 
   // Initialize Leaflet Map centered on Lapland/Nordics
   const map = L.map('map').setView([65.8252, 23.6886], 5);
@@ -87,11 +122,9 @@ function initItineraryApp() {
   const markers = [];
   const latLngs = [];
 
-  // Render Sidebar and Markers
-  itineraryData.forEach((day, index) => {
+  itineraryData.forEach((day) => {
     latLngs.push(day.coords);
 
-    // Custom marker icon color depending on hotel status
     let markerColor = '#2563eb';
     if (day.hotelStatus === 'confirmed') markerColor = '#16a34a';
     if (day.hotelStatus === 'shortlisted') markerColor = '#d97706';
@@ -141,7 +174,6 @@ function initItineraryApp() {
     }
   });
 
-  // Polyline for Route
   const polyline = L.polyline(latLngs, {
     color: '#2563eb',
     weight: 4,
@@ -150,4 +182,67 @@ function initItineraryApp() {
   }).addTo(map);
 
   map.fitBounds(polyline.getBounds(), { padding: [40, 40] });
+}
+
+// Render Tour Package Cards for tour_package.html
+function renderTourPackageCards(itineraryData) {
+  const container = document.getElementById('tour-package-content');
+  const navContainer = document.getElementById('sidebar-nav-ul');
+  if (!container || !itineraryData) return;
+
+  container.innerHTML = '';
+  if (navContainer) navContainer.innerHTML = '';
+
+  itineraryData.forEach((d) => {
+    if (navContainer) {
+      const li = document.createElement('li');
+      li.innerHTML = `<a href="#day-${d.day}">Day ${d.day}: ${d.location.split(',')[0]}</a>`;
+      navContainer.appendChild(li);
+    }
+
+    const statusCls = d.hotelStatus;
+    const statusLabel = statusCls === 'confirmed' ? '✅ Confirmed' : (statusCls === 'shortlisted' ? '⚠️ Shortlisted' : '📌 Booking Pending');
+    const tagsHtml = (d.tags || []).map(t => `<span class="chip">#${t}</span>`).join('');
+
+    const card = document.createElement('div');
+    card.id = `day-${d.day}`;
+    card.className = 'day-card';
+    card.innerHTML = `
+      <div class="day-header">
+        <div>
+          <span style="color: #2563eb; font-weight: 700; font-size: 0.9rem;">DAY ${d.day} &bull; ${d.date}</span>
+          <div class="day-title">${d.title}</div>
+        </div>
+        <div class="day-meta">
+          <span><i class="fa-solid fa-location-dot"></i> ${d.location}</span>
+          <span><i class="fa-solid fa-car"></i> ${d.distance}</span>
+        </div>
+      </div>
+
+      <div class="info-block">
+        <div class="info-block-title">
+          <i class="fa-solid fa-hotel" style="color: #2563eb;"></i>
+          <span>Accommodation: ${d.hotel}</span>
+          <span class="badge-tag ${statusCls}">${statusLabel}</span>
+        </div>
+        <div style="font-size: 0.85rem; color: #475569; margin-left: 24px;">
+          <strong>Booking Reference:</strong> ${d.bookingRef}
+        </div>
+      </div>
+
+      <div style="margin-bottom: 12px; color: #334155; font-size: 0.95rem;">
+        <strong><i class="fa-solid fa-compass" style="color: #2563eb; margin-right: 6px;"></i>Key Activities & Sights:</strong><br/>
+        ${d.activities}
+      </div>
+
+      <div style="font-size: 0.88rem; color: #64748b; background: #f1f5f9; padding: 10px 14px; border-radius: 6px; margin-top: 10px;">
+        <strong><i class="fa-solid fa-clipboard-list" style="margin-right: 6px;"></i>Logistics & Notes:</strong> ${d.scheduleNotes}
+      </div>
+
+      <div class="tag-list">
+        ${tagsHtml}
+      </div>
+    `;
+    container.appendChild(card);
+  });
 }
