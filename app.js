@@ -3,9 +3,13 @@
 let globalPayload = null;
 let currentRouteKey = 'routeB'; // Default to Route B (High-Action Nature & Foodie)
 
-document.addEventListener('DOMContentLoaded', () => {
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    initPasswordProtection();
+  });
+} else {
   initPasswordProtection();
-});
+}
 
 function initPasswordProtection() {
   const authOverlay = document.getElementById('auth-overlay');
@@ -21,20 +25,53 @@ function initPasswordProtection() {
     if (tryDecryptAndRender(savedPin)) {
       authOverlay.style.display = 'none';
       return;
+    } else {
+      sessionStorage.removeItem('auth_pin');
+      sessionStorage.removeItem('auth_passed');
     }
   }
 
   if (pinInputs.length > 0) {
-    pinInputs[0].focus();
+    setTimeout(() => {
+      try { pinInputs[0].focus(); } catch (e) {}
+    }, 100);
   }
 
   pinInputs.forEach((input, idx) => {
+    input.addEventListener('paste', (e) => {
+      e.preventDefault();
+      const pasteData = (e.clipboardData || window.clipboardData).getData('text').trim();
+      const digits = pasteData.replace(/\D/g, '').split('');
+      if (digits.length > 0) {
+        digits.forEach((d, i) => {
+          if (idx + i < pinInputs.length) {
+            pinInputs[idx + i].value = d;
+          }
+        });
+        const nextIdx = Math.min(idx + digits.length, pinInputs.length - 1);
+        pinInputs[nextIdx].focus();
+        verifyPin();
+      }
+    });
+
     input.addEventListener('input', (e) => {
       const val = e.target.value;
-      if (val && idx < pinInputs.length - 1) {
+      if (val.length > 1) {
+        const digits = val.replace(/\D/g, '').split('');
+        digits.forEach((d, i) => {
+          if (idx + i < pinInputs.length) {
+            pinInputs[idx + i].value = d;
+          }
+        });
+        const nextIdx = Math.min(idx + digits.length, pinInputs.length - 1);
+        pinInputs[nextIdx].focus();
+      } else if (val && idx < pinInputs.length - 1) {
         pinInputs[idx + 1].focus();
       }
-      if (idx === pinInputs.length - 1 && val) {
+
+      let totalEntered = 0;
+      pinInputs.forEach(i => { if (i.value.trim()) totalEntered++; });
+      if (totalEntered === pinInputs.length) {
         verifyPin();
       }
     });
@@ -50,25 +87,33 @@ function initPasswordProtection() {
   });
 
   if (authSubmitBtn) {
-    authSubmitBtn.addEventListener('click', verifyPin);
+    authSubmitBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      verifyPin();
+    });
   }
 
   function verifyPin() {
     let enteredPin = '';
     pinInputs.forEach(i => enteredPin += i.value.trim());
 
+    if (enteredPin.length === 0) return;
+
     if (tryDecryptAndRender(enteredPin)) {
       sessionStorage.setItem('auth_passed', 'true');
       sessionStorage.setItem('auth_pin', enteredPin);
       authOverlay.style.display = 'none';
+      if (authErrorMsg) authErrorMsg.style.display = 'none';
     } else {
-      authErrorMsg.style.display = 'block';
+      if (authErrorMsg) authErrorMsg.style.display = 'block';
       if (authModal) {
         authModal.classList.add('shake');
         setTimeout(() => authModal.classList.remove('shake'), 500);
       }
       pinInputs.forEach(i => i.value = '');
-      if (pinInputs.length > 0) pinInputs[0].focus();
+      if (pinInputs.length > 0) {
+        try { pinInputs[0].focus(); } catch (e) {}
+      }
     }
   }
 }

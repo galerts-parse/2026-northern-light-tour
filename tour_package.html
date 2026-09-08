@@ -83,15 +83,8 @@
   <!-- CryptoJS Library for AES Decryption -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
   
-  <!-- Dynamic Cache Busting Script Loader -->
-  <script>
-    const ver = new Date().getTime();
-    ['data.js', 'app.js'].forEach(src => {
-      const s = document.createElement('script');
-      s.src = src + '?v=' + ver;
-      s.async = false;
-      document.body.appendChild(s);
-    });
-  </script>
+  <!-- Application Data & Logic -->
+  <script src="data.js?v=20260908_v2"></script>
+  <script src="app.js?v=20260908_v2"></script>
 </body>
 </html>
