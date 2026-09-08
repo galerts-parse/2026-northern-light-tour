@@ -224,19 +224,19 @@ base_22_days = [
     "hotel": "Cozy Apartment by the Sea 2 Rooms (Kemi)", "hotelStatus": "confirmed", "bookingRef": "Booking.com (Check-in 19 Dec - Check-out 21 Dec)",
     "food": food_db["Kemi"],
     "activities_a": "Cross-border drive south to Finnish Bothnian coast; cross border at Tornio; check in; explore SnowExperience365 indoor ice castle and ice bar.",
-    "activities_b": "Cross-border drive south; Bothnian Bay Sea-Ice Trail walk onto thick frozen sea ice; SnowExperience365 ice castle; Sataman Krouvi salmon soup dinner.",
+    "activities_b": "Cross-border drive south; Bothnian Bay Sea-Ice Trail walk onto thick frozen sea ice (Free public access); SnowExperience365 ice castle; Sataman Krouvi salmon soup dinner.",
     "sched_a": [
       {"time": "08:30 - 12:30", "activity": "Drive Björkliden to Kemi (340 km).", "gmaps": gmaps("Bjorkliden to Kemi")},
       {"time": "15:30 - 18:00", "activity": "SnowExperience365 ice castle.", "gmaps": gmaps("SnowExperience365 Kemi")}
     ],
     "sched_b": [
       {"time": "08:30 - 12:30", "activity": "Drive Björkliden to Kemi (340 km).", "gmaps": gmaps("Bjorkliden to Kemi")},
-      {"time": "14:00 - 15:30", "activity": "Bothnian Bay Sea-Ice Trail walk onto thick frozen gulf sea ice.", "gmaps": gmaps("Kemi Inner Harbour Ice Trail", 65.7363, 24.5637)},
+      {"time": "14:00 - 15:30", "activity": "Bothnian Bay Sea-Ice Trail walk onto thick frozen gulf sea ice (Free access, no ticket needed).", "gmaps": gmaps("Kemi Inner Harbour Ice Trail", 65.7363, 24.5637)},
       {"time": "16:00 - 18:00", "activity": "Explore SnowExperience365 indoor ice castle & ice bar.", "gmaps": gmaps("SnowExperience365 Kemi")},
       {"time": "18:30 - 20:30", "activity": "Dinner at Sataman Krouvi or Restaurant Lumihiutale.", "gmaps": gmaps("Sataman Krouvi Kemi")}
     ],
     "legs": [{"from": "Björkliden", "to": "Kemi", "dist": "340 km", "time": "4h 00m", "route": "E10 & E4", "gmaps": gmaps("Bjorkliden to Kemi")}],
-    "tickets": [{"item": "SnowExperience365 Ticket", "cost": "€18/pax", "url": "https://experience365.fi/"}],
+    "tickets": [{"item": "Sea-Ice Shoreline Trail", "cost": "Free (No Ticket Needed)", "url": "https://experience365.fi/"}, {"item": "SnowExperience365 Ticket", "cost": "€18/pax", "url": "https://experience365.fi/"}],
     "aurora": [{"name": "Inner Harbour Coastal Promenade", "desc": "Dark shoreline facing north over frozen bay.", "coords": [65.7363, 24.5637], "gmaps": gmaps("Kemi Harbour Promenade", 65.7363, 24.5637)}]
   },
   {
@@ -251,13 +251,13 @@ base_22_days = [
       {"time": "15:30 - 18:00", "activity": "Coastal sauna session.", "gmaps": gmaps("Kemi Sauna")}
     ],
     "sched_b": [
-      {"time": "09:30 - 13:00", "activity": "Official Sampo Icebreaker Cruise: crush sea ice & survival drysuit ice float.", "gmaps": gmaps("Sampo Icebreaker Kemi")},
+      {"time": "08:30 - 12:00 / 13:00 - 16:30", "activity": "Official Sampo Icebreaker Cruise: 3.5h sea-ice crush & survival drysuit ocean ice float (Slot 1: 08:30-12:00 or Slot 2: 13:00-16:30).", "gmaps": gmaps("Sampo Icebreaker Kemi")},
       {"time": "13:15 - 14:30", "activity": "Lunch at SnowCastle Lumihiutale Restaurant.", "gmaps": gmaps("Restaurant Lumihiutale Kemi")},
       {"time": "15:00 - 16:30", "activity": "Ajos Peninsula sunset ice ridge trail walk along coastal ice pack.", "gmaps": gmaps("Ajos Harbour Kemi", 65.6700, 24.5500)},
       {"time": "17:00 - 19:00", "activity": "Coastal sauna session.", "gmaps": gmaps("Kemi Sauna")}
     ],
     "legs": [{"from": "Kemi Center", "to": "Ajos Harbour", "dist": "15 km", "time": "20 mins", "route": "Ajos Road", "gmaps": gmaps("Kemi to Ajos Harbour")}],
-    "tickets": [{"item": "Sampo Icebreaker Cruise", "cost": "€340/pax", "url": "https://experience365.fi/icebreaker-sampo/"}],
+    "tickets": [{"item": "Sampo Icebreaker Cruise (3.5h)", "cost": "€340/pax", "url": "https://experience365.fi/icebreaker-sampo/"}],
     "aurora": [{"name": "Ajos Harbour Breakwater", "desc": "Unobstructed dark horizon over gulf ice.", "coords": [65.6700, 24.5500], "gmaps": gmaps("Ajos Harbour Kemi", 65.6700, 24.5500)}]
   },
   {
