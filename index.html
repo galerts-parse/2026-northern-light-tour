@@ -46,8 +46,8 @@
 
         <!-- Route Selector Dropdown -->
         <select id="route-selector" style="width: 100%; padding: 8px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 13px; background: white; outline: none; margin-top: 12px; font-weight: 600; color: #1e293b;">
-          <option value="routeB" selected>Route B: High-Action Nature & Foodie Explorer</option>
-          <option value="routeA">Route A: Baseline Itinerary (Classic)</option>
+          <option value="routeB" selected>Route B: High-Action Nature & Foodie Explorer (22 Days)</option>
+          <option value="routeA">Route A: Baseline Itinerary (Classic 22 Days)</option>
         </select>
         
         <div class="header-action-buttons">
@@ -70,9 +70,16 @@
   <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
   
-  <!-- Application Data & Logic -->
-  <script src="data.js"></script>
-  <script src="app.js"></script>
+  <!-- Dynamic Cache Busting Script Loader -->
+  <script>
+    const ver = new Date().getTime();
+    ['data.js', 'app.js'].forEach(src => {
+      const s = document.createElement('script');
+      s.src = src + '?v=' + ver;
+      s.async = false;
+      document.body.appendChild(s);
+    });
+  </script>
 
 </body>
 </html>
