@@ -98,11 +98,14 @@ base_22_days = [
       {"time": "10:00 - 11:15", "activity": "Walk Kukkolankoski frozen rapids suspension bridge.", "gmaps": gmaps("Kukkolankoski Rapids")},
       {"time": "11:45 - 13:30", "activity": "Explore Gammelstad Church Town UNESCO medieval walking loop.", "gmaps": gmaps("Gammelstad Church Town Luleå", 65.6458, 22.0289)},
       {"time": "13:30 - 14:15", "activity": "Lunch at Empes Gatukök Boden.", "gmaps": gmaps("Empes Gatukök Boden")},
-      {"time": "15:00 - 16:30", "activity": "Check into Stuga i Storklinten & prepare wood sauna.", "gmaps": gmaps("Storklinten Ski Resort")}
+      {"time": "15:00 - 16:30", "activity": "Check into Stuga i Storklinten & prepare cabin.", "gmaps": gmaps("Storklinten Ski Resort")},
+      {"time": "16:30 - 18:30", "activity": "Outdoor Storklinten illuminated ski slopes / toboggan hill & dusk snow walk.", "gmaps": gmaps("Storklinten Slopes", 65.8252, 21.6886)},
+      {"time": "18:30 - 20:30", "activity": "Traditional Swedish wood-fired sauna & snow plunge + cabin dinner.", "gmaps": gmaps("Storklinten Sauna")},
+      {"time": "21:00 - 00:00", "activity": "Self-drive Aurora Hunt at Storklinten Fell Top (3 mins drive) or Bodträsket Lake (10 mins drive).", "gmaps": gmaps("Storklinten Fell", 65.8252, 21.6886)}
     ],
     "legs": [{"from": "Rovaniemi", "to": "Storklinten", "dist": "235 km", "time": "2h 45m", "route": "E75 & Route 99", "gmaps": gmaps("Rovaniemi to Storklinten")}],
     "tickets": [{"item": "Kukkolankoski Rapids", "cost": "Free", "url": "https://www.kukkolaforsen.se/"}],
-    "aurora": [{"name": "Storklinten Fell Top", "desc": "High vantage point above pine canopy.", "coords": [65.8252, 21.6886], "gmaps": gmaps("Storklinten Fell", 65.8252, 21.6886)}]
+    "aurora": [{"name": "Storklinten Fell Top", "desc": "High vantage point above pine canopy (3 mins drive).", "coords": [65.8252, 21.6886], "gmaps": gmaps("Storklinten Fell", 65.8252, 21.6886)}, {"name": "Bodträsket Lake Shore", "desc": "Dark frozen lake vista (10 mins drive north).", "coords": [65.8800, 21.7200], "gmaps": gmaps("Bodtrasket Lake", 65.8800, 21.7200)}]
   },
   {
     "day": 3, "date": "Dec 14 (Mon)", "title_a": "Zero-Driving Rest & Nature Day", "title_b": "Storklinten Fell-Top Snowshoe Trek & Forest Trail",
@@ -110,21 +113,21 @@ base_22_days = [
     "hotel": "Stuga i Storklinten (Boden)", "hotelStatus": "confirmed", "bookingRef": "Booking.com (Night 2 of 2)",
     "food": food_db["Boden"],
     "activities_a": "Arctic wellness & snow day; outdoor snowshoeing / cross-country skiing; wood-fired saunas & cold plunge; night aurora watching.",
-    "activities_b": "Storklinten Fell-Top Snowshoe Trek & Forest Trail; wood-fired saunas & cold plunge; night aurora photo hunt from fell clearings.",
+    "activities_b": "Storklinten Fell-Top Snowshoe Trek & Forest Trail; Treehotel Harads forest walk; wood-fired saunas & cold plunge; night aurora photo hunt from fell clearings.",
     "sched_a": [
       {"time": "10:30 - 13:00", "activity": "Snowshoeing through pine forests.", "gmaps": gmaps("Storklinten Trails")},
       {"time": "15:00 - 18:00", "activity": "Wood-fired sauna & cold plunge.", "gmaps": gmaps("Storklinten Sauna")},
       {"time": "21:00 - 00:00", "activity": "Night aurora watching.", "gmaps": gmaps("Storklinten Fell")}
     ],
     "sched_b": [
-      {"time": "10:00 - 13:30", "activity": "Storklinten fell summit snowshoe trail trek to panoramic lookout.", "gmaps": gmaps("Storklinten Summit Trail", 65.8252, 21.6886)},
-      {"time": "14:00 - 15:00", "activity": "Lunch at Storklinten Lodge.", "gmaps": gmaps("Storklinten Restaurant")},
-      {"time": "15:30 - 18:30", "activity": "Wood-fired sauna & cold snow plunge.", "gmaps": gmaps("Storklinten Sauna")},
-      {"time": "21:00 - 00:00", "activity": "Night aurora photo hunt from fell clearings.", "gmaps": gmaps("Storklinten Fell")}
+      {"time": "10:00 - 13:00", "activity": "Storklinten Fell-Top Snowshoe Trek / XC skiing (trails right outside cabin door).", "gmaps": gmaps("Storklinten Summit Trail", 65.8252, 21.6886)},
+      {"time": "13:30 - 15:30", "activity": "Optional excursion: Harads Treehotel architectural forest walk & lunch at Brittas Pensionat (15 mins drive).", "gmaps": gmaps("Treehotel Harads Sweden", 65.8252, 20.9542)},
+      {"time": "16:00 - 18:30", "activity": "Outdoor wood-fired sauna & Arctic snow plunge at Stortklinten.", "gmaps": gmaps("Storklinten Sauna")},
+      {"time": "21:00 - 00:00", "activity": "Aurora photo hunt from fell summit clearings (0-500m walk from cabin).", "gmaps": gmaps("Storklinten Fell")}
     ],
     "legs": [{"from": "Cabin", "to": "Trails", "dist": "0 km", "time": "0 mins", "route": "Walk", "gmaps": gmaps("Storklinten Trails")}],
     "tickets": [{"item": "Snowshoe Rental Day", "cost": "~200 SEK", "url": "https://storklinten.se/"}],
-    "aurora": [{"name": "Storklinten Lake Shore", "desc": "Dark open lake clearing.", "coords": [65.8252, 21.6886], "gmaps": gmaps("Storklinten Lake", 65.8252, 21.6886)}]
+    "aurora": [{"name": "Storklinten Fell Summit Clearings", "desc": "Right outside cabin door (0-500m walk).", "coords": [65.8252, 21.6886], "gmaps": gmaps("Storklinten Fell")}]
   },
   {
     "day": 4, "date": "Dec 15 (Tue)", "title_a": "ICEHOTEL 37 Opening Week & Sámi Reindeer", "title_b": "Luossavaara Peak Sunrise Viewpoint & ICEHOTEL 37",
@@ -177,7 +180,7 @@ base_22_days = [
     "hotel": "Aurora View Apt – Walk to Train & Ski (Björkliden)", "hotelStatus": "confirmed", "bookingRef": "Airbnb Ref: HM2B8KDQ4H (Night 2 of 3)",
     "food": food_db["Abisko"],
     "activities_a": "Guided alpine snowmobile safari across mountain passes toward Norwegian border (Riksgränsen); Lapporten valley views; night aurora watch.",
-    "activities_b": "Guided Kårsavagge Frozen Valley Snowmobile Expedition & Lapporten U-shaped alpine valley snowshoe trek; Lake Torneträsk night aurora watch.",
+    "activities_b": "Guided Kårsavagge Frozen Valley Snowmobile Expedition & Silverfallet frozen waterfall trek; STF Abisko visitor center & Lake Torneträsk night aurora watch.",
     "sched_a": [
       {"time": "10:00 - 13:00", "activity": "3-hour snowmobile safari.", "gmaps": gmaps("Abisko Snowmobile Base")},
       {"time": "20:30 - 23:30", "activity": "Lake Torneträsk aurora watch.", "gmaps": gmaps("Lake Tornetrask Shore")}
@@ -185,6 +188,9 @@ base_22_days = [
     "sched_b": [
       {"time": "09:30 - 13:30", "activity": "Kårsavagge Frozen Valley snowmobile expedition toward Lapporten U-valley & Riksgränsen.", "gmaps": gmaps("Karsavagge Valley Abisko", 68.3300, 18.6000)},
       {"time": "14:00 - 15:30", "activity": "Warm lunch at Björkliden Hotel Fjället.", "gmaps": gmaps("Hotel Fjallet Bjorkliden")},
+      {"time": "15:30 - 17:00", "activity": "Silverfallet (Rakkasjokk) Frozen Waterfall Walk & dawning twilight photo trek down to Lake Torneträsk ice.", "gmaps": gmaps("Silverfallet Waterfall Bjorkliden", 68.4100, 18.6700)},
+      {"time": "17:15 - 18:45", "activity": "STF Abisko Turiststation Arctic climate exhibition & cozy fireside fika.", "gmaps": gmaps("STF Abisko Turiststation", 68.3600, 18.7800)},
+      {"time": "19:00 - 20:30", "activity": "Panoramic dinner at Hotel Fjället / Abisko Mountain Lodge.", "gmaps": gmaps("Abisko Mountain Lodge", 68.3500, 18.7900)},
       {"time": "20:30 - 23:30", "activity": "Self-drive aurora hunt to Lake Torneträsk beach parking (E10 km 115).", "gmaps": gmaps("Lake Tornetrask Beach Parking E10", 68.3500, 18.8000)}
     ],
     "legs": [{"from": "Björkliden", "to": "Trails", "dist": "0 km", "time": "0 mins", "route": "Snowmobile", "gmaps": gmaps("Bjorkliden Base")}],
