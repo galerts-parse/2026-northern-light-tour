@@ -25,14 +25,25 @@
       <h2>Protected Access</h2>
       <p>Please enter the 4-digit passcode to view the 2026 Northern Light Tour itinerary.</p>
       
-      <div class="pin-input-container">
-        <input type="password" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="pin-digit" autofocus>
-        <input type="password" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="pin-digit">
-        <input type="password" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="pin-digit">
-        <input type="password" inputmode="numeric" pattern="[0-9]*" maxlength="1" class="pin-digit">
-      </div>
-      
-      <button id="auth-submit-btn">Unlock Itinerary</button>
+      <form id="auth-form" action="javascript:void(0);">
+        <div class="pin-field-container">
+          <input type="password" 
+                 id="pin-hidden-input" 
+                 inputmode="numeric" 
+                 pattern="[0-9]*" 
+                 maxlength="4" 
+                 autocomplete="off"
+                 autofocus>
+          <div class="pin-display-boxes" id="pin-display-boxes">
+            <div class="pin-digit-box"></div>
+            <div class="pin-digit-box"></div>
+            <div class="pin-digit-box"></div>
+            <div class="pin-digit-box"></div>
+          </div>
+        </div>
+        
+        <button type="submit" id="auth-submit-btn">Unlock Itinerary</button>
+      </form>
       <div id="auth-error-msg">Incorrect passcode. Please try again.</div>
     </div>
   </div>
@@ -71,8 +82,8 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
   
   <!-- Application Data & Logic -->
-  <script src="data.js?v=20260908_v2"></script>
-  <script src="app.js?v=20260908_v2"></script>
+  <script src="data.js?v=20260908_v3"></script>
+  <script src="app.js?v=20260908_v3"></script>
 
 </body>
 </html>

@@ -14,9 +14,10 @@ if (document.readyState === 'loading') {
 function initPasswordProtection() {
   const authOverlay = document.getElementById('auth-overlay');
   const authModal = document.getElementById('auth-modal');
-  const authSubmitBtn = document.getElementById('auth-submit-btn');
+  const authForm = document.getElementById('auth-form');
+  const pinInput = document.getElementById('pin-hidden-input');
+  const boxes = document.querySelectorAll('.pin-digit-box');
   const authErrorMsg = document.getElementById('auth-error-msg');
-  const pinInputs = document.querySelectorAll('.pin-digit');
 
   if (!authOverlay) return;
 
@@ -31,73 +32,61 @@ function initPasswordProtection() {
     }
   }
 
-  if (pinInputs.length > 0) {
+  if (pinInput) {
     setTimeout(() => {
-      try { pinInputs[0].focus(); } catch (e) {}
-    }, 100);
+      try { pinInput.focus(); } catch (e) {}
+    }, 150);
   }
 
-  pinInputs.forEach((input, idx) => {
-    input.addEventListener('paste', (e) => {
-      e.preventDefault();
-      const pasteData = (e.clipboardData || window.clipboardData).getData('text').trim();
-      const digits = pasteData.replace(/\D/g, '').split('');
-      if (digits.length > 0) {
-        digits.forEach((d, i) => {
-          if (idx + i < pinInputs.length) {
-            pinInputs[idx + i].value = d;
-          }
-        });
-        const nextIdx = Math.min(idx + digits.length, pinInputs.length - 1);
-        pinInputs[nextIdx].focus();
-        verifyPin();
+  function updateVisualBoxes() {
+    if (!pinInput || !boxes.length) return;
+    const val = pinInput.value.replace(/\D/g, '').slice(0, 4);
+    pinInput.value = val;
+
+    boxes.forEach((box, i) => {
+      if (i < val.length) {
+        box.textContent = '•';
+        box.classList.add('filled');
+        box.classList.remove('active');
+      } else {
+        box.textContent = '';
+        box.classList.remove('filled');
+        if (i === val.length) {
+          box.classList.add('active');
+        } else {
+          box.classList.remove('active');
+        }
       }
     });
 
-    input.addEventListener('input', (e) => {
-      const val = e.target.value;
-      if (val.length > 1) {
-        const digits = val.replace(/\D/g, '').split('');
-        digits.forEach((d, i) => {
-          if (idx + i < pinInputs.length) {
-            pinInputs[idx + i].value = d;
-          }
-        });
-        const nextIdx = Math.min(idx + digits.length, pinInputs.length - 1);
-        pinInputs[nextIdx].focus();
-      } else if (val && idx < pinInputs.length - 1) {
-        pinInputs[idx + 1].focus();
-      }
+    if (val.length === 4) {
+      verifyPin();
+    }
+  }
 
-      let totalEntered = 0;
-      pinInputs.forEach(i => { if (i.value.trim()) totalEntered++; });
-      if (totalEntered === pinInputs.length) {
-        verifyPin();
-      }
-    });
+  if (pinInput) {
+    pinInput.addEventListener('input', updateVisualBoxes);
+    pinInput.addEventListener('keyup', updateVisualBoxes);
+  }
 
-    input.addEventListener('keydown', (e) => {
-      if (e.key === 'Backspace' && !input.value && idx > 0) {
-        pinInputs[idx - 1].focus();
-      }
-      if (e.key === 'Enter') {
-        verifyPin();
-      }
-    });
-  });
-
-  if (authSubmitBtn) {
-    authSubmitBtn.addEventListener('click', (e) => {
+  if (authForm) {
+    authForm.addEventListener('submit', (e) => {
       e.preventDefault();
       verifyPin();
     });
   }
 
-  function verifyPin() {
-    let enteredPin = '';
-    pinInputs.forEach(i => enteredPin += i.value.trim());
+  if (authModal) {
+    authModal.addEventListener('click', () => {
+      if (pinInput) pinInput.focus();
+    });
+  }
 
-    if (enteredPin.length === 0) return;
+  function verifyPin() {
+    if (!pinInput) return;
+    const enteredPin = pinInput.value.trim();
+
+    if (enteredPin.length < 4) return;
 
     if (tryDecryptAndRender(enteredPin)) {
       sessionStorage.setItem('auth_passed', 'true');
@@ -110,10 +99,9 @@ function initPasswordProtection() {
         authModal.classList.add('shake');
         setTimeout(() => authModal.classList.remove('shake'), 500);
       }
-      pinInputs.forEach(i => i.value = '');
-      if (pinInputs.length > 0) {
-        try { pinInputs[0].focus(); } catch (e) {}
-      }
+      pinInput.value = '';
+      updateVisualBoxes();
+      try { pinInput.focus(); } catch (e) {}
     }
   }
 }
