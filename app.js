@@ -1,12 +1,12 @@
-// 2026 Northern Light Tour Application Script (AES Decrypted Engine)
+// 2026 Northern Light Tour Application Script (Multi-Route & Google Maps Enabled)
 
 let globalPayload = null;
+let currentRouteKey = 'routeB'; // Default to Route B (High-Action Nature & Foodie)
 
 document.addEventListener('DOMContentLoaded', () => {
   initPasswordProtection();
 });
 
-// Password Protection & AES Decryption (PIN: 8520)
 function initPasswordProtection() {
   const authOverlay = document.getElementById('auth-overlay');
   const authModal = document.getElementById('auth-modal');
@@ -16,7 +16,6 @@ function initPasswordProtection() {
 
   if (!authOverlay) return;
 
-  // Check saved session PIN
   const savedPin = sessionStorage.getItem('auth_pin');
   if (savedPin) {
     if (tryDecryptAndRender(savedPin)) {
@@ -83,20 +82,48 @@ function tryDecryptAndRender(pin) {
     
     if (decryptedText && decryptedText.trim().startsWith('{')) {
       globalPayload = JSON.parse(decryptedText);
-      const itineraryData = globalPayload.days;
 
-      if (document.getElementById('map')) {
-        initItineraryMap(itineraryData);
-      }
-      if (document.getElementById('tour-package-content')) {
-        renderTourPackageView(globalPayload);
-      }
+      setupRouteSelector();
+      renderCurrentRoute();
       return true;
     }
   } catch (e) {
     console.error('Decryption failed:', e);
   }
   return false;
+}
+
+function setupRouteSelector() {
+  const routeSelect = document.getElementById('route-selector');
+  if (routeSelect && globalPayload && globalPayload.routes) {
+    routeSelect.innerHTML = '';
+    Object.keys(globalPayload.routes).forEach(key => {
+      const r = globalPayload.routes[key];
+      const opt = document.createElement('option');
+      opt.value = key;
+      opt.textContent = r.name;
+      if (key === currentRouteKey) opt.selected = true;
+      routeSelect.appendChild(opt);
+    });
+
+    routeSelect.addEventListener('change', (e) => {
+      currentRouteKey = e.target.value;
+      renderCurrentRoute();
+    });
+  }
+}
+
+function renderCurrentRoute() {
+  if (!globalPayload || !globalPayload.routes) return;
+  const activeRoute = globalPayload.routes[currentRouteKey] || globalPayload.routes['routeB'];
+  const itineraryData = activeRoute.days;
+
+  if (document.getElementById('map')) {
+    initItineraryMap(itineraryData);
+  }
+  if (document.getElementById('tour-package-content')) {
+    renderTourPackageView(globalPayload, activeRoute);
+  }
 }
 
 // Map & Itinerary Application Logic for index.html
@@ -141,6 +168,7 @@ function initItineraryMap(itineraryData) {
           <strong>Hotel:</strong> ${day.hotel}<br/>
           <strong>Ref:</strong> ${day.bookingRef}
         </div>
+        <a href="${day.gmaps}" target="_blank" style="display:inline-block; margin-top:8px; background:#ea580c; color:white; padding:4px 8px; border-radius:4px; text-decoration:none; font-size:11px; font-weight:bold;"><i class="fa-solid fa-location-arrow"></i> Google Maps GPS</a>
       </div>
     `;
     marker.bindPopup(popupContent);
@@ -179,12 +207,12 @@ function initItineraryMap(itineraryData) {
 }
 
 // Render Tour Package View for tour_package.html
-function renderTourPackageView(payload) {
+function renderTourPackageView(payload, activeRoute) {
   const container = document.getElementById('tour-package-content');
   const navContainer = document.getElementById('sidebar-nav-ul');
-  if (!container || !payload) return;
+  if (!container || !activeRoute) return;
 
-  const itineraryData = payload.days;
+  const itineraryData = activeRoute.days;
 
   container.innerHTML = '';
   if (navContainer) navContainer.innerHTML = '';
@@ -210,17 +238,46 @@ function renderTourPackageView(payload) {
     const statusLabel = statusCls === 'confirmed' ? '✅ Confirmed' : '📌 Booking Pending';
     const tagsHtml = (d.tags || []).map(t => `<span class="chip">#${t}</span>`).join('');
 
-    // Hourly schedule
+    // Hourly schedule with Google Maps links
     const hourlyHtml = (d.hourlySchedule || []).map(h => `
-      <div style="display: flex; gap: 12px; margin-bottom: 8px; font-size: 0.88rem;">
-        <span style="font-weight: 700; color: #2563eb; width: 100px; flex-shrink: 0;">${h.time}</span>
-        <span style="color: #334155;">${h.activity}</span>
+      <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; font-size: 0.88rem; border-bottom: 1px dashed #e2e8f0; padding-bottom: 4px;">
+        <div>
+          <span style="font-weight: 700; color: #2563eb; width: 100px; display: inline-block;">${h.time}</span>
+          <span style="color: #334155;">${h.activity}</span>
+        </div>
+        ${h.gmaps ? `<a href="${h.gmaps}" target="_blank" class="action-btn orange" style="font-size: 10px; padding: 2px 6px; flex-shrink: 0;"><i class="fa-solid fa-location-arrow"></i> GPS</a>` : ''}
       </div>
     `).join('');
 
-    // Hotel links
+    // Food Guide (Good vs Cheap)
+    let foodHtml = '';
+    if (d.foodGuide) {
+      const fg = d.foodGuide;
+      foodHtml = `
+        <div class="info-block" style="background: #fff7ed; border: 1px solid #fed7aa;">
+          <div class="info-block-title" style="color: #c2410c;"><i class="fa-solid fa-utensils"></i> Recommended City Food Guide (Good vs Local Cheap Eats):</div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin-top: 6px;">
+            <div style="background: white; padding: 10px; border-radius: 6px; border: 1px solid #ffedd5;">
+              <span style="font-weight: 700; color: #ea580c; font-size: 12px;">★ Top Regional Dining:</span><br/>
+              <strong style="font-size: 13px; color: #1e293b;">${fg.good.name}</strong> (${fg.good.cost})<br/>
+              <span style="font-size: 11px; color: #64748b;">${fg.good.desc}</span><br/>
+              <a href="${fg.good.gmaps}" target="_blank" class="action-btn orange" style="font-size: 10px; padding: 2px 6px; margin-top: 4px; display: inline-flex;"><i class="fa-solid fa-location-arrow"></i> Google Maps GPS</a>
+            </div>
+            <div style="background: white; padding: 10px; border-radius: 6px; border: 1px solid #ffedd5;">
+              <span style="font-weight: 700; color: #16a34a; font-size: 12px;">★ Local Cheap Eats / Market:</span><br/>
+              <strong style="font-size: 13px; color: #1e293b;">${fg.cheap.name}</strong> (${fg.cheap.cost})<br/>
+              <span style="font-size: 11px; color: #64748b;">${fg.cheap.desc}</span><br/>
+              <a href="${fg.cheap.gmaps}" target="_blank" class="action-btn green" style="font-size: 10px; padding: 2px 6px; margin-top: 4px; display: inline-flex;"><i class="fa-solid fa-location-arrow"></i> Google Maps GPS</a>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    // Hotel links & Maps
     const hotelLinksHtml = (d.hotelLinks || []).map(hl => `
-      <a href="${hl.url}" target="_blank" class="action-btn blue" style="font-size: 11px; padding: 4px 8px; margin-top: 4px; display: inline-flex;"><i class="fa-solid fa-arrow-up-right-from-square"></i> Book ${hl.name}</a>
+      <a href="${hl.url}" target="_blank" class="action-btn blue" style="font-size: 11px; padding: 3px 8px; margin-right: 4px;"><i class="fa-solid fa-arrow-up-right-from-square"></i> Book ${hl.name}</a>
+      ${hl.gmaps ? `<a href="${hl.gmaps}" target="_blank" class="action-btn orange" style="font-size: 11px; padding: 3px 8px;"><i class="fa-solid fa-location-arrow"></i> Hotel GPS</a>` : ''}
     `).join(' ');
 
     // Tickets & Costs
@@ -231,21 +288,14 @@ function renderTourPackageView(payload) {
       </div>
     `).join('');
 
-    // Operator Comparisons
-    const opsHtml = (d.operatorComparisons || []).map(o => `
-      <div style="background: #fff7ed; border-left: 3px solid #ea580c; padding: 10px; border-radius: 6px; margin-top: 8px; font-size: 0.85rem;">
-        <strong><i class="fa-solid fa-code-compare"></i> ${o.activity} Operator Comparison:</strong><br/>
-        &bull; <strong>Option 1:</strong> ${o.op1}<br/>
-        &bull; <strong>Option 2:</strong> ${o.op2}<br/>
-        <span style="color: #16a34a; font-weight: 700;">★ Recommended: ${o.rec}</span>
-      </div>
-    `).join('');
-
-    // Aurora Spots
+    // Aurora Spots with GPS
     const auroraHtml = (d.auroraSpots || []).map(a => `
-      <div style="background: #0f172a; color: #f8fafc; padding: 10px 14px; border-radius: 8px; margin-top: 10px; font-size: 0.85rem;">
-        <span style="color: #38bdf8; font-weight: 700;"><i class="fa-solid fa-meteor"></i> Self-Drive Aurora Spot: ${a.name}</span><br/>
-        <span style="color: #cbd5e1;">${a.desc}</span>
+      <div style="background: #0f172a; color: #f8fafc; padding: 10px 14px; border-radius: 8px; margin-top: 10px; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <span style="color: #38bdf8; font-weight: 700;"><i class="fa-solid fa-meteor"></i> Self-Drive Aurora Spot: ${a.name}</span><br/>
+          <span style="color: #cbd5e1;">${a.desc}</span>
+        </div>
+        <a href="${a.gmaps}" target="_blank" class="action-btn orange" style="font-size: 11px; padding: 4px 8px; flex-shrink: 0;"><i class="fa-solid fa-location-arrow"></i> Aurora GPS</a>
       </div>
     `).join('');
 
@@ -261,6 +311,7 @@ function renderTourPackageView(payload) {
         <div class="day-meta">
           <span><i class="fa-solid fa-location-dot"></i> ${d.location}</span>
           <span><i class="fa-solid fa-car"></i> ${d.distance}</span>
+          <a href="${d.gmaps}" target="_blank" class="action-btn orange" style="font-size: 11px; padding: 3px 8px;"><i class="fa-solid fa-location-arrow"></i> Day GPS</a>
         </div>
       </div>
 
@@ -286,6 +337,8 @@ function renderTourPackageView(payload) {
         ${hourlyHtml}
       </div>
 
+      ${foodHtml}
+
       ${ticketsHtml ? `
         <div class="info-block" style="background: #f0fdf4;">
           <div class="info-block-title"><i class="fa-solid fa-ticket" style="color: #16a34a;"></i> Required Tickets & Booking Links:</div>
@@ -293,7 +346,6 @@ function renderTourPackageView(payload) {
         </div>
       ` : ''}
 
-      ${opsHtml}
       ${auroraHtml}
 
       <div class="tag-list" style="margin-top: 15px;">
@@ -315,9 +367,12 @@ function renderTourPackageView(payload) {
       
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-bottom: 20px;">
         ${eg.contacts.map(c => `
-          <div style="background: #fef2f2; padding: 12px; border-radius: 8px; border: 1px solid #fecaca;">
-            <div style="font-weight: 700; color: #991b1b; font-size: 14px;">${c.country}: ${c.number}</div>
-            <div style="font-size: 12px; color: #7f1d1d;">${c.desc}</div>
+          <div style="background: #fef2f2; padding: 12px; border-radius: 8px; border: 1px solid #fecaca; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <div style="font-weight: 700; color: #991b1b; font-size: 14px;">${c.country}: ${c.number}</div>
+              <div style="font-size: 12px; color: #7f1d1d;">${c.desc}</div>
+            </div>
+            ${c.gmaps ? `<a href="${c.gmaps}" target="_blank" class="action-btn orange" style="font-size: 10px; padding: 2px 6px;"><i class="fa-solid fa-location-arrow"></i> GPS</a>` : ''}
           </div>
         `).join('')}
       </div>
