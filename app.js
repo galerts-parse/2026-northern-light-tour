@@ -584,30 +584,18 @@ function renderTourPackageView(payload, activeRoute) {
       </div>
     `).join('');
 
-    // Food Guide (Good vs Cheap)
-    let foodHtml = '';
-    if (d.foodGuide) {
-      const fg = d.foodGuide;
-      foodHtml = `
-        <div class="info-block" style="background: #fff7ed; border: 1px solid #fed7aa;">
-          <div class="info-block-title" style="color: #c2410c;"><i class="fa-solid fa-utensils"></i> Recommended City Food Guide (Good vs Local Cheap Eats):</div>
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin-top: 6px;">
-            <div style="background: white; padding: 10px; border-radius: 6px; border: 1px solid #ffedd5;">
-              <span style="font-weight: 700; color: #ea580c; font-size: 12px;">★ Top Regional Dining:</span><br/>
-              <strong style="font-size: 13px; color: #1e293b;">${fg.good.name}</strong> (${fg.good.cost})<br/>
-              <span style="font-size: 11px; color: #64748b;">${fg.good.desc}</span><br/>
-              <a href="${fg.good.gmaps}" target="_blank" class="action-btn orange" style="font-size: 10px; padding: 2px 6px; margin-top: 4px; display: inline-flex;"><i class="fa-solid fa-location-arrow"></i> Google Maps GPS</a>
-            </div>
-            <div style="background: white; padding: 10px; border-radius: 6px; border: 1px solid #ffedd5;">
-              <span style="font-weight: 700; color: #16a34a; font-size: 12px;">★ Local Cheap Eats / Market:</span><br/>
-              <strong style="font-size: 13px; color: #1e293b;">${fg.cheap.name}</strong> (${fg.cheap.cost})<br/>
-              <span style="font-size: 11px; color: #64748b;">${fg.cheap.desc}</span><br/>
-              <a href="${fg.cheap.gmaps}" target="_blank" class="action-btn green" style="font-size: 10px; padding: 2px 6px; margin-top: 4px; display: inline-flex;"><i class="fa-solid fa-location-arrow"></i> Google Maps GPS</a>
-            </div>
-          </div>
+    // Food Guide Button Block (Deep Link to FOOD! Guide)
+    const foodHtml = `
+      <div class="info-block" style="background: #fff7ed; border: 1px solid #fed7aa; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; padding: 12px 16px;">
+        <div style="color: #c2410c; font-weight: 600; font-size: 0.9rem;">
+          <i class="fa-solid fa-utensils" style="margin-right: 6px;"></i> <strong>Day ${d.day} Dining Guide:</strong> Comfort Eats, Upscale & Fine Dining options available on the FOOD! page.
         </div>
-      `;
-    }
+        <a href="food.html#day-${d.day}" class="action-btn orange" style="font-size: 12px; padding: 6px 14px; text-decoration: none; font-weight: 700; flex-shrink: 0; box-shadow: 0 1px 3px rgba(234,88,12,0.2);">
+          <i class="fa-solid fa-utensils"></i> Open Day ${d.day} FOOD! Options &rarr;
+        </a>
+      </div>
+    `;
+
 
     // Hotel links & Maps
     const hotelLinksHtml = (d.hotelLinks || []).map(hl => `

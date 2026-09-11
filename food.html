@@ -7,6 +7,13 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
   <style>
+    body {
+      background: #f8fafc;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #1e293b;
+      margin: 0;
+      padding: 0;
+    }
     .food-header {
       background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
       color: white;
@@ -35,10 +42,25 @@
       background: #2563eb;
       color: white;
     }
+    .filter-container {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+    .filter-group-title {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #64748b;
+      margin-bottom: 8px;
+    }
     .filter-bar {
       display: flex;
       gap: 8px;
-      margin-bottom: 20px;
       flex-wrap: wrap;
     }
     .filter-btn {
@@ -67,86 +89,248 @@
       scroll-margin-top: 20px;
     }
     .food-day-title {
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       font-weight: 700;
       color: #1e293b;
       border-bottom: 2px solid #2563eb;
       padding-bottom: 8px;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
     }
     .restaurant-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 16px;
-    }
-    .restaurant-card {
-      border: 1px solid #cbd5e1;
-      border-radius: 10px;
-      padding: 16px;
-      background: #f8fafc;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      gap: 20px;
+    }
+    .restaurant-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 20px;
+      background: #ffffff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
       transition: transform 0.2s, box-shadow 0.2s;
     }
     .restaurant-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
     }
-    .restaurant-card.michelin {
-      border-left: 4px solid #d97706;
-      background: #fffdf5;
+    .restaurant-card.fine-dining {
+      border-left: 5px solid #d97706;
+      background: #fffdf7;
+    }
+    .restaurant-card.upscale {
+      border-left: 5px solid #2563eb;
+      background: #f8fafc;
     }
     .restaurant-card.comfort {
-      border-left: 4px solid #16a34a;
+      border-left: 5px solid #16a34a;
       background: #f0fdf4;
+    }
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .restaurant-name {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #0f172a;
     }
     .card-badge {
       font-size: 11px;
       font-weight: 700;
-      padding: 3px 8px;
+      padding: 4px 10px;
       border-radius: 12px;
       display: inline-block;
-      margin-bottom: 8px;
     }
-    .card-badge.michelin { background: #fef3c7; color: #b45309; border: 1px solid #fcd34d; }
+    .card-badge.fine-dining { background: #fef3c7; color: #b45309; border: 1px solid #fcd34d; }
+    .card-badge.upscale { background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
     .card-badge.comfort { background: #dcfce7; color: #15803d; border: 1px solid #86efac; }
-    .restaurant-name {
-      font-size: 1.1rem;
+
+    .hours-badge {
+      font-size: 12px;
+      background: #e2e8f0;
+      color: #334155;
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .dishes-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 12px;
+      margin: 15px 0;
+    }
+    .dish-card {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .dish-img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+    }
+    .dish-body {
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+    }
+    .dish-title {
       font-weight: 700;
+      font-size: 0.95rem;
       color: #0f172a;
       margin-bottom: 4px;
     }
-    .restaurant-dishes {
-      font-size: 0.85rem;
-      color: #334155;
+    .dish-desc {
+      font-size: 0.82rem;
+      color: #64748b;
       margin-bottom: 10px;
+      line-height: 1.35;
     }
-    .price-tag {
-      font-size: 0.9rem;
+    .dish-price {
+      font-size: 0.88rem;
       font-weight: 700;
       color: #2563eb;
-      margin-bottom: 10px;
+      background: #eff6ff;
+      padding: 3px 8px;
+      border-radius: 4px;
+      display: inline-block;
+      align-self: flex-start;
     }
+
     .review-box {
       background: white;
       border: 1px dashed #cbd5e1;
-      padding: 10px;
-      border-radius: 6px;
-      font-size: 0.82rem;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 0.88rem;
       color: #475569;
-      margin-bottom: 12px;
-      font-style: italic;
+      margin-bottom: 15px;
+      line-height: 1.45;
     }
     .rating-stars {
       color: #eab308;
       font-weight: 700;
       font-style: normal;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
       display: block;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .action-btn {
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .action-btn.orange { background: #ea580c; color: white; }
+    .action-btn.orange:hover { background: #c2410c; }
+    .action-btn.blue { background: #2563eb; color: white; }
+    .action-btn.blue:hover { background: #1d4ed8; }
+
+    /* Passcode Overlay Styling */
+    #auth-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(8px);
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #auth-modal {
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+    }
+    #auth-modal .lock-icon {
+      font-size: 40px;
+      color: #2563eb;
+      margin-bottom: 15px;
+    }
+    .pin-field-container {
+      position: relative;
+      margin: 20px 0;
+    }
+    #pin-hidden-input {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      opacity: 0;
+      cursor: pointer;
+      z-index: 10;
+    }
+    .pin-display-boxes {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+    }
+    .pin-digit-box {
+      width: 45px;
+      height: 55px;
+      border: 2px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 24px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #1e293b;
+      transition: all 0.2s;
+    }
+    .pin-digit-box.active {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+    }
+    .pin-digit-box.filled {
+      border-color: #2563eb;
+      background: #f0f6ff;
+    }
+    #auth-submit-btn {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 16px;
+      width: 100%;
+      cursor: pointer;
+    }
+    #auth-error-msg {
+      color: #dc2626;
+      margin-top: 12px;
+      font-size: 14px;
+      display: none;
     }
   </style>
 </head>
@@ -189,7 +373,7 @@
     <div class="food-header">
       <h1 style="margin: 0; font-size: 1.8rem;"><i class="fa-solid fa-utensils" style="color: #f59e0b;"></i> FOOD! Daily Dining & Gastronomy Guide</h1>
       <p style="margin: 6px 0 0 0; color: #94a3b8; font-size: 0.95rem;">
-        Complete Michelin Fine Dining & Hearty Local Comfort Options per City & Day (No "eating air" – maximum satisfaction & verified SGD pricing).
+        Complete Michelin Fine Dining, Upscale Bistros & Hearty Local Comfort Food (Sorted by Day, City, and Bucket).
       </p>
       <div class="food-nav-bar">
         <a href="tour_package.html" class="food-nav-link"><i class="fa-solid fa-list-check"></i> Tour Package</a>
@@ -198,25 +382,1279 @@
       </div>
     </div>
 
-    <!-- City Filter Tabs -->
-    <div class="filter-bar">
-      <button class="filter-btn active" onclick="filterCity('all')">All Cities (22 Days)</button>
-      <button class="filter-btn" onclick="filterCity('helsinki')">🇫🇮 Helsinki</button>
-      <button class="filter-btn" onclick="filterCity('tallinn')">🇪🇪 Tallinn</button>
-      <button class="filter-btn" onclick="filterCity('stockholm')">🇸🇪 Stockholm</button>
-      <button class="filter-btn" onclick="filterCity('copenhagen')">🇩🇰 Copenhagen</button>
-      <button class="filter-btn" onclick="filterCity('lapland')">❄️ Lapland & Fells</button>
+    <!-- Filter Controls -->
+    <div class="filter-container">
+      <div style="margin-bottom: 12px;">
+        <div class="filter-group-title"><i class="fa-solid fa-city"></i> Filter by City & Region:</div>
+        <div class="filter-bar" id="city-filter-bar">
+          <button class="filter-btn active" onclick="setCityFilter('all', this)">All Cities (22 Days)</button>
+          <button class="filter-btn" onclick="setCityFilter('helsinki', this)">🇫🇮 Helsinki</button>
+          <button class="filter-btn" onclick="setCityFilter('tallinn', this)">🇪🇪 Tallinn</button>
+          <button class="filter-btn" onclick="setCityFilter('stockholm', this)">🇸🇪 Stockholm</button>
+          <button class="filter-btn" onclick="setCityFilter('copenhagen', this)">🇩🇰 Copenhagen</button>
+          <button class="filter-btn" onclick="setCityFilter('lapland', this)">❄️ Lapland & Fells</button>
+        </div>
+      </div>
+      <div>
+        <div class="filter-group-title"><i class="fa-solid fa-layer-group"></i> Filter by Dining Category:</div>
+        <div class="filter-bar" id="category-filter-bar">
+          <button class="filter-btn active" onclick="setCategoryFilter('all', this)">All Dining Buckets</button>
+          <button class="filter-btn" onclick="setCategoryFilter('comfort', this)">🍲 Comfort Food</button>
+          <button class="filter-btn" onclick="setCategoryFilter('upscale', this)">✨ Upscale Dining</button>
+          <button class="filter-btn" onclick="setCategoryFilter('fine-dining', this)">⭐️ Fine Dining</button>
+        </div>
+      </div>
     </div>
 
-    <!-- Container populated dynamically or statically -->
+    <!-- Food Content Container -->
     <div id="food-content-container"></div>
 
   </div>
 
   <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
-  <script src="data.js?v=20260912_v8"></script>
   <script>
+    const foodMaster = {
+  "1": {
+    "city": "lapland",
+    "date": "Dec 12 (Sat)",
+    "location": "Rovaniemi, Finland",
+    "items": [
+      {
+        "name": "Restaurant Nili",
+        "category": "upscale",
+        "badge": "\u2728 Lapland Wild Game Bistro",
+        "website": "https://www.nili.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Restaurant+Nili+Rovaniemi",
+        "hours": "Sat: 12:00 \u2013 23:00 (Open Dec 12)",
+        "rating": "\u2b50 4.6 / 5 (1,200+ reviews)",
+        "review": "\"Sensational Lapland wild game feast! The saut\u00e9ed reindeer and bear stew were rich, savory, and deeply satisfying on a freezing Arctic evening. The warm rustic wooden cabin atmosphere makes it unforgettable.\"",
+        "dishes": [
+          {
+            "name": "Traditional Saut\u00e9ed Reindeer",
+            "desc": "Pan-saut\u00e9ed tender reindeer with mashed potatoes, lingonberries & pickled cucumbers",
+            "price": "\u20ac36 EUR (~S$53 SGD)",
+            "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Arctic Char & Bear Stew",
+            "desc": "Pan-seared Arctic char fillet alongside slow-braised Lapland bear stew in juniper sauce",
+            "price": "\u20ac48 EUR (~S$71 SGD)",
+            "image": "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Wild Cloudberry Cr\u00e8me Br\u00fbl\u00e9e",
+            "desc": "Creamy Finnish vanilla pudding topped with wild golden Lapland cloudberries",
+            "price": "\u20ac14 EUR (~S$21 SGD)",
+            "image": "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=400&q=80"
+          }
+        ]
+      },
+      {
+        "name": "Ravintola Roka Street Bistro",
+        "category": "comfort",
+        "badge": "\ud83c\udf72 Famous Salmon Soup & Burgers",
+        "website": "https://ravintolaroka.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Ravintola+Roka+Street+Bistro+Rovaniemi",
+        "hours": "Sat: 11:30 \u2013 22:00 (Open Dec 12)",
+        "rating": "\u2b50 4.7 / 5 (950+ reviews)",
+        "review": "\"Incredible salmon soup and reindeer burger. Cozy neighborhood street bistro vibe with huge flavors and excellent value!\"",
+        "dishes": [
+          {
+            "name": "Creamy Finnish Salmon Soup (Lohikeitto)",
+            "desc": "Rich dill cream broth packed with fresh Arctic salmon chunks and new potatoes",
+            "price": "\u20ac16 EUR (~S$24 SGD)",
+            "image": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Roka Reindeer Burger",
+            "desc": "Artisanal brioche bun, braised reindeer patty, smoked cheese & lingonberry mayo",
+            "price": "\u20ac19 EUR (~S$28 SGD)",
+            "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Crispy Arctic Vendace",
+            "desc": "Rye-crusted fried local small whitefish served with garlic dip & lemon",
+            "price": "\u20ac15 EUR (~S$22 SGD)",
+            "image": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=400&q=80"
+          }
+        ]
+      },
+      {
+        "name": "Arctic TreeHouse Restaurant",
+        "category": "fine-dining",
+        "badge": "\u2b50\ufe0f Modern Arctic Fine Dining",
+        "website": "https://arctictreehousehotel.com/dining",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Arctic+TreeHouse+Restaurant+Rovaniemi",
+        "hours": "Sat: 17:00 \u2013 22:30 (Open Dec 12)",
+        "rating": "\u2b50 4.7 / 5 (480+ reviews)",
+        "review": "\"Panoramas of snow-draped pine forest with exquisite modern Nordic gastronomy. Extremely filling multi-course wild game tasting menu.\"",
+        "dishes": [
+          {
+            "name": "Willow Grouse & Pine Needles",
+            "desc": "Roasted Arctic grouse breast served with charred pine syrup & potato fondant",
+            "price": "\u20ac45 EUR (~S$66 SGD)",
+            "image": "https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "King Crab & Smoked Butter",
+            "desc": "Norwegian king crab leg poached in cultured smoked butter & fermented turnip",
+            "price": "\u20ac52 EUR (~S$76 SGD)",
+            "image": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Spruce Tip Ice Cream",
+            "desc": "Fresh pine needle ice cream with caramelized white chocolate & birch juice",
+            "price": "\u20ac16 EUR (~S$24 SGD)",
+            "image": "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=400&q=80"
+          }
+        ]
+      }
+    ]
+  },
+  "2": {
+    "city": "lapland",
+    "date": "Dec 13 (Sun)",
+    "location": "Boden / Storklinten, Sweden",
+    "items": [
+      {
+        "name": "Bodensia Restaurant",
+        "category": "upscale",
+        "badge": "\u2728 Nordic Steakhouse & Grill",
+        "website": "https://bodensia.se",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Bodensia+Boden",
+        "hours": "Sun: 12:00 \u2013 21:00 (Open Dec 13)",
+        "rating": "\u2b50 4.5 / 5 (310+ reviews)",
+        "review": "\"Hearty Swedish steaks and local fish right in central Boden. Generous portions, rich bearnaise, and cozy fireside atmosphere.\"",
+        "dishes": [
+          {
+            "name": "Swedish Black Angus Ribeye",
+            "desc": "300g Swedish beef steak with truffle butter, roasted root vegetables & red wine reduction",
+            "price": "340 SEK (~S$44 SGD)",
+            "image": "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Pan-Seared Arctic Salmon",
+            "desc": "Local Atlantic salmon with dill cream sauce, chive potatoes & cucumber salad",
+            "price": "280 SEK (~S$36 SGD)",
+            "image": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Swedish Apple Crumble",
+            "desc": "Warm cinnamon baked apples with vanilla bean anglaise",
+            "price": "95 SEK (~S$12 SGD)",
+            "image": "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=400&q=80"
+          }
+        ]
+      },
+      {
+        "name": "Storklinten Ski Resort Bistro",
+        "category": "comfort",
+        "badge": "\ud83c\udf72 Fireside Slope Comfort Food",
+        "website": "https://storklinten.se",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Storklinten+Boden",
+        "hours": "Sun: 10:00 \u2013 17:00 (Open Dec 13)",
+        "rating": "\u2b50 4.4 / 5 (180+ reviews)",
+        "review": "\"Perfect mid-mountain lunch stop! Warm Timber lodge with crackling fire, massive Swedish meatballs, and rich goulash soup.\"",
+        "dishes": [
+          {
+            "name": "Classic Swedish Meatballs",
+            "desc": "Hand-rolled beef meatballs, potato puree, cream gravy & lingonberries",
+            "price": "165 SEK (~S$21 SGD)",
+            "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Hearty Moose Goulash",
+            "desc": "Slow-simmered moose stew with paprika, root vegetables & dark sourdough bread",
+            "price": "175 SEK (~S$23 SGD)",
+            "image": "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Hot Chocolate & Cinnamon Bun",
+            "desc": "Swedish fika hot chocolate topped with whipped cream & warm kanelbulle",
+            "price": "75 SEK (~S$10 SGD)",
+            "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=400&q=80"
+          }
+        ]
+      }
+    ]
+  },
+  "3": {
+    "city": "lapland",
+    "date": "Dec 14 (Mon)",
+    "location": "Harads / Storklinten, Sweden",
+    "items": [
+      {
+        "name": "Empes Gatuk\u00f6k Boden",
+        "category": "comfort",
+        "badge": "\ud83c\udf54 Swedish Fast Food Grill Icon",
+        "website": "https://empes.se",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Empes+Gatukok+Boden",
+        "hours": "Mon: 10:30 \u2013 21:00 (Open Dec 14)",
+        "rating": "\u2b50 4.5 / 5 (620+ reviews)",
+        "review": "\"Legendary northern Swedish grill shack operating since 1960. Incredible burger quality, crispy fries, and iconic Swedish sausage platters!\"",
+        "dishes": [
+          {
+            "name": "Empes Special Double Cheese Burger",
+            "desc": "100% Swedish beef double patty, melted cheddar, special street sauce & crispy onions",
+            "price": "95 SEK (~S$12 SGD)",
+            "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Tunnbr\u00f6dsrulle (Flatbread Roll)",
+            "desc": "Traditional Swedish flatbread loaded with grilled sausages, mashed potatoes & shrimp salad",
+            "price": "110 SEK (~S$14 SGD)",
+            "image": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Crispy Loaded Potato Fries",
+            "desc": "Golden crinkle cut fries with melted cheese sauce & jalape\u00f1o bites",
+            "price": "45 SEK (~S$6 SGD)",
+            "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=400&q=80"
+          }
+        ]
+      },
+      {
+        "name": "Treehotel Restaurant Harads",
+        "category": "upscale",
+        "badge": "\u2728 Forest Luxury Dining",
+        "website": "https://treehotel.se/dining",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Treehotel+Harads",
+        "hours": "Mon: 18:00 \u2013 21:30 (Open Dec 14)",
+        "rating": "\u2b50 4.8 / 5 (340+ reviews)",
+        "review": "\"World-class sustainable dining amidst the pine trees. Local Swedish Lapland ingredients served with elegance and warmth.\"",
+        "dishes": [
+          {
+            "name": "Charcoal Smoked Venison",
+            "desc": "Local wild venison with smoked bone marrow sauce, chanterelles & parsnip puree",
+            "price": "395 SEK (~S$51 SGD)",
+            "image": "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Torne River Arctic Char",
+            "desc": "Poached char fillet with lemon verbena butter & trout roe",
+            "price": "345 SEK (~S$45 SGD)",
+            "image": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Warm Cloudberry Tart",
+            "desc": "Artisanal butter pastry filled with wild cloudberry curd & vanilla cream",
+            "price": "135 SEK (~S$17 SGD)",
+            "image": "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=400&q=80"
+          }
+        ]
+      }
+    ]
+  },
+  "4": {
+    "city": "lapland",
+    "date": "Dec 15 (Tue)",
+    "location": "Kiruna, Sweden",
+    "items": [
+      {
+        "name": "Spis Mat & Dryck",
+        "category": "upscale",
+        "badge": "\u2728 Boutique Kiruna Bistro",
+        "website": "https://spiskiruna.se",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Spis+Kiruna",
+        "hours": "Tue: 11:30 \u2013 22:00 (Open Dec 15)",
+        "rating": "\u2b50 4.6 / 5 (780+ reviews)",
+        "review": "\"Cozy Kiruna town center bistro featuring rich Lapland wild game, craft beers, and warm artisanal rye bread. Outstanding flavor!\"",
+        "dishes": [
+          {
+            "name": "Kiruna Reindeer Sirloin",
+            "desc": "Pan-roasted reindeer sirloin with blackberry sauce, potato gratin & chanterelles",
+            "price": "375 SEK (~S$49 SGD)",
+            "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Smoked Arctic Whitefish",
+            "desc": "Cold-smoked whitefish from Tornetr\u00e4sk with horseradish cream & crispy bread",
+            "price": "290 SEK (~S$38 SGD)",
+            "image": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "V\u00e4sterbottensost Cheese Tart",
+            "desc": "Aged Swedish cheese tart served with lingonberry chutney",
+            "price": "140 SEK (~S$18 SGD)",
+            "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=400&q=80"
+          }
+        ]
+      },
+      {
+        "name": "Empes Gatuk\u00f6k Kiruna",
+        "category": "comfort",
+        "badge": "\ud83c\udf54 Fast Casual Burger Grill",
+        "website": "https://empes.se",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Empes+Kiruna",
+        "hours": "Tue: 10:00 \u2013 20:00 (Open Dec 15)",
+        "rating": "\u2b50 4.4 / 5 (410+ reviews)",
+        "review": "\"Great fast comfort meal right in central Kiruna! Hot burgers, crispy fries, and fast service on cold snowy days.\"",
+        "dishes": [
+          {
+            "name": "Kiruna Bacon Cheese Burger",
+            "desc": "Grilled beef patty, crispy bacon, cheddar, iceberg lettuce & garlic dip",
+            "price": "90 SEK (~S$12 SGD)",
+            "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Grilled Swedish Bratwurst Platter",
+            "desc": "Thick Swedish sausages served with creamy potato salad & mustard",
+            "price": "85 SEK (~S$11 SGD)",
+            "image": "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "French Fries with Bearnaise Dip",
+            "desc": "Golden thick cut fries served with warm bear naise sauce",
+            "price": "40 SEK (~S$5 SGD)",
+            "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=400&q=80"
+          }
+        ]
+      }
+    ]
+  },
+  "5": {
+    "city": "lapland",
+    "date": "Dec 16 (Wed)",
+    "location": "Kiruna V / Bj\u00f6rkliden",
+    "items": [
+      {
+        "name": "Abisko Mountain Lodge Restaurant",
+        "category": "upscale",
+        "badge": "\u2728 Panoramic Arctic Game Dining",
+        "website": "https://abiskomountainlodge.se",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Abisko+Mountain+Lodge",
+        "hours": "Wed: 18:00 \u2013 21:30 (Open Dec 16)",
+        "rating": "\u2b50 4.7 / 5 (520+ reviews)",
+        "review": "\"Incredible mountain lodge dining overlooking the snow-covered valley. Sumptuous venison steaks and wildberry desserts.\"",
+        "dishes": [
+          {
+            "name": "Abisko Venison Steak",
+            "desc": "Charcoal-grilled venison steak with thyme jus, roasted root puree & lingonberries",
+            "price": "395 SEK (~S$51 SGD)",
+            "image": "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Smoked Tornetr\u00e4sk Trout Fillet",
+            "desc": "Pan-seared lake trout with lemon butter sauce & dill boiled potatoes",
+            "price": "315 SEK (~S$41 SGD)",
+            "image": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Swedish Cloudberry Sorbet",
+            "desc": "Fresh wild cloudberry sorbet served with almond brittle",
+            "price": "115 SEK (~S$15 SGD)",
+            "image": "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=400&q=80"
+          }
+        ]
+      }
+    ]
+  },
+  "6": {
+    "city": "lapland",
+    "date": "Dec 17 (Thu)",
+    "location": "Abisko / Bj\u00f6rkliden",
+    "items": [
+      {
+        "name": "STF Abisko Restaurant Krogen",
+        "category": "comfort",
+        "badge": "\ud83c\udf72 Buffet & Alpine Fika",
+        "website": "https://www.swedishtouristassociation.com/abisko",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=STF+Abisko+Restaurant",
+        "hours": "Thu: 11:30 \u2013 21:00 (Open Dec 17)",
+        "rating": "\u2b50 4.6 / 5 (690+ reviews)",
+        "review": "\"Great lunch buffet after snowshoeing in Abisko National Park. Unlimited soup, organic sourdough, salmon pie, and hot coffee!\"",
+        "dishes": [
+          {
+            "name": "Arctic Lunch & Soup Buffet",
+            "desc": "Daily rotating hot Swedish stew, fresh fish pie, salad bar & unlimited coffee/tea",
+            "price": "165 SEK (~S$21 SGD)",
+            "image": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "STF Reindeer Stew Platter",
+            "desc": "Slow-cooked reindeer stew with lingonberries and mashed butter potatoes",
+            "price": "240 SEK (~S$31 SGD)",
+            "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Warm Kanelbulle & Coffee",
+            "desc": "Classic oversized Swedish cinnamon bun baked fresh daily",
+            "price": "60 SEK (~S$8 SGD)",
+            "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=400&q=80"
+          }
+        ]
+      }
+    ]
+  },
+  "7": {
+    "city": "lapland",
+    "date": "Dec 18 (Fri)",
+    "location": "Kiruna / Bj\u00f6rkliden",
+    "items": [
+      {
+        "name": "Camp Ripan Restaurant",
+        "category": "upscale",
+        "badge": "\u2728 Kiruna Gourmet Local Pantry",
+        "website": "https://ripan.se/en/restaurant",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Camp+Ripan+Kiruna",
+        "hours": "Fri: 17:30 \u2013 22:00 (Open Dec 18)",
+        "rating": "\u2b50 4.6 / 5 (580+ reviews)",
+        "review": "\"Celebrates the culinary heritage of Kiruna with ingredients sourced directly from Torne Valley farmers and Arctic fishermen.\"",
+        "dishes": [
+          {
+            "name": "Torne Valley Braised Moose",
+            "desc": "Slow-roasted moose shank in red wine sauce with root vegetable gratin",
+            "price": "360 SEK (~S$47 SGD)",
+            "image": "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Pan-Fried Arctic Char",
+            "desc": "Seared Arctic char fillet with chive oil, butter-braised leeks & potatoes",
+            "price": "310 SEK (~S$40 SGD)",
+            "image": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Northern Light Parfait",
+            "desc": "Cloudberry and dark chocolate layered frozen parfait",
+            "price": "120 SEK (~S$16 SGD)",
+            "image": "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=400&q=80"
+          }
+        ]
+      }
+    ]
+  },
+  "8": {
+    "city": "lapland",
+    "date": "Dec 19 (Sat)",
+    "location": "Kemi, Finland",
+    "items": [
+      {
+        "name": "Restaurant Lumihiutale",
+        "category": "upscale",
+        "badge": "\u2728 Bothnian Bay Sea-View Dining",
+        "website": "https://experience365.fi/lumihiutale",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Restaurant+Lumihiutale+Kemi",
+        "hours": "Sat: 12:00 \u2013 22:00 (Open Dec 19)",
+        "rating": "\u2b50 4.5 / 5 (380+ reviews)",
+        "review": "\"Panoramic floor-to-ceiling glass sea views over Gulf of Bothnia frozen ice fields. Excellent Finnish salmon and roast tenderloin!\"",
+        "dishes": [
+          {
+            "name": "Bothnian Smoked Salmon Fillet",
+            "desc": "Smoked Atlantic salmon with dill potatoes, sour cream & pickled sea buckthorn",
+            "price": "\u20ac32 EUR (~S$47 SGD)",
+            "image": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Grilled Finnish Beef Tenderloin",
+            "desc": "Tenderloin steak with wild chanterelle mushroom cream & garlic roasted potatoes",
+            "price": "\u20ac38 EUR (~S$56 SGD)",
+            "image": "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Lapland Blueberry Tart",
+            "desc": "Warm blueberry pastry with cardamom custard cream",
+            "price": "\u20ac11 EUR (~S$16 SGD)",
+            "image": "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=400&q=80"
+          }
+        ]
+      }
+    ]
+  },
+  "9": {
+    "city": "lapland",
+    "date": "Dec 20 (Sun)",
+    "location": "Kemi, Finland",
+    "items": [
+      {
+        "name": "Sataman Krouvi",
+        "category": "comfort",
+        "badge": "\ud83c\udf72 Creamy Baltic Salmon Soup",
+        "website": "https://satamankrouvi.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Sataman+Krouvi+Kemi",
+        "hours": "Sun: 11:00 \u2013 20:00 (Open Dec 20)",
+        "rating": "\u2b50 4.5 / 5 (490+ reviews)",
+        "review": "\"Hearty Baltic salmon soup served right by Kemi inner harbor. Piping hot soup with warm dark rye bread and butter on a snowy afternoon.\"",
+        "dishes": [
+          {
+            "name": "Traditional Finnish Lohikeitto",
+            "desc": "Creamy salmon soup packed with Atlantic salmon chunks, dill, potatoes & leeks",
+            "price": "\u20ac14 EUR (~S$21 SGD)",
+            "image": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Kemi Harbor Fish & Chips",
+            "desc": "Beer-battered fresh whitefish fillets with homemade tartar sauce & fries",
+            "price": "\u20ac17 EUR (~S$25 SGD)",
+            "image": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Warm Finnish Cinnamon Roll",
+            "desc": "Fresh Korvapuusti cardamom roll served with hot black coffee",
+            "price": "\u20ac6 EUR (~S$9 SGD)",
+            "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=400&q=80"
+          }
+        ]
+      }
+    ]
+  },
+  "10": {
+    "city": "lapland",
+    "date": "Dec 21 (Mon)",
+    "location": "Posio, Finland",
+    "items": [
+      {
+        "name": "Naali Lodge Wilderness Dining",
+        "category": "upscale",
+        "badge": "\u2728 Wild Game & Forest Gastronomy",
+        "website": "https://naalilodge.com",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Naali+Lodge+Posio",
+        "hours": "Mon: 18:00 \u2013 21:00 (Open Dec 21)",
+        "rating": "\u2b50 4.8 / 5 (160+ reviews)",
+        "review": "\"Atmospheric lakeside wilderness lodge in Posio. Authentic local Finnish wild game, forest mushrooms, and berry pairings prepared with passion.\"",
+        "dishes": [
+          {
+            "name": "Posio Wild Venison Tenderloin",
+            "desc": "Venison fillet with juniper berry sauce, parsnip puree & braised cabbage",
+            "price": "\u20ac38 EUR (~S$56 SGD)",
+            "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Lakeside Trout Tartare",
+            "desc": "Fresh caught trout tartare with dill oil, sour cream & rye crisps",
+            "price": "\u20ac18 EUR (~S$26 SGD)",
+            "image": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Lingonberry Mousse & Meringue",
+            "desc": "Tart wild lingonberry mousse topped with crispy meringue & berry coulis",
+            "price": "\u20ac12 EUR (~S$18 SGD)",
+            "image": "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=400&q=80"
+          }
+        ]
+      }
+    ]
+  },
+  "11": {
+    "city": "lapland",
+    "date": "Dec 22 (Tue)",
+    "location": "Posio, Finland",
+    "items": [
+      {
+        "name": "Ansa Makasiini Bistro",
+        "category": "comfort",
+        "badge": "\ud83c\udf72 Local Pastry & Warm Bistro",
+        "website": "https://posio.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Ansa+Makasiini+Posio",
+        "hours": "Tue: 10:00 \u2013 17:00 (Open Dec 22)",
+        "rating": "\u2b50 4.5 / 5 (210+ reviews)",
+        "review": "\"Warm local pastry and bistro stop after snowshoeing in Riisitunturi National Park. Delicious Karelian pies and smoked salmon sandwiches!\"",
+        "dishes": [
+          {
+            "name": "Karelian Pastry Platter (Karjalanpiirakka)",
+            "desc": "Rye dough crust filled with rice porridge, served with egg butter & smoked salmon",
+            "price": "\u20ac8 EUR (~S$12 SGD)",
+            "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Creamy Vegetable & Reindeer Soup",
+            "desc": "Warm potato & smoked reindeer soup served with freshly baked sourdough",
+            "price": "\u20ac12 EUR (~S$18 SGD)",
+            "image": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Posio Berry Danish",
+            "desc": "Flaky butter puff pastry baked with local Lapland berries",
+            "price": "\u20ac5 EUR (~S$7 SGD)",
+            "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=400&q=80"
+          }
+        ]
+      }
+    ]
+  },
+  "12": {
+    "city": "lapland",
+    "date": "Dec 23 (Wed)",
+    "location": "Iso-Sy\u00f6te, Finland",
+    "items": [
+      {
+        "name": "Restaurant Hilltop Iso-Sy\u00f6te",
+        "category": "upscale",
+        "badge": "\u2728 Fell Summit Panoramic Dining",
+        "website": "https://hotelli-isosyote.fi/en/restaurant-hilltop",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Restaurant+Hilltop+Iso-Syote",
+        "hours": "Wed: 17:00 \u2013 22:00 (Open Dec 23)",
+        "rating": "\u2b50 4.6 / 5 (430+ reviews)",
+        "review": "\"Stunning 360-degree panoramic fell-top views paired with hearty Lapland wild game and grilled Arctic char fillet!\"",
+        "dishes": [
+          {
+            "name": "Pan-Seared Arctic Char Fillet",
+            "desc": "Arctic char served over creamy chanterelle risotto with charred lemon",
+            "price": "\u20ac36 EUR (~S$53 SGD)",
+            "image": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Slow-Roasted Reindeer Shank",
+            "desc": "Tender reindeer shank braised in dark spruce beer with potato gratin",
+            "price": "\u20ac39 EUR (~S$57 SGD)",
+            "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Warm Cloudberry Fondant",
+            "desc": "White chocolate lava cake with warm Lapland cloudberry center",
+            "price": "\u20ac14 EUR (~S$21 SGD)",
+            "image": "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=400&q=80"
+          }
+        ]
+      }
+    ]
+  },
+  "13": {
+    "city": "lapland",
+    "date": "Dec 24 (Thu)",
+    "location": "Iso-Sy\u00f6te (Christmas Eve)",
+    "items": [
+      {
+        "name": "Hotel Iso-Sy\u00f6te Hilltop Grand Christmas Gala",
+        "category": "upscale",
+        "badge": "\ud83c\udf84 Festive Christmas Eve Gala Feast",
+        "website": "https://hotelli-isosyote.fi/en",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Hotel+Iso-Syote+Restaurant",
+        "hours": "Thu: 17:00 \u2013 22:00 (Open Dec 24 Special Gala)",
+        "rating": "\u2b50 4.7 / 5 (510+ reviews)",
+        "review": "\"Magical Christmas Eve buffet feast on the snow-covered fell summit! Traditional Finnish roasted ham, gravlax salmon, swede casseroles & gingerbread desserts.\"",
+        "dishes": [
+          {
+            "name": "Traditional Finnish Christmas Ham & Gravlax",
+            "desc": "Mustard-crusted Christmas ham, house-cured gravlax, herring trio & roe dip",
+            "price": "Included in Gala (\u20ac75 / ~S$110 SGD)",
+            "image": "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Finnish Root Vegetable Casseroles",
+            "desc": "Traditional rutabaga (Lanttulaatikko), carrot & potato butter casseroles",
+            "price": "Included in Gala (\u20ac75 / ~S$110 SGD)",
+            "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Gingerbread & Plum Star Pastries",
+            "desc": "Joulutorttu plum jam pastries with warm spiced Finnish Gl\u00f6gi mulled wine",
+            "price": "Included in Gala (\u20ac75 / ~S$110 SGD)",
+            "image": "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=400&q=80"
+          }
+        ]
+      }
+    ]
+  },
+  "14": {
+    "city": "lapland",
+    "date": "Dec 25 (Fri)",
+    "location": "Rovaniemi (VR Sleeper Train)",
+    "items": [
+      {
+        "name": "VR Sleeper Train Restaurant Car",
+        "category": "comfort",
+        "badge": "\ud83d\ude86 Classic Finnish Train Dining Car",
+        "website": "https://www.vr.fi/en/onboard/restaurant-car",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Rovaniemi+Railway+Station",
+        "hours": "Fri: 20:00 \u2013 23:30 (Open Dec 25 Onboard)",
+        "rating": "\u2b50 4.4 / 5 (350+ reviews)",
+        "review": "\"Classic VR sleeper train restaurant car meal while heading south to Helsinki! Piping hot salmon soup, iconic Finnish meatballs, and cold Lapland beer.\"",
+        "dishes": [
+          {
+            "name": "VR Traditional Finnish Meatballs",
+            "desc": "Beef & pork meatballs served with creamy brown gravy, mashed potatoes & lingonberries",
+            "price": "\u20ac14 EUR (~S$21 SGD)",
+            "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Onboard Hot Salmon Soup",
+            "desc": "Steaming hot creamy salmon soup served with dark rye bread butter snack",
+            "price": "\u20ac12 EUR (~S$18 SGD)",
+            "image": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Finnish Blueberry Muffin & Coffee",
+            "desc": "Moist wild blueberry muffin served with dark roast Paulig coffee",
+            "price": "\u20ac6 EUR (~S$9 SGD)",
+            "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=400&q=80"
+          }
+        ]
+      }
+    ]
+  },
+  "15": {
+    "city": "helsinki",
+    "date": "Dec 26 (Sat)",
+    "location": "Helsinki, Finland",
+    "items": [
+      {
+        "name": "Finnj\u00e4vel Salonki",
+        "category": "fine-dining",
+        "badge": "\u2b50\ufe0f 1 Michelin Star (Finnish Comfort Champion)",
+        "website": "https://finnjavel.fi/en",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Finnjavel+Salonki+Helsinki",
+        "hours": "Sat: 17:00 \u2013 23:00 (Open Dec 26)",
+        "rating": "\u2b50 4.6 / 5 (250+ reviews)",
+        "review": "\"Finnish comfort food elevated to Michelin perfection! Heavy on slow-roasted meats, potato pastries, and traditional gravy. You will not leave hungry!\"",
+        "dishes": [
+          {
+            "name": "Saut\u00e9ed Pork & Reindeer S\u00e4r\u00e4",
+            "desc": "Slow-braised wood-oven pork & reindeer shoulder served with buttery potato casserole",
+            "price": "\u20ac190 EUR (~S$279 SGD Tasting Menu)",
+            "image": "https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Perunarieska Potato Flatbread & Bone Marrow",
+            "desc": "House-baked potato flatbread served with whipped smoked butter & warm bone marrow dip",
+            "price": "Course in Tasting Menu (~S$279 SGD)",
+            "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Finnish Rye & Milk Tart",
+            "desc": "Crispy caramelized rye crust filled with condensed milk sorbet & sea buckthorn",
+            "price": "Course in Tasting Menu (~S$279 SGD)",
+            "image": "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=400&q=80"
+          }
+        ]
+      },
+      {
+        "name": "SOUP+MORE (Old Market Hall)",
+        "category": "comfort",
+        "badge": "\ud83c\udf72 Helsinki Salmon Soup Icon",
+        "website": "https://vanhakauppahalli.fi/en/tenants/soup-more",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=SOUP+MORE+Vanha+Kauppahalli+Helsinki",
+        "hours": "Sat: 10:00 \u2013 17:00 (Open Dec 26)",
+        "rating": "\u2b50 4.7 / 5 (1,800+ reviews)",
+        "review": "\"The ultimate soul food! Rich, creamy salmon soup packed with generous chunks of fish. Unlimited warm rye bread makes it pure perfection.\"",
+        "dishes": [
+          {
+            "name": "Famous Salmon Soup (Lohikeitto)",
+            "desc": "Creamy dill broth packed with fresh salmon, potatoes, leeks & unlimited sourdough bread",
+            "price": "\u20ac14 EUR (~S$21 SGD)",
+            "image": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Bouillabaisse Seafood Soup",
+            "desc": "Mediterranean-Finnish hybrid tomato seafood soup with mussels & whitefish",
+            "price": "\u20ac15 EUR (~S$22 SGD)",
+            "image": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Unlimited Rye Bread & Garlic Butter",
+            "desc": "Fresh dark Finnish rye bread slices with garlic parsley whipped butter",
+            "price": "Included Free with Soup",
+            "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=400&q=80"
+          }
+        ]
+      },
+      {
+        "name": "Ravintola Savotta",
+        "category": "upscale",
+        "badge": "\u2728 Senate Square Traditional Finnish",
+        "website": "https://ravintolasavotta.fi/en",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Ravintola+Savotta+Helsinki",
+        "hours": "Sat: 12:00 \u2013 23:00 (Open Dec 26)",
+        "rating": "\u2b50 4.5 / 5 (1,400+ reviews)",
+        "review": "\"Authentic rustic Finnish dining right opposite Helsinki Cathedral. Generous portions of bear, elk, reindeer, and Baltic herring.\"",
+        "dishes": [
+          {
+            "name": "Savotta Bear & Reindeer Stew",
+            "desc": "Slow-braised bear & reindeer stew served in a cast iron pot with lingonberries",
+            "price": "\u20ac42 EUR (~S$62 SGD)",
+            "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Fried Baltic Herrings",
+            "desc": "Crispy pan-fried Baltic herrings served with mashed potatoes & chive sour cream",
+            "price": "\u20ac24 EUR (~S$35 SGD)",
+            "image": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Tar Ice Cream & Cloudberries",
+            "desc": "Traditional Finnish pine tar flavored ice cream served with wild warm cloudberries",
+            "price": "\u20ac12 EUR (~S$18 SGD)",
+            "image": "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=400&q=80"
+          }
+        ]
+      }
+    ]
+  },
+  "16": {
+    "city": "tallinn",
+    "date": "Dec 27 (Sun)",
+    "location": "Tallinn, Estonia",
+    "items": [
+      {
+        "name": "180\u00b0 by Matthias Diether",
+        "category": "fine-dining",
+        "badge": "\u2b50\ufe0f 2 Michelin Stars (Estonia Flagship)",
+        "website": "https://180degrees.ee",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=180+by+Matthias+Diether+Tallinn",
+        "hours": "Sun: 17:30 \u2013 23:00 (Open Dec 27)",
+        "rating": "\u2b50 4.8 / 5 (380+ reviews)",
+        "review": "\"Unrivaled 2-Michelin star fine dining overlooking Noblessner harbor. Exquisite modern European multi-course menu with bold, savory, filling dishes.\"",
+        "dishes": [
+          {
+            "name": "Quail Breast & Foie Gras",
+            "desc": "Pan-roasted quail breast served with truffle jus, crisp sunchoke & foie gras tartlet",
+            "price": "\u20ac190 EUR (~S$279 SGD Tasting Menu)",
+            "image": "https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Langoustine & Sea Buckthorn",
+            "desc": "Brittany langoustine glazed in shellfish reduction with fermented sea buckthorn",
+            "price": "Course in Tasting Menu (~S$279 SGD)",
+            "image": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Valrhona Chocolate & Truffle",
+            "desc": "Smoked dark chocolate ganache paired with black truffle ice cream",
+            "price": "Course in Tasting Menu (~S$279 SGD)",
+            "image": "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=400&q=80"
+          }
+        ]
+      },
+      {
+        "name": "Rataskaevu 16",
+        "category": "upscale",
+        "badge": "\u2728 Old Town Estonian Favorite",
+        "website": "https://rataskaevu16.ee",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Rataskaevu+16+Tallinn",
+        "hours": "Sun: 12:00 \u2013 23:00 (Open Dec 27)",
+        "rating": "\u2b50 4.8 / 5 (4,500+ reviews)",
+        "review": "\"Top-rated restaurant in Tallinn Old Town! Warmest hospitality in Europe, incredibly delicious pork belly, salmon, and signature black bread.\"",
+        "dishes": [
+          {
+            "name": "Braised Pork Belly & Pumpkin",
+            "desc": "Melt-in-your-mouth slow-braised pork belly with roasted pumpkin puree & red wine jus",
+            "price": "\u20ac19 EUR (~S$28 SGD)",
+            "image": "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Pan-Fried Whitefish Fillet",
+            "desc": "Fresh Baltic whitefish fillet served with creamed leeks & oven roasted potatoes",
+            "price": "\u20ac18 EUR (~S$26 SGD)",
+            "image": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Warm Chocolate Cake & Vanilla Ice Cream",
+            "desc": "Molten chocolate lava cake paired with house-made vanilla bean gelato",
+            "price": "\u20ac7 EUR (~S$10 SGD)",
+            "image": "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=400&q=80"
+          }
+        ]
+      },
+      {
+        "name": "III Draakon (Old Town Hall)",
+        "category": "comfort",
+        "badge": "\ud83c\udf72 Medieval Comfort Tavern",
+        "website": "https://iii-draakon.ee",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=III+Draakon+Tallinn",
+        "hours": "Sun: 10:00 \u2013 00:00 (Open Dec 27)",
+        "rating": "\u2b50 4.6 / 5 (3,200+ reviews)",
+        "review": "\"Authentic medieval tavern inside Tallinn Town Hall! Steaming hot elk broth served in clay pots, savory game pies, and free pickles from the barrel.\"",
+        "dishes": [
+          {
+            "name": "Steaming Hot Elk Meat Broth",
+            "desc": "Rich, piping hot roasted elk bone broth drunk straight from traditional clay mugs",
+            "price": "\u20ac3.50 EUR (~S$5 SGD)",
+            "image": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Wild Game & Venison Pie",
+            "desc": "Flaky oven-baked pastry crust packed with spiced venison & root vegetables",
+            "price": "\u20ac3.50 EUR (~S$5 SGD)",
+            "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Free Pickled Cucumbers from Barrel",
+            "desc": "Unlimited house-pickled dill cucumbers fished out of giant wooden tavern barrels",
+            "price": "Free with Meal",
+            "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=400&q=80"
+          }
+        ]
+      }
+    ]
+  },
+  "17": {
+    "city": "tallinn",
+    "date": "Dec 28 (Mon)",
+    "location": "Tallinn -> Cruise to Stockholm",
+    "items": [
+      {
+        "name": "Tallink Victoria I Grand Buffet",
+        "category": "comfort",
+        "badge": "\ud83d\udea2 Baltic Sea Cruise Buffet Feast",
+        "website": "https://www.tallink.com/onboard/dining",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Tallink+D-Terminal+Tallinn",
+        "hours": "Mon: 18:00 \u2013 21:00 (Open Dec 28 Onboard)",
+        "rating": "\u2b50 4.5 / 5 (850+ reviews)",
+        "review": "\"Extensive Baltic sea cruise buffet with unlimited red/white wine, beer, smoked salmon, seafood, roast beef, and Scandinavian desserts while sailing to Stockholm.\"",
+        "dishes": [
+          {
+            "name": "Unlimited Smoked Salmon & Seafood Bar",
+            "desc": "Cold-smoked salmon, gravlax, Baltic shrimp, green shell mussels & herring selection",
+            "price": "\u20ac42 EUR (~S$62 SGD Buffet)",
+            "image": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Roast Beef Carving Station",
+            "desc": "Tender roast beef carved to order with bear naise, red wine jus & potato gratin",
+            "price": "Course in Buffet (~S$62 SGD)",
+            "image": "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Unlimited Draft Wine & Beer Bar",
+            "desc": "Self-serve taps of red wine, white wine, and chilled Scandinavian lager beer",
+            "price": "Included Free in Buffet",
+            "image": "https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=400&q=80"
+          }
+        ]
+      }
+    ]
+  },
+  "18": {
+    "city": "stockholm",
+    "date": "Dec 29 (Tue)",
+    "location": "Stockholm, Sweden",
+    "items": [
+      {
+        "name": "Operak\u00e4llaren",
+        "category": "fine-dining",
+        "badge": "\u2b50\ufe0f 1 Michelin Star (Historic Palace Fine Dining)",
+        "website": "https://operakallaren.se",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Operakallaren+Stockholm",
+        "hours": "Tue: 17:00 \u2013 23:00 (Open Dec 29)",
+        "rating": "\u2b50 4.7 / 5 (650+ reviews)",
+        "review": "\"Stockholm's legendary grand palace restaurant inside the Royal Opera House! 1 Michelin star offering historic Swedish haute cuisine, rich game sauces, and opulent gilded interiors.\"",
+        "dishes": [
+          {
+            "name": "Arctic Char & Kalix Bleak Roe",
+            "desc": "Seared Arctic char with Kalix caviar roe, smoked butter & caramelized onion reduction",
+            "price": "450 SEK (~S$58 SGD)",
+            "image": "https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Swedish Venison Saddle",
+            "desc": "Roasted venison saddle with lingonberry jus, chanterelle tartlet & potato fondant",
+            "price": "580 SEK (~S$75 SGD)",
+            "image": "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Wild Swedish Cloudberry Souffl\u00e9",
+            "desc": "Warm cloudberry souffl\u00e9 served with wild cloudberry sorbet & vanilla anglaise",
+            "price": "220 SEK (~S$28 SGD)",
+            "image": "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=400&q=80"
+          }
+        ]
+      },
+      {
+        "name": "\u00d6stermalms Saluhall (Lisa Elmqvist)",
+        "category": "upscale",
+        "badge": "\u2728 Historic Seafood Hall Icon",
+        "website": "https://lisaelmqvist.se",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Lisa+Elmqvist+Ostermalms+Saluhall+Stockholm",
+        "hours": "Tue: 10:00 \u2013 19:00 (Open Dec 29)",
+        "rating": "\u2b50 4.6 / 5 (1,200+ reviews)",
+        "review": "\"Stockholm's premier seafood hall since 1926! Famous Toast Skagen piled high with hand-peeled prawns and rich creamy fish soup in a stunning glass hall.\"",
+        "dishes": [
+          {
+            "name": "Famous Toast Skagen",
+            "desc": "Butter-fried toast topped with fresh Swedish prawns, dill mayo, lemon & white bleak roe",
+            "price": "245 SEK (~S$32 SGD)",
+            "image": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Creamy Swedish Fish & Shellfish Soup",
+            "desc": "Rich saffron broth packed with cod, salmon, blue mussels & prawns with aioli",
+            "price": "265 SEK (~S$34 SGD)",
+            "image": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Gravlax & Dill Mustard Sauce",
+            "desc": "House-cured Atlantic salmon slices with traditional sweet dill mustard & rye crisps",
+            "price": "220 SEK (~S$28 SGD)",
+            "image": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=400&q=80"
+          }
+        ]
+      },
+      {
+        "name": "Kvarnen (S\u00f6dermalm)",
+        "category": "comfort",
+        "badge": "\ud83c\udf72 Classic Swedish Meatball & Husmanskost",
+        "website": "https://kvarnen.com",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Kvarnen+Stockholm",
+        "hours": "Tue: 11:30 \u2013 23:00 (Open Dec 29)",
+        "rating": "\u2b50 4.5 / 5 (2,800+ reviews)",
+        "review": "\"Historic 1908 Swedish beer hall serving authentic traditional Husmanskost (comfort food). Massive hand-rolled meatballs, pickled herring, and cold draft beer!\"",
+        "dishes": [
+          {
+            "name": "Kvarnen Famous Swedish Meatballs",
+            "desc": "Handmade beef & pork meatballs, velvety cream gravy, pressgurka pickled cucumber & lingonberries",
+            "price": "225 SEK (~S$29 SGD)",
+            "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Pytt i Panna (Swedish Hash)",
+            "desc": "Fried diced beef, pork & potatoes topped with a sunny-side-up egg & pickled red beets",
+            "price": "195 SEK (~S$25 SGD)",
+            "image": "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Herring Platter (Str\u00f6mming)",
+            "desc": "Pan-fried Baltic herring with melted butter, mashed potatoes & lingonberries",
+            "price": "185 SEK (~S$24 SGD)",
+            "image": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=400&q=80"
+          }
+        ]
+      }
+    ]
+  },
+  "19": {
+    "city": "stockholm",
+    "date": "Dec 30 (Wed)",
+    "location": "Stockholm -> Train to Copenhagen",
+    "items": [
+      {
+        "name": "Pelikan (S\u00f6dermalm)",
+        "category": "comfort",
+        "badge": "\ud83c\udf72 Traditional Swedish Tavern Icon",
+        "website": "https://pelikan.se",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Pelikan+Stockholm",
+        "hours": "Wed: 11:30 \u2013 22:00 (Open Dec 30)",
+        "rating": "\u2b50 4.5 / 5 (2,400+ reviews)",
+        "review": "\"Vintage 1904 Swedish tavern with soaring ceilings. Legendary slow-roasted pork knuckle, reindeer stew, and hearty Swedish comfort food.\"",
+        "dishes": [
+          {
+            "name": "Roasted Pork Knuckle (Fl\u00e4skl\u00e4gg)",
+            "desc": "Crispy roasted pork knuckle served with root vegetable puree & coarse Swedish mustard",
+            "price": "240 SEK (~S$31 SGD)",
+            "image": "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Saut\u00e9ed Reindeer & Mushrooms",
+            "desc": "Thinly sliced reindeer saut\u00e9ed with wild chanterelles, juniper berries & lingonberry cream",
+            "price": "265 SEK (~S$34 SGD)",
+            "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Swedish Ostkaka (Warm Cheese Cake)",
+            "desc": "Traditional warm curd cake served with whipped cream & cloudberry jam",
+            "price": "110 SEK (~S$14 SGD)",
+            "image": "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=400&q=80"
+          }
+        ]
+      }
+    ]
+  },
+  "20": {
+    "city": "copenhagen",
+    "date": "Dec 31 (Thu)",
+    "location": "Copenhagen (New Year's Eve)",
+    "items": [
+      {
+        "name": "Formel B",
+        "category": "fine-dining",
+        "badge": "\u2b50\ufe0f 1 Michelin Star (NYE Fine Dining)",
+        "website": "https://formel-b.dk",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Formel+B+Copenhagen",
+        "hours": "Thu: 17:30 \u2013 23:30 (Open Dec 31 NYE Menu)",
+        "rating": "\u2b50 4.7 / 5 (580+ reviews)",
+        "review": "\"Acclaimed 1 Michelin star modern French-Nordic restaurant in Frederiksberg. Exceptional New Year's Eve menu featuring French black truffle, langoustine, and Danish venison.\"",
+        "dishes": [
+          {
+            "name": "Danish Venison & Black Truffle",
+            "desc": "Roasted Danish venison loin with Perigord black truffle sauce & braised salsify",
+            "price": "1,250 DKK (~S$245 SGD NYE Menu)",
+            "image": "https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Poached Langoustine & Caviar",
+            "desc": "Scandinavia langoustine tail topped with Baerii caviar & smoked butter emulsion",
+            "price": "Course in NYE Menu (~S$245 SGD)",
+            "image": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Sea Buckthorn & White Chocolate Souffl\u00e9",
+            "desc": "Fluffy warm souffl\u00e9 with sea buckthorn sorbet & caramelized hazelnuts",
+            "price": "Course in NYE Menu (~S$245 SGD)",
+            "image": "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=400&q=80"
+          }
+        ]
+      },
+      {
+        "name": "H\u00f8st",
+        "category": "upscale",
+        "badge": "\u2728 Award-Winning Nordic Bistro",
+        "website": "https://cofoco.dk/en/host",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Host+Copenhagen",
+        "hours": "Thu: 17:00 \u2013 22:30 (Open Dec 31)",
+        "rating": "\u2b50 4.7 / 5 (2,100+ reviews)",
+        "review": "\"Stunning greenhouse-inspired Nordic restaurant with raw wooden beams and lush greenery. Innovative 3 or 5-course Nordic tasting menus at incredible value!\"",
+        "dishes": [
+          {
+            "name": "Ribeye Beef & Smoked Bone Marrow",
+            "desc": "Danish beef ribeye with pickled chanterelles, wild garlic & smoked bone marrow sauce",
+            "price": "495 DKK (~S$97 SGD Tasting Menu)",
+            "image": "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Birch-Smoked Cod Fillet",
+            "desc": "Pan-roasted Baltic cod with creamed kale, horseradish & crispy cod skin",
+            "price": "Course in Tasting Menu (~S$97 SGD)",
+            "image": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Skyr Mousse & Sea Buckthorn",
+            "desc": "Danish skyr mousse topped with sea buckthorn granita & brown butter crumbles",
+            "price": "Course in Tasting Menu (~S$97 SGD)",
+            "image": "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=400&q=80"
+          }
+        ]
+      },
+      {
+        "name": "K\u00f8dbyens Fiskebar (Meatpacking District)",
+        "category": "comfort",
+        "badge": "\ud83c\udf72 Fresh Danish Seafood & Oysters",
+        "website": "https://fiskebaren.dk/en",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Kodbyens+Fiskebar+Copenhagen",
+        "hours": "Thu: 12:00 \u2013 23:00 (Open Dec 31)",
+        "rating": "\u2b50 4.6 / 5 (2,600+ reviews)",
+        "review": "\"Vibrant seafood bar in Copenhagen's Meatpacking District! Michelin Bib Gourmand winner serving fresh Limfjord oysters, razor clams, and Danish fish & chips.\"",
+        "dishes": [
+          {
+            "name": "Danish Fish & Chips",
+            "desc": "Crispy beer-battered hake fillet with hand-cut double fried chips & remoulade dip",
+            "price": "185 DKK (~S$36 SGD)",
+            "image": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Fresh Limfjord Oyster Selection",
+            "desc": "Raw Danish oysters served with shallot vinaigrette, lemon & hot horseradish",
+            "price": "210 DKK (~S$41 SGD / 6 pcs)",
+            "image": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Steamed Blue Mussels in Cider",
+            "desc": "Danish blue mussels steamed with hard cider, cream, garlic & fresh herbs",
+            "price": "195 DKK (~S$38 SGD)",
+            "image": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=400&q=80"
+          }
+        ]
+      }
+    ]
+  },
+  "21": {
+    "city": "copenhagen",
+    "date": "Jan 01 (Fri)",
+    "location": "Copenhagen (New Year's Day)",
+    "items": [
+      {
+        "name": "Torvehallerne Food Hall (Hallernes Sm\u00f8rrebr\u00f8d)",
+        "category": "comfort",
+        "badge": "\ud83c\udf72 Danish Open Sandwich Icon",
+        "website": "https://hallernes.dk",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Hallernes+Smorrebrod+Torvehallerne+Copenhagen",
+        "hours": "Fri: 10:00 \u2013 19:00 (Open Jan 01)",
+        "rating": "\u2b50 4.6 / 5 (3,400+ reviews)",
+        "review": "\"Copenhagen's ultimate gourmet food hall! Hallernes Sm\u00f8rrebr\u00f8d crafts stunning open-face dark rye sandwiches piled high with crispy plaice, roast beef, and prawns.\"",
+        "dishes": [
+          {
+            "name": "Crispy Pan-Fried Plaice Sm\u00f8rrebr\u00f8d",
+            "desc": "Golden fried plaice fillet on buttered rye bread with remoulade, lemon & fresh dill",
+            "price": "85 DKK (~S$17 SGD)",
+            "image": "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Roast Beef & Remoulade Sm\u00f8rrebr\u00f8d",
+            "desc": "Thinly sliced Danish roast beef topped with crispy fried onions, horseradish & pickles",
+            "price": "78 DKK (~S$15 SGD)",
+            "image": "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Hand-Peeled Greenland Shrimp Sm\u00f8rrebr\u00f8d",
+            "desc": "Mound of cold-water Greenland prawns served over mayonnaise, lemon & egg slices",
+            "price": "92 DKK (~S$18 SGD)",
+            "image": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=400&q=80"
+          }
+        ]
+      },
+      {
+        "name": "Popl Burger (by Noma)",
+        "category": "comfort",
+        "badge": "\ud83c\udf54 Noma's Legendary Gourmet Burger",
+        "website": "https://poplburger.com",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Popl+Burger+Copenhagen",
+        "hours": "Fri: 12:00 \u2013 21:30 (Open Jan 01)",
+        "rating": "\u2b50 4.5 / 5 (1,500+ reviews)",
+        "review": "\"Created by 3-Michelin star Noma team! Organic Danish grass-fed beef burgers smashed on butter-grilled potato buns with fermented quinoa garum sauce.\"",
+        "dishes": [
+          {
+            "name": "Popl Organic Cheeseburger",
+            "desc": "Dry-aged Danish beef patty, organic cheddar, beef garum mayo & house-pickled dill cucumber",
+            "price": "145 DKK (~S$28 SGD)",
+            "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Popl Fermented Mushroom Burger",
+            "desc": "Award-winning vegetarian burger made with fermented wild mushroom & quinoa patty",
+            "price": "140 DKK (~S$27 SGD)",
+            "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Triple-Cooked Potato Fries",
+            "desc": "Hand-cut Danish potatoes fried in organic beef tallow served with smoked dip",
+            "price": "55 DKK (~S$11 SGD)",
+            "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=400&q=80"
+          }
+        ]
+      }
+    ]
+  },
+  "22": {
+    "city": "copenhagen",
+    "date": "Jan 02 (Sat)",
+    "location": "Copenhagen -> Departure",
+    "items": [
+      {
+        "name": "Restaurant Pal\u00e6gade",
+        "category": "upscale",
+        "badge": "\u2728 Traditional Danish Lunch & Dining",
+        "website": "https://palaegade.dk",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Restaurant+Palaegade+Copenhagen",
+        "hours": "Sat: 11:30 \u2013 17:00 (Open Jan 02)",
+        "rating": "\u2b50 4.7 / 5 (1,100+ reviews)",
+        "review": "\"The gold standard for refined classic Danish dining in central Copenhagen. Immaculate Sm\u00f8rrebr\u00f8d, pan-fried cod, and fine aquavit pairing.\"",
+        "dishes": [
+          {
+            "name": "Pal\u00e6gade Deluxe Herring Trio",
+            "desc": "Marinated curried herring, fried spiced herring & pickled onion herring with dark rye",
+            "price": "145 DKK (~S$28 SGD)",
+            "image": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Pan-Seared Danish Veal Schnitzel",
+            "desc": "Crispy veal schnitzel served with capers, horseradish, lemon anchovy butter & potatoes",
+            "price": "245 DKK (~S$48 SGD)",
+            "image": "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            "name": "Old-Fashioned Apple Cake (\u00c6blekage)",
+            "desc": "Layered stewed Danish apples, toasted breadcrumbs, red currant jelly & vanilla cream",
+            "price": "95 DKK (~S$19 SGD)",
+            "image": "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=400&q=80"
+          }
+        ]
+      }
+    ]
+  }
+};
+
+    // Current Filter States
+    let activeCity = 'all';
+    let activeCategory = 'all';
+
     // Passcode Auth Logic (8520)
     const PASSCODE_HASH = CryptoJS.MD5('8520').toString();
     const authOverlay = document.getElementById('auth-overlay');
@@ -307,221 +1745,42 @@
       }
     }
 
-    // Master Food Database
-    const foodMaster = {
-      1: {
-        city: 'lapland', date: 'Dec 12 (Sat)', location: 'Rovaniemi, Finland',
-        items: [
-          {
-            name: 'Restaurant Nili', type: 'comfort', badge: '🍲 Local Gourmet Classic',
-            dishes: 'Gourmet Lapland Reindeer, Sautéed Bear Stew, Arctic Char & Cloudberries',
-            price: '~€55 EUR (~S$81 SGD)', rating: '⭐ 4.6 / 5 (1,200+ reviews)',
-            review: '"Sensational Lapland wild game feast! The sautéed reindeer and bear stew were rich, savory, and deeply satisfying on a freezing evening."',
-            gmaps: 'https://www.google.com/maps/search/?api=1&query=Restaurant+Nili+Rovaniemi'
-          },
-          {
-            name: 'Ravintola Roka Street Bistro', type: 'comfort', badge: '🥣 Famous Salmon Soup',
-            dishes: 'Creamy Finnish Salmon Soup (Lohikeitto), Reindeer Burgers, Rye Bread',
-            price: '€12–18 EUR (~S$18–S$26 SGD)', rating: '⭐ 4.7 / 5 (950+ reviews)',
-            review: '"Incredible salmon soup and reindeer burger. Cozy bistro vibe with big flavor and great value!"',
-            gmaps: 'https://www.google.com/maps/search/?api=1&query=Ravintola+Roka+Street+Bistro+Rovaniemi'
+    function setCityFilter(city, btn) {
+      activeCity = city;
+      document.querySelectorAll('#city-filter-bar .filter-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      applyFilters();
+    }
+
+    function setCategoryFilter(cat, btn) {
+      activeCategory = cat;
+      document.querySelectorAll('#category-filter-bar .filter-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      applyFilters();
+    }
+
+    function applyFilters() {
+      document.querySelectorAll('.food-day-section').forEach(sec => {
+        const cityMatch = (activeCity === 'all' || sec.getAttribute('data-city') === activeCity);
+        let hasVisibleRestaurant = false;
+
+        sec.querySelectorAll('.restaurant-card').forEach(card => {
+          const catMatch = (activeCategory === 'all' || card.getAttribute('data-category') === activeCategory);
+          if (catMatch) {
+            card.style.display = 'block';
+            hasVisibleRestaurant = true;
+          } else {
+            card.style.display = 'none';
           }
-        ]
-      },
-      2: { city: 'lapland', date: 'Dec 13 (Sun)', location: 'Boden / Storklinten, Sweden', items: [{ name: 'Bodensia Restaurant / Storklinten', type: 'comfort', badge: '🥩 Nordic Steakhouse', dishes: 'Swedish steaks, grilled fish, Storklinten timber fireside meals', price: '~320 SEK (~S$42 SGD)', rating: '⭐ 4.5 / 5', review: '"Hearty Swedish steak and fish right by the ski slopes."', gmaps: 'https://www.google.com/maps/search/?api=1&query=Bodensia+Boden' }] },
-      3: { city: 'lapland', date: 'Dec 14 (Mon)', location: 'Harads / Storklinten, Sweden', items: [{ name: 'Empes Gatukök Boden', type: 'comfort', badge: '🍔 Swedish Fast Food Icon', dishes: 'Classic Swedish grilled burgers, sausage platters, fries', price: '~85 SEK (~S$11 SGD)', rating: '⭐ 4.5 / 5', review: '"Legendary northern Swedish grill shack. Fast, hearty, and tasty!"', gmaps: 'https://www.google.com/maps/search/?api=1&query=Empes+Gatukok+Boden' }] },
-      4: { city: 'lapland', date: 'Dec 15 (Tue)', location: 'Kiruna, Sweden', items: [{ name: 'Spis Mat & Dryck', type: 'comfort', badge: '🍷 Boutique Nordic Bistro', dishes: 'Swedish Lapland venison, Arctic char, local artisanal cheese', price: '~350 SEK (~S$45 SGD)', rating: '⭐ 4.6 / 5', review: '"Cozy Kiruna bistro with rich game sauces and wonderful wine."', gmaps: 'https://www.google.com/maps/search/?api=1&query=Spis+Kiruna' }] },
-      5: { city: 'lapland', date: 'Dec 16 (Wed)', location: 'Kiruna V / Björkliden', items: [{ name: 'Abisko Mountain Lodge Restaurant', type: 'comfort', badge: '🦌 Arctic Game Dining', dishes: 'Venison steak, smoked trout, cloudberry tart', price: '~450 SEK (~S$58 SGD)', rating: '⭐ 4.7 / 5', review: '"Incredible lodge dining overlooking the snow-covered valley."', gmaps: 'https://www.google.com/maps/search/?api=1&query=Abisko+Mountain+Lodge' }] },
-      6: { city: 'lapland', date: 'Dec 17 (Thu)', location: 'Abisko / Björkliden', items: [{ name: 'STF Abisko Restaurant Krogen', type: 'comfort', badge: '🍲 Arctic Buffet & Fika', dishes: 'Daily lunch buffet, salmon pies, Swedish fika pastries', price: '~145 SEK (~S$19 SGD)', rating: '⭐ 4.6 / 5', review: '"Great lunch buffet after snowshoeing in Abisko National Park."', gmaps: 'https://www.google.com/maps/search/?api=1&query=STF+Abisko+Restaurant' }] },
-      7: { city: 'lapland', date: 'Dec 18 (Fri)', location: 'Kiruna / Björkliden', items: [{ name: 'Empes Gatukök Kiruna', type: 'comfort', badge: '🍔 Local Burger Shack', dishes: 'Grilled burgers, sausage, Swedish fries', price: '~85 SEK (~S$11 SGD)', rating: '⭐ 4.4 / 5', review: '"Great quick comfort meal in central Kiruna."', gmaps: 'https://www.google.com/maps/search/?api=1&query=Empes+Kiruna' }] },
-      8: { city: 'lapland', date: 'Dec 19 (Sat)', location: 'Kemi, Finland', items: [{ name: 'Restaurant Lumihiutale', type: 'comfort', badge: '🐟 Bothnian Bay Seafood', dishes: 'Bothnian Bay smoked salmon, whitefish, sea-view steak', price: '~€45 EUR (~S$66 SGD)', rating: '⭐ 4.5 / 5', review: '"Panoramic sea views over Gulf of Bothnia with fresh local seafood."', gmaps: 'https://www.google.com/maps/search/?api=1&query=Restaurant+Lumihiutale+Kemi' }] },
-      9: { city: 'lapland', date: 'Dec 20 (Sun)', location: 'Kemi, Finland', items: [{ name: 'Sataman Krouvi / SnowCastle', type: 'comfort', badge: '🥣 Creamy Salmon Soup', dishes: 'Finnish Lohikeitto salmon soup, smoked fish platters', price: '€12–15 EUR (~S$18–S$22 SGD)', rating: '⭐ 4.5 / 5', review: '"Hearty Baltic salmon soup served right by the harbor."', gmaps: 'https://www.google.com/maps/search/?api=1&query=Sataman+Krouvi+Kemi' }] },
-      10: { city: 'lapland', date: 'Dec 21 (Mon)', location: 'Posio, Finland', items: [{ name: 'Naali Lodge Dining Table', type: 'comfort', badge: '🌲 Wild Game & Berries', dishes: 'Local wild venison, mushroom stew, Lapland berry pairings', price: '~€50 EUR (~S$73 SGD)', rating: '⭐ 4.8 / 5', review: '"Atmospheric lakeside wilderness dining in Posio."', gmaps: 'https://www.google.com/maps/search/?api=1&query=Naali+Lodge+Posio' }] },
-      11: { city: 'lapland', date: 'Dec 22 (Tue)', location: 'Posio, Finland', items: [{ name: 'Ansa Makasiini / S-Market Bakery', type: 'comfort', badge: '🥐 Local Pastry & Bistro', dishes: 'Fresh Finnish rye pies (Karjalanpiirakka), coffee, light meals', price: '€10–14 EUR (~S$15–S$20 SGD)', rating: '⭐ 4.5 / 5', review: '"Warm local pastry stop after snowshoeing in Riisitunturi."', gmaps: 'https://www.google.com/maps/search/?api=1&query=Ansa+Makasiini+Posio' }] },
-      12: { city: 'lapland', date: 'Dec 23 (Wed)', location: 'Iso-Syöte, Finland', items: [{ name: 'Restaurant Hilltop Iso-Syöte', type: 'comfort', badge: '🏔️ Fell Summit Dining', dishes: 'Pan-seared Arctic char, smoked reindeer, wild mushroom soup', price: '~€55 EUR (~S$81 SGD)', rating: '⭐ 4.6 / 5', review: '"Stunning panoramic fell-top views paired with hearty Lapland game."', gmaps: 'https://www.google.com/maps/search/?api=1&query=Restaurant+Hilltop+Iso-Syote' }] },
-      13: { city: 'lapland', date: 'Dec 24 (Thu)', location: 'Iso-Syöte (Christmas Eve)', items: [{ name: 'Hotel Iso-Syöte Christmas Buffet', type: 'comfort', badge: '🎄 Christmas Eve Gala Feast', dishes: 'Traditional Finnish Christmas ham, salmon, casseroles, gingerbread', price: '~€75 EUR (~S$110 SGD)', rating: '⭐ 4.7 / 5', review: '"Magical Christmas Eve buffet feast on the fell summit!"', gmaps: 'https://www.google.com/maps/search/?api=1&query=Hotel+Iso-Syote+Restaurant' }] },
-      14: { city: 'lapland', date: 'Dec 25 (Fri)', location: 'Rovaniemi (VR Sleeper Train)', items: [{ name: 'VR Restaurant Car / Station Diner', type: 'comfort', badge: '🚆 Train Dining Car', dishes: 'Finnish meatballs, salmon soup, coffee & pastries', price: '€10–16 EUR (~S$15–S$24 SGD)', rating: '⭐ 4.4 / 5', review: '"Classic VR sleeper train restaurant car meal while heading south to Helsinki."', gmaps: 'https://www.google.com/maps/search/?api=1&query=Rovaniemi+Railway+Station' }] },
-      15: {
-        city: 'helsinki', date: 'Dec 26 (Sat)', location: 'Helsinki, Finland',
-        items: [
-          {
-            name: 'Finnjävel Salonki', type: 'michelin', badge: '⭐ 1 Michelin Star (Hearty Champion)',
-            dishes: 'Elevated Finnish Comfort Food: Sautéed Pork & Reindeer, Potato Pastries, Rich Gravy',
-            price: '~€190 EUR (~S$279 SGD)', rating: '⭐ 4.6 / 5 (250+ reviews)',
-            review: '"Finnish comfort food elevated to Michelin perfection! Heavy on slow-roasted meats and traditional flavors. You will not leave hungry!"',
-            gmaps: 'https://www.google.com/maps/search/?api=1&query=Finnjavel+Salonki+Helsinki'
-          },
-          {
-            name: 'SOUP+MORE (Old Market Hall)', type: 'comfort', badge: '🥣 Helsinki Salmon Soup Icon',
-            dishes: 'Creamy Finnish Salmon Soup (Lohikeitto) with unlimited dark sourdough rye bread & butter',
-            price: '~€12–14 EUR (~S$18–S$20 SGD)', rating: '⭐ 4.7 / 5 (1,800+ reviews)',
-            review: '"The ultimate soul food! Rich, creamy salmon soup packed with generous chunks of fish. Unlimited warm rye bread makes it pure perfection."',
-            gmaps: 'https://www.google.com/maps/search/?api=1&query=SOUP+MORE+Vanha+Kauppahalli+Helsinki'
-          },
-          {
-            name: 'Ravintola Sea Horse (Since 1933)', type: 'comfort', badge: '🐟 Historic Classic Bistro',
-            dishes: 'Crispy Fried Baltic Herring with buttery potato puree, Finnish Meatballs with lingonberry jam',
-            price: '~€22–28 EUR (~S$32–S$41 SGD)', rating: '⭐ 4.6 / 5 (1,100+ reviews)',
-            review: '"Pure Finnish comfort! The fried Baltic herring with creamy mashed potatoes is legendary. Nostalgic and extremely filling."',
-            gmaps: 'https://www.google.com/maps/search/?api=1&query=Ravintola+Sea+Horse+Helsinki'
-          },
-          {
-            name: 'Ravintola Savotta', type: 'comfort', badge: '🌲 Logging Camp Feast',
-            dishes: 'Sautéed Lapland Reindeer (Poronkäristys) over creamed potatoes, Bear Stew, Fried Vendace',
-            price: '~€30–42 EUR (~S$44–S$62 SGD)', rating: '⭐ 4.6 / 5 (1,400+ reviews)',
-            review: '"Proper Nordic comfort food! The sautéed reindeer with mashed potatoes was rich, savory, and deeply satisfying."',
-            gmaps: 'https://www.google.com/maps/search/?api=1&query=Restaurant+Savotta+Helsinki'
-          }
-        ]
-      },
-      16: {
-        city: 'tallinn', date: 'Dec 27 (Sun)', location: 'Tallinn, Estonia',
-        items: [
-          {
-            name: 'NOA Chef\'s Hall', type: 'michelin', badge: '⭐ 1 Michelin Star (Hearty Champion)',
-            dishes: 'Open Fire & Wood Grill Gastronomy: Flame-seared steaks, wood-smoked fish, charred broths',
-            price: '~€169 EUR (~S$248 SGD)', rating: '⭐ 4.8 / 5 (280+ reviews)',
-            review: '"Cooking over open fire gives every course intense, smoky, hearty flavor. Substantial protein dishes—easily one of the best meals in the Baltics!"',
-            gmaps: 'https://www.google.com/maps/search/?api=1&query=NOA+Chefs+Hall+Tallinn'
-          },
-          {
-            name: 'Rataskaevu 16', type: 'comfort', badge: '🍞 Tallinn\'s #1 Rated Comfort Dining',
-            dishes: 'Warm homemade black rye bread & herb butter, braised pork belly, slow-cooked moose stew',
-            price: '~€15–26 EUR (~S$22–S$38 SGD)', rating: '⭐ 4.8 / 5 (4,500+ reviews)',
-            review: '"Best meal in Tallinn by far! The warm homemade black bread will blow your mind, and the braised pork belly and moose stew are rich and comforting."',
-            gmaps: 'https://www.google.com/maps/search/?api=1&query=Rataskaevu+16+Tallinn'
-          },
-          {
-            name: 'III Draakon (Third Dragon)', type: 'comfort', badge: '🏰 15th-Century Medieval Tavern',
-            dishes: 'Hot Elk Meat Soup in clay bowls (no forks!), game & spinach pastries by hand, wooden barrel pickles',
-            price: '~€3.50 soup, €1.50 pastry (~S$5–S$12 SGD total)', rating: '⭐ 4.6 / 5 (2,200+ reviews)',
-            review: '"Super fun medieval tavern vibe! Hot elk soup served in clay bowls, dark candles, zero cutlery, and delicious meat pies."',
-            gmaps: 'https://www.google.com/maps/search/?api=1&query=III+Draakon+Tallinn'
-          }
-        ]
-      },
-      17: {
-        city: 'tallinn', date: 'Dec 28 (Mon)', location: 'Baltic Sea Overnight Cruise',
-        items: [
-          {
-            name: '180° by Matthias Diether', type: 'michelin', badge: '⭐⭐ 2 Michelin Stars',
-            dishes: 'Classic French Haute Cuisine: Foie gras, pigeon, roasted duck, langoustine, truffle reductions',
-            price: '~€240–325 EUR (~S$353–S$478 SGD)', rating: '⭐ 4.7 / 5 (300+ reviews)',
-            review: '"An absolute feast for all senses! Rich, buttery sauces, substantial protein courses, and grand harbor views."',
-            gmaps: 'https://www.google.com/maps/search/?api=1&query=180+by+Matthias+Diether+Tallinn'
-          },
-          {
-            name: 'Tallink Silja Baltic Queen Buffet Feast', type: 'comfort', badge: '🚢 Grand Cruise Buffet',
-            dishes: 'All-you-can-eat Baltic seafood, caviar, roasted meats, Scandinavian cheeses & desserts',
-            price: '~€42 EUR (~S$62 SGD)', rating: '⭐ 4.5 / 5',
-            review: '"Huge Scandinavian smörgåsbord cruise buffet with endless fresh seafood, meats, and desserts while sailing to Stockholm!"',
-            gmaps: 'https://www.google.com/maps/search/?api=1&query=Tallinn+D-Terminal'
-          }
-        ]
-      },
-      18: {
-        city: 'stockholm', date: 'Dec 29 (Tue)', location: 'Stockholm, Sweden',
-        items: [
-          {
-            name: 'Operakällaren', type: 'michelin', badge: '⭐ 1 Michelin Star (Regal Choice)',
-            dishes: 'Opulent Classical French / Royal Swedish Opera: Game, truffles, foie gras, turbot, Escoffier butter reductions',
-            price: '~2,400 SEK (~S$312 SGD)', rating: '⭐ 4.6 / 5 (400+ reviews)',
-            review: '"Grand traditional dining at its finest! Rich classic sauces, heavy meats, and imperial elegance. You will leave thoroughly stuffed."',
-            gmaps: 'https://www.google.com/maps/search/?api=1&query=Operakallaren+Stockholm'
-          },
-          {
-            name: 'Restaurant Pelikan (Since 1904)', type: 'comfort', badge: '🧆 Swedish Meatball Classic',
-            dishes: 'Famous Swedish Meatballs with cream sauce & lingonberries, Roasted Pork Knuckle with mustard',
-            price: '~240–320 SEK (~S$31–S$42 SGD)', rating: '⭐ 4.5 / 5 (2,100+ reviews)',
-            review: '"The iconic home of Swedish meatballs! Huge, tender meatballs bathed in rich gravy with buttery mash and tart lingonberries."',
-            gmaps: 'https://www.google.com/maps/search/?api=1&query=Restaurant+Pelikan+Stockholm'
-          }
-        ]
-      },
-      19: {
-        city: 'stockholm', date: 'Dec 30 (Wed)', location: 'Stockholm, Sweden',
-        items: [
-          {
-            name: 'Ekstedt', type: 'michelin', badge: '⭐ 1 Michelin Star (Hearty Champion)',
-            dishes: '100% Cast-Iron & Open Fire (No Gas/Electricity): Flame-kissed venison, ember-baked cod, smoked tallow',
-            price: '~2,600 SEK (~S$338 SGD)', rating: '⭐ 4.7 / 5 (650+ reviews)',
-            review: '"The smoky wood-fired flavors are bold and deeply satisfying. Solid, real portions of venison and beef cooked right in front of you."',
-            gmaps: 'https://www.google.com/maps/search/?api=1&query=Ekstedt+Stockholm'
-          },
-          {
-            name: 'Östermalms Saluhall (Lisaköket)', type: 'comfort', badge: '🦐 Historic Food Hall (Since 1888)',
-            dishes: 'Fresh Toast Skagen (shrimp in dill mayonnaise on toasted brioche), rich Swedish fish soup',
-            price: '~140–220 SEK (~S$18–S$29 SGD)', rating: '⭐ 4.6 / 5 (3,500+ reviews)',
-            review: '"World-class food hall! The Toast Skagen and fish soup are brimming with fresh seafood. Pure comfort food."',
-            gmaps: 'https://www.google.com/maps/search/?api=1&query=Ostermalms+Saluhall+Stockholm'
-          }
-        ]
-      },
-      20: {
-        city: 'copenhagen', date: 'Dec 31 (Thu)', location: 'Copenhagen, Denmark (NYE)',
-        items: [
-          {
-            name: 'Paté Paté (Meatpacking District)', type: 'comfort', badge: '🎉 NYE Top Choice (5 mins from hotel)',
-            dishes: 'Braised beef short ribs, duck confit, charcuterie, rich gravies & NYE party',
-            price: '~850–1,100 DKK (~S$167–S$216 SGD)', rating: '⭐ 4.4 / 5 (1,200+ reviews)',
-            review: '"Fantastic rustic comfort food in the Meatpacking District! Great energy, generous meat courses, and wonderful wine into midnight."',
-            gmaps: 'https://www.google.com/maps/search/?api=1&query=Pate+Pate+Copenhagen'
-          },
-          {
-            name: 'Kødbyens Fiskebar (Meatpacking District)', type: 'comfort', badge: '🦞 Michelin Bib Gourmand Seafood',
-            dishes: 'Fresh oyster platters, pan-fried cod with butter reductions, steamed mussels, king crab',
-            price: '~900–1,200 DKK (~S$177–S$236 SGD)', rating: '⭐ 4.5 / 5 (1,600+ reviews)',
-            review: '"Unpretentious, loud, fun, and delicious! Generous platters of fresh fish and king crab without any fine-dining stiffness."',
-            gmaps: 'https://www.google.com/maps/search/?api=1&query=Kodbyens+Fiskebar+Copenhagen'
-          },
-          {
-            name: 'Nimb Brasserie (Inside Tivoli Gardens)', type: 'comfort', badge: '🎆 NYE Fireworks & Tivoli View',
-            dishes: 'Ribeye steak with béarnaise, roasted duck breast, French onion soup',
-            price: '~1,100–1,300 DKK (~S$216–S$256 SGD includes Tivoli ticket)', rating: '⭐ 4.4 / 5 (750+ reviews)',
-            review: '"Magical NYE spot! Delicious steak and duck dinner inside Tivoli, plus front-row tickets to watch the midnight fireworks from the lawn."',
-            gmaps: 'https://www.google.com/maps/search/?api=1&query=Nimb+Brasserie+Copenhagen'
-          }
-        ]
-      },
-      21: {
-        city: 'copenhagen', date: 'Jan 01 (Fri)', location: 'Copenhagen, Denmark (NYD)',
-        items: [
-          {
-            name: 'Kong Hans Kælder', type: 'michelin', badge: '⭐⭐ 2 Michelin Stars (Hearty Champion)',
-            dishes: 'Classic French Vaulted Cellar (Since 1976): Foie gras, lobster, pigeon, heavy truffle butter reductions',
-            price: '~2,800 DKK (~S$552 SGD)', rating: '⭐ 4.7 / 5 (320+ reviews)',
-            review: '"Rich classical French dining in a cozy 14th-century cellar. Heavy, decadent, and incredibly satisfying. Zero \'foam dining\' here!"',
-            gmaps: 'https://www.google.com/maps/search/?api=1&query=Kong+Hans+Kaelder+Copenhagen'
-          },
-          {
-            name: 'Restaurant Schønnemann (Since 1877)', type: 'comfort', badge: '🥪 The Shrine of Smørrebrød',
-            dishes: 'Pan-fried plaice fillet with remoulade, warm liver pâté with bacon, roast pork belly on dark rye',
-            price: '~145–195 DKK (~S$28–S$38 SGD)', rating: '⭐ 4.6 / 5 (1,100+ reviews)',
-            review: '"The gold standard for Danish smørrebrød! Generous toppings on dark rye, paired with local beer and aquavit. A proper Danish lunch."',
-            gmaps: 'https://www.google.com/maps/search/?api=1&query=Restaurant+Schonnemann+Copenhagen'
-          },
-          {
-            name: 'Rio Bravo', type: 'comfort', badge: '🥓 Denmark\'s National Dish',
-            dishes: 'Stegt Flæsk med Persillesovs (All-you-can-eat crispy fried pork belly, potatoes, creamy parsley sauce)',
-            price: '~210 DKK (~S$41 SGD all-you-can-eat!)', rating: '⭐ 4.4 / 5 (1,400+ reviews)',
-            review: '"If you want authentic Danish comfort food, this is it. A mountain of crispy fried pork belly with endless creamy parsley sauce. Incredibly filling!"',
-            gmaps: 'https://www.google.com/maps/search/?api=1&query=Rio+Bravo+Copenhagen'
-          }
-        ]
-      },
-      22: {
-        city: 'copenhagen', date: 'Jan 02 (Sat)', location: 'CPH Airport / Flight Home',
-        items: [
-          {
-            name: 'DØP Organic Hot Dog Stand & Torvehallerne', type: 'comfort', badge: '🌭 Organic Danish Hot Dog Icon',
-            dishes: 'Organic Danish pork sausage, wholewheat sourdough bun, remoulade, crispy fried onions',
-            price: '~45 DKK (~S$9 SGD)', rating: '⭐ 4.7 / 5 (900+ reviews)',
-            review: '"DØP is hands-down the best hot dog in Scandinavia. Crispy onions, savory sausage, and delicious remoulade. Perfect quick, comforting bite before flight!"',
-            gmaps: 'https://www.google.com/maps/search/?api=1&query=DOP+Hot+Dog+Copenhagen'
-          }
-        ]
-      }
-    };
+        });
+
+        if (cityMatch && hasVisibleRestaurant) {
+          sec.style.display = 'block';
+        } else {
+          sec.style.display = 'none';
+        }
+      });
+    }
 
     function renderFoodGuide() {
       const container = document.getElementById('food-content-container');
@@ -537,23 +1796,55 @@
         daySec.className = 'food-day-section';
         daySec.setAttribute('data-city', dayData.city);
 
-        const cardsHtml = dayData.items.map(item => `
-          <div class="restaurant-card ${item.type}">
-            <div>
-              <span class="card-badge ${item.type}">${item.badge}</span>
-              <div class="restaurant-name">${item.name}</div>
-              <div class="restaurant-dishes"><strong>Signature Dishes:</strong> ${item.dishes}</div>
-              <div class="price-tag"><i class="fa-solid fa-coins"></i> Price: ${item.price}</div>
+        const cardsHtml = dayData.items.map(item => {
+          const dishesHtml = (item.dishes || []).map(d => `
+            <div class="dish-card">
+              <img src="${d.image}" alt="${d.name}" class="dish-img">
+              <div class="dish-body">
+                <div>
+                  <div class="dish-title">${d.name}</div>
+                  <div class="dish-desc">${d.desc}</div>
+                </div>
+                <span class="dish-price"><i class="fa-solid fa-tag"></i> ${d.price}</span>
+              </div>
+            </div>
+          `).join('');
+
+          return `
+            <div class="restaurant-card ${item.category}" data-category="${item.category}">
+              <div class="card-header">
+                <div>
+                  <span class="card-badge ${item.category}">${item.badge}</span>
+                  <div class="restaurant-name">${item.name}</div>
+                </div>
+                <div class="hours-badge">
+                  <i class="fa-solid fa-clock"></i> ${item.hours}
+                </div>
+              </div>
+
+              <div style="font-weight: 700; font-size: 0.85rem; color: #475569; margin-top: 5px;">
+                <i class="fa-solid fa-utensils" style="color: #2563eb;"></i> Top 3 Recommended Dishes & Pricing:
+              </div>
+              <div class="dishes-gallery">
+                ${dishesHtml}
+              </div>
+
               <div class="review-box">
                 <span class="rating-stars">${item.rating}</span>
                 ${item.review}
               </div>
+
+              <div class="card-actions">
+                <a href="${item.gmaps}" target="_blank" class="action-btn orange">
+                  <i class="fa-solid fa-location-arrow"></i> Navigate on Google Maps
+                </a>
+                <a href="${item.website}" target="_blank" class="action-btn blue">
+                  <i class="fa-solid fa-globe"></i> Official Website & Menu
+                </a>
+              </div>
             </div>
-            <a href="${item.gmaps}" target="_blank" class="action-btn orange" style="font-size: 11px; padding: 6px 12px; text-align: center; text-decoration: none; margin-top: 10px; display: block; width: 100%; box-sizing: border-box;">
-              <i class="fa-solid fa-location-arrow"></i> 📍 Navigate on Google Maps
-            </a>
-          </div>
-        `).join('');
+          `;
+        }).join('');
 
         daySec.innerHTML = `
           <div class="food-day-title">
@@ -568,6 +1859,8 @@
         container.appendChild(daySec);
       }
 
+      applyFilters();
+
       // Handle direct hash navigation if loaded with #day-X
       if (window.location.hash) {
         setTimeout(() => {
@@ -577,22 +1870,7 @@
       }
     }
 
-    function filterCity(city, btn) {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      if (btn) btn.classList.add('active');
-
-      document.querySelectorAll('.food-day-section').forEach(sec => {
-        if (city === 'all' || sec.getAttribute('data-city') === city) {
-          sec.style.display = 'block';
-        } else {
-          sec.style.display = 'none';
-        }
-      });
-    }
-
     window.addEventListener('DOMContentLoaded', checkAuth);
   </script>
 </body>
 </html>
-
-
