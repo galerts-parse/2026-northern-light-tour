@@ -79,6 +79,18 @@ base_22_days = [
     ],
     "legs": [{"from": "RVN Airport", "to": "Rovaniemi Center", "dist": "10 km", "time": "15 mins", "route": "E75", "gmaps": gmaps("Rovaniemi Airport to Lordi Square")}],
     "tickets": [{"item": "SUV Rental Day 1", "cost": "~€75/day", "url": "https://www.hertz.fi/"}],
+    "trails": [
+      {
+        "name": "Ounasvaara Winter Forest Trail & Observation Tower Walk",
+        "distance": "1.8 km round-trip",
+        "duration": "40 mins",
+        "elevation": "+45m gentle incline",
+        "terrain": "Groomed, well-lit winter snow paths leading to a wooden lookout tower overlooking frozen Kemijoki river.",
+        "parkName": "Ounasvaara Outdoor Reserve",
+        "parkUrl": "https://www.visitrovaniemi.fi/",
+        "trailheadGmaps": gmaps("Ounasvaara Lookout Tower Rovaniemi", 66.5080, 25.7600)
+      }
+    ],
     "aurora": [{"name": "Arktikum Arboretum Shoreline", "desc": "Dark park along river.", "coords": [66.5078, 25.7258], "gmaps": gmaps("Arktikum Arboretum Rovaniemi", 66.5078, 25.7258)}]
   },
   {
@@ -474,6 +486,18 @@ base_22_days = [
     ],
     "legs": [{"from": "Iso-Syöte Top", "to": "Syöte Igloos", "dist": "0.5 km", "time": "2 mins", "route": "Fell Road", "gmaps": gmaps("Iso-Syote Top to Igloos")}],
     "tickets": [{"item": "Christmas Eve Gala Buffet", "cost": "€75/pax", "url": "https://hotellisyoete.fi/en/"}],
+    "trails": [
+      {
+        "name": "Pyhitys Fell Panoramic Winter Ridge Hike",
+        "distance": "3.0 km round-trip",
+        "duration": "1h 30m",
+        "elevation": "+130m climb",
+        "terrain": "Exposed alpine ridge trail with 360-degree panoramic vista over snow-covered southern Lapland fells.",
+        "parkName": "Metsähallitus Syöte National Park",
+        "parkUrl": "https://www.nationalparks.fi/syotenp",
+        "trailheadGmaps": gmaps("Pyhitys Fell Syote", 65.6500, 27.8000)
+      }
+    ],
     "aurora": [{"name": "Glass Roof Igloo Bedroom", "desc": "Watch aurora from bed inside heated glass dome.", "coords": [65.6265, 27.6083], "gmaps": gmaps("Syote Igloos", 65.6265, 27.6083)}]
   },
   {
@@ -531,7 +555,19 @@ base_22_days = [
       {"time": "15:00 - 17:30", "activity": "Seaside smoke sauna & Baltic sea ice dip at Löyly Helsinki.", "gmaps": gmaps("Löyly Helsinki Sauna")}
     ],
     "legs": [{"from": "Market Square", "to": "Suomenlinna", "dist": "3 km", "time": "15 mins", "route": "HSL Ferry", "gmaps": gmaps("Helsinki to Suomenlinna Ferry")}],
-    "tickets": [{"item": "Suomenlinna Ferry", "cost": "€3.10", "url": "https://www.hsl.fi/en"}, {"item": "Löyly Sauna 2h", "cost": "€24", "url": "https://www.loylyhelsinki.fi/en/"}]
+    "tickets": [{"item": "Suomenlinna Ferry", "cost": "€3.10", "url": "https://www.hsl.fi/en"}, {"item": "Löyly Sauna 2h", "cost": "€24", "url": "https://www.loylyhelsinki.fi/en/"}],
+    "trails": [
+      {
+        "name": "Suomenlinna UNESCO Sea Fortress Coastal Island Walk",
+        "distance": "4.0 km island loop",
+        "duration": "1h 45m",
+        "elevation": "Flat / Gentle slope",
+        "terrain": "Historic cobblestones, sea-wall ramparts & snowy coastal paths surrounding 18th-century island fortress.",
+        "parkName": "Suomenlinna UNESCO Sea Fortress",
+        "parkUrl": "https://www.suomenlinna.fi/en/",
+        "trailheadGmaps": gmaps("Suomenlinna Fortress Walk", 60.1472, 24.9872)
+      }
+    ]
   },
   {
     "day": 16, "date": "Dec 27 (Sun)", "title_a": "Baltic Sea Ferry Transit & Medieval Tallinn", "title_b": "Lahemaa Viru Bog Snowshoe Hike & Medieval Tallinn",
@@ -553,7 +589,19 @@ base_22_days = [
       {"time": "18:00 - 19:30", "activity": "Pancake feast at Kompressor Pancake Pub (Giant sweet & savory pancakes for €6-€8!).", "gmaps": gmaps("Kompressor Tallinn")}
     ],
     "legs": [{"from": "Tallinn Port", "to": "Viru Bog", "dist": "55 km", "time": "45 mins", "route": "Route 1", "gmaps": gmaps("Tallinn Port to Viru Bog Parking")}],
-    "tickets": [{"item": "Megastar Ferry Ticket", "cost": "~€32", "url": "https://www.tallinksilja.com/en"}]
+    "tickets": [{"item": "Megastar Ferry Ticket", "cost": "~€32", "url": "https://www.tallinksilja.com/en"}],
+    "trails": [
+      {
+        "name": "Lahemaa National Park Viru Bog Snowshoe Boardwalk Trail",
+        "distance": "3.5 km round-trip",
+        "duration": "1h 30m",
+        "elevation": "Flat",
+        "terrain": "Wooden boardwalk trail through snow-covered peat bog leading to a 3-story timber observation tower.",
+        "parkName": "RMK Estonia State Forest - Lahemaa",
+        "parkUrl": "https://www.loodusegakoos.ee/where-to-go/national-parks/lahemaa-national-park",
+        "trailheadGmaps": gmaps("Viru Bog Parking Lahemaa", 59.4714, 25.6600)
+      }
+    ]
   },
   {
     "day": 17, "date": "Dec 28 (Mon)", "title_a": "Flight TLL -> ARN to Stockholm", "title_b": "Monteliusvägen Cliffside Skyline Walk & Flight to Stockholm",
@@ -575,7 +623,19 @@ base_22_days = [
       {"time": "19:00 - 20:30", "activity": "Monteliusvägen cliffside skyline walk overlooking Lake Mälaren & illuminated Gamla Stan.", "gmaps": gmaps("Monteliusvagen Stockholm", 59.3190, 18.0620)}
     ],
     "legs": [{"from": "Arlanda Airport", "to": "Stockholm Central", "dist": "40 km", "time": "18 mins", "route": "Arlanda Express Train", "gmaps": gmaps("Arlanda to Stockholm Central")}],
-    "tickets": [{"item": "Arlanda Express Train", "cost": "~320 SEK", "url": "https://www.arlandaexpress.com/"}]
+    "tickets": [{"item": "Arlanda Express Train", "cost": "~320 SEK", "url": "https://www.arlandaexpress.com/"}],
+    "trails": [
+      {
+        "name": "Monteliusvägen Cliffside Skyline Trail (Stockholm)",
+        "distance": "1.5 km cliffside walk",
+        "duration": "40 mins",
+        "elevation": "+25m cliffside gain",
+        "terrain": "Elevated wooden & paved cliffside trail overlooking Lake Mälaren, City Hall, and Gamla Stan skyline.",
+        "parkName": "Visit Stockholm Official Guide",
+        "parkUrl": "https://www.visitstockholm.com/",
+        "trailheadGmaps": gmaps("Monteliusvagen Stockholm", 59.3190, 18.0620)
+      }
+    ]
   },
   {
     "day": 18, "date": "Dec 29 (Tue)", "title_a": "Stockholm Core Day 1", "title_b": "Royal Djurgården Waterfront 6 km Nature Loop & Gamla Stan",
@@ -596,7 +656,19 @@ base_22_days = [
       {"time": "18:30 - 21:00", "activity": "Dinner at Meatballs for the People / Pelikan.", "gmaps": gmaps("Meatballs for the People Stockholm")}
     ],
     "legs": [{"from": "Sheraton", "to": "Djurgården", "dist": "3 km", "time": "15 mins", "route": "Tram 7", "gmaps": gmaps("Sheraton to Djurgarden")}],
-    "tickets": [{"item": "Royal Palace Ticket", "cost": "~190 SEK", "url": "https://www.kungligaslotten.se/english.html"}]
+    "tickets": [{"item": "Royal Palace Ticket", "cost": "~190 SEK", "url": "https://www.kungligaslotten.se/english.html"}],
+    "trails": [
+      {
+        "name": "Royal Djurgården Waterfront 6 km Nature Loop",
+        "distance": "6.0 km loop",
+        "duration": "1h 45m",
+        "elevation": "Flat (+15m)",
+        "terrain": "Paved and packed gravel waterfront promenade along Djurgårdsbrunnskanalen & Royal Djurgården parklands.",
+        "parkName": "Royal National City Park (Kungliga nationalstadsparken)",
+        "parkUrl": "https://www.visitdjurgarden.se/en/",
+        "trailheadGmaps": gmaps("Royal Djurgarden Stockholm", 59.3250, 18.1000)
+      }
+    ]
   },
   {
     "day": 19, "date": "Dec 30 (Wed)", "title_a": "Stockholm Core Day 2", "title_b": "Tyresta National Park Primeval Forest Trail & Vasa Museum",
@@ -618,7 +690,19 @@ base_22_days = [
       {"time": "19:00 - 21:30", "activity": "Dinner at Restaurant Tradition (Husmanskost).", "gmaps": gmaps("Restaurant Tradition Stockholm")}
     ],
     "legs": [{"from": "Sheraton", "to": "Tyresta National Park", "dist": "25 km", "time": "30 mins", "route": "Route 73", "gmaps": gmaps("Sheraton to Tyresta National Park")}],
-    "tickets": [{"item": "Vasa Museum Ticket", "cost": "~190 SEK", "url": "https://www.vasamuseet.se/en"}, {"item": "ABBA Museum Ticket", "cost": "~290 SEK", "url": "https://abbathemuseum.com/en/"}]
+    "tickets": [{"item": "Vasa Museum Ticket", "cost": "~190 SEK", "url": "https://www.vasamuseet.se/en"}, {"item": "ABBA Museum Ticket", "cost": "~290 SEK", "url": "https://abbathemuseum.com/en/"}],
+    "trails": [
+      {
+        "name": "Tyresta National Park Primeval Forest Trail",
+        "distance": "4.5 km loop",
+        "duration": "1h 30m",
+        "elevation": "+40m",
+        "terrain": "Snowy dirt paths, exposed granite rocks, and wooden bridges through 500-year-old virgin pine forest & lake shorelines.",
+        "parkName": "Sveriges Nationalparker - Tyresta",
+        "parkUrl": "https://www.sverigesnationalparker.se/park/tyresta-nationalpark/",
+        "trailheadGmaps": gmaps("Tyresta National Park Trailhead", 59.1833, 18.2333)
+      }
+    ]
   },
   {
     "day": 20, "date": "Dec 31 (Thu)", "title_a": "High-Speed Train & NYE Tivoli Celebration", "title_b": "Copenhagen Lakes & Kastellet Star-Fortress Walk + Tivoli NYE",
@@ -640,7 +724,19 @@ base_22_days = [
       {"time": "00:00 - 01:00", "activity": "Spectacular Midnight Fireworks over Tivoli Gardens.", "gmaps": gmaps("Tivoli Gardens Copenhagen")}
     ],
     "legs": [{"from": "Stockholm", "to": "Copenhagen", "dist": "650 km", "time": "5h 10m", "route": "SJ High Speed Train", "gmaps": gmaps("Stockholm to Copenhagen Train")}],
-    "tickets": [{"item": "SJ High-Speed Train", "cost": "~€65", "url": "https://www.sj.se/en"}, {"item": "Tivoli NYE Admission & Gala", "cost": "~1,170 DKK", "url": "https://www.tivoli.dk/en"}]
+    "tickets": [{"item": "SJ High-Speed Train", "cost": "~€65", "url": "https://www.sj.se/en"}, {"item": "Tivoli NYE Admission & Gala", "cost": "~1,170 DKK", "url": "https://www.tivoli.dk/en"}],
+    "trails": [
+      {
+        "name": "Kastellet 17th-Century Star-Fortress & Coastal Ramparts Walk",
+        "distance": "3.0 km circuit",
+        "duration": "50 mins",
+        "elevation": "Flat (+10m)",
+        "terrain": "Grassy fortress rampart earthen walls, gravel paths, and cobblestone harbor promenade past the Little Mermaid.",
+        "parkName": "Kastellet Copenhagen Official Site",
+        "parkUrl": "https://www.kongeligeslotte.dk/en/kastellet.html",
+        "trailheadGmaps": gmaps("Kastellet Copenhagen", 55.6914, 12.5950)
+      }
+    ]
   },
   {
     "day": 21, "date": "Jan 01 (Fri)", "title_a": "New Year's Day in Copenhagen", "title_b": "Amager Strandpark Coastal Dune Walk & CopenHill Roof Trek",
@@ -661,7 +757,29 @@ base_22_days = [
       {"time": "15:30 - 17:00", "activity": "Open-faced sandwich feast at Torvehallerne Hallernes Smørrebrød & DØP Hot Dog.", "gmaps": gmaps("Torvehallerne Copenhagen")}
     ],
     "legs": [{"from": "Marriott", "to": "Amager Strandpark", "dist": "5 km", "time": "12 mins", "route": "Metro M2", "gmaps": gmaps("Copenhagen Marriott to Amager Strandpark")}],
-    "tickets": [{"item": "CopenHill Viewpoint", "cost": "Free", "url": "https://www.copenhill.dk/en"}]
+    "tickets": [{"item": "CopenHill Viewpoint", "cost": "Free", "url": "https://www.copenhill.dk/en"}],
+    "trails": [
+      {
+        "name": "Amager Strandpark Coastal Dune & Lagoon Promenade",
+        "distance": "3.5 km stretch",
+        "duration": "1h 00m",
+        "elevation": "Flat",
+        "terrain": "Paved seaside promenade, sandy dunes, and wooden boardwalk pier overlooking the Öresund Strait.",
+        "parkName": "Amager Strandpark Official Park Page",
+        "parkUrl": "https://www.amager-strand.dk/",
+        "trailheadGmaps": gmaps("Amager Strandpark Copenhagen", 55.6550, 12.6350)
+      },
+      {
+        "name": "CopenHill Rooftop Mountain Urban Trek",
+        "distance": "0.8 km roof incline",
+        "duration": "30 mins",
+        "elevation": "+85m vertical roof gain",
+        "terrain": "Synthetic turf and paved stepped ramp ascending the architectural rooftop of CopenHill power plant.",
+        "parkName": "CopenHill Urban Activity Center",
+        "parkUrl": "https://www.copenhill.dk/en",
+        "trailheadGmaps": gmaps("CopenHill Copenhagen", 55.6810, 12.6200)
+      }
+    ]
   },
   {
     "day": 22, "date": "Jan 02 (Sat)", "title_a": "SQ352 Non-stop to Singapore", "title_b": "King's Garden (Kongens Have) Morning Stroll & Flight Home",
@@ -681,7 +799,19 @@ base_22_days = [
       {"time": "12:00", "activity": "Flight SQ352 departs CPH non-stop to Singapore (Arrives SIN Jan 03 at 07:30 AM).", "gmaps": gmaps("Copenhagen Airport")}
     ],
     "legs": [{"from": "King's Garden", "to": "CPH Airport", "dist": "9 km", "time": "13 mins", "route": "Metro M2", "gmaps": gmaps("Kings Garden to CPH Airport")}],
-    "tickets": [{"item": "CPH Metro Ticket", "cost": "36 DKK", "url": "https://intl.m.dk/"}]
+    "tickets": [{"item": "CPH Metro Ticket", "cost": "36 DKK", "url": "https://intl.m.dk/"}],
+    "trails": [
+      {
+        "name": "King's Garden (Kongens Have) Historic Castle Stroll",
+        "distance": "1.8 km loop",
+        "duration": "35 mins",
+        "elevation": "Flat",
+        "terrain": "Gravel tree-lined avenues, rose garden paths, and manicured lawns surrounding 17th-century Rosenborg Castle.",
+        "parkName": "Kongens Have - The King's Garden Copenhagen",
+        "parkUrl": "https://www.kongeligeslotte.dk/en/rosenborg-castle/the-kings-garden.html",
+        "trailheadGmaps": gmaps("Kings Garden Copenhagen", 55.6850, 12.5780)
+      }
+    ]
   }
 ]
 
