@@ -167,7 +167,7 @@
 
     .dishes-gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 12px;
       margin: 15px 0;
     }
@@ -175,21 +175,10 @@
       background: white;
       border: 1px solid #e2e8f0;
       border-radius: 8px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-    .dish-img {
-      width: 100%;
-      height: 140px;
-      object-fit: cover;
-    }
-    .dish-body {
       padding: 12px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      flex-grow: 1;
     }
     .dish-title {
       font-weight: 700;
@@ -389,7 +378,7 @@
         <div class="filter-bar" id="city-filter-bar">
           <button class="filter-btn active" onclick="setCityFilter('all', this)">All Cities (22 Days)</button>
           <button class="filter-btn" onclick="setCityFilter('helsinki', this)">🇫🇮 Helsinki</button>
-          <button class="filter-btn" onclick="setCityFilter('tallinn', this)">🇪🇪 Tallinn</button>
+          <button class="filter-btn" onclick="setCityFilter('tallinn', this)">🇪エストニア Tallinn</button>
           <button class="filter-btn" onclick="setCityFilter('stockholm', this)">🇸🇪 Stockholm</button>
           <button class="filter-btn" onclick="setCityFilter('copenhagen', this)">🇩🇰 Copenhagen</button>
           <button class="filter-btn" onclick="setCityFilter('lapland', this)">❄️ Lapland & Fells</button>
@@ -1859,14 +1848,11 @@
         const cardsHtml = dayData.items.map(item => {
           const dishesHtml = (item.dishes || []).map(d => `
             <div class="dish-card">
-              <img src="${d.image}" alt="${d.name}" class="dish-img">
-              <div class="dish-body">
-                <div>
-                  <div class="dish-title">${d.name}</div>
-                  <div class="dish-desc">${d.desc}</div>
-                </div>
-                <span class="dish-price"><i class="fa-solid fa-tag"></i> ${d.price}</span>
+              <div>
+                <div class="dish-title">${d.name}</div>
+                <div class="dish-desc">${d.desc}</div>
               </div>
+              <span class="dish-price"><i class="fa-solid fa-tag"></i> ${d.price}</span>
             </div>
           `).join('');
 
