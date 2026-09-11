@@ -219,42 +219,93 @@
   <script>
     // Passcode Auth Logic (8520)
     const PASSCODE_HASH = CryptoJS.MD5('8520').toString();
-    const pinHiddenInput = document.getElementById('pin-hidden-input');
-    const pinBoxes = document.querySelectorAll('.pin-digit-box');
-    const authForm = document.getElementById('auth-form');
     const authOverlay = document.getElementById('auth-overlay');
+    const authModal = document.getElementById('auth-modal');
+    const authForm = document.getElementById('auth-form');
+    const pinInput = document.getElementById('pin-hidden-input');
+    const boxes = document.querySelectorAll('.pin-digit-box');
     const errorMsg = document.getElementById('auth-error-msg');
 
     function checkAuth() {
-      if (sessionStorage.getItem('tour_authenticated') === 'true') {
-        authOverlay.style.display = 'none';
+      const savedPin = sessionStorage.getItem('auth_pin') || sessionStorage.getItem('auth_passed') || sessionStorage.getItem('tour_authenticated');
+      if (savedPin === '8520' || savedPin === 'true') {
+        if (authOverlay) authOverlay.style.display = 'none';
         renderFoodGuide();
+        return;
+      }
+      if (pinInput) {
+        setTimeout(() => {
+          try { pinInput.focus(); } catch (e) {}
+        }, 150);
       }
     }
 
-    pinHiddenInput.addEventListener('input', (e) => {
-      const val = e.target.value.replace(/\D/g, '');
-      e.target.value = val;
-      pinBoxes.forEach((box, idx) => {
-        if (idx < val.length) box.classList.add('filled');
-        else box.classList.remove('filled');
+    function updateVisualBoxes() {
+      if (!pinInput || !boxes.length) return;
+      const val = pinInput.value.replace(/\D/g, '').slice(0, 4);
+      pinInput.value = val;
+
+      boxes.forEach((box, i) => {
+        if (i < val.length) {
+          box.textContent = '•';
+          box.classList.add('filled');
+          box.classList.remove('active');
+        } else {
+          box.textContent = '';
+          box.classList.remove('filled');
+          if (i === val.length) {
+            box.classList.add('active');
+          } else {
+            box.classList.remove('active');
+          }
+        }
       });
-      if (val.length === 4) handleAuth(val);
-    });
 
-    function handleAuth(pin) {
-      if (CryptoJS.MD5(pin).toString() === PASSCODE_HASH) {
-        sessionStorage.setItem('tour_authenticated', 'true');
-        authOverlay.style.display = 'none';
-        renderFoodGuide();
-      } else {
-        errorMsg.style.display = 'block';
-        pinHiddenInput.value = '';
-        pinBoxes.forEach(b => b.classList.remove('filled'));
+      if (val.length === 4) {
+        verifyPin();
       }
     }
 
-    authForm.addEventListener('submit', () => handleAuth(pinHiddenInput.value));
+    if (pinInput) {
+      pinInput.addEventListener('input', updateVisualBoxes);
+      pinInput.addEventListener('keyup', updateVisualBoxes);
+    }
+
+    if (authForm) {
+      authForm.addEventListener('submit', (e) => {
+        if (e) e.preventDefault();
+        verifyPin();
+      });
+    }
+
+    if (authModal) {
+      authModal.addEventListener('click', () => {
+        if (pinInput) pinInput.focus();
+      });
+    }
+
+    function verifyPin() {
+      if (!pinInput) return;
+      const entered = pinInput.value.trim();
+
+      if (entered === '8520' || CryptoJS.MD5(entered).toString() === PASSCODE_HASH) {
+        sessionStorage.setItem('auth_passed', 'true');
+        sessionStorage.setItem('auth_pin', '8520');
+        sessionStorage.setItem('tour_authenticated', 'true');
+        if (authOverlay) authOverlay.style.display = 'none';
+        if (errorMsg) errorMsg.style.display = 'none';
+        renderFoodGuide();
+      } else if (entered.length >= 4) {
+        if (errorMsg) errorMsg.style.display = 'block';
+        pinInput.value = '';
+        boxes.forEach(b => {
+          b.textContent = '';
+          b.classList.remove('filled');
+          b.classList.remove('active');
+        });
+        if (boxes.length) boxes[0].classList.add('active');
+      }
+    }
 
     // Master Food Database
     const foodMaster = {
@@ -474,6 +525,7 @@
 
     function renderFoodGuide() {
       const container = document.getElementById('food-content-container');
+      if (!container) return;
       container.innerHTML = '';
 
       for (let day = 1; day <= 22; day++) {
@@ -525,9 +577,9 @@
       }
     }
 
-    function filterCity(city) {
+    function filterCity(city, btn) {
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      event.target.classList.add('active');
+      if (btn) btn.classList.add('active');
 
       document.querySelectorAll('.food-day-section').forEach(sec => {
         if (city === 'all' || sec.getAttribute('data-city') === city) {
@@ -542,3 +594,5 @@
   </script>
 </body>
 </html>
+
+
