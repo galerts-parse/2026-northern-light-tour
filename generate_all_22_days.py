@@ -567,7 +567,7 @@ base_22_days = [
   {
     "day": 16, "date": "Dec 27 (Sun)", "title_a": "Baltic Ferry & Tallinn Medieval Old Town Walking Tour", "title_b": "Tallinn UNESCO Old Town Pedestrian Tour & Medieval Banquet",
     "location": "Tallinn, Estonia", "coords": [59.4370, 24.7536], "distance": "0 km (Pedestrian Walk)",
-    "hotel": "Hotel Telegraaf, Autograph Collection (Recommended Marriott)", "hotelStatus": "pending", "bookingRef": "Marriott Autograph Collection in Tallinn Old Town",
+    "hotel": "Hotel Telegraaf, Autograph Collection (~€160/night)", "hotelStatus": "pending", "bookingRef": "Marriott Autograph Collection in Tallinn Old Town (1 Night: Dec 27-28)",
     "hotelLinks": [{"name": "Hotel Telegraaf (Marriott)", "url": "https://www.marriott.com/en-us/hotels/tllak-hotel-telegraaf-autograph-collection/overview/", "gmaps": gmaps("Hotel Telegraaf Tallinn")}],
     "food": food_db["Tallinn"],
     "activities_a": "Morning 2h Megastar ferry across Baltic Sea; explore UNESCO medieval Old Town, Town Hall Christmas Market & Toompea Hill vista.",
@@ -592,54 +592,54 @@ base_22_days = [
     ]
   },
   {
-    "day": 17, "date": "Dec 28 (Mon)", "title_a": "Tallinn Seaplane Museum & Flight to Stockholm", "title_b": "Lennusadam Seaplane Harbour Museum, Kadriorg Palace & Flight to Stockholm",
-    "location": "Stockholm, Sweden", "coords": [59.3293, 18.0686], "distance": "0 km (Flight)",
-    "hotel": "Sheraton Stockholm Hotel (Recommended Marriott)", "hotelStatus": "pending", "bookingRef": "Marriott Waterfront Hotel near Central Station",
-    "hotelLinks": [{"name": "Sheraton Stockholm (Marriott)", "url": "https://www.marriott.com/en-us/hotels/stosi-sheraton-stockholm-hotel/overview/", "gmaps": gmaps("Sheraton Stockholm Hotel")}],
-    "food": food_db["Stockholm"],
-    "activities_a": "Morning visit Kadriorg Palace & Art Museum; late afternoon flight to Stockholm (TLL -> ARN); evening walk through illuminated Norrmalm & Nybroplan.",
-    "activities_b": "Morning tour Lennusadam Seaplane Harbour Museum (1936 Lembit Submarine) & Kadriorg Palace; lunch at Telliskivi F-Hoone; flight to Stockholm; Monteliusvägen cliffside skyline walk.",
+    "day": 17, "date": "Dec 28 (Mon)", "title_a": "Tallinn Museums & Baltic Queen Overnight Cruise", "title_b": "Lennusadam Seaplane Museum, Kadriorg Palace & Tallink Silja Baltic Queen Cruise to Stockholm",
+    "location": "Overnight Cruise (Baltic Sea)", "coords": [59.4450, 24.7600], "distance": "0 km (Ferry Transit)",
+    "hotel": "Tallink Silja Line M/S Baltic Queen Overnight Cruise (~€140/cabin)", "hotelStatus": "pending", "bookingRef": "Overnight Cruise Cabin (Tallinn D-Terminal to Stockholm Värtahamnen)",
+    "hotelLinks": [{"name": "Tallink Silja Baltic Queen Cruise", "url": "https://www.tallinksilja.com/en", "gmaps": gmaps("Tallinn D-Terminal")} ],
+    "food": food_db["Tallinn"],
+    "activities_a": "Morning visit Kadriorg Palace & Art Museum; afternoon Lennusadam Seaplane Museum; 18:00 board Tallink Silja M/S Baltic Queen overnight cruise to Stockholm.",
+    "activities_b": "Morning tour Lennusadam Seaplane Harbour Museum (1936 Lembit Submarine); Kadriorg Palace; lunch at Telliskivi F-Hoone; 17:00 check in at Tallinn D-Terminal & 18:00 depart on Tallink Silja M/S Baltic Queen overnight cruise.",
     "sched_a": [
       {"time": "10:00 - 12:00", "activity": "Kadriorg Art Museum & Palace.", "gmaps": gmaps("Kadriorg Palace Tallinn")},
-      {"time": "15:30 - 16:30", "activity": "Flight TLL -> ARN.", "gmaps": gmaps("Stockholm Arlanda Airport")},
-      {"time": "18:00", "activity": "Check into Sheraton Stockholm Hotel.", "gmaps": gmaps("Sheraton Stockholm Hotel")}
+      {"time": "13:00 - 15:30", "activity": "Lennusadam Seaplane Harbour Museum.", "gmaps": gmaps("Seaplane Harbour Tallinn")},
+      {"time": "17:00 - 18:00", "activity": "Board Tallink Silja M/S Baltic Queen Overnight Cruise at Tallinn D-Terminal.", "gmaps": gmaps("Tallinn D-Terminal")}
     ],
     "sched_b": [
       {"time": "09:30 - 11:45", "activity": "Tour Lennusadam Seaplane Harbour Museum (Step inside 1936 Lembit Submarine & 1916 hangars).", "gmaps": gmaps("Seaplane Harbour Tallinn", 59.4514, 24.7500)},
-      {"time": "12:00 - 13:30", "activity": "Lunch at Telliskivi Creative City (F-Hoone cafe) & Kadriorg Palace gardens.", "gmaps": gmaps("Telliskivi Creative City Tallinn")},
-      {"time": "13:30 - 14:15", "activity": "Taxi / Tram to Tallinn Airport (TLL).", "gmaps": gmaps("Tallinn Airport")},
-      {"time": "15:30 - 16:30", "activity": "Flight TLL -> ARN to Stockholm Arlanda Airport (SAS / Ryanair, 1h).", "gmaps": gmaps("Stockholm Arlanda Airport")},
-      {"time": "17:00 - 17:30", "activity": "Arlanda Express train to Stockholm Central Station (18 mins).", "gmaps": gmaps("Stockholm Central Station")},
-      {"time": "18:00 - 18:30", "activity": "Check into Sheraton Stockholm Hotel.", "gmaps": gmaps("Sheraton Stockholm Hotel")},
-      {"time": "19:00 - 20:30", "activity": "Monteliusvägen cliffside skyline walk overlooking Lake Mälaren & illuminated Gamla Stan.", "gmaps": gmaps("Monteliusvagen Stockholm", 59.3190, 18.0620)}
+      {"time": "12:00 - 13:30", "activity": "Lunch at Telliskivi Creative City (F-Hoone cafe) & Kadriorg Palace grounds.", "gmaps": gmaps("Telliskivi Creative City Tallinn")},
+      {"time": "14:00 - 16:30", "activity": "Free time in Tallinn Old Town & coffee at Maiasmokk Cafe.", "gmaps": gmaps("Tallinn Old Town")},
+      {"time": "17:00 - 17:45", "activity": "Check in at Tallinn Port D-Terminal for Tallink Silja Line.", "gmaps": gmaps("Tallinn D-Terminal")},
+      {"time": "18:00", "activity": "M/S Baltic Queen departs Tallinn. Enjoy sea view cabin, tax-free shopping, buffet & live evening show.", "gmaps": gmaps("Tallinn D-Terminal")}
     ],
-    "legs": [{"from": "Arlanda Airport", "to": "Stockholm Central", "dist": "40 km", "time": "18 mins", "route": "Arlanda Express Train", "gmaps": gmaps("Arlanda to Stockholm Central")}],
+    "legs": [{"from": "Old Town", "to": "D-Terminal", "dist": "1.5 km", "time": "10 mins taxi", "route": "Port Transit", "gmaps": gmaps("Tallinn Old Town to D-Terminal")}],
     "tickets": [
       {"item": "Lennusadam Seaplane Museum", "cost": "€15 (Open 10:00-19:00)", "url": "https://meremuseum.ee/lennusadam/en/"},
       {"item": "Kadriorg Palace Museum", "cost": "€12 (Open 10:00-18:00)", "url": "https://kadriorumuuseum.ekm.ee/en/"},
-      {"item": "Arlanda Express Train", "cost": "~320 SEK (18 mins)", "url": "https://www.arlandaexpress.com/"}
+      {"item": "Tallink Silja Cruise Cabin", "cost": "~€140 (Dep 18:00)", "url": "https://www.tallinksilja.com/en"}
     ]
   },
   {
-    "day": 18, "date": "Dec 29 (Tue)", "title_a": "Stockholm Old Town & Royal Palace", "title_b": "Gamla Stan Medieval Quarter, Royal Palace Armory & Östermalms Saluhall",
+    "day": 18, "date": "Dec 29 (Tue)", "title_a": "Cruise Archipelago Arrival & Stockholm Old Town", "title_b": "Stockholm Archipelago Arrival, Gamla Stan Medieval Quarter & Royal Palace",
     "location": "Stockholm, Sweden", "coords": [59.3293, 18.0686], "distance": "0 km (Metro/Walk)",
-    "hotel": "Sheraton Stockholm Hotel (Recommended Marriott)", "hotelStatus": "pending", "bookingRef": "Marriott Waterfront Hotel",
+    "hotel": "Sheraton Stockholm Hotel (~1,900 SEK / ~$180/night)", "hotelStatus": "pending", "bookingRef": "Marriott Waterfront Hotel (Night 1 of 2: Dec 29-31)",
     "hotelLinks": [{"name": "Sheraton Stockholm (Marriott)", "url": "https://www.marriott.com/en-us/hotels/stosi-sheraton-stockholm-hotel/overview/", "gmaps": gmaps("Sheraton Stockholm Hotel")}],
     "food": food_db["Stockholm"],
-    "activities_a": "Full day of historic Stockholm: cobblestone alleys of Gamla Stan (Old Town), Royal Palace, Stortorget, and Nobel Prize Museum.",
-    "activities_b": "Gamla Stan medieval walking loop; Royal Palace (Kungliga Slottet) & Royal Armory; lunch at Östermalms Saluhall (Lisaköket Toast Skagen); Stockholm City Hall Golden Hall tour & Meatballs for the People dinner.",
+    "activities_a": "Arrive Stockholm 10:30 AM via Baltic Queen cruise; Gamla Stan walking tour, Royal Palace, Stortorget & Nobel Prize Museum.",
+    "activities_b": "Sail through Stockholm Archipelago (sunrise views); 10:30 AM arrive Värtahamnen port; check into Sheraton Stockholm Hotel; Gamla Stan medieval walking loop; Royal Palace & Östermalms Saluhall dinner.",
     "sched_a": [
-      {"time": "09:30 - 12:00", "activity": "Gamla Stan walking tour.", "gmaps": gmaps("Gamla Stan Stockholm")},
-      {"time": "15:00 - 17:00", "activity": "Nobel Prize Museum.", "gmaps": gmaps("Nobel Prize Museum Stockholm")}
+      {"time": "10:30", "activity": "M/S Baltic Queen arrives at Stockholm Värtahamnen Port.", "gmaps": gmaps("Vartahamnen Port Stockholm")},
+      {"time": "11:30 - 13:00", "activity": "Check into Sheraton Stockholm Hotel.", "gmaps": gmaps("Sheraton Stockholm Hotel")},
+      {"time": "14:00 - 17:00", "activity": "Gamla Stan walking tour & Royal Palace.", "gmaps": gmaps("Gamla Stan Stockholm")}
     ],
     "sched_b": [
-      {"time": "09:30 - 12:00", "activity": "Gamla Stan medieval alleys, Stortorget, Mårten Trotzigs Gränd & Royal Palace (Kungliga Slottet).", "gmaps": gmaps("Royal Palace Stockholm")},
-      {"time": "12:30 - 13:45", "activity": "Lunch at Östermalms Saluhall (Lisaköket Toast Skagen & Swedish seafood soup).", "gmaps": gmaps("Ostermalms Saluhall Stockholm")},
-      {"time": "14:00 - 16:00", "activity": "Stockholm City Hall (Stadshuset) Blue Hall & 18-million gold tile Golden Hall tour.", "gmaps": gmaps("Stockholm City Hall", 59.3275, 18.0544)},
-      {"time": "16:30 - 18:00", "activity": "Drottninggatan pedestrian district & NK Department Store.", "gmaps": gmaps("Drottninggatan Stockholm")},
+      {"time": "08:00 - 10:30", "activity": "Sail through 30,000-island Stockholm Archipelago & breakfast on M/S Baltic Queen.", "gmaps": gmaps("Stockholm Archipelago")},
+      {"time": "10:30", "activity": "Disembark at Stockholm Värtahamnen Terminal & 10-min taxi/metro to Sheraton Stockholm Hotel.", "gmaps": gmaps("Sheraton Stockholm Hotel")},
+      {"time": "11:30 - 13:30", "activity": "Gamla Stan medieval alleys, Stortorget, Mårten Trotzigs Gränd & Royal Palace (Kungliga Slottet).", "gmaps": gmaps("Royal Palace Stockholm")},
+      {"time": "14:00 - 15:30", "activity": "Lunch at Östermalms Saluhall (Lisaköket Toast Skagen & Swedish seafood soup).", "gmaps": gmaps("Ostermalms Saluhall Stockholm")},
+      {"time": "16:00 - 18:00", "activity": "Stockholm City Hall (Stadshuset) 18-million gold tile Golden Hall tour.", "gmaps": gmaps("Stockholm City Hall", 59.3275, 18.0544)},
       {"time": "18:30 - 21:00", "activity": "Dinner at Meatballs for the People / Pelikan.", "gmaps": gmaps("Meatballs for the People Stockholm")}
     ],
-    "legs": [{"from": "Sheraton", "to": "Gamla Stan", "dist": "1 km", "time": "10 mins walk", "route": "Central Walk", "gmaps": gmaps("Sheraton to Gamla Stan")}],
+    "legs": [{"from": "Värtahamnen Port", "to": "Sheraton Hotel", "dist": "4 km", "time": "12 mins taxi/metro", "route": "Port Transit", "gmaps": gmaps("Vartahamnen to Sheraton Stockholm")}],
     "tickets": [
       {"item": "Royal Palace & Treasury", "cost": "190 SEK (Open 10:00-16:00)", "url": "https://www.kungligaslotten.se/english.html"},
       {"item": "Stockholm City Hall Tour", "cost": "140 SEK (Open 08:30-16:00)", "url": "https://stadshuset.stockholm/en/"},
@@ -649,7 +649,7 @@ base_22_days = [
   {
     "day": 19, "date": "Dec 30 (Wed)", "title_a": "Stockholm Museum Island Day", "title_b": "Vasa Museum 17th-Century Warship & ABBA Museum / Skansen Cultural Tour",
     "location": "Stockholm, Sweden", "coords": [59.3293, 18.0686], "distance": "0 km (Tram 7)",
-    "hotel": "Sheraton Stockholm Hotel (Recommended Marriott)", "hotelStatus": "pending", "bookingRef": "Marriott Waterfront Hotel",
+    "hotel": "Sheraton Stockholm Hotel (~1,900 SEK / ~$180/night)", "hotelStatus": "pending", "bookingRef": "Marriott Waterfront Hotel (Night 2 of 2: Dec 29-31)",
     "hotelLinks": [{"name": "Sheraton Stockholm (Marriott)", "url": "https://www.marriott.com/en-us/hotels/stosi-sheraton-stockholm-hotel/overview/", "gmaps": gmaps("Sheraton Stockholm Hotel")}],
     "food": food_db["Stockholm"],
     "activities_a": "Maritime & culture day: tour 17th-century Vasa Museum, explore Djurgården island & Skansen, or visit ABBA The Museum; traditional Swedish dinner.",
@@ -676,11 +676,11 @@ base_22_days = [
   {
     "day": 20, "date": "Dec 31 (Thu)", "title_a": "High-Speed Train & NYE Tivoli Celebration", "title_b": "SJ High-Speed Train & Copenhagen City Highlights + Tivoli NYE Gala",
     "location": "Copenhagen, Denmark", "coords": [55.6761, 12.5683], "distance": "0 km (Train)",
-    "hotel": "Copenhagen Marriott Hotel (Recommended Marriott)", "hotelStatus": "pending", "bookingRef": "Marriott Harborfront Hotel near Tivoli",
+    "hotel": "Copenhagen Marriott Hotel (~2,100 DKK / ~$300/night)", "hotelStatus": "pending", "bookingRef": "Marriott Harborfront Hotel near Tivoli (2 Nights: Dec 31 - Jan 02)",
     "hotelLinks": [{"name": "Copenhagen Marriott Hotel", "url": "https://www.marriott.com/en-us/hotels/cphdk-copenhagen-marriott-hotel/overview/", "gmaps": gmaps("Copenhagen Marriott Hotel")}],
     "food": food_db["Copenhagen"],
     "activities_a": "Morning SJ High-Speed Train from Stockholm Central to Copenhagen Central (5h 10m via Öresund Bridge); check in; New Year's Eve gala dinner & midnight fireworks at Tivoli Gardens.",
-    "activities_b": "SJ High-Speed Train across Öresund Bridge; Rundetaarn (Round Tower spiral ramp view); Nyhavn waterfront harbor stroll; Tivoli Gardens NYE gala dinner & midnight fireworks.",
+    "activities_b": "📌 BOOK LATER REMINDER: SJ Train tickets for Dec 31 release ~90 days in advance (late Sept / early Oct 2026)! SJ High-Speed Train across Öresund Bridge; Rundetaarn spiral ramp view; Nyhavn canal walk; Tivoli Gardens NYE gala dinner & midnight fireworks.",
     "sched_a": [
       {"time": "08:20 - 13:30", "activity": "SJ High-Speed Train to Copenhagen.", "gmaps": gmaps("Copenhagen Central Station")},
       {"time": "19:00 - 01:00", "activity": "Tivoli Gardens NYE Gala & Fireworks.", "gmaps": gmaps("Tivoli Gardens Copenhagen")}
@@ -694,7 +694,7 @@ base_22_days = [
     ],
     "legs": [{"from": "Stockholm", "to": "Copenhagen", "dist": "650 km", "time": "5h 10m", "route": "SJ High Speed Train", "gmaps": gmaps("Stockholm to Copenhagen Train")}],
     "tickets": [
-      {"item": "SJ High-Speed Train Ticket", "cost": "~€65 (Dep 08:20 AM)", "url": "https://www.sj.se/en"},
+      {"item": "📌 BOOK LATER: SJ Train Ticket (Dec 31)", "cost": "~€65 (Releases Sept/Oct 2026)", "url": "https://www.sj.se/en"},
       {"item": "Tivoli NYE Admission & Gala", "cost": "~1,170 DKK (Open 11:00-00:30)", "url": "https://www.tivoli.dk/en"},
       {"item": "Rundetaarn Round Tower", "cost": "40 DKK (Open 10:00-18:00)", "url": "https://www.rundetaarn.dk/en/"}
     ]

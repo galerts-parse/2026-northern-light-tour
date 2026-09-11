@@ -462,28 +462,58 @@ function renderTourPackageView(payload, activeRoute) {
           </div>
         </div>
       `;
-    } else if (dayNum >= 17 && dayNum <= 19) {
+    } else if (dayNum === 17) {
+      accDetails = `
+        <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; margin-top: 6px;">
+          <div style="font-weight: 700; color: #15803d; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
+            <span><i class="fa-solid fa-ship"></i> Tallink Silja M/S Baltic Queen Overnight Baltic Cruise</span>
+            <span class="badge-tag confirmed">✅ Confirmed Routing</span>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 6px; margin-top: 6px; font-size: 0.82rem; color: #334155;">
+            <div><strong>Vessel Name:</strong> M/S Baltic Queen (Tallink Silja Line)</div>
+            <div><strong>Route:</strong> Tallinn D-Terminal → Stockholm Värtahamnen</div>
+            <div><strong>Departure:</strong> Mon, Dec 28 @ 18:00 (Check-in 17:00)</div>
+            <div><strong>Arrival:</strong> Tue, Dec 29 @ 10:30 AM (Stockholm Värtahamnen)</div>
+            <div><strong>Cabin & Price:</strong> Private Sea-View Cabin (~€140 EUR / night)</div>
+            <div><strong>Inclusions:</strong> Tax-free shopping, live shows, sauna & sea views</div>
+          </div>
+        </div>
+      `;
+    } else if (dayNum === 18 || dayNum === 19) {
       accDetails = `
         <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; margin-top: 6px;">
           <div style="font-weight: 700; color: #d97706; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
             <span><i class="fa-solid fa-hotel"></i> Sheraton Stockholm Hotel (Stockholm, Sweden)</span>
             <span class="badge-tag pending">📌 Booking Recommended</span>
           </div>
-          <div style="font-size: 0.82rem; color: #475569; margin-top: 4px;">
-            <strong>Recommendation:</strong> Waterfront Marriott hotel located next to Stockholm Central Station & Gamla Stan bridge (3 Nights: Dec 28 – Dec 31).
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 6px; margin-top: 6px; font-size: 0.82rem; color: #334155;">
+            <div><strong>Location:</strong> Tegelbacken 6 (3 mins walk to Central Station)</div>
+            <div><strong>Stay Duration:</strong> 2 Nights (Check-in Tue Dec 29, Check-out Thu Dec 31)</div>
+            <div><strong>Estimated Rate:</strong> ~1,900 SEK / ~$180 USD per night</div>
+            <div><strong>Check-in Time:</strong> Tue, Dec 29 @ 15:00 (after 10:30 AM cruise arrival)</div>
           </div>
         </div>
       `;
     } else if (dayNum === 20 || dayNum === 21) {
+      const sjRemark = dayNum === 20 ? `
+        <div style="background: #fef3c7; border: 1px solid #fcd34d; border-radius: 6px; padding: 8px; margin-top: 6px; font-size: 0.82rem; color: #92400e;">
+          <strong>📌 BOOK LATER REMINDER:</strong> SJ High-Speed Train tickets for Dec 31 (Stockholm → Copenhagen) release ~90 days in advance in <strong>late September / early October 2026</strong>. Set an alert on <a href="https://www.sj.se/en" target="_blank" style="color: #b45309; font-weight:700;">SJ.se</a> or <a href="https://www.omio.com" target="_blank" style="color: #b45309; font-weight:700;">Omio.com</a>!
+        </div>
+      ` : '';
+
       accDetails = `
         <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; margin-top: 6px;">
           <div style="font-weight: 700; color: #d97706; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
             <span><i class="fa-solid fa-hotel"></i> Copenhagen Marriott Hotel (Copenhagen, Denmark)</span>
             <span class="badge-tag pending">📌 Booking Recommended (NYE)</span>
           </div>
-          <div style="font-size: 0.82rem; color: #475569; margin-top: 4px;">
-            <strong>Recommendation:</strong> Harborfront Marriott hotel 10 mins walk from Tivoli Gardens NYE Fireworks (2 Nights: Dec 31 – Jan 02).
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 6px; margin-top: 6px; font-size: 0.82rem; color: #334155;">
+            <div><strong>Location:</strong> Kalvebod Brygge 5 (10 mins walk to Tivoli Gardens)</div>
+            <div><strong>Stay Duration:</strong> 2 Nights (Check-in Thu Dec 31, Check-out Sat Jan 02)</div>
+            <div><strong>Estimated Rate:</strong> ~2,100 DKK / ~$300 USD per night (NYE Peak)</div>
+            <div><strong>Check-in Time:</strong> Thu, Dec 31 @ 15:00 (after 13:30 train arrival)</div>
           </div>
+          ${sjRemark}
         </div>
       `;
     } else if (dayNum === 22) {
