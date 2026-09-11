@@ -297,12 +297,17 @@ function renderTourPackageView(payload, activeRoute) {
     if (dayNum === 1) {
       accDetails = `
         <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; margin-top: 6px;">
-          <div style="font-weight: 700; color: #d97706; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
-            <span><i class="fa-solid fa-hotel"></i> Accommodation: ${d.hotel}</span>
-            <span class="badge-tag pending">📌 Booking Recommended</span>
+          <div style="font-weight: 700; color: #15803d; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
+            <span><i class="fa-solid fa-house-chimney"></i> Home in Rovaniemi (Airbnb)</span>
+            <span class="badge-tag confirmed">✅ Confirmed</span>
           </div>
-          <div style="font-size: 0.82rem; color: #475569; margin-top: 4px;">
-            <strong>Status:</strong> Unconfirmed in folder — Recommended stay in Rovaniemi after evening flight arrival (5:00 PM car pickup).
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 6px; margin-top: 6px; font-size: 0.82rem; color: #334155;">
+            <div><strong>Airbnb Conf Code:</strong> <code style="background: #f1f5f9; padding: 1px 5px; border-radius: 3px; font-weight:700; color: #16a34a;">HMKWJX2QWA</code></div>
+            <div><strong>Host:</strong> Riitta (Co-host: Yrjö)</div>
+            <div><strong>Stay Duration:</strong> 1 Night (Check-in Sat Dec 12, Check-out Sun Dec 13)</div>
+            <div><strong>Check-in:</strong> Sat, Dec 12 @ 3:00 PM</div>
+            <div><strong>Check-out:</strong> Sun, Dec 13 @ 12:00 PM</div>
+            <div><strong>Total Paid:</strong> $294.48 SGD</div>
           </div>
         </div>
       `;
@@ -441,24 +446,34 @@ function renderTourPackageView(payload, activeRoute) {
     } else if (dayNum === 15) {
       accDetails = `
         <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; margin-top: 6px;">
-          <div style="font-weight: 700; color: #d97706; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
-            <span><i class="fa-solid fa-hotel"></i> Hotel U14, Autograph Collection (Helsinki)</span>
-            <span class="badge-tag pending">📌 Booking Recommended</span>
+          <div style="font-weight: 700; color: #15803d; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
+            <span><i class="fa-solid fa-hotel"></i> Scandic Grand Central Helsinki</span>
+            <span class="badge-tag confirmed">✅ Confirmed</span>
           </div>
-          <div style="font-size: 0.82rem; color: #475569; margin-top: 4px;">
-            <strong>Recommendation:</strong> Modern Nordic boutique hotel 7 mins walk from Central Station. VR Train 274 arrives at 09:15 AM.
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 6px; margin-top: 6px; font-size: 0.82rem; color: #334155;">
+            <div><strong>Booking Platform:</strong> Booking.com</div>
+            <div><strong>Confirmation Number:</strong> <code style="background: #f1f5f9; padding: 1px 5px; border-radius: 3px; font-weight:700; color: #16a34a;">6224.239.118</code> (PIN: 0930)</div>
+            <div><strong>Address:</strong> 13 Vilhonkatu, Kluuvi, 00100 Helsinki, Finland (+358 300 308401)</div>
+            <div><strong>Check-in:</strong> Sat, Dec 26 @ 16:00</div>
+            <div><strong>Check-out:</strong> Sun, Dec 27 @ 12:00 PM</div>
+            <div><strong>Price:</strong> €140 EUR (~S$206 SGD)</div>
           </div>
         </div>
       `;
     } else if (dayNum === 16) {
       accDetails = `
         <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; margin-top: 6px;">
-          <div style="font-weight: 700; color: #d97706; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
-            <span><i class="fa-solid fa-hotel"></i> Hotel Telegraaf, Autograph Collection (Tallinn)</span>
-            <span class="badge-tag pending">📌 Booking Recommended</span>
+          <div style="font-weight: 700; color: #15803d; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
+            <span><i class="fa-solid fa-building-user"></i> Tallinn City Apartments - Town Hall Square</span>
+            <span class="badge-tag confirmed">✅ Confirmed</span>
           </div>
-          <div style="font-size: 0.82rem; color: #475569; margin-top: 4px;">
-            <strong>Recommendation:</strong> Historic 1878 telegraph building located directly in Tallinn Old Town near Town Hall Square.
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 6px; margin-top: 6px; font-size: 0.82rem; color: #334155;">
+            <div><strong>Booking Platform:</strong> Booking.com</div>
+            <div><strong>Confirmation Number:</strong> <code style="background: #f1f5f9; padding: 1px 5px; border-radius: 3px; font-weight:700; color: #16a34a;">6719.652.299</code> (PIN: 5042)</div>
+            <div><strong>Address:</strong> Kullasepa Street 11, Tallinn City-Centre, 10132 Tallinn, Estonia (+372 525 5321)</div>
+            <div><strong>Check-in:</strong> Sun, Dec 27 @ 16:00</div>
+            <div><strong>Check-out:</strong> Mon, Dec 28 @ 12:00 PM</div>
+            <div><strong>Price:</strong> €125 EUR (~S$184 SGD)</div>
           </div>
         </div>
       `;
@@ -467,30 +482,31 @@ function renderTourPackageView(payload, activeRoute) {
         <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; margin-top: 6px;">
           <div style="font-weight: 700; color: #15803d; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
             <span><i class="fa-solid fa-ship"></i> Tallink Silja M/S Baltic Queen Overnight Baltic Cruise</span>
-            <span class="badge-tag confirmed">✅ Confirmed Routing</span>
+            <span class="badge-tag confirmed">✅ Confirmed</span>
           </div>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 6px; margin-top: 6px; font-size: 0.82rem; color: #334155;">
+            <div><strong>Booking Conf #:</strong> <code style="background: #f1f5f9; padding: 1px 5px; border-radius: 3px; font-weight:700; color: #16a34a;">75550929</code></div>
             <div><strong>Vessel Name:</strong> M/S Baltic Queen (Tallink Silja Line)</div>
             <div><strong>Route:</strong> Tallinn D-Terminal → Stockholm Värtahamnen</div>
-            <div><strong>Departure:</strong> Mon, Dec 28 @ 18:00 (Check-in 17:00)</div>
+            <div><strong>Departure:</strong> Mon, Dec 28 @ 18:00 (Check-in 17:00 at D-Terminal)</div>
             <div><strong>Arrival:</strong> Tue, Dec 29 @ 10:30 AM (Stockholm Värtahamnen)</div>
-            <div><strong>Cabin & Price:</strong> Private Sea-View Cabin (~€140 EUR / night)</div>
-            <div><strong>Inclusions:</strong> Tax-free shopping, live shows, sauna & sea views</div>
+            <div><strong>Cabin & Price:</strong> Private Sea-View Cabin</div>
           </div>
         </div>
       `;
     } else if (dayNum === 18 || dayNum === 19) {
       accDetails = `
         <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; margin-top: 6px;">
-          <div style="font-weight: 700; color: #d97706; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
+          <div style="font-weight: 700; color: #15803d; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
             <span><i class="fa-solid fa-hotel"></i> Sheraton Stockholm Hotel (Stockholm, Sweden)</span>
-            <span class="badge-tag pending">📌 Booking Recommended</span>
+            <span class="badge-tag confirmed">✅ Confirmed</span>
           </div>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 6px; margin-top: 6px; font-size: 0.82rem; color: #334155;">
-            <div><strong>Location:</strong> Tegelbacken 6 (3 mins walk to Central Station)</div>
-            <div><strong>Stay Duration:</strong> 2 Nights (Check-in Tue Dec 29, Check-out Thu Dec 31)</div>
-            <div><strong>Estimated Rate:</strong> ~1,900 SEK / ~$180 USD per night</div>
-            <div><strong>Check-in Time:</strong> Tue, Dec 29 @ 15:00 (after 10:30 AM cruise arrival)</div>
+            <div><strong>Marriott Conf #:</strong> <code style="background: #f1f5f9; padding: 1px 5px; border-radius: 3px; font-weight:700; color: #16a34a;">90629030</code></div>
+            <div><strong>Address:</strong> Tegelbacken 6, 101 23 Stockholm, Sweden (+46-8-4123400)</div>
+            <div><strong>Stay Duration:</strong> 2 Nights (Check-in Tue Dec 29 @ 16:00, Check-out Thu Dec 31 @ 12:00)</div>
+            <div><strong>Redemption Rate:</strong> 88,000 Marriott Bonvoy Points (Points Booking)</div>
+            <div><strong>Room Type:</strong> Classic Guest Room (1 King Bed)</div>
           </div>
         </div>
       `;
@@ -503,15 +519,16 @@ function renderTourPackageView(payload, activeRoute) {
 
       accDetails = `
         <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; margin-top: 6px;">
-          <div style="font-weight: 700; color: #d97706; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
-            <span><i class="fa-solid fa-hotel"></i> Copenhagen Marriott Hotel (Copenhagen, Denmark)</span>
-            <span class="badge-tag pending">📌 Booking Recommended (NYE)</span>
+          <div style="font-weight: 700; color: #15803d; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
+            <span><i class="fa-solid fa-hotel"></i> Four Points Flex by Sheraton Copenhagen City (Copenhagen, Denmark)</span>
+            <span class="badge-tag confirmed">✅ Confirmed</span>
           </div>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 6px; margin-top: 6px; font-size: 0.82rem; color: #334155;">
-            <div><strong>Location:</strong> Kalvebod Brygge 5 (10 mins walk to Tivoli Gardens)</div>
-            <div><strong>Stay Duration:</strong> 2 Nights (Check-in Thu Dec 31, Check-out Sat Jan 02)</div>
-            <div><strong>Estimated Rate:</strong> ~2,100 DKK / ~$300 USD per night (NYE Peak)</div>
-            <div><strong>Check-in Time:</strong> Thu, Dec 31 @ 15:00 (after 13:30 train arrival)</div>
+            <div><strong>Marriott Conf #:</strong> <code style="background: #f1f5f9; padding: 1px 5px; border-radius: 3px; font-weight:700; color: #16a34a;">90492813</code></div>
+            <div><strong>Address:</strong> Helgolandsgade 14, 1653 Copenhagen, Denmark (+45 20353888)</div>
+            <div><strong>Stay Duration:</strong> 2 Nights (Check-in Thu Dec 31 @ 14:00, Check-out Sat Jan 02 @ 11:00)</div>
+            <div><strong>Redemption Rate:</strong> 55,000 Marriott Bonvoy Points (Points Booking)</div>
+            <div><strong>Room Type:</strong> Efficient Double Room (1 Double Bed)</div>
           </div>
           ${sjRemark}
         </div>

@@ -61,8 +61,8 @@ base_22_days = [
   {
     "day": 1, "date": "Dec 12 (Sat)", "title_a": "Gateway Arrival & AWD SUV Pickup", "title_b": "Ounasvaara Sunset Forest Walk & Gateway Arrival",
     "location": "Rovaniemi, Finland", "coords": [66.5039, 25.7294], "distance": "10 km (15 mins)",
-    "hotel": "Arctic Light Hotel (Recommended) / Santa's Hotel Santa Claus", "hotelStatus": "pending", "bookingRef": "Unconfirmed in Folder",
-    "hotelLinks": [{"name": "Arctic Light Hotel", "url": "https://www.arcticlighthotel.es/", "gmaps": gmaps("Arctic Light Hotel Rovaniemi")}],
+    "hotel": "Home in Rovaniemi (Airbnb)", "hotelStatus": "confirmed", "bookingRef": "Airbnb Conf: HMKWJX2QWA (Host: Riitta | $294.48 SGD)",
+    "hotelLinks": [{"name": "Home in Rovaniemi (Airbnb)", "url": "https://www.airbnb.com.sg/trips/v1/1772503509687523474/ro/RESERVATION2_CHECKIN/HMKWJX2QWA", "gmaps": gmaps("Rovaniemi Finland")}],
     "food": food_db["Rovaniemi"],
     "activities_a": "Fly SIN -> MUC -> RVN (Arrive 5:15 PM); pick up AWD SUV rental; evening walk in central Rovaniemi; dinner at Nili / Gustav.",
     "activities_b": "Fly SIN -> MUC -> RVN (Arrive 5:15 PM); pick up AWD SUV rental; Ounasvaara Winter Forest Walk overlooking frozen Kemijoki river; dinner at Ravintola Roka Street Bistro.",
@@ -538,7 +538,8 @@ base_22_days = [
   {
     "day": 15, "date": "Dec 26 (Sat)", "title_a": "Helsinki Architecture & Löyly Waterfront Sauna", "title_b": "Oodi Library, Rock Church & Löyly Baltic Sauna Experience",
     "location": "Helsinki, Finland", "coords": [60.1699, 24.9384], "distance": "0 km (Tram/Walk)",
-    "hotel": "Hotel U14 Autograph Collection", "hotelStatus": "confirmed", "bookingRef": "Confirmed Hotel U14 Autograph Collection",
+    "hotel": "Scandic Grand Central Helsinki", "hotelStatus": "confirmed", "bookingRef": "Booking.com Conf: 6224.239.118 (PIN: 0930 | €140 / ~S$206)",
+    "hotelLinks": [{"name": "Scandic Grand Central Helsinki", "url": "https://www.scandichotels.com/hotels/finland/helsinki/scandic-grand-central-helsinki", "gmaps": gmaps("Scandic Grand Central Helsinki")}],
     "food": food_db["Helsinki"],
     "activities_a": "Arrive Helsinki 9:15 AM via VR train; explore Oodi Central Library & Rock Church; afternoon seaside smoke sauna & Baltic ice dip at Löyly.",
     "activities_b": "Arrive Helsinki 9:15 AM; Oodi Central Library & Töölönlahti Culture Quarter; Rock Church (Temppeliaukion kirkko); lunch at Old Market Hall (Vanha Kauppahalli SOUP+MORE salmon soup); Löyly urban waterfront sauna & Baltic ice plunge; Ateneum & Design District evening walk.",
@@ -567,8 +568,8 @@ base_22_days = [
   {
     "day": 16, "date": "Dec 27 (Sun)", "title_a": "Baltic Ferry & Tallinn Medieval Old Town Walking Tour", "title_b": "Tallinn UNESCO Old Town Pedestrian Tour & Medieval Banquet",
     "location": "Tallinn, Estonia", "coords": [59.4370, 24.7536], "distance": "0 km (Pedestrian Walk)",
-    "hotel": "Hotel Telegraaf, Autograph Collection (~€160/night)", "hotelStatus": "pending", "bookingRef": "Marriott Autograph Collection in Tallinn Old Town (1 Night: Dec 27-28)",
-    "hotelLinks": [{"name": "Hotel Telegraaf (Marriott)", "url": "https://www.marriott.com/en-us/hotels/tllak-hotel-telegraaf-autograph-collection/overview/", "gmaps": gmaps("Hotel Telegraaf Tallinn")}],
+    "hotel": "Tallinn City Apartments - Town Hall Square", "hotelStatus": "confirmed", "bookingRef": "Booking.com Conf: 6719.652.299 (PIN: 5042 | €125 / ~S$184)",
+    "hotelLinks": [{"name": "Tallinn City Apartments", "url": "https://www.booking.com/hotel/ee/tallinn-city-apartments.html", "gmaps": gmaps("Tallinn City Apartments Town Hall Square")}],
     "food": food_db["Tallinn"],
     "activities_a": "Morning 2h Megastar ferry across Baltic Sea; explore UNESCO medieval Old Town, Town Hall Christmas Market & Toompea Hill vista.",
     "activities_b": "Morning 2h Megastar ferry to Tallinn; 100% pedestrian walking tour of UNESCO Medieval Old Town: Town Hall Christmas Market, Toompea Castle, Alexander Nevsky Cathedral, Kohtuotsa panoramic lookout & Olde Hansa medieval banquet.",
@@ -578,12 +579,12 @@ base_22_days = [
     ],
     "sched_b": [
       {"time": "10:30 - 12:30", "activity": "Megastar Ferry transit across Baltic Sea to Tallinn.", "gmaps": gmaps("Tallinn Passenger Port")},
-      {"time": "13:00 - 13:45", "activity": "Check into Hotel Telegraaf in Tallinn Old Town.", "gmaps": gmaps("Hotel Telegraaf Tallinn")},
+      {"time": "13:00 - 13:45", "activity": "Check into Tallinn City Apartments in Old Town.", "gmaps": gmaps("Tallinn City Apartments Town Hall Square")},
       {"time": "14:00 - 16:00", "activity": "Town Hall Square (Raekoja plats) Christmas Market & 1422 Raeapteek (Europe's oldest pharmacy).", "gmaps": gmaps("Tallinn Town Hall Square", 59.4373, 24.7451)},
       {"time": "16:00 - 17:45", "activity": "Toompea Hill, Alexander Nevsky Cathedral & Patkuli / Kohtuotsa panoramic city lookouts.", "gmaps": gmaps("Kohtuotsa Viewing Platform Tallinn", 59.4370, 24.7400)},
       {"time": "18:30 - 20:30", "activity": "Medieval Feast at Olde Hansa (15th-century candlelit tavern) / Kompressor Pancake Pub.", "gmaps": gmaps("Olde Hansa Tallinn")}
     ],
-    "legs": [{"from": "Tallinn Port", "to": "Hotel Telegraaf", "dist": "1.2 km", "time": "15 mins walk", "route": "Old Town Walk", "gmaps": gmaps("Tallinn Port to Hotel Telegraaf")}],
+    "legs": [{"from": "Tallinn Port", "to": "Tallinn City Apartments", "dist": "1.2 km", "time": "15 mins walk", "route": "Old Town Walk", "gmaps": gmaps("Tallinn Port to Kullasepa Street Tallinn")}],
     "tickets": [
       {"item": "Megastar Ferry Ticket", "cost": "~€32 (Dep 10:30 AM)", "url": "https://www.tallinksilja.com/en"},
       {"item": "Raeapteek Oldest Pharmacy", "cost": "Free (Open 10:00-18:00)", "url": "https://raeapteek.ee/en/"},
@@ -594,7 +595,7 @@ base_22_days = [
   {
     "day": 17, "date": "Dec 28 (Mon)", "title_a": "Tallinn Museums & Baltic Queen Overnight Cruise", "title_b": "Lennusadam Seaplane Museum, Kadriorg Palace & Tallink Silja Baltic Queen Cruise to Stockholm",
     "location": "Overnight Cruise (Baltic Sea)", "coords": [59.4450, 24.7600], "distance": "0 km (Ferry Transit)",
-    "hotel": "Tallink Silja Line M/S Baltic Queen Overnight Cruise (~€140/cabin)", "hotelStatus": "pending", "bookingRef": "Overnight Cruise Cabin (Tallinn D-Terminal to Stockholm Värtahamnen)",
+    "hotel": "Tallink Silja Line M/S Baltic Queen Overnight Cruise", "hotelStatus": "confirmed", "bookingRef": "Tallink Conf: 75550929 (Sea-View Cabin)",
     "hotelLinks": [{"name": "Tallink Silja Baltic Queen Cruise", "url": "https://www.tallinksilja.com/en", "gmaps": gmaps("Tallinn D-Terminal")} ],
     "food": food_db["Tallinn"],
     "activities_a": "Morning visit Kadriorg Palace & Art Museum; afternoon Lennusadam Seaplane Museum; 18:00 board Tallink Silja M/S Baltic Queen overnight cruise to Stockholm.",
@@ -621,7 +622,7 @@ base_22_days = [
   {
     "day": 18, "date": "Dec 29 (Tue)", "title_a": "Cruise Archipelago Arrival & Stockholm Old Town", "title_b": "Stockholm Archipelago Arrival, Gamla Stan Medieval Quarter & Royal Palace",
     "location": "Stockholm, Sweden", "coords": [59.3293, 18.0686], "distance": "0 km (Metro/Walk)",
-    "hotel": "Sheraton Stockholm Hotel (~1,900 SEK / ~$180/night)", "hotelStatus": "pending", "bookingRef": "Marriott Waterfront Hotel (Night 1 of 2: Dec 29-31)",
+    "hotel": "Sheraton Stockholm Hotel", "hotelStatus": "confirmed", "bookingRef": "Marriott Conf #90629030 (88,000 Points)",
     "hotelLinks": [{"name": "Sheraton Stockholm (Marriott)", "url": "https://www.marriott.com/en-us/hotels/stosi-sheraton-stockholm-hotel/overview/", "gmaps": gmaps("Sheraton Stockholm Hotel")}],
     "food": food_db["Stockholm"],
     "activities_a": "Arrive Stockholm 10:30 AM via Baltic Queen cruise; Gamla Stan walking tour, Royal Palace, Stortorget & Nobel Prize Museum.",
@@ -649,7 +650,7 @@ base_22_days = [
   {
     "day": 19, "date": "Dec 30 (Wed)", "title_a": "Stockholm Museum Island Day", "title_b": "Vasa Museum 17th-Century Warship & ABBA Museum / Skansen Cultural Tour",
     "location": "Stockholm, Sweden", "coords": [59.3293, 18.0686], "distance": "0 km (Tram 7)",
-    "hotel": "Sheraton Stockholm Hotel (~1,900 SEK / ~$180/night)", "hotelStatus": "pending", "bookingRef": "Marriott Waterfront Hotel (Night 2 of 2: Dec 29-31)",
+    "hotel": "Sheraton Stockholm Hotel", "hotelStatus": "confirmed", "bookingRef": "Marriott Conf #90629030 (Night 2 of 2)",
     "hotelLinks": [{"name": "Sheraton Stockholm (Marriott)", "url": "https://www.marriott.com/en-us/hotels/stosi-sheraton-stockholm-hotel/overview/", "gmaps": gmaps("Sheraton Stockholm Hotel")}],
     "food": food_db["Stockholm"],
     "activities_a": "Maritime & culture day: tour 17th-century Vasa Museum, explore Djurgården island & Skansen, or visit ABBA The Museum; traditional Swedish dinner.",
@@ -676,8 +677,8 @@ base_22_days = [
   {
     "day": 20, "date": "Dec 31 (Thu)", "title_a": "High-Speed Train & NYE Tivoli Celebration", "title_b": "SJ High-Speed Train & Copenhagen City Highlights + Tivoli NYE Gala",
     "location": "Copenhagen, Denmark", "coords": [55.6761, 12.5683], "distance": "0 km (Train)",
-    "hotel": "Copenhagen Marriott Hotel (~2,100 DKK / ~$300/night)", "hotelStatus": "pending", "bookingRef": "Marriott Harborfront Hotel near Tivoli (2 Nights: Dec 31 - Jan 02)",
-    "hotelLinks": [{"name": "Copenhagen Marriott Hotel", "url": "https://www.marriott.com/en-us/hotels/cphdk-copenhagen-marriott-hotel/overview/", "gmaps": gmaps("Copenhagen Marriott Hotel")}],
+    "hotel": "Four Points Flex by Sheraton Copenhagen City", "hotelStatus": "confirmed", "bookingRef": "Marriott Conf #90492813 (55,000 Points)",
+    "hotelLinks": [{"name": "Four Points Flex Copenhagen", "url": "https://www.marriott.com/en-us/hotels/cphfp-four-points-flex-copenhagen-city/overview/", "gmaps": gmaps("Four Points Flex by Sheraton Copenhagen City")}],
     "food": food_db["Copenhagen"],
     "activities_a": "Morning SJ High-Speed Train from Stockholm Central to Copenhagen Central (5h 10m via Öresund Bridge); check in; New Year's Eve gala dinner & midnight fireworks at Tivoli Gardens.",
     "activities_b": "📌 BOOK LATER REMINDER: SJ Train tickets for Dec 31 release ~90 days in advance (late Sept / early Oct 2026)! SJ High-Speed Train across Öresund Bridge; Rundetaarn spiral ramp view; Nyhavn canal walk; Tivoli Gardens NYE gala dinner & midnight fireworks.",
@@ -687,7 +688,7 @@ base_22_days = [
     ],
     "sched_b": [
       {"time": "08:20 - 13:30", "activity": "SJ High-Speed Train from Stockholm Central to Copenhagen Central (5h 10m via Öresund Bridge).", "gmaps": gmaps("Copenhagen Central Station")},
-      {"time": "14:00 - 14:45", "activity": "Check into Copenhagen Marriott Hotel.", "gmaps": gmaps("Copenhagen Marriott Hotel")},
+      {"time": "14:00 - 14:45", "activity": "Check into Four Points Flex Copenhagen.", "gmaps": gmaps("Four Points Flex by Sheraton Copenhagen City")},
       {"time": "15:00 - 17:00", "activity": "Rundetaarn (Round Tower spiral ramp panoramic view) & Nyhavn waterfront canal walk.", "gmaps": gmaps("Nyhavn Copenhagen", 55.6797, 12.5914)},
       {"time": "19:00 - 23:30", "activity": "New Year's Eve Gala Dinner & winter light illuminations at Tivoli Gardens.", "gmaps": gmaps("Tivoli Gardens Copenhagen")},
       {"time": "00:00 - 01:00", "activity": "Spectacular Midnight Fireworks over Tivoli Gardens.", "gmaps": gmaps("Tivoli Gardens Copenhagen")}
@@ -702,8 +703,8 @@ base_22_days = [
   {
     "day": 21, "date": "Jan 01 (Fri)", "title_a": "New Year's Day Copenhagen Palaces & Culture", "title_b": "Rosenborg Castle Crown Jewels, Amalienborg Guard Change & Torvehallerne",
     "location": "Copenhagen, Denmark", "coords": [55.6761, 12.5683], "distance": "0 km (Metro/Walk)",
-    "hotel": "Copenhagen Marriott Hotel (Recommended Marriott)", "hotelStatus": "pending", "bookingRef": "Marriott Harborfront Hotel",
-    "hotelLinks": [{"name": "Copenhagen Marriott Hotel", "url": "https://www.marriott.com/en-us/hotels/cphdk-copenhagen-marriott-hotel/overview/", "gmaps": gmaps("Copenhagen Marriott Hotel")}],
+    "hotel": "Four Points Flex by Sheraton Copenhagen City", "hotelStatus": "confirmed", "bookingRef": "Marriott Conf #90492813 (Night 2 of 2)",
+    "hotelLinks": [{"name": "Four Points Flex Copenhagen", "url": "https://www.marriott.com/en-us/hotels/cphfp-four-points-flex-copenhagen-city/overview/", "gmaps": gmaps("Four Points Flex by Sheraton Copenhagen City")}],
     "food": food_db["Copenhagen"],
     "activities_a": "Relaxed New Year's Day stroll; view CopenHill rooftop architecture, Amalienborg Palace royal guard change, and Nyhavn / Strøget cafe culture.",
     "activities_b": "Rosenborg Castle & Danish Crown Jewels tour; Amalienborg Palace royal guard changing ceremony; Christiansborg Palace Royal Reception Rooms; Torvehallerne gourmet food market.",
