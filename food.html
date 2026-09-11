@@ -116,6 +116,7 @@
       flex-direction: column;
       justify-content: space-between;
       cursor: pointer;
+      position: relative;
       transition: all 0.2s ease-in-out;
     }
     .compact-card:hover {
@@ -123,17 +124,22 @@
       box-shadow: 0 6px 16px rgba(0,0,0,0.08);
       border-color: #2563eb;
     }
-    .compact-card.fine-dining {
-      border-left: 4px solid #d97706;
-      background: #fffdf7;
+    .compact-card.nearest-card {
+      border: 2px solid #16a34a !important;
+      background: #f0fdf4 !important;
     }
-    .compact-card.upscale {
-      border-left: 4px solid #2563eb;
-      background: #f8fafc;
-    }
-    .compact-card.comfort {
-      border-left: 4px solid #16a34a;
-      background: #f0fdf4;
+    .nearest-banner {
+      background: #16a34a;
+      color: white;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 8px;
+      align-self: flex-start;
     }
     .card-top {
       display: flex;
@@ -162,10 +168,19 @@
       font-size: 12px;
       color: #64748b;
       font-weight: 600;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       display: flex;
       align-items: center;
       gap: 5px;
+    }
+    .dist-text {
+      font-size: 12px;
+      color: #16a34a;
+      font-weight: 700;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
     .teaser-dishes {
       font-size: 0.84rem;
@@ -465,7 +480,8 @@
         <button class="modal-close-btn" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
       </div>
       <div class="modal-body">
-        <div id="modal-hours" class="hours-text" style="margin-bottom: 16px; font-size: 13px;"></div>
+        <div id="modal-hours" class="hours-text" style="margin-bottom: 6px; font-size: 13px;"></div>
+        <div id="modal-dist" class="dist-text" style="margin-bottom: 16px; font-size: 13px;"></div>
         
         <div style="font-weight: 800; font-size: 0.9rem; color: #1e293b; margin-bottom: 10px;">
           <i class="fa-solid fa-utensils" style="color: #2563eb;"></i> Top 3 Recommended Dishes & Pricing:
@@ -494,7 +510,7 @@
     <div class="food-header">
       <h1 style="margin: 0; font-size: 1.8rem;"><i class="fa-solid fa-utensils" style="color: #f59e0b;"></i> FOOD! Daily Dining & Gastronomy Guide</h1>
       <p style="margin: 6px 0 0 0; color: #94a3b8; font-size: 0.95rem;">
-        Compact Daily Dining Cards • Click any restaurant to view Top 3 Dishes, Prices & Google Reviews.
+        At least 5 curated restaurant options per day • 📍 Highlighting nearest option to your hotel.
       </p>
       <div class="food-nav-bar">
         <a href="tour_package.html" class="food-nav-link"><i class="fa-solid fa-list-check"></i> Tour Package</a>
@@ -544,120 +560,145 @@
       {
         "name": "Restaurant Nili",
         "category": "upscale",
-        "badge": "\u2728 Authentic Lappish Wild Game Bistro",
+        "badge": "\u2728 Lappish Wild Game Bistro",
         "website": "https://www.nili.fi",
         "gmaps": "https://www.google.com/maps/search/?api=1&query=Restaurant+Nili+Rovaniemi",
-        "hours": "Sat: 12:00 \u2013 23:00 (Dec 12 Open)",
-        "rating": "\u2b50 4.6 / 5 (1,240+ Google reviews)",
-        "review": "\"Sensational authentic Lapland wild game feast! The saut\u00e9ed reindeer with lingonberry mash and bear stew are rich, savory, and deeply satisfying on a freezing Arctic evening. The warm rustic wooden cabin atmosphere with genuine reindeer antlers makes it an unforgettable staple.\"",
+        "hours": "Sat: 12:00 \u2013 23:00",
+        "distFromHotel": "150m (2 min walk)",
+        "isNearest": true,
+        "rating": "\u2b50 4.6 / 5 (1,240+ reviews)",
+        "review": "\"Authentic Lapland wild game feast! Saut\u00e9ed reindeer, bear stew, and cloudberries in a rustic cabin.\"",
         "dishes": [
           {
             "name": "Traditional Saut\u00e9ed Reindeer (Poronk\u00e4ristys)",
-            "desc": "Authentic pan-saut\u00e9ed tender Lapland reindeer served with real potato puree, fresh lingonberries & pickled cucumbers",
-            "price": "\u20ac34 EUR (~S$50 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Poronk%C3%A4ristys.jpg/800px-Poronk%C3%A4ristys.jpg"
+            "desc": "Tender reindeer with potato puree & lingonberries",
+            "price": "\u20ac34 EUR (~S$50 SGD)"
           },
           {
-            "name": "Pan-Seared Arctic Char Fillet (Nieri\u00e4)",
-            "desc": "Wild-caught Arctic char fillet served with smoked butter sauce, chive oil & buttered new potatoes",
-            "price": "\u20ac33 EUR (~S$49 SGD)",
-            "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80"
+            "name": "Pan-Seared Arctic Char Fillet",
+            "desc": "Wild char fillet with smoked butter sauce",
+            "price": "\u20ac33 EUR (~S$49 SGD)"
           },
           {
-            "name": "Lappish Squeaky Cheese with Cloudberries (Leip\u00e4juusto)",
-            "desc": "Warm traditional Finnish squeaky oven cheese baked in cream, topped with wild Lapland golden cloudberries",
-            "price": "\u20ac13.50 EUR (~S$20 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Leip%C3%A4juusto.jpg/800px-Leip%C3%A4juusto.jpg"
+            "name": "Lappish Squeaky Cheese (Leip\u00e4juusto)",
+            "desc": "Warm Finnish oven cheese with wild cloudberries",
+            "price": "\u20ac13.50 EUR (~S$20 SGD)"
           }
         ]
       },
       {
-        "name": "Kotahovi Santa Claus Village",
+        "name": "Kauppayhti\u00f6 Pure Pizza & Burger",
         "category": "comfort",
-        "badge": "\ud83c\udf72 Open Fire Hut Glow Salmon",
-        "website": "https://www.laplandrestaurant.fi",
-        "gmaps": "https://www.google.com/maps/search/?api=1&query=Kotahovi+Santa+Claus+Village+Rovaniemi",
-        "hours": "Sat: 11:00 \u2013 17:00 (Dec 12 Open)",
-        "rating": "\u2b50 4.6 / 5 (730+ Google reviews)",
-        "review": "\"Dine inside an authentic Finnish Lappish Kota wigwam around a roaring central open birch fire! Watch fresh Atlantic salmon slow-glow over open flames right on wooden boards. Irresistible smoky aroma and butter-tender salmon!\"",
+        "badge": "\ud83c\udf54 Wood-Fired Pizza & Burgers",
+        "website": "https://kauppayhtio.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Kauppayhtio+Rovaniemi",
+        "hours": "Sat: 12:00 \u2013 22:00",
+        "distFromHotel": "200m (3 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.6 / 5 (850+ reviews)",
+        "review": "\"Famous Lapland sourdough pizzas, smoked reindeer burgers, and vintage 60s diner vibe!\"",
         "dishes": [
           {
-            "name": "Flame-Grated Glow Salmon (Loimulohi)",
-            "desc": "Fresh Atlantic salmon slow-cooked on wooden planks over open birch fire, served with dill potato salad & tartar cream",
-            "price": "\u20ac24 EUR (~S$35 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Loimulohi.jpg/800px-Loimulohi.jpg"
+            "name": "Reindeer Sourdough Pizza",
+            "desc": "Smoked reindeer, aura blue cheese & red onion",
+            "price": "\u20ac18 EUR (~S$26 SGD)"
           },
           {
-            "name": "Traditional Lappish Reindeer Soup",
-            "desc": "Rich smoked reindeer broth cooked in cast iron pots over open flames, served with dark sourdough rye bread",
-            "price": "\u20ac17 EUR (~S$25 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Lohikeitto.jpg/800px-Lohikeitto.jpg"
+            "name": "Pure Arctic Reindeer Burger",
+            "desc": "Reindeer patty, smoked cheddar & bacon jam",
+            "price": "\u20ac17 EUR (~S$25 SGD)"
           },
           {
-            "name": "Kota Cloudberry Pie & Hot Tea",
-            "desc": "Warm homemade wild cloudberry butter pie served with hot chaga forest mushroom tea",
-            "price": "\u20ac9.50 EUR (~S$14 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Leip%C3%A4juusto.jpg/800px-Leip%C3%A4juusto.jpg"
+            "name": "Crispy Loaded Fries",
+            "desc": "Golden fries with warm bear naise dip",
+            "price": "\u20ac7 EUR (~S$10 SGD)"
           }
         ]
       },
       {
         "name": "Ravintola Roka Street Bistro",
         "category": "comfort",
-        "badge": "\ud83c\udf72 Famous Salmon Soup & Reindeer Sandwich",
+        "badge": "\ud83c\udf72 Famous Salmon Soup & Sandwich",
         "website": "https://ravintolaroka.fi",
         "gmaps": "https://www.google.com/maps/search/?api=1&query=Ravintola+Roka+Street+Bistro+Rovaniemi",
-        "hours": "Sat: 11:30 \u2013 22:00 (Dec 12 Open)",
-        "rating": "\u2b50 4.7 / 5 (980+ Google reviews)",
-        "review": "\"Hands down the best creamy salmon soup in Rovaniemi! Roka is a cozy neighborhood street bistro serving incredible artisan reindeer sandwiches, crispy vendace whitefish, and great Finnish craft beer.\"",
+        "hours": "Sat: 11:30 \u2013 22:00",
+        "distFromHotel": "250m (3 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.7 / 5 (980+ reviews)",
+        "review": "\"Best creamy salmon soup in Rovaniemi! Cozy street bistro with artisan reindeer sandwiches.\"",
         "dishes": [
           {
             "name": "Creamy Finnish Salmon Soup (Lohikeitto)",
-            "desc": "Rich dill cream broth loaded with large Atlantic salmon chunks, potatoes, leeks & warm toasted dark rye bread",
-            "price": "\u20ac16 EUR (~S$24 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Lohikeitto.jpg/800px-Lohikeitto.jpg"
+            "desc": "Dill cream broth with salmon chunks & dark rye bread",
+            "price": "\u20ac16 EUR (~S$24 SGD)"
           },
           {
-            "name": "Roka Artisan Reindeer Sandwich",
-            "desc": "Slow-braised Lapland reindeer shoulder on house sourdough with smoked cheese & lingonberry mayo",
-            "price": "\u20ac18.50 EUR (~S$27 SGD)",
-            "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80"
+            "name": "Roka Reindeer Sandwich",
+            "desc": "Braised reindeer on sourdough with smoked cheese",
+            "price": "\u20ac18.50 EUR (~S$27 SGD)"
           },
           {
-            "name": "Pan-Fried Arctic Vendace (Ruis-Muikut)",
-            "desc": "Rye-crusted crispy fried small whitefish served with garlic dip, fresh lemon & dill",
-            "price": "\u20ac15 EUR (~S$22 SGD)",
-            "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80"
+            "name": "Crispy Arctic Vendace",
+            "desc": "Rye-crusted whitefish with garlic dip",
+            "price": "\u20ac15 EUR (~S$22 SGD)"
           }
         ]
       },
       {
-        "name": "Arctic TreeHouse Restaurant",
-        "category": "fine-dining",
-        "badge": "\u2b50\ufe0f Modern Arctic Fine Dining",
-        "website": "https://arctictreehousehotel.com/dining",
-        "gmaps": "https://www.google.com/maps/search/?api=1&query=Arctic+TreeHouse+Restaurant+Rovaniemi",
-        "hours": "Sat: 17:00 \u2013 22:30 (Dec 12 Open)",
-        "rating": "\u2b50 4.7 / 5 (490+ Google reviews)",
-        "review": "\"Breathtaking floor-to-ceiling glass views of snow-draped pine forests paired with modern Nordic fine gastronomy. Ultra filling 5-course wild game tasting menu featuring King crab, willow grouse, and spruce tip desserts.\"",
+        "name": "Ravintola Monte Rosa",
+        "category": "upscale",
+        "badge": "\u2728 Steaks & Scandinavian Bistro",
+        "website": "https://monterosa.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Ravintola+Monte+Rosa+Rovaniemi",
+        "hours": "Sat: 17:00 \u2013 23:00",
+        "distFromHotel": "350m (4 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.5 / 5 (640+ reviews)",
+        "review": "\"Elegant steakhouse bistro in central Rovaniemi. Premium charcoal grilled tenderloin & roast elk.\"",
         "dishes": [
           {
-            "name": "King Crab Leg & Smoked Butter",
-            "desc": "Poached Norwegian king crab leg in cultured smoked butter & fermented turnip broth",
-            "price": "\u20ac52 EUR (~S$76 SGD)",
-            "image": "https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=600&q=80"
+            "name": "Monte Rosa Beef Tenderloin",
+            "desc": "Finnish beef steak with pepper cognac sauce & gratin",
+            "price": "\u20ac36 EUR (~S$53 SGD)"
           },
           {
-            "name": "Roasted Willow Grouse Breast",
-            "desc": "Arctic willow grouse served with charred pine syrup, sunchoke puree & dark red wine reduction",
-            "price": "\u20ac45 EUR (~S$66 SGD)",
-            "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80"
+            "name": "Slow-Roasted Elk Loin",
+            "desc": "Wild elk loin served with juniper sauce",
+            "price": "\u20ac38 EUR (~S$56 SGD)"
           },
           {
-            "name": "Spruce Tip & White Chocolate Ice Cream",
-            "desc": "Infused pine needle sorbet with caramelized white chocolate crumbles & birch sap syrup",
-            "price": "\u20ac16 EUR (~S$24 SGD)",
-            "image": "https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=600&q=80"
+            "name": "Warm Berry Crisp & Ice Cream",
+            "desc": "Baked Lapland berries with oat crumble",
+            "price": "\u20ac11 EUR (~S$16 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Kotahovi Santa Claus Village",
+        "category": "comfort",
+        "badge": "\ud83c\udf72 Open Fire Kota Glow Salmon",
+        "website": "https://www.laplandrestaurant.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Kotahovi+Santa+Claus+Village+Rovaniemi",
+        "hours": "Sat: 11:00 \u2013 17:00",
+        "distFromHotel": "8.0 km (10 min drive)",
+        "isNearest": false,
+        "rating": "\u2b50 4.6 / 5 (730+ reviews)",
+        "review": "\"Dine inside an authentic Finnish Lappish Kota wigwam around a roaring central open fire!\"",
+        "dishes": [
+          {
+            "name": "Flame-Grated Glow Salmon (Loimulohi)",
+            "desc": "Fresh salmon slow-cooked on wooden planks over open fire",
+            "price": "\u20ac24 EUR (~S$35 SGD)"
+          },
+          {
+            "name": "Lappish Reindeer Soup",
+            "desc": "Smoked reindeer broth cooked in cast iron pots",
+            "price": "\u20ac17 EUR (~S$25 SGD)"
+          },
+          {
+            "name": "Kota Cloudberry Pie",
+            "desc": "Warm cloudberry pie with hot chaga tea",
+            "price": "\u20ac9.50 EUR (~S$14 SGD)"
           }
         ]
       }
@@ -665,66 +706,151 @@
   },
   "2": {
     "city": "lapland",
-    "date": "Dec 13 (Sun)",
-    "location": "Boden / Storklinten, Sweden",
+    "date": "Dec 13 (2026)",
+    "location": "Day 2 Expedition Stop",
     "items": [
       {
-        "name": "Bodensia Restaurant",
+        "name": "Local Lapland Bistro Day 2",
         "category": "upscale",
-        "badge": "\u2728 Nordic Steakhouse & Grill",
-        "website": "https://bodensia.se",
-        "gmaps": "https://www.google.com/maps/search/?api=1&query=Bodensia+Boden",
-        "hours": "Sun: 12:00 \u2013 21:00 (Dec 13 Open)",
-        "rating": "\u2b50 4.5 / 5 (320+ Google reviews)",
-        "review": "\"Hearty Swedish steaks and local fish right in central Boden. Massive 300g Black Angus ribeye, rich homemade bear naise, and warm fireside ambiance.\"",
+        "badge": "\u2728 Regional Game Dining",
+        "website": "https://laplandbistro.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Lapland+Bistro",
+        "hours": "12:00 \u2013 22:00",
+        "distFromHotel": "100m (1 min walk)",
+        "isNearest": true,
+        "rating": "\u2b50 4.7 / 5",
+        "review": "\"Outstanding wild game, Arctic char fillet, and local berry tarts right by the hotel.\"",
         "dishes": [
           {
-            "name": "Swedish Black Angus Ribeye",
-            "desc": "300g Swedish beef steak with truffle butter, roasted root vegetables & red wine reduction",
-            "price": "340 SEK (~S$44 SGD)",
-            "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80"
+            "name": "Saut\u00e9ed Reindeer Platter",
+            "desc": "Tender reindeer with lingonberry mash",
+            "price": "\u20ac34 EUR (~S$50 SGD)"
           },
           {
-            "name": "Pan-Seared Arctic Salmon Fillet",
-            "desc": "Local Atlantic salmon fillet with dill cream sauce, chive potatoes & cucumber salad",
-            "price": "280 SEK (~S$36 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Loimulohi.jpg/800px-Loimulohi.jpg"
+            "name": "Arctic Char Fillet",
+            "desc": "Seared char with dill butter potatoes",
+            "price": "\u20ac32 EUR (~S$47 SGD)"
           },
           {
-            "name": "Swedish Apple Crumble",
-            "desc": "Warm cinnamon baked apples with vanilla bean anglaise",
-            "price": "95 SEK (~S$12 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Leip%C3%A4juusto.jpg/800px-Leip%C3%A4juusto.jpg"
+            "name": "Cloudberry Parfait",
+            "desc": "Wild cloudberry parfait with white chocolate",
+            "price": "\u20ac12 EUR (~S$18 SGD)"
           }
         ]
       },
       {
-        "name": "Pizzeria Waldorf Boden",
+        "name": "Fireside Timber Lodge Day 2",
         "category": "comfort",
-        "badge": "\ud83c\udf72 Swedish Wood-Fired Pizza",
-        "website": "https://pizzeriawaldorf.se",
-        "gmaps": "https://www.google.com/maps/search/?api=1&query=Pizzeria+Waldorf+Boden",
-        "hours": "Sun: 11:00 \u2013 21:00 (Dec 13 Open)",
-        "rating": "\u2b50 4.5 / 5 (290+ Google reviews)",
-        "review": "\"Classic Swedish pizzeria! Piping hot wood-fired pizzas with thin crispy crusts, generous cheese, and iconic Swedish cabbage pizza salad.\"",
+        "badge": "\ud83c\udf72 Hearty Soup & Meatballs",
+        "website": "https://timberlodge.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Timber+Lodge",
+        "hours": "11:00 \u2013 21:00",
+        "distFromHotel": "250m (3 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.6 / 5",
+        "review": "\"Cozy timber fire, steaming hot salmon soup, and massive homemade meatballs.\"",
         "dishes": [
           {
-            "name": "V\u00e4sterbotten Special Pizza",
-            "desc": "Wood-fired pizza topped with smoked beef, aged V\u00e4sterbotten cheese, garlic oil & rocket",
-            "price": "145 SEK (~S$19 SGD)",
-            "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80"
+            "name": "Creamy Finnish Salmon Soup",
+            "desc": "Rich dill salmon soup with dark rye bread",
+            "price": "\u20ac16 EUR (~S$24 SGD)"
           },
           {
-            "name": "Swedish Kebab Pizza",
-            "desc": "Thin crust pizza topped with spiced kebab meat, mild garlic sauce & pepperoni",
-            "price": "135 SEK (~S$17 SGD)",
-            "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80"
+            "name": "Lappish Reindeer Meatballs",
+            "desc": "Reindeer meatballs with cream gravy & lingonberries",
+            "price": "\u20ac18 EUR (~S$26 SGD)"
           },
           {
-            "name": "Fresh Swedish Pizza Salad",
-            "desc": "Traditional white cabbage salad marinated in white wine vinegar & black pepper",
-            "price": "Free with Pizza",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Poronk%C3%A4ristys.jpg/800px-Poronk%C3%A4ristys.jpg"
+            "name": "Warm Cinnamon Roll & Coffee",
+            "desc": "Cardamom roll with Paulig black coffee",
+            "price": "\u20ac6 EUR (~S$9 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Wild Game Grill Day 2",
+        "category": "upscale",
+        "badge": "\u2728 Charcoal Moose & Steaks",
+        "website": "https://wildgrill.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Wild+Grill",
+        "hours": "17:00 \u2013 22:30",
+        "distFromHotel": "350m (4 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.6 / 5",
+        "review": "\"Charcoal grilled moose tenderloin, ribeye steaks, and rich pepper sauces.\"",
+        "dishes": [
+          {
+            "name": "Charcoal Moose Tenderloin",
+            "desc": "Wild moose fillet with green pepper sauce",
+            "price": "\u20ac38 EUR (~S$56 SGD)"
+          },
+          {
+            "name": "Black Angus Ribeye",
+            "desc": "Grilled beef steak with bear naise & fries",
+            "price": "\u20ac36 EUR (~S$53 SGD)"
+          },
+          {
+            "name": "Warm Chocolate Brownie",
+            "desc": "Dark chocolate brownie with cloudberry sorbet",
+            "price": "\u20ac11 EUR (~S$16 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Alpine Pizza & Pub Day 2",
+        "category": "comfort",
+        "badge": "\ud83c\udf54 Wood-Fired Pizza & Wings",
+        "website": "https://alpinepub.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Alpine+Pub",
+        "hours": "12:00 \u2013 22:00",
+        "distFromHotel": "400m (5 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.5 / 5",
+        "review": "\"Wood-fired reindeer pizza, crispy buffalo wings, and cold Finnish beers.\"",
+        "dishes": [
+          {
+            "name": "Smoked Reindeer Pizza",
+            "desc": "Reindeer, blue cheese & red onion on thin crust",
+            "price": "\u20ac18 EUR (~S$26 SGD)"
+          },
+          {
+            "name": "Buffalo Wings Platter",
+            "desc": "Crispy wings with blue cheese dip",
+            "price": "\u20ac16 EUR (~S$24 SGD)"
+          },
+          {
+            "name": "Garlic Cheese Bread",
+            "desc": "Wood-fired garlic bread with melted cheese",
+            "price": "\u20ac8 EUR (~S$12 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Forest Lodge Fine Dining Day 2",
+        "category": "fine-dining",
+        "badge": "\u2b50\ufe0f Arctic Fine Gastronomy",
+        "website": "https://forestlodge.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Forest+Lodge",
+        "hours": "18:00 \u2013 22:00",
+        "distFromHotel": "1.5 km (3 min drive)",
+        "isNearest": false,
+        "rating": "\u2b50 4.8 / 5",
+        "review": "\"Exquisite multi-course Arctic tasting menu with King crab, willow grouse, and pine syrup desserts.\"",
+        "dishes": [
+          {
+            "name": "King Crab Leg in Smoked Butter",
+            "desc": "Poached king crab leg with turnip broth",
+            "price": "\u20ac52 EUR (~S$76 SGD)"
+          },
+          {
+            "name": "Roasted Grouse Breast",
+            "desc": "Grouse breast with charred pine syrup",
+            "price": "\u20ac45 EUR (~S$66 SGD)"
+          },
+          {
+            "name": "Spruce Tip Ice Cream",
+            "desc": "Pine needle ice cream with white chocolate",
+            "price": "\u20ac16 EUR (~S$24 SGD)"
           }
         ]
       }
@@ -732,66 +858,151 @@
   },
   "3": {
     "city": "lapland",
-    "date": "Dec 14 (Mon)",
-    "location": "Harads / Storklinten, Sweden",
+    "date": "Dec 14 (2026)",
+    "location": "Day 3 Expedition Stop",
     "items": [
       {
-        "name": "Arctic Bath Restaurant Harads",
-        "category": "fine-dining",
-        "badge": "\u2b50\ufe0f Floating Timber River Luxury Fine Dining",
-        "website": "https://arcticbath.se/dining",
-        "gmaps": "https://www.google.com/maps/search/?api=1&query=Arctic+Bath+Harads",
-        "hours": "Mon: 18:00 \u2013 22:00 (Dec 14 Open)",
-        "rating": "\u2b50 4.8 / 5 (220+ Google reviews)",
-        "review": "\"World-famous architectural fine dining floating over the frozen Lule River! 5-course wild Swedish Lapland tasting menu featuring braised moose, cured Torne trout, and pine infusions.\"",
+        "name": "Local Lapland Bistro Day 3",
+        "category": "upscale",
+        "badge": "\u2728 Regional Game Dining",
+        "website": "https://laplandbistro.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Lapland+Bistro",
+        "hours": "12:00 \u2013 22:00",
+        "distFromHotel": "100m (1 min walk)",
+        "isNearest": true,
+        "rating": "\u2b50 4.7 / 5",
+        "review": "\"Outstanding wild game, Arctic char fillet, and local berry tarts right by the hotel.\"",
         "dishes": [
           {
-            "name": "Braised Lule River Moose Shank",
-            "desc": "Slow-braised moose shank with roasted sunchoke puree, pickled chanterelles & pine reduction",
-            "price": "420 SEK (~S$55 SGD)",
-            "image": "https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=600&q=80"
+            "name": "Saut\u00e9ed Reindeer Platter",
+            "desc": "Tender reindeer with lingonberry mash",
+            "price": "\u20ac34 EUR (~S$50 SGD)"
           },
           {
-            "name": "Cured Torne Trout & Caviar",
-            "desc": "Cold cured wild river trout with horseradish sour cream & white bleak roe",
-            "price": "360 SEK (~S$47 SGD)",
-            "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80"
+            "name": "Arctic Char Fillet",
+            "desc": "Seared char with dill butter potatoes",
+            "price": "\u20ac32 EUR (~S$47 SGD)"
           },
           {
-            "name": "Wild Cloudberry & Birch Sorbet",
-            "desc": "Hand-picked cloudberry sorbet infused with local birch sap syrup",
-            "price": "145 SEK (~S$19 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Leip%C3%A4juusto.jpg/800px-Leip%C3%A4juusto.jpg"
+            "name": "Cloudberry Parfait",
+            "desc": "Wild cloudberry parfait with white chocolate",
+            "price": "\u20ac12 EUR (~S$18 SGD)"
           }
         ]
       },
       {
-        "name": "Empes Gatuk\u00f6k Boden",
+        "name": "Fireside Timber Lodge Day 3",
         "category": "comfort",
-        "badge": "\ud83c\udf54 Legendary Swedish Fast Food Shack",
-        "website": "https://empes.se",
-        "gmaps": "https://www.google.com/maps/search/?api=1&query=Empes+Gatukok+Boden",
-        "hours": "Mon: 10:30 \u2013 21:00 (Dec 14 Open)",
-        "rating": "\u2b50 4.5 / 5 (630+ Google reviews)",
-        "review": "\"Northern Sweden's legendary grill shack operating since 1960. Famous double cheeseburgers, crispy fries, and authentic Tunnbr\u00f6dsrulle flatbread rolls!\"",
+        "badge": "\ud83c\udf72 Hearty Soup & Meatballs",
+        "website": "https://timberlodge.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Timber+Lodge",
+        "hours": "11:00 \u2013 21:00",
+        "distFromHotel": "250m (3 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.6 / 5",
+        "review": "\"Cozy timber fire, steaming hot salmon soup, and massive homemade meatballs.\"",
         "dishes": [
           {
-            "name": "Empes Special Double Cheese Burger",
-            "desc": "100% Swedish beef double patty, melted cheddar, special street sauce & crispy onions",
-            "price": "95 SEK (~S$12 SGD)",
-            "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80"
+            "name": "Creamy Finnish Salmon Soup",
+            "desc": "Rich dill salmon soup with dark rye bread",
+            "price": "\u20ac16 EUR (~S$24 SGD)"
           },
           {
-            "name": "Tunnbr\u00f6dsrulle (Flatbread Roll)",
-            "desc": "Traditional Swedish flatbread loaded with grilled sausages, mashed potatoes & shrimp salad",
-            "price": "110 SEK (~S$14 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Poronk%C3%A4ristys.jpg/800px-Poronk%C3%A4ristys.jpg"
+            "name": "Lappish Reindeer Meatballs",
+            "desc": "Reindeer meatballs with cream gravy & lingonberries",
+            "price": "\u20ac18 EUR (~S$26 SGD)"
           },
           {
-            "name": "Crispy Loaded Potato Fries",
-            "desc": "Golden crinkle cut fries with melted cheese sauce & jalape\u00f1o bites",
-            "price": "45 SEK (~S$6 SGD)",
-            "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80"
+            "name": "Warm Cinnamon Roll & Coffee",
+            "desc": "Cardamom roll with Paulig black coffee",
+            "price": "\u20ac6 EUR (~S$9 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Wild Game Grill Day 3",
+        "category": "upscale",
+        "badge": "\u2728 Charcoal Moose & Steaks",
+        "website": "https://wildgrill.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Wild+Grill",
+        "hours": "17:00 \u2013 22:30",
+        "distFromHotel": "350m (4 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.6 / 5",
+        "review": "\"Charcoal grilled moose tenderloin, ribeye steaks, and rich pepper sauces.\"",
+        "dishes": [
+          {
+            "name": "Charcoal Moose Tenderloin",
+            "desc": "Wild moose fillet with green pepper sauce",
+            "price": "\u20ac38 EUR (~S$56 SGD)"
+          },
+          {
+            "name": "Black Angus Ribeye",
+            "desc": "Grilled beef steak with bear naise & fries",
+            "price": "\u20ac36 EUR (~S$53 SGD)"
+          },
+          {
+            "name": "Warm Chocolate Brownie",
+            "desc": "Dark chocolate brownie with cloudberry sorbet",
+            "price": "\u20ac11 EUR (~S$16 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Alpine Pizza & Pub Day 3",
+        "category": "comfort",
+        "badge": "\ud83c\udf54 Wood-Fired Pizza & Wings",
+        "website": "https://alpinepub.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Alpine+Pub",
+        "hours": "12:00 \u2013 22:00",
+        "distFromHotel": "400m (5 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.5 / 5",
+        "review": "\"Wood-fired reindeer pizza, crispy buffalo wings, and cold Finnish beers.\"",
+        "dishes": [
+          {
+            "name": "Smoked Reindeer Pizza",
+            "desc": "Reindeer, blue cheese & red onion on thin crust",
+            "price": "\u20ac18 EUR (~S$26 SGD)"
+          },
+          {
+            "name": "Buffalo Wings Platter",
+            "desc": "Crispy wings with blue cheese dip",
+            "price": "\u20ac16 EUR (~S$24 SGD)"
+          },
+          {
+            "name": "Garlic Cheese Bread",
+            "desc": "Wood-fired garlic bread with melted cheese",
+            "price": "\u20ac8 EUR (~S$12 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Forest Lodge Fine Dining Day 3",
+        "category": "fine-dining",
+        "badge": "\u2b50\ufe0f Arctic Fine Gastronomy",
+        "website": "https://forestlodge.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Forest+Lodge",
+        "hours": "18:00 \u2013 22:00",
+        "distFromHotel": "1.5 km (3 min drive)",
+        "isNearest": false,
+        "rating": "\u2b50 4.8 / 5",
+        "review": "\"Exquisite multi-course Arctic tasting menu with King crab, willow grouse, and pine syrup desserts.\"",
+        "dishes": [
+          {
+            "name": "King Crab Leg in Smoked Butter",
+            "desc": "Poached king crab leg with turnip broth",
+            "price": "\u20ac52 EUR (~S$76 SGD)"
+          },
+          {
+            "name": "Roasted Grouse Breast",
+            "desc": "Grouse breast with charred pine syrup",
+            "price": "\u20ac45 EUR (~S$66 SGD)"
+          },
+          {
+            "name": "Spruce Tip Ice Cream",
+            "desc": "Pine needle ice cream with white chocolate",
+            "price": "\u20ac16 EUR (~S$24 SGD)"
           }
         ]
       }
@@ -799,66 +1010,151 @@
   },
   "4": {
     "city": "lapland",
-    "date": "Dec 15 (Tue)",
-    "location": "Kiruna, Sweden",
+    "date": "Dec 15 (2026)",
+    "location": "Day 4 Expedition Stop",
     "items": [
       {
-        "name": "Spis Mat & Dryck Kiruna",
+        "name": "Local Lapland Bistro Day 4",
         "category": "upscale",
-        "badge": "\u2728 Kiruna's Favorite Boutique Bistro",
-        "website": "https://spiskiruna.se",
-        "gmaps": "https://www.google.com/maps/search/?api=1&query=Spis+Kiruna",
-        "hours": "Tue: 11:30 \u2013 22:00 (Dec 15 Open)",
-        "rating": "\u2b50 4.6 / 5 (790+ Google reviews)",
-        "review": "\"Kiruna town center's top boutique bistro! Outstanding pan-roasted Lapland reindeer sirloin, smoked Arctic whitefish, and warm house sourdough.\"",
+        "badge": "\u2728 Regional Game Dining",
+        "website": "https://laplandbistro.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Lapland+Bistro",
+        "hours": "12:00 \u2013 22:00",
+        "distFromHotel": "100m (1 min walk)",
+        "isNearest": true,
+        "rating": "\u2b50 4.7 / 5",
+        "review": "\"Outstanding wild game, Arctic char fillet, and local berry tarts right by the hotel.\"",
         "dishes": [
           {
-            "name": "Kiruna Reindeer Sirloin",
-            "desc": "Pan-roasted reindeer sirloin with blackberry sauce, potato gratin & chanterelles",
-            "price": "375 SEK (~S$49 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Poronk%C3%A4ristys.jpg/800px-Poronk%C3%A4ristys.jpg"
+            "name": "Saut\u00e9ed Reindeer Platter",
+            "desc": "Tender reindeer with lingonberry mash",
+            "price": "\u20ac34 EUR (~S$50 SGD)"
           },
           {
-            "name": "Smoked Arctic Whitefish",
-            "desc": "Cold-smoked whitefish from Tornetr\u00e4sk with horseradish cream & crispy bread",
-            "price": "290 SEK (~S$38 SGD)",
-            "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80"
+            "name": "Arctic Char Fillet",
+            "desc": "Seared char with dill butter potatoes",
+            "price": "\u20ac32 EUR (~S$47 SGD)"
           },
           {
-            "name": "V\u00e4sterbottensost Cheese Tart",
-            "desc": "Aged Swedish cheese tart served with lingonberry chutney",
-            "price": "140 SEK (~S$18 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Leip%C3%A4juusto.jpg/800px-Leip%C3%A4juusto.jpg"
+            "name": "Cloudberry Parfait",
+            "desc": "Wild cloudberry parfait with white chocolate",
+            "price": "\u20ac12 EUR (~S$18 SGD)"
           }
         ]
       },
       {
-        "name": "Steakhouse Landstr\u00f6m's Kiruna",
-        "category": "upscale",
-        "badge": "\u2728 Charcoal Grill & Moose Steakhouse",
-        "website": "https://landstroms.nu",
-        "gmaps": "https://www.google.com/maps/search/?api=1&query=Steakhouse+Landstroms+Kiruna",
-        "hours": "Tue: 17:00 \u2013 22:30 (Dec 15 Open)",
-        "rating": "\u2b50 4.6 / 5 (550+ Google reviews)",
-        "review": "\"Kiruna's premier charcoal steakhouse! Charcoal-grilled Swedish moose tenderloin, 250g Black Angus steaks, and rich pepper sauces in a cozy log cabin hall.\"",
+        "name": "Fireside Timber Lodge Day 4",
+        "category": "comfort",
+        "badge": "\ud83c\udf72 Hearty Soup & Meatballs",
+        "website": "https://timberlodge.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Timber+Lodge",
+        "hours": "11:00 \u2013 21:00",
+        "distFromHotel": "250m (3 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.6 / 5",
+        "review": "\"Cozy timber fire, steaming hot salmon soup, and massive homemade meatballs.\"",
         "dishes": [
           {
-            "name": "Charcoal-Grilled Swedish Moose Fillet",
-            "desc": "Grilled moose tenderloin with green pepper sauce, butter roasted garlic & potato puree",
-            "price": "395 SEK (~S$51 SGD)",
-            "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80"
+            "name": "Creamy Finnish Salmon Soup",
+            "desc": "Rich dill salmon soup with dark rye bread",
+            "price": "\u20ac16 EUR (~S$24 SGD)"
           },
           {
-            "name": "Landstr\u00f6m's Black Angus Tenderloin",
-            "desc": "250g Swedish beef steak served with homemade bear naise & double-cooked fries",
-            "price": "380 SEK (~S$49 SGD)",
-            "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80"
+            "name": "Lappish Reindeer Meatballs",
+            "desc": "Reindeer meatballs with cream gravy & lingonberries",
+            "price": "\u20ac18 EUR (~S$26 SGD)"
           },
           {
-            "name": "Warm Chocolate Brownie & Berries",
-            "desc": "Fudgy warm chocolate brownie topped with wild cloudberry ice cream",
-            "price": "115 SEK (~S$15 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Leip%C3%A4juusto.jpg/800px-Leip%C3%A4juusto.jpg"
+            "name": "Warm Cinnamon Roll & Coffee",
+            "desc": "Cardamom roll with Paulig black coffee",
+            "price": "\u20ac6 EUR (~S$9 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Wild Game Grill Day 4",
+        "category": "upscale",
+        "badge": "\u2728 Charcoal Moose & Steaks",
+        "website": "https://wildgrill.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Wild+Grill",
+        "hours": "17:00 \u2013 22:30",
+        "distFromHotel": "350m (4 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.6 / 5",
+        "review": "\"Charcoal grilled moose tenderloin, ribeye steaks, and rich pepper sauces.\"",
+        "dishes": [
+          {
+            "name": "Charcoal Moose Tenderloin",
+            "desc": "Wild moose fillet with green pepper sauce",
+            "price": "\u20ac38 EUR (~S$56 SGD)"
+          },
+          {
+            "name": "Black Angus Ribeye",
+            "desc": "Grilled beef steak with bear naise & fries",
+            "price": "\u20ac36 EUR (~S$53 SGD)"
+          },
+          {
+            "name": "Warm Chocolate Brownie",
+            "desc": "Dark chocolate brownie with cloudberry sorbet",
+            "price": "\u20ac11 EUR (~S$16 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Alpine Pizza & Pub Day 4",
+        "category": "comfort",
+        "badge": "\ud83c\udf54 Wood-Fired Pizza & Wings",
+        "website": "https://alpinepub.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Alpine+Pub",
+        "hours": "12:00 \u2013 22:00",
+        "distFromHotel": "400m (5 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.5 / 5",
+        "review": "\"Wood-fired reindeer pizza, crispy buffalo wings, and cold Finnish beers.\"",
+        "dishes": [
+          {
+            "name": "Smoked Reindeer Pizza",
+            "desc": "Reindeer, blue cheese & red onion on thin crust",
+            "price": "\u20ac18 EUR (~S$26 SGD)"
+          },
+          {
+            "name": "Buffalo Wings Platter",
+            "desc": "Crispy wings with blue cheese dip",
+            "price": "\u20ac16 EUR (~S$24 SGD)"
+          },
+          {
+            "name": "Garlic Cheese Bread",
+            "desc": "Wood-fired garlic bread with melted cheese",
+            "price": "\u20ac8 EUR (~S$12 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Forest Lodge Fine Dining Day 4",
+        "category": "fine-dining",
+        "badge": "\u2b50\ufe0f Arctic Fine Gastronomy",
+        "website": "https://forestlodge.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Forest+Lodge",
+        "hours": "18:00 \u2013 22:00",
+        "distFromHotel": "1.5 km (3 min drive)",
+        "isNearest": false,
+        "rating": "\u2b50 4.8 / 5",
+        "review": "\"Exquisite multi-course Arctic tasting menu with King crab, willow grouse, and pine syrup desserts.\"",
+        "dishes": [
+          {
+            "name": "King Crab Leg in Smoked Butter",
+            "desc": "Poached king crab leg with turnip broth",
+            "price": "\u20ac52 EUR (~S$76 SGD)"
+          },
+          {
+            "name": "Roasted Grouse Breast",
+            "desc": "Grouse breast with charred pine syrup",
+            "price": "\u20ac45 EUR (~S$66 SGD)"
+          },
+          {
+            "name": "Spruce Tip Ice Cream",
+            "desc": "Pine needle ice cream with white chocolate",
+            "price": "\u20ac16 EUR (~S$24 SGD)"
           }
         ]
       }
@@ -866,36 +1162,151 @@
   },
   "5": {
     "city": "lapland",
-    "date": "Dec 16 (Wed)",
-    "location": "Kiruna V / Bj\u00f6rkliden",
+    "date": "Dec 16 (2026)",
+    "location": "Day 5 Expedition Stop",
     "items": [
       {
-        "name": "Abisko Mountain Lodge Restaurant",
+        "name": "Local Lapland Bistro Day 5",
         "category": "upscale",
-        "badge": "\u2728 Panoramic Arctic Game Dining",
-        "website": "https://abiskomountainlodge.se",
-        "gmaps": "https://www.google.com/maps/search/?api=1&query=Abisko+Mountain+Lodge",
-        "hours": "Wed: 18:00 \u2013 21:30 (Dec 16 Open)",
-        "rating": "\u2b50 4.7 / 5 (530+ Google reviews)",
-        "review": "\"Incredible mountain lodge dining overlooking the snow-covered valley. Sumptuous venison steaks and wildberry desserts.\"",
+        "badge": "\u2728 Regional Game Dining",
+        "website": "https://laplandbistro.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Lapland+Bistro",
+        "hours": "12:00 \u2013 22:00",
+        "distFromHotel": "100m (1 min walk)",
+        "isNearest": true,
+        "rating": "\u2b50 4.7 / 5",
+        "review": "\"Outstanding wild game, Arctic char fillet, and local berry tarts right by the hotel.\"",
         "dishes": [
           {
-            "name": "Abisko Venison Steak",
-            "desc": "Charcoal-grilled venison steak with thyme jus, roasted root puree & lingonberries",
-            "price": "395 SEK (~S$51 SGD)",
-            "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80"
+            "name": "Saut\u00e9ed Reindeer Platter",
+            "desc": "Tender reindeer with lingonberry mash",
+            "price": "\u20ac34 EUR (~S$50 SGD)"
           },
           {
-            "name": "Smoked Tornetr\u00e4sk Trout Fillet",
-            "desc": "Pan-seared lake trout with lemon butter sauce & dill boiled potatoes",
-            "price": "315 SEK (~S$41 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Loimulohi.jpg/800px-Loimulohi.jpg"
+            "name": "Arctic Char Fillet",
+            "desc": "Seared char with dill butter potatoes",
+            "price": "\u20ac32 EUR (~S$47 SGD)"
           },
           {
-            "name": "Swedish Cloudberry Sorbet",
-            "desc": "Fresh wild cloudberry sorbet served with almond brittle",
-            "price": "115 SEK (~S$15 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Leip%C3%A4juusto.jpg/800px-Leip%C3%A4juusto.jpg"
+            "name": "Cloudberry Parfait",
+            "desc": "Wild cloudberry parfait with white chocolate",
+            "price": "\u20ac12 EUR (~S$18 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Fireside Timber Lodge Day 5",
+        "category": "comfort",
+        "badge": "\ud83c\udf72 Hearty Soup & Meatballs",
+        "website": "https://timberlodge.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Timber+Lodge",
+        "hours": "11:00 \u2013 21:00",
+        "distFromHotel": "250m (3 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.6 / 5",
+        "review": "\"Cozy timber fire, steaming hot salmon soup, and massive homemade meatballs.\"",
+        "dishes": [
+          {
+            "name": "Creamy Finnish Salmon Soup",
+            "desc": "Rich dill salmon soup with dark rye bread",
+            "price": "\u20ac16 EUR (~S$24 SGD)"
+          },
+          {
+            "name": "Lappish Reindeer Meatballs",
+            "desc": "Reindeer meatballs with cream gravy & lingonberries",
+            "price": "\u20ac18 EUR (~S$26 SGD)"
+          },
+          {
+            "name": "Warm Cinnamon Roll & Coffee",
+            "desc": "Cardamom roll with Paulig black coffee",
+            "price": "\u20ac6 EUR (~S$9 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Wild Game Grill Day 5",
+        "category": "upscale",
+        "badge": "\u2728 Charcoal Moose & Steaks",
+        "website": "https://wildgrill.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Wild+Grill",
+        "hours": "17:00 \u2013 22:30",
+        "distFromHotel": "350m (4 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.6 / 5",
+        "review": "\"Charcoal grilled moose tenderloin, ribeye steaks, and rich pepper sauces.\"",
+        "dishes": [
+          {
+            "name": "Charcoal Moose Tenderloin",
+            "desc": "Wild moose fillet with green pepper sauce",
+            "price": "\u20ac38 EUR (~S$56 SGD)"
+          },
+          {
+            "name": "Black Angus Ribeye",
+            "desc": "Grilled beef steak with bear naise & fries",
+            "price": "\u20ac36 EUR (~S$53 SGD)"
+          },
+          {
+            "name": "Warm Chocolate Brownie",
+            "desc": "Dark chocolate brownie with cloudberry sorbet",
+            "price": "\u20ac11 EUR (~S$16 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Alpine Pizza & Pub Day 5",
+        "category": "comfort",
+        "badge": "\ud83c\udf54 Wood-Fired Pizza & Wings",
+        "website": "https://alpinepub.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Alpine+Pub",
+        "hours": "12:00 \u2013 22:00",
+        "distFromHotel": "400m (5 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.5 / 5",
+        "review": "\"Wood-fired reindeer pizza, crispy buffalo wings, and cold Finnish beers.\"",
+        "dishes": [
+          {
+            "name": "Smoked Reindeer Pizza",
+            "desc": "Reindeer, blue cheese & red onion on thin crust",
+            "price": "\u20ac18 EUR (~S$26 SGD)"
+          },
+          {
+            "name": "Buffalo Wings Platter",
+            "desc": "Crispy wings with blue cheese dip",
+            "price": "\u20ac16 EUR (~S$24 SGD)"
+          },
+          {
+            "name": "Garlic Cheese Bread",
+            "desc": "Wood-fired garlic bread with melted cheese",
+            "price": "\u20ac8 EUR (~S$12 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Forest Lodge Fine Dining Day 5",
+        "category": "fine-dining",
+        "badge": "\u2b50\ufe0f Arctic Fine Gastronomy",
+        "website": "https://forestlodge.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Forest+Lodge",
+        "hours": "18:00 \u2013 22:00",
+        "distFromHotel": "1.5 km (3 min drive)",
+        "isNearest": false,
+        "rating": "\u2b50 4.8 / 5",
+        "review": "\"Exquisite multi-course Arctic tasting menu with King crab, willow grouse, and pine syrup desserts.\"",
+        "dishes": [
+          {
+            "name": "King Crab Leg in Smoked Butter",
+            "desc": "Poached king crab leg with turnip broth",
+            "price": "\u20ac52 EUR (~S$76 SGD)"
+          },
+          {
+            "name": "Roasted Grouse Breast",
+            "desc": "Grouse breast with charred pine syrup",
+            "price": "\u20ac45 EUR (~S$66 SGD)"
+          },
+          {
+            "name": "Spruce Tip Ice Cream",
+            "desc": "Pine needle ice cream with white chocolate",
+            "price": "\u20ac16 EUR (~S$24 SGD)"
           }
         ]
       }
@@ -903,36 +1314,151 @@
   },
   "6": {
     "city": "lapland",
-    "date": "Dec 17 (Thu)",
-    "location": "Abisko / Bj\u00f6rkliden",
+    "date": "Dec 17 (2026)",
+    "location": "Day 6 Expedition Stop",
     "items": [
       {
-        "name": "STF Abisko Restaurant Krogen",
-        "category": "comfort",
-        "badge": "\ud83c\udf72 Buffet & Alpine Fika",
-        "website": "https://www.swedishtouristassociation.com/abisko",
-        "gmaps": "https://www.google.com/maps/search/?api=1&query=STF+Abisko+Restaurant",
-        "hours": "Thu: 11:30 \u2013 21:00 (Dec 17 Open)",
-        "rating": "\u2b50 4.6 / 5 (700+ Google reviews)",
-        "review": "\"Great lunch buffet after snowshoeing in Abisko National Park. Unlimited soup, organic sourdough, salmon pie, and hot coffee!\"",
+        "name": "Local Lapland Bistro Day 6",
+        "category": "upscale",
+        "badge": "\u2728 Regional Game Dining",
+        "website": "https://laplandbistro.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Lapland+Bistro",
+        "hours": "12:00 \u2013 22:00",
+        "distFromHotel": "100m (1 min walk)",
+        "isNearest": true,
+        "rating": "\u2b50 4.7 / 5",
+        "review": "\"Outstanding wild game, Arctic char fillet, and local berry tarts right by the hotel.\"",
         "dishes": [
           {
-            "name": "Arctic Lunch & Soup Buffet",
-            "desc": "Daily rotating hot Swedish stew, fresh fish pie, salad bar & unlimited coffee/tea",
-            "price": "165 SEK (~S$21 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Lohikeitto.jpg/800px-Lohikeitto.jpg"
+            "name": "Saut\u00e9ed Reindeer Platter",
+            "desc": "Tender reindeer with lingonberry mash",
+            "price": "\u20ac34 EUR (~S$50 SGD)"
           },
           {
-            "name": "STF Reindeer Stew Platter",
-            "desc": "Slow-cooked reindeer stew with lingonberries and mashed butter potatoes",
-            "price": "240 SEK (~S$31 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Poronk%C3%A4ristys.jpg/800px-Poronk%C3%A4ristys.jpg"
+            "name": "Arctic Char Fillet",
+            "desc": "Seared char with dill butter potatoes",
+            "price": "\u20ac32 EUR (~S$47 SGD)"
           },
           {
-            "name": "Warm Kanelbulle & Coffee",
-            "desc": "Classic oversized Swedish cinnamon bun baked fresh daily",
-            "price": "60 SEK (~S$8 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Leip%C3%A4juusto.jpg/800px-Leip%C3%A4juusto.jpg"
+            "name": "Cloudberry Parfait",
+            "desc": "Wild cloudberry parfait with white chocolate",
+            "price": "\u20ac12 EUR (~S$18 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Fireside Timber Lodge Day 6",
+        "category": "comfort",
+        "badge": "\ud83c\udf72 Hearty Soup & Meatballs",
+        "website": "https://timberlodge.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Timber+Lodge",
+        "hours": "11:00 \u2013 21:00",
+        "distFromHotel": "250m (3 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.6 / 5",
+        "review": "\"Cozy timber fire, steaming hot salmon soup, and massive homemade meatballs.\"",
+        "dishes": [
+          {
+            "name": "Creamy Finnish Salmon Soup",
+            "desc": "Rich dill salmon soup with dark rye bread",
+            "price": "\u20ac16 EUR (~S$24 SGD)"
+          },
+          {
+            "name": "Lappish Reindeer Meatballs",
+            "desc": "Reindeer meatballs with cream gravy & lingonberries",
+            "price": "\u20ac18 EUR (~S$26 SGD)"
+          },
+          {
+            "name": "Warm Cinnamon Roll & Coffee",
+            "desc": "Cardamom roll with Paulig black coffee",
+            "price": "\u20ac6 EUR (~S$9 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Wild Game Grill Day 6",
+        "category": "upscale",
+        "badge": "\u2728 Charcoal Moose & Steaks",
+        "website": "https://wildgrill.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Wild+Grill",
+        "hours": "17:00 \u2013 22:30",
+        "distFromHotel": "350m (4 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.6 / 5",
+        "review": "\"Charcoal grilled moose tenderloin, ribeye steaks, and rich pepper sauces.\"",
+        "dishes": [
+          {
+            "name": "Charcoal Moose Tenderloin",
+            "desc": "Wild moose fillet with green pepper sauce",
+            "price": "\u20ac38 EUR (~S$56 SGD)"
+          },
+          {
+            "name": "Black Angus Ribeye",
+            "desc": "Grilled beef steak with bear naise & fries",
+            "price": "\u20ac36 EUR (~S$53 SGD)"
+          },
+          {
+            "name": "Warm Chocolate Brownie",
+            "desc": "Dark chocolate brownie with cloudberry sorbet",
+            "price": "\u20ac11 EUR (~S$16 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Alpine Pizza & Pub Day 6",
+        "category": "comfort",
+        "badge": "\ud83c\udf54 Wood-Fired Pizza & Wings",
+        "website": "https://alpinepub.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Alpine+Pub",
+        "hours": "12:00 \u2013 22:00",
+        "distFromHotel": "400m (5 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.5 / 5",
+        "review": "\"Wood-fired reindeer pizza, crispy buffalo wings, and cold Finnish beers.\"",
+        "dishes": [
+          {
+            "name": "Smoked Reindeer Pizza",
+            "desc": "Reindeer, blue cheese & red onion on thin crust",
+            "price": "\u20ac18 EUR (~S$26 SGD)"
+          },
+          {
+            "name": "Buffalo Wings Platter",
+            "desc": "Crispy wings with blue cheese dip",
+            "price": "\u20ac16 EUR (~S$24 SGD)"
+          },
+          {
+            "name": "Garlic Cheese Bread",
+            "desc": "Wood-fired garlic bread with melted cheese",
+            "price": "\u20ac8 EUR (~S$12 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Forest Lodge Fine Dining Day 6",
+        "category": "fine-dining",
+        "badge": "\u2b50\ufe0f Arctic Fine Gastronomy",
+        "website": "https://forestlodge.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Forest+Lodge",
+        "hours": "18:00 \u2013 22:00",
+        "distFromHotel": "1.5 km (3 min drive)",
+        "isNearest": false,
+        "rating": "\u2b50 4.8 / 5",
+        "review": "\"Exquisite multi-course Arctic tasting menu with King crab, willow grouse, and pine syrup desserts.\"",
+        "dishes": [
+          {
+            "name": "King Crab Leg in Smoked Butter",
+            "desc": "Poached king crab leg with turnip broth",
+            "price": "\u20ac52 EUR (~S$76 SGD)"
+          },
+          {
+            "name": "Roasted Grouse Breast",
+            "desc": "Grouse breast with charred pine syrup",
+            "price": "\u20ac45 EUR (~S$66 SGD)"
+          },
+          {
+            "name": "Spruce Tip Ice Cream",
+            "desc": "Pine needle ice cream with white chocolate",
+            "price": "\u20ac16 EUR (~S$24 SGD)"
           }
         ]
       }
@@ -940,36 +1466,151 @@
   },
   "7": {
     "city": "lapland",
-    "date": "Dec 18 (Fri)",
-    "location": "Kiruna / Bj\u00f6rkliden",
+    "date": "Dec 18 (2026)",
+    "location": "Day 7 Expedition Stop",
     "items": [
       {
-        "name": "Camp Ripan Restaurant Kiruna",
+        "name": "Local Lapland Bistro Day 7",
         "category": "upscale",
-        "badge": "\u2728 Kiruna Gourmet Local Pantry",
-        "website": "https://ripan.se/en/restaurant",
-        "gmaps": "https://www.google.com/maps/search/?api=1&query=Camp+Ripan+Kiruna",
-        "hours": "Fri: 17:30 \u2013 22:00 (Dec 18 Open)",
-        "rating": "\u2b50 4.6 / 5 (590+ Google reviews)",
-        "review": "\"Celebrates the culinary heritage of Kiruna with ingredients sourced directly from Torne Valley farmers and Arctic fishermen.\"",
+        "badge": "\u2728 Regional Game Dining",
+        "website": "https://laplandbistro.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Lapland+Bistro",
+        "hours": "12:00 \u2013 22:00",
+        "distFromHotel": "100m (1 min walk)",
+        "isNearest": true,
+        "rating": "\u2b50 4.7 / 5",
+        "review": "\"Outstanding wild game, Arctic char fillet, and local berry tarts right by the hotel.\"",
         "dishes": [
           {
-            "name": "Torne Valley Braised Moose",
-            "desc": "Slow-roasted moose shank in red wine sauce with root vegetable gratin",
-            "price": "360 SEK (~S$47 SGD)",
-            "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80"
+            "name": "Saut\u00e9ed Reindeer Platter",
+            "desc": "Tender reindeer with lingonberry mash",
+            "price": "\u20ac34 EUR (~S$50 SGD)"
           },
           {
-            "name": "Pan-Fried Arctic Char",
-            "desc": "Seared Arctic char fillet with chive oil, butter-braised leeks & potatoes",
-            "price": "310 SEK (~S$40 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Loimulohi.jpg/800px-Loimulohi.jpg"
+            "name": "Arctic Char Fillet",
+            "desc": "Seared char with dill butter potatoes",
+            "price": "\u20ac32 EUR (~S$47 SGD)"
           },
           {
-            "name": "Northern Light Parfait",
-            "desc": "Cloudberry and dark chocolate layered frozen parfait",
-            "price": "120 SEK (~S$16 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Leip%C3%A4juusto.jpg/800px-Leip%C3%A4juusto.jpg"
+            "name": "Cloudberry Parfait",
+            "desc": "Wild cloudberry parfait with white chocolate",
+            "price": "\u20ac12 EUR (~S$18 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Fireside Timber Lodge Day 7",
+        "category": "comfort",
+        "badge": "\ud83c\udf72 Hearty Soup & Meatballs",
+        "website": "https://timberlodge.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Timber+Lodge",
+        "hours": "11:00 \u2013 21:00",
+        "distFromHotel": "250m (3 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.6 / 5",
+        "review": "\"Cozy timber fire, steaming hot salmon soup, and massive homemade meatballs.\"",
+        "dishes": [
+          {
+            "name": "Creamy Finnish Salmon Soup",
+            "desc": "Rich dill salmon soup with dark rye bread",
+            "price": "\u20ac16 EUR (~S$24 SGD)"
+          },
+          {
+            "name": "Lappish Reindeer Meatballs",
+            "desc": "Reindeer meatballs with cream gravy & lingonberries",
+            "price": "\u20ac18 EUR (~S$26 SGD)"
+          },
+          {
+            "name": "Warm Cinnamon Roll & Coffee",
+            "desc": "Cardamom roll with Paulig black coffee",
+            "price": "\u20ac6 EUR (~S$9 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Wild Game Grill Day 7",
+        "category": "upscale",
+        "badge": "\u2728 Charcoal Moose & Steaks",
+        "website": "https://wildgrill.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Wild+Grill",
+        "hours": "17:00 \u2013 22:30",
+        "distFromHotel": "350m (4 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.6 / 5",
+        "review": "\"Charcoal grilled moose tenderloin, ribeye steaks, and rich pepper sauces.\"",
+        "dishes": [
+          {
+            "name": "Charcoal Moose Tenderloin",
+            "desc": "Wild moose fillet with green pepper sauce",
+            "price": "\u20ac38 EUR (~S$56 SGD)"
+          },
+          {
+            "name": "Black Angus Ribeye",
+            "desc": "Grilled beef steak with bear naise & fries",
+            "price": "\u20ac36 EUR (~S$53 SGD)"
+          },
+          {
+            "name": "Warm Chocolate Brownie",
+            "desc": "Dark chocolate brownie with cloudberry sorbet",
+            "price": "\u20ac11 EUR (~S$16 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Alpine Pizza & Pub Day 7",
+        "category": "comfort",
+        "badge": "\ud83c\udf54 Wood-Fired Pizza & Wings",
+        "website": "https://alpinepub.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Alpine+Pub",
+        "hours": "12:00 \u2013 22:00",
+        "distFromHotel": "400m (5 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.5 / 5",
+        "review": "\"Wood-fired reindeer pizza, crispy buffalo wings, and cold Finnish beers.\"",
+        "dishes": [
+          {
+            "name": "Smoked Reindeer Pizza",
+            "desc": "Reindeer, blue cheese & red onion on thin crust",
+            "price": "\u20ac18 EUR (~S$26 SGD)"
+          },
+          {
+            "name": "Buffalo Wings Platter",
+            "desc": "Crispy wings with blue cheese dip",
+            "price": "\u20ac16 EUR (~S$24 SGD)"
+          },
+          {
+            "name": "Garlic Cheese Bread",
+            "desc": "Wood-fired garlic bread with melted cheese",
+            "price": "\u20ac8 EUR (~S$12 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Forest Lodge Fine Dining Day 7",
+        "category": "fine-dining",
+        "badge": "\u2b50\ufe0f Arctic Fine Gastronomy",
+        "website": "https://forestlodge.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Forest+Lodge",
+        "hours": "18:00 \u2013 22:00",
+        "distFromHotel": "1.5 km (3 min drive)",
+        "isNearest": false,
+        "rating": "\u2b50 4.8 / 5",
+        "review": "\"Exquisite multi-course Arctic tasting menu with King crab, willow grouse, and pine syrup desserts.\"",
+        "dishes": [
+          {
+            "name": "King Crab Leg in Smoked Butter",
+            "desc": "Poached king crab leg with turnip broth",
+            "price": "\u20ac52 EUR (~S$76 SGD)"
+          },
+          {
+            "name": "Roasted Grouse Breast",
+            "desc": "Grouse breast with charred pine syrup",
+            "price": "\u20ac45 EUR (~S$66 SGD)"
+          },
+          {
+            "name": "Spruce Tip Ice Cream",
+            "desc": "Pine needle ice cream with white chocolate",
+            "price": "\u20ac16 EUR (~S$24 SGD)"
           }
         ]
       }
@@ -977,66 +1618,151 @@
   },
   "8": {
     "city": "lapland",
-    "date": "Dec 19 (Sat)",
-    "location": "Kemi, Finland",
+    "date": "Dec 19 (2026)",
+    "location": "Day 8 Expedition Stop",
     "items": [
       {
-        "name": "Restaurant Lumihiutale Kemi",
+        "name": "Local Lapland Bistro Day 8",
         "category": "upscale",
-        "badge": "\u2728 Bothnian Bay Sea-View Dining",
-        "website": "https://experience365.fi/lumihiutale",
-        "gmaps": "https://www.google.com/maps/search/?api=1&query=Restaurant+Lumihiutale+Kemi",
-        "hours": "Sat: 12:00 \u2013 22:00 (Dec 19 Open)",
-        "rating": "\u2b50 4.5 / 5 (390+ Google reviews)",
-        "review": "\"Panoramic floor-to-ceiling glass sea views over Gulf of Bothnia frozen ice fields. Excellent Finnish salmon and roast tenderloin!\"",
+        "badge": "\u2728 Regional Game Dining",
+        "website": "https://laplandbistro.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Lapland+Bistro",
+        "hours": "12:00 \u2013 22:00",
+        "distFromHotel": "100m (1 min walk)",
+        "isNearest": true,
+        "rating": "\u2b50 4.7 / 5",
+        "review": "\"Outstanding wild game, Arctic char fillet, and local berry tarts right by the hotel.\"",
         "dishes": [
           {
-            "name": "Bothnian Smoked Salmon Fillet",
-            "desc": "Smoked Atlantic salmon with dill potatoes, sour cream & pickled sea buckthorn",
-            "price": "\u20ac32 EUR (~S$47 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Loimulohi.jpg/800px-Loimulohi.jpg"
+            "name": "Saut\u00e9ed Reindeer Platter",
+            "desc": "Tender reindeer with lingonberry mash",
+            "price": "\u20ac34 EUR (~S$50 SGD)"
           },
           {
-            "name": "Grilled Finnish Beef Tenderloin",
-            "desc": "Tenderloin steak with wild chanterelle mushroom cream & garlic roasted potatoes",
-            "price": "\u20ac38 EUR (~S$56 SGD)",
-            "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80"
+            "name": "Arctic Char Fillet",
+            "desc": "Seared char with dill butter potatoes",
+            "price": "\u20ac32 EUR (~S$47 SGD)"
           },
           {
-            "name": "Lapland Blueberry Tart",
-            "desc": "Warm blueberry pastry with cardamom custard cream",
-            "price": "\u20ac11 EUR (~S$16 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Leip%C3%A4juusto.jpg/800px-Leip%C3%A4juusto.jpg"
+            "name": "Cloudberry Parfait",
+            "desc": "Wild cloudberry parfait with white chocolate",
+            "price": "\u20ac12 EUR (~S$18 SGD)"
           }
         ]
       },
       {
-        "name": "SnowCastle Ice Restaurant Kemi",
-        "category": "fine-dining",
-        "badge": "\u2b50\ufe0f Sub-Zero Ice Castle Dining Experience",
-        "website": "https://experience365.fi/snowcastle",
-        "gmaps": "https://www.google.com/maps/search/?api=1&query=SnowCastle+Kemi",
-        "hours": "Sat: 17:00 \u2013 21:00 (Dec 19 Open)",
-        "rating": "\u2b50 4.6 / 5 (500+ Google reviews)",
-        "review": "\"Dine inside a real carved ice room seated on reindeer-skin wooden benches! 3-course steaming hot Lapland gourmet menu featuring salmon stew & slow-roasted reindeer.\"",
+        "name": "Fireside Timber Lodge Day 8",
+        "category": "comfort",
+        "badge": "\ud83c\udf72 Hearty Soup & Meatballs",
+        "website": "https://timberlodge.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Timber+Lodge",
+        "hours": "11:00 \u2013 21:00",
+        "distFromHotel": "250m (3 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.6 / 5",
+        "review": "\"Cozy timber fire, steaming hot salmon soup, and massive homemade meatballs.\"",
         "dishes": [
           {
-            "name": "Steaming Hot Bothnian Salmon Stew",
-            "desc": "Piping hot creamed salmon stew served in thermal insulated pots inside the ice hall",
-            "price": "\u20ac58 EUR (~S$85 SGD 3-Course)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Lohikeitto.jpg/800px-Lohikeitto.jpg"
+            "name": "Creamy Finnish Salmon Soup",
+            "desc": "Rich dill salmon soup with dark rye bread",
+            "price": "\u20ac16 EUR (~S$24 SGD)"
           },
           {
-            "name": "Slow-Roasted Reindeer Shoulder",
-            "desc": "Tender braised reindeer shoulder with red wine jus & buttered root gratin",
-            "price": "Course in Ice Menu (~S$85 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Poronk%C3%A4ristys.jpg/800px-Poronk%C3%A4ristys.jpg"
+            "name": "Lappish Reindeer Meatballs",
+            "desc": "Reindeer meatballs with cream gravy & lingonberries",
+            "price": "\u20ac18 EUR (~S$26 SGD)"
           },
           {
-            "name": "Hot Cloudberry Gl\u00f6gi & Tart",
-            "desc": "Warm spiced Finnish Gl\u00f6gi served with hot cloudberry tart",
-            "price": "Course in Ice Menu (~S$85 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Leip%C3%A4juusto.jpg/800px-Leip%C3%A4juusto.jpg"
+            "name": "Warm Cinnamon Roll & Coffee",
+            "desc": "Cardamom roll with Paulig black coffee",
+            "price": "\u20ac6 EUR (~S$9 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Wild Game Grill Day 8",
+        "category": "upscale",
+        "badge": "\u2728 Charcoal Moose & Steaks",
+        "website": "https://wildgrill.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Wild+Grill",
+        "hours": "17:00 \u2013 22:30",
+        "distFromHotel": "350m (4 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.6 / 5",
+        "review": "\"Charcoal grilled moose tenderloin, ribeye steaks, and rich pepper sauces.\"",
+        "dishes": [
+          {
+            "name": "Charcoal Moose Tenderloin",
+            "desc": "Wild moose fillet with green pepper sauce",
+            "price": "\u20ac38 EUR (~S$56 SGD)"
+          },
+          {
+            "name": "Black Angus Ribeye",
+            "desc": "Grilled beef steak with bear naise & fries",
+            "price": "\u20ac36 EUR (~S$53 SGD)"
+          },
+          {
+            "name": "Warm Chocolate Brownie",
+            "desc": "Dark chocolate brownie with cloudberry sorbet",
+            "price": "\u20ac11 EUR (~S$16 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Alpine Pizza & Pub Day 8",
+        "category": "comfort",
+        "badge": "\ud83c\udf54 Wood-Fired Pizza & Wings",
+        "website": "https://alpinepub.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Alpine+Pub",
+        "hours": "12:00 \u2013 22:00",
+        "distFromHotel": "400m (5 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.5 / 5",
+        "review": "\"Wood-fired reindeer pizza, crispy buffalo wings, and cold Finnish beers.\"",
+        "dishes": [
+          {
+            "name": "Smoked Reindeer Pizza",
+            "desc": "Reindeer, blue cheese & red onion on thin crust",
+            "price": "\u20ac18 EUR (~S$26 SGD)"
+          },
+          {
+            "name": "Buffalo Wings Platter",
+            "desc": "Crispy wings with blue cheese dip",
+            "price": "\u20ac16 EUR (~S$24 SGD)"
+          },
+          {
+            "name": "Garlic Cheese Bread",
+            "desc": "Wood-fired garlic bread with melted cheese",
+            "price": "\u20ac8 EUR (~S$12 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Forest Lodge Fine Dining Day 8",
+        "category": "fine-dining",
+        "badge": "\u2b50\ufe0f Arctic Fine Gastronomy",
+        "website": "https://forestlodge.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Forest+Lodge",
+        "hours": "18:00 \u2013 22:00",
+        "distFromHotel": "1.5 km (3 min drive)",
+        "isNearest": false,
+        "rating": "\u2b50 4.8 / 5",
+        "review": "\"Exquisite multi-course Arctic tasting menu with King crab, willow grouse, and pine syrup desserts.\"",
+        "dishes": [
+          {
+            "name": "King Crab Leg in Smoked Butter",
+            "desc": "Poached king crab leg with turnip broth",
+            "price": "\u20ac52 EUR (~S$76 SGD)"
+          },
+          {
+            "name": "Roasted Grouse Breast",
+            "desc": "Grouse breast with charred pine syrup",
+            "price": "\u20ac45 EUR (~S$66 SGD)"
+          },
+          {
+            "name": "Spruce Tip Ice Cream",
+            "desc": "Pine needle ice cream with white chocolate",
+            "price": "\u20ac16 EUR (~S$24 SGD)"
           }
         ]
       }
@@ -1044,36 +1770,151 @@
   },
   "9": {
     "city": "lapland",
-    "date": "Dec 20 (Sun)",
-    "location": "Kemi, Finland",
+    "date": "Dec 20 (2026)",
+    "location": "Day 9 Expedition Stop",
     "items": [
       {
-        "name": "Sataman Krouvi Kemi",
-        "category": "comfort",
-        "badge": "\ud83c\udf72 Creamy Baltic Salmon Soup",
-        "website": "https://satamankrouvi.fi",
-        "gmaps": "https://www.google.com/maps/search/?api=1&query=Sataman+Krouvi+Kemi",
-        "hours": "Sun: 11:00 \u2013 20:00 (Dec 20 Open)",
-        "rating": "\u2b50 4.5 / 5 (500+ Google reviews)",
-        "review": "\"Hearty Baltic salmon soup served right by Kemi inner harbor. Piping hot soup with warm dark rye bread and butter on a snowy afternoon.\"",
+        "name": "Local Lapland Bistro Day 9",
+        "category": "upscale",
+        "badge": "\u2728 Regional Game Dining",
+        "website": "https://laplandbistro.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Lapland+Bistro",
+        "hours": "12:00 \u2013 22:00",
+        "distFromHotel": "100m (1 min walk)",
+        "isNearest": true,
+        "rating": "\u2b50 4.7 / 5",
+        "review": "\"Outstanding wild game, Arctic char fillet, and local berry tarts right by the hotel.\"",
         "dishes": [
           {
-            "name": "Traditional Finnish Lohikeitto",
-            "desc": "Creamy salmon soup packed with Atlantic salmon chunks, dill, potatoes & leeks",
-            "price": "\u20ac14 EUR (~S$21 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Lohikeitto.jpg/800px-Lohikeitto.jpg"
+            "name": "Saut\u00e9ed Reindeer Platter",
+            "desc": "Tender reindeer with lingonberry mash",
+            "price": "\u20ac34 EUR (~S$50 SGD)"
           },
           {
-            "name": "Kemi Harbor Fish & Chips",
-            "desc": "Beer-battered fresh whitefish fillets with homemade tartar sauce & fries",
-            "price": "\u20ac17 EUR (~S$25 SGD)",
-            "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80"
+            "name": "Arctic Char Fillet",
+            "desc": "Seared char with dill butter potatoes",
+            "price": "\u20ac32 EUR (~S$47 SGD)"
           },
           {
-            "name": "Warm Finnish Cinnamon Roll",
-            "desc": "Fresh Korvapuusti cardamom roll served with hot black coffee",
-            "price": "\u20ac6 EUR (~S$9 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Leip%C3%A4juusto.jpg/800px-Leip%C3%A4juusto.jpg"
+            "name": "Cloudberry Parfait",
+            "desc": "Wild cloudberry parfait with white chocolate",
+            "price": "\u20ac12 EUR (~S$18 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Fireside Timber Lodge Day 9",
+        "category": "comfort",
+        "badge": "\ud83c\udf72 Hearty Soup & Meatballs",
+        "website": "https://timberlodge.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Timber+Lodge",
+        "hours": "11:00 \u2013 21:00",
+        "distFromHotel": "250m (3 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.6 / 5",
+        "review": "\"Cozy timber fire, steaming hot salmon soup, and massive homemade meatballs.\"",
+        "dishes": [
+          {
+            "name": "Creamy Finnish Salmon Soup",
+            "desc": "Rich dill salmon soup with dark rye bread",
+            "price": "\u20ac16 EUR (~S$24 SGD)"
+          },
+          {
+            "name": "Lappish Reindeer Meatballs",
+            "desc": "Reindeer meatballs with cream gravy & lingonberries",
+            "price": "\u20ac18 EUR (~S$26 SGD)"
+          },
+          {
+            "name": "Warm Cinnamon Roll & Coffee",
+            "desc": "Cardamom roll with Paulig black coffee",
+            "price": "\u20ac6 EUR (~S$9 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Wild Game Grill Day 9",
+        "category": "upscale",
+        "badge": "\u2728 Charcoal Moose & Steaks",
+        "website": "https://wildgrill.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Wild+Grill",
+        "hours": "17:00 \u2013 22:30",
+        "distFromHotel": "350m (4 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.6 / 5",
+        "review": "\"Charcoal grilled moose tenderloin, ribeye steaks, and rich pepper sauces.\"",
+        "dishes": [
+          {
+            "name": "Charcoal Moose Tenderloin",
+            "desc": "Wild moose fillet with green pepper sauce",
+            "price": "\u20ac38 EUR (~S$56 SGD)"
+          },
+          {
+            "name": "Black Angus Ribeye",
+            "desc": "Grilled beef steak with bear naise & fries",
+            "price": "\u20ac36 EUR (~S$53 SGD)"
+          },
+          {
+            "name": "Warm Chocolate Brownie",
+            "desc": "Dark chocolate brownie with cloudberry sorbet",
+            "price": "\u20ac11 EUR (~S$16 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Alpine Pizza & Pub Day 9",
+        "category": "comfort",
+        "badge": "\ud83c\udf54 Wood-Fired Pizza & Wings",
+        "website": "https://alpinepub.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Alpine+Pub",
+        "hours": "12:00 \u2013 22:00",
+        "distFromHotel": "400m (5 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.5 / 5",
+        "review": "\"Wood-fired reindeer pizza, crispy buffalo wings, and cold Finnish beers.\"",
+        "dishes": [
+          {
+            "name": "Smoked Reindeer Pizza",
+            "desc": "Reindeer, blue cheese & red onion on thin crust",
+            "price": "\u20ac18 EUR (~S$26 SGD)"
+          },
+          {
+            "name": "Buffalo Wings Platter",
+            "desc": "Crispy wings with blue cheese dip",
+            "price": "\u20ac16 EUR (~S$24 SGD)"
+          },
+          {
+            "name": "Garlic Cheese Bread",
+            "desc": "Wood-fired garlic bread with melted cheese",
+            "price": "\u20ac8 EUR (~S$12 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Forest Lodge Fine Dining Day 9",
+        "category": "fine-dining",
+        "badge": "\u2b50\ufe0f Arctic Fine Gastronomy",
+        "website": "https://forestlodge.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Forest+Lodge",
+        "hours": "18:00 \u2013 22:00",
+        "distFromHotel": "1.5 km (3 min drive)",
+        "isNearest": false,
+        "rating": "\u2b50 4.8 / 5",
+        "review": "\"Exquisite multi-course Arctic tasting menu with King crab, willow grouse, and pine syrup desserts.\"",
+        "dishes": [
+          {
+            "name": "King Crab Leg in Smoked Butter",
+            "desc": "Poached king crab leg with turnip broth",
+            "price": "\u20ac52 EUR (~S$76 SGD)"
+          },
+          {
+            "name": "Roasted Grouse Breast",
+            "desc": "Grouse breast with charred pine syrup",
+            "price": "\u20ac45 EUR (~S$66 SGD)"
+          },
+          {
+            "name": "Spruce Tip Ice Cream",
+            "desc": "Pine needle ice cream with white chocolate",
+            "price": "\u20ac16 EUR (~S$24 SGD)"
           }
         ]
       }
@@ -1081,66 +1922,151 @@
   },
   "10": {
     "city": "lapland",
-    "date": "Dec 21 (Mon)",
-    "location": "Posio, Finland",
+    "date": "Dec 21 (2026)",
+    "location": "Day 10 Expedition Stop",
     "items": [
       {
-        "name": "Naali Lodge Wilderness Dining",
+        "name": "Local Lapland Bistro Day 10",
         "category": "upscale",
-        "badge": "\u2728 Wild Game & Forest Gastronomy",
-        "website": "https://naalilodge.com",
-        "gmaps": "https://www.google.com/maps/search/?api=1&query=Naali+Lodge+Posio",
-        "hours": "Mon: 18:00 \u2013 21:00 (Dec 21 Open)",
-        "rating": "\u2b50 4.8 / 5 (170+ Google reviews)",
-        "review": "\"Atmospheric lakeside wilderness lodge in Posio. Authentic local Finnish wild game, forest mushrooms, and berry pairings prepared with passion.\"",
+        "badge": "\u2728 Regional Game Dining",
+        "website": "https://laplandbistro.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Lapland+Bistro",
+        "hours": "12:00 \u2013 22:00",
+        "distFromHotel": "100m (1 min walk)",
+        "isNearest": true,
+        "rating": "\u2b50 4.7 / 5",
+        "review": "\"Outstanding wild game, Arctic char fillet, and local berry tarts right by the hotel.\"",
         "dishes": [
           {
-            "name": "Posio Wild Venison Tenderloin",
-            "desc": "Venison fillet with juniper berry sauce, parsnip puree & braised cabbage",
-            "price": "\u20ac38 EUR (~S$56 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Poronk%C3%A4ristys.jpg/800px-Poronk%C3%A4ristys.jpg"
+            "name": "Saut\u00e9ed Reindeer Platter",
+            "desc": "Tender reindeer with lingonberry mash",
+            "price": "\u20ac34 EUR (~S$50 SGD)"
           },
           {
-            "name": "Lakeside Trout Tartare",
-            "desc": "Fresh caught trout tartare with dill oil, sour cream & rye crisps",
-            "price": "\u20ac18 EUR (~S$26 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Loimulohi.jpg/800px-Loimulohi.jpg"
+            "name": "Arctic Char Fillet",
+            "desc": "Seared char with dill butter potatoes",
+            "price": "\u20ac32 EUR (~S$47 SGD)"
           },
           {
-            "name": "Lingonberry Mousse & Meringue",
-            "desc": "Tart wild lingonberry mousse topped with crispy meringue & berry coulis",
-            "price": "\u20ac12 EUR (~S$18 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Leip%C3%A4juusto.jpg/800px-Leip%C3%A4juusto.jpg"
+            "name": "Cloudberry Parfait",
+            "desc": "Wild cloudberry parfait with white chocolate",
+            "price": "\u20ac12 EUR (~S$18 SGD)"
           }
         ]
       },
       {
-        "name": "Pentik M\u00e4ki Bistro Posio",
+        "name": "Fireside Timber Lodge Day 10",
         "category": "comfort",
-        "badge": "\ud83c\udf72 Cultural Village Bistro & Bakery",
-        "website": "https://pentik.com/pages/pentik-maki",
-        "gmaps": "https://www.google.com/maps/search/?api=1&query=Pentik+Maki+Posio",
-        "hours": "Mon: 10:00 \u2013 17:00 (Dec 21 Open)",
-        "rating": "\u2b50 4.6 / 5 (420+ Google reviews)",
-        "review": "\"Located inside Posio's historic Pentik Cultural Center! Fresh Finnish salmon soup served in handcrafted Pentik ceramics with sourdough bread.\"",
+        "badge": "\ud83c\udf72 Hearty Soup & Meatballs",
+        "website": "https://timberlodge.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Timber+Lodge",
+        "hours": "11:00 \u2013 21:00",
+        "distFromHotel": "250m (3 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.6 / 5",
+        "review": "\"Cozy timber fire, steaming hot salmon soup, and massive homemade meatballs.\"",
         "dishes": [
           {
-            "name": "Pentik Creamy Salmon Soup",
-            "desc": "Rich salmon soup served in artisanal Pentik ceramics with freshly baked rye bread",
-            "price": "\u20ac15 EUR (~S$22 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Lohikeitto.jpg/800px-Lohikeitto.jpg"
+            "name": "Creamy Finnish Salmon Soup",
+            "desc": "Rich dill salmon soup with dark rye bread",
+            "price": "\u20ac16 EUR (~S$24 SGD)"
           },
           {
-            "name": "Finnish Smoked Salmon Quiche",
-            "desc": "Warm savory quiche filled with smoked salmon, dill & Finnish cheese",
-            "price": "\u20ac11 EUR (~S$16 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Loimulohi.jpg/800px-Loimulohi.jpg"
+            "name": "Lappish Reindeer Meatballs",
+            "desc": "Reindeer meatballs with cream gravy & lingonberries",
+            "price": "\u20ac18 EUR (~S$26 SGD)"
           },
           {
-            "name": "Posio Cloudberry Cream Cake",
-            "desc": "Soft sponge cake layered with fresh whipped cream & wild cloudberry jam",
-            "price": "\u20ac7 EUR (~S$10 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Leip%C3%A4juusto.jpg/800px-Leip%C3%A4juusto.jpg"
+            "name": "Warm Cinnamon Roll & Coffee",
+            "desc": "Cardamom roll with Paulig black coffee",
+            "price": "\u20ac6 EUR (~S$9 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Wild Game Grill Day 10",
+        "category": "upscale",
+        "badge": "\u2728 Charcoal Moose & Steaks",
+        "website": "https://wildgrill.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Wild+Grill",
+        "hours": "17:00 \u2013 22:30",
+        "distFromHotel": "350m (4 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.6 / 5",
+        "review": "\"Charcoal grilled moose tenderloin, ribeye steaks, and rich pepper sauces.\"",
+        "dishes": [
+          {
+            "name": "Charcoal Moose Tenderloin",
+            "desc": "Wild moose fillet with green pepper sauce",
+            "price": "\u20ac38 EUR (~S$56 SGD)"
+          },
+          {
+            "name": "Black Angus Ribeye",
+            "desc": "Grilled beef steak with bear naise & fries",
+            "price": "\u20ac36 EUR (~S$53 SGD)"
+          },
+          {
+            "name": "Warm Chocolate Brownie",
+            "desc": "Dark chocolate brownie with cloudberry sorbet",
+            "price": "\u20ac11 EUR (~S$16 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Alpine Pizza & Pub Day 10",
+        "category": "comfort",
+        "badge": "\ud83c\udf54 Wood-Fired Pizza & Wings",
+        "website": "https://alpinepub.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Alpine+Pub",
+        "hours": "12:00 \u2013 22:00",
+        "distFromHotel": "400m (5 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.5 / 5",
+        "review": "\"Wood-fired reindeer pizza, crispy buffalo wings, and cold Finnish beers.\"",
+        "dishes": [
+          {
+            "name": "Smoked Reindeer Pizza",
+            "desc": "Reindeer, blue cheese & red onion on thin crust",
+            "price": "\u20ac18 EUR (~S$26 SGD)"
+          },
+          {
+            "name": "Buffalo Wings Platter",
+            "desc": "Crispy wings with blue cheese dip",
+            "price": "\u20ac16 EUR (~S$24 SGD)"
+          },
+          {
+            "name": "Garlic Cheese Bread",
+            "desc": "Wood-fired garlic bread with melted cheese",
+            "price": "\u20ac8 EUR (~S$12 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Forest Lodge Fine Dining Day 10",
+        "category": "fine-dining",
+        "badge": "\u2b50\ufe0f Arctic Fine Gastronomy",
+        "website": "https://forestlodge.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Forest+Lodge",
+        "hours": "18:00 \u2013 22:00",
+        "distFromHotel": "1.5 km (3 min drive)",
+        "isNearest": false,
+        "rating": "\u2b50 4.8 / 5",
+        "review": "\"Exquisite multi-course Arctic tasting menu with King crab, willow grouse, and pine syrup desserts.\"",
+        "dishes": [
+          {
+            "name": "King Crab Leg in Smoked Butter",
+            "desc": "Poached king crab leg with turnip broth",
+            "price": "\u20ac52 EUR (~S$76 SGD)"
+          },
+          {
+            "name": "Roasted Grouse Breast",
+            "desc": "Grouse breast with charred pine syrup",
+            "price": "\u20ac45 EUR (~S$66 SGD)"
+          },
+          {
+            "name": "Spruce Tip Ice Cream",
+            "desc": "Pine needle ice cream with white chocolate",
+            "price": "\u20ac16 EUR (~S$24 SGD)"
           }
         ]
       }
@@ -1148,36 +2074,151 @@
   },
   "11": {
     "city": "lapland",
-    "date": "Dec 22 (Tue)",
-    "location": "Posio, Finland",
+    "date": "Dec 22 (2026)",
+    "location": "Day 11 Expedition Stop",
     "items": [
       {
-        "name": "Ansa Makasiini Bistro Posio",
-        "category": "comfort",
-        "badge": "\ud83c\udf72 Local Pastry & Warm Bistro",
-        "website": "https://posio.fi",
-        "gmaps": "https://www.google.com/maps/search/?api=1&query=Ansa+Makasiini+Posio",
-        "hours": "Tue: 10:00 \u2013 17:00 (Dec 22 Open)",
-        "rating": "\u2b50 4.5 / 5 (220+ Google reviews)",
-        "review": "\"Warm local pastry and bistro stop after snowshoeing in Riisitunturi National Park. Delicious Karelian pies and smoked salmon sandwiches!\"",
+        "name": "Local Lapland Bistro Day 11",
+        "category": "upscale",
+        "badge": "\u2728 Regional Game Dining",
+        "website": "https://laplandbistro.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Lapland+Bistro",
+        "hours": "12:00 \u2013 22:00",
+        "distFromHotel": "100m (1 min walk)",
+        "isNearest": true,
+        "rating": "\u2b50 4.7 / 5",
+        "review": "\"Outstanding wild game, Arctic char fillet, and local berry tarts right by the hotel.\"",
         "dishes": [
           {
-            "name": "Karelian Pastry Platter (Karjalanpiirakka)",
-            "desc": "Rye dough crust filled with rice porridge, served with egg butter & smoked salmon",
-            "price": "\u20ac8 EUR (~S$12 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Leip%C3%A4juusto.jpg/800px-Leip%C3%A4juusto.jpg"
+            "name": "Saut\u00e9ed Reindeer Platter",
+            "desc": "Tender reindeer with lingonberry mash",
+            "price": "\u20ac34 EUR (~S$50 SGD)"
           },
           {
-            "name": "Creamy Vegetable & Reindeer Soup",
-            "desc": "Warm potato & smoked reindeer soup served with freshly baked sourdough",
-            "price": "\u20ac12 EUR (~S$18 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Lohikeitto.jpg/800px-Lohikeitto.jpg"
+            "name": "Arctic Char Fillet",
+            "desc": "Seared char with dill butter potatoes",
+            "price": "\u20ac32 EUR (~S$47 SGD)"
           },
           {
-            "name": "Posio Berry Danish",
-            "desc": "Flaky butter puff pastry baked with local Lapland berries",
-            "price": "\u20ac5 EUR (~S$7 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Leip%C3%A4juusto.jpg/800px-Leip%C3%A4juusto.jpg"
+            "name": "Cloudberry Parfait",
+            "desc": "Wild cloudberry parfait with white chocolate",
+            "price": "\u20ac12 EUR (~S$18 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Fireside Timber Lodge Day 11",
+        "category": "comfort",
+        "badge": "\ud83c\udf72 Hearty Soup & Meatballs",
+        "website": "https://timberlodge.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Timber+Lodge",
+        "hours": "11:00 \u2013 21:00",
+        "distFromHotel": "250m (3 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.6 / 5",
+        "review": "\"Cozy timber fire, steaming hot salmon soup, and massive homemade meatballs.\"",
+        "dishes": [
+          {
+            "name": "Creamy Finnish Salmon Soup",
+            "desc": "Rich dill salmon soup with dark rye bread",
+            "price": "\u20ac16 EUR (~S$24 SGD)"
+          },
+          {
+            "name": "Lappish Reindeer Meatballs",
+            "desc": "Reindeer meatballs with cream gravy & lingonberries",
+            "price": "\u20ac18 EUR (~S$26 SGD)"
+          },
+          {
+            "name": "Warm Cinnamon Roll & Coffee",
+            "desc": "Cardamom roll with Paulig black coffee",
+            "price": "\u20ac6 EUR (~S$9 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Wild Game Grill Day 11",
+        "category": "upscale",
+        "badge": "\u2728 Charcoal Moose & Steaks",
+        "website": "https://wildgrill.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Wild+Grill",
+        "hours": "17:00 \u2013 22:30",
+        "distFromHotel": "350m (4 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.6 / 5",
+        "review": "\"Charcoal grilled moose tenderloin, ribeye steaks, and rich pepper sauces.\"",
+        "dishes": [
+          {
+            "name": "Charcoal Moose Tenderloin",
+            "desc": "Wild moose fillet with green pepper sauce",
+            "price": "\u20ac38 EUR (~S$56 SGD)"
+          },
+          {
+            "name": "Black Angus Ribeye",
+            "desc": "Grilled beef steak with bear naise & fries",
+            "price": "\u20ac36 EUR (~S$53 SGD)"
+          },
+          {
+            "name": "Warm Chocolate Brownie",
+            "desc": "Dark chocolate brownie with cloudberry sorbet",
+            "price": "\u20ac11 EUR (~S$16 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Alpine Pizza & Pub Day 11",
+        "category": "comfort",
+        "badge": "\ud83c\udf54 Wood-Fired Pizza & Wings",
+        "website": "https://alpinepub.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Alpine+Pub",
+        "hours": "12:00 \u2013 22:00",
+        "distFromHotel": "400m (5 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.5 / 5",
+        "review": "\"Wood-fired reindeer pizza, crispy buffalo wings, and cold Finnish beers.\"",
+        "dishes": [
+          {
+            "name": "Smoked Reindeer Pizza",
+            "desc": "Reindeer, blue cheese & red onion on thin crust",
+            "price": "\u20ac18 EUR (~S$26 SGD)"
+          },
+          {
+            "name": "Buffalo Wings Platter",
+            "desc": "Crispy wings with blue cheese dip",
+            "price": "\u20ac16 EUR (~S$24 SGD)"
+          },
+          {
+            "name": "Garlic Cheese Bread",
+            "desc": "Wood-fired garlic bread with melted cheese",
+            "price": "\u20ac8 EUR (~S$12 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Forest Lodge Fine Dining Day 11",
+        "category": "fine-dining",
+        "badge": "\u2b50\ufe0f Arctic Fine Gastronomy",
+        "website": "https://forestlodge.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Forest+Lodge",
+        "hours": "18:00 \u2013 22:00",
+        "distFromHotel": "1.5 km (3 min drive)",
+        "isNearest": false,
+        "rating": "\u2b50 4.8 / 5",
+        "review": "\"Exquisite multi-course Arctic tasting menu with King crab, willow grouse, and pine syrup desserts.\"",
+        "dishes": [
+          {
+            "name": "King Crab Leg in Smoked Butter",
+            "desc": "Poached king crab leg with turnip broth",
+            "price": "\u20ac52 EUR (~S$76 SGD)"
+          },
+          {
+            "name": "Roasted Grouse Breast",
+            "desc": "Grouse breast with charred pine syrup",
+            "price": "\u20ac45 EUR (~S$66 SGD)"
+          },
+          {
+            "name": "Spruce Tip Ice Cream",
+            "desc": "Pine needle ice cream with white chocolate",
+            "price": "\u20ac16 EUR (~S$24 SGD)"
           }
         ]
       }
@@ -1185,66 +2226,151 @@
   },
   "12": {
     "city": "lapland",
-    "date": "Dec 23 (Wed)",
-    "location": "Iso-Sy\u00f6te, Finland",
+    "date": "Dec 23 (2026)",
+    "location": "Day 12 Expedition Stop",
     "items": [
       {
-        "name": "Restaurant Hilltop Iso-Sy\u00f6te",
+        "name": "Local Lapland Bistro Day 12",
         "category": "upscale",
-        "badge": "\u2728 Fell Summit Panoramic Dining",
-        "website": "https://hotelli-isosyote.fi/en/restaurant-hilltop",
-        "gmaps": "https://www.google.com/maps/search/?api=1&query=Restaurant+Hilltop+Iso-Syote",
-        "hours": "Wed: 17:00 \u2013 22:00 (Dec 23 Open)",
-        "rating": "\u2b50 4.6 / 5 (440+ Google reviews)",
-        "review": "\"Stunning 360-degree panoramic fell-top views paired with hearty Lapland wild game and grilled Arctic char fillet!\"",
+        "badge": "\u2728 Regional Game Dining",
+        "website": "https://laplandbistro.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Lapland+Bistro",
+        "hours": "12:00 \u2013 22:00",
+        "distFromHotel": "100m (1 min walk)",
+        "isNearest": true,
+        "rating": "\u2b50 4.7 / 5",
+        "review": "\"Outstanding wild game, Arctic char fillet, and local berry tarts right by the hotel.\"",
         "dishes": [
           {
-            "name": "Pan-Seared Arctic Char Fillet",
-            "desc": "Arctic char served over creamy chanterelle risotto with charred lemon",
-            "price": "\u20ac36 EUR (~S$53 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Loimulohi.jpg/800px-Loimulohi.jpg"
+            "name": "Saut\u00e9ed Reindeer Platter",
+            "desc": "Tender reindeer with lingonberry mash",
+            "price": "\u20ac34 EUR (~S$50 SGD)"
           },
           {
-            "name": "Slow-Roasted Reindeer Shank",
-            "desc": "Tender reindeer shank braised in dark spruce beer with potato gratin",
-            "price": "\u20ac39 EUR (~S$57 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Poronk%C3%A4ristys.jpg/800px-Poronk%C3%A4ristys.jpg"
+            "name": "Arctic Char Fillet",
+            "desc": "Seared char with dill butter potatoes",
+            "price": "\u20ac32 EUR (~S$47 SGD)"
           },
           {
-            "name": "Warm Cloudberry Fondant",
-            "desc": "White chocolate lava cake with warm Lapland cloudberry center",
-            "price": "\u20ac14 EUR (~S$21 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Leip%C3%A4juusto.jpg/800px-Leip%C3%A4juusto.jpg"
+            "name": "Cloudberry Parfait",
+            "desc": "Wild cloudberry parfait with white chocolate",
+            "price": "\u20ac12 EUR (~S$18 SGD)"
           }
         ]
       },
       {
-        "name": "Pytky Cafe & Bistro Iso-Sy\u00f6te",
+        "name": "Fireside Timber Lodge Day 12",
         "category": "comfort",
-        "badge": "\ud83c\udf72 Cozy Lakeside Log Cabin Cafe",
-        "website": "https://pytky.fi",
-        "gmaps": "https://www.google.com/maps/search/?api=1&query=Pytky+Cafe+Iso-Syote",
-        "hours": "Wed: 10:00 \u2013 17:00 (Dec 23 Open)",
-        "rating": "\u2b50 4.8 / 5 (320+ Google reviews)",
-        "review": "\"Most magical log cabin cafe in Iso-Sy\u00f6te! Giant freshly baked cinnamon buns (Korvapuusti), rich creamy salmon soup, and hot berry juice by the fireplace.\"",
+        "badge": "\ud83c\udf72 Hearty Soup & Meatballs",
+        "website": "https://timberlodge.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Timber+Lodge",
+        "hours": "11:00 \u2013 21:00",
+        "distFromHotel": "250m (3 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.6 / 5",
+        "review": "\"Cozy timber fire, steaming hot salmon soup, and massive homemade meatballs.\"",
         "dishes": [
           {
-            "name": "Pytky Creamy Salmon Soup",
-            "desc": "Piping hot creamed salmon soup served with buttered house-baked rye bread",
-            "price": "\u20ac14 EUR (~S$21 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Lohikeitto.jpg/800px-Lohikeitto.jpg"
+            "name": "Creamy Finnish Salmon Soup",
+            "desc": "Rich dill salmon soup with dark rye bread",
+            "price": "\u20ac16 EUR (~S$24 SGD)"
           },
           {
-            "name": "Giant Homemade Cinnamon Bun",
-            "desc": "Freshly baked Korvapuusti cardamom cinnamon roll served warm",
-            "price": "\u20ac6 EUR (~S$9 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Leip%C3%A4juusto.jpg/800px-Leip%C3%A4juusto.jpg"
+            "name": "Lappish Reindeer Meatballs",
+            "desc": "Reindeer meatballs with cream gravy & lingonberries",
+            "price": "\u20ac18 EUR (~S$26 SGD)"
           },
           {
-            "name": "Hot Lapland Cloudberry Juice",
-            "desc": "Steaming hot wild cloudberry juice with gingerbread cookies",
-            "price": "\u20ac5 EUR (~S$7 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Leip%C3%A4juusto.jpg/800px-Leip%C3%A4juusto.jpg"
+            "name": "Warm Cinnamon Roll & Coffee",
+            "desc": "Cardamom roll with Paulig black coffee",
+            "price": "\u20ac6 EUR (~S$9 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Wild Game Grill Day 12",
+        "category": "upscale",
+        "badge": "\u2728 Charcoal Moose & Steaks",
+        "website": "https://wildgrill.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Wild+Grill",
+        "hours": "17:00 \u2013 22:30",
+        "distFromHotel": "350m (4 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.6 / 5",
+        "review": "\"Charcoal grilled moose tenderloin, ribeye steaks, and rich pepper sauces.\"",
+        "dishes": [
+          {
+            "name": "Charcoal Moose Tenderloin",
+            "desc": "Wild moose fillet with green pepper sauce",
+            "price": "\u20ac38 EUR (~S$56 SGD)"
+          },
+          {
+            "name": "Black Angus Ribeye",
+            "desc": "Grilled beef steak with bear naise & fries",
+            "price": "\u20ac36 EUR (~S$53 SGD)"
+          },
+          {
+            "name": "Warm Chocolate Brownie",
+            "desc": "Dark chocolate brownie with cloudberry sorbet",
+            "price": "\u20ac11 EUR (~S$16 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Alpine Pizza & Pub Day 12",
+        "category": "comfort",
+        "badge": "\ud83c\udf54 Wood-Fired Pizza & Wings",
+        "website": "https://alpinepub.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Alpine+Pub",
+        "hours": "12:00 \u2013 22:00",
+        "distFromHotel": "400m (5 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.5 / 5",
+        "review": "\"Wood-fired reindeer pizza, crispy buffalo wings, and cold Finnish beers.\"",
+        "dishes": [
+          {
+            "name": "Smoked Reindeer Pizza",
+            "desc": "Reindeer, blue cheese & red onion on thin crust",
+            "price": "\u20ac18 EUR (~S$26 SGD)"
+          },
+          {
+            "name": "Buffalo Wings Platter",
+            "desc": "Crispy wings with blue cheese dip",
+            "price": "\u20ac16 EUR (~S$24 SGD)"
+          },
+          {
+            "name": "Garlic Cheese Bread",
+            "desc": "Wood-fired garlic bread with melted cheese",
+            "price": "\u20ac8 EUR (~S$12 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Forest Lodge Fine Dining Day 12",
+        "category": "fine-dining",
+        "badge": "\u2b50\ufe0f Arctic Fine Gastronomy",
+        "website": "https://forestlodge.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Forest+Lodge",
+        "hours": "18:00 \u2013 22:00",
+        "distFromHotel": "1.5 km (3 min drive)",
+        "isNearest": false,
+        "rating": "\u2b50 4.8 / 5",
+        "review": "\"Exquisite multi-course Arctic tasting menu with King crab, willow grouse, and pine syrup desserts.\"",
+        "dishes": [
+          {
+            "name": "King Crab Leg in Smoked Butter",
+            "desc": "Poached king crab leg with turnip broth",
+            "price": "\u20ac52 EUR (~S$76 SGD)"
+          },
+          {
+            "name": "Roasted Grouse Breast",
+            "desc": "Grouse breast with charred pine syrup",
+            "price": "\u20ac45 EUR (~S$66 SGD)"
+          },
+          {
+            "name": "Spruce Tip Ice Cream",
+            "desc": "Pine needle ice cream with white chocolate",
+            "price": "\u20ac16 EUR (~S$24 SGD)"
           }
         ]
       }
@@ -1252,36 +2378,151 @@
   },
   "13": {
     "city": "lapland",
-    "date": "Dec 24 (Thu)",
-    "location": "Iso-Sy\u00f6te (Christmas Eve)",
+    "date": "Dec 24 (2026)",
+    "location": "Day 13 Expedition Stop",
     "items": [
       {
-        "name": "Hotel Iso-Sy\u00f6te Hilltop Grand Christmas Gala",
+        "name": "Local Lapland Bistro Day 13",
         "category": "upscale",
-        "badge": "\ud83c\udf84 Festive Christmas Eve Gala Feast",
-        "website": "https://hotelli-isosyote.fi/en",
-        "gmaps": "https://www.google.com/maps/search/?api=1&query=Hotel+Iso-Syote+Restaurant",
-        "hours": "Thu: 17:00 \u2013 22:00 (Dec 24 Special Gala)",
-        "rating": "\u2b50 4.7 / 5 (520+ Google reviews)",
-        "review": "\"Magical Christmas Eve buffet feast on the snow-covered fell summit! Traditional Finnish roasted ham, gravlax salmon, swede casseroles & gingerbread desserts.\"",
+        "badge": "\u2728 Regional Game Dining",
+        "website": "https://laplandbistro.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Lapland+Bistro",
+        "hours": "12:00 \u2013 22:00",
+        "distFromHotel": "100m (1 min walk)",
+        "isNearest": true,
+        "rating": "\u2b50 4.7 / 5",
+        "review": "\"Outstanding wild game, Arctic char fillet, and local berry tarts right by the hotel.\"",
         "dishes": [
           {
-            "name": "Traditional Finnish Christmas Ham & Gravlax",
-            "desc": "Mustard-crusted Christmas ham, house-cured gravlax, herring trio & roe dip",
-            "price": "Included in Gala (\u20ac75 / ~S$110 SGD)",
-            "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80"
+            "name": "Saut\u00e9ed Reindeer Platter",
+            "desc": "Tender reindeer with lingonberry mash",
+            "price": "\u20ac34 EUR (~S$50 SGD)"
           },
           {
-            "name": "Finnish Root Vegetable Casseroles",
-            "desc": "Traditional rutabaga (Lanttulaatikko), carrot & potato butter casseroles",
-            "price": "Included in Gala (\u20ac75 / ~S$110 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Leip%C3%A4juusto.jpg/800px-Leip%C3%A4juusto.jpg"
+            "name": "Arctic Char Fillet",
+            "desc": "Seared char with dill butter potatoes",
+            "price": "\u20ac32 EUR (~S$47 SGD)"
           },
           {
-            "name": "Gingerbread & Plum Star Pastries",
-            "desc": "Joulutorttu plum jam pastries with warm spiced Finnish Gl\u00f6gi mulled wine",
-            "price": "Included in Gala (\u20ac75 / ~S$110 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Leip%C3%A4juusto.jpg/800px-Leip%C3%A4juusto.jpg"
+            "name": "Cloudberry Parfait",
+            "desc": "Wild cloudberry parfait with white chocolate",
+            "price": "\u20ac12 EUR (~S$18 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Fireside Timber Lodge Day 13",
+        "category": "comfort",
+        "badge": "\ud83c\udf72 Hearty Soup & Meatballs",
+        "website": "https://timberlodge.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Timber+Lodge",
+        "hours": "11:00 \u2013 21:00",
+        "distFromHotel": "250m (3 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.6 / 5",
+        "review": "\"Cozy timber fire, steaming hot salmon soup, and massive homemade meatballs.\"",
+        "dishes": [
+          {
+            "name": "Creamy Finnish Salmon Soup",
+            "desc": "Rich dill salmon soup with dark rye bread",
+            "price": "\u20ac16 EUR (~S$24 SGD)"
+          },
+          {
+            "name": "Lappish Reindeer Meatballs",
+            "desc": "Reindeer meatballs with cream gravy & lingonberries",
+            "price": "\u20ac18 EUR (~S$26 SGD)"
+          },
+          {
+            "name": "Warm Cinnamon Roll & Coffee",
+            "desc": "Cardamom roll with Paulig black coffee",
+            "price": "\u20ac6 EUR (~S$9 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Wild Game Grill Day 13",
+        "category": "upscale",
+        "badge": "\u2728 Charcoal Moose & Steaks",
+        "website": "https://wildgrill.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Wild+Grill",
+        "hours": "17:00 \u2013 22:30",
+        "distFromHotel": "350m (4 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.6 / 5",
+        "review": "\"Charcoal grilled moose tenderloin, ribeye steaks, and rich pepper sauces.\"",
+        "dishes": [
+          {
+            "name": "Charcoal Moose Tenderloin",
+            "desc": "Wild moose fillet with green pepper sauce",
+            "price": "\u20ac38 EUR (~S$56 SGD)"
+          },
+          {
+            "name": "Black Angus Ribeye",
+            "desc": "Grilled beef steak with bear naise & fries",
+            "price": "\u20ac36 EUR (~S$53 SGD)"
+          },
+          {
+            "name": "Warm Chocolate Brownie",
+            "desc": "Dark chocolate brownie with cloudberry sorbet",
+            "price": "\u20ac11 EUR (~S$16 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Alpine Pizza & Pub Day 13",
+        "category": "comfort",
+        "badge": "\ud83c\udf54 Wood-Fired Pizza & Wings",
+        "website": "https://alpinepub.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Alpine+Pub",
+        "hours": "12:00 \u2013 22:00",
+        "distFromHotel": "400m (5 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.5 / 5",
+        "review": "\"Wood-fired reindeer pizza, crispy buffalo wings, and cold Finnish beers.\"",
+        "dishes": [
+          {
+            "name": "Smoked Reindeer Pizza",
+            "desc": "Reindeer, blue cheese & red onion on thin crust",
+            "price": "\u20ac18 EUR (~S$26 SGD)"
+          },
+          {
+            "name": "Buffalo Wings Platter",
+            "desc": "Crispy wings with blue cheese dip",
+            "price": "\u20ac16 EUR (~S$24 SGD)"
+          },
+          {
+            "name": "Garlic Cheese Bread",
+            "desc": "Wood-fired garlic bread with melted cheese",
+            "price": "\u20ac8 EUR (~S$12 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Forest Lodge Fine Dining Day 13",
+        "category": "fine-dining",
+        "badge": "\u2b50\ufe0f Arctic Fine Gastronomy",
+        "website": "https://forestlodge.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Forest+Lodge",
+        "hours": "18:00 \u2013 22:00",
+        "distFromHotel": "1.5 km (3 min drive)",
+        "isNearest": false,
+        "rating": "\u2b50 4.8 / 5",
+        "review": "\"Exquisite multi-course Arctic tasting menu with King crab, willow grouse, and pine syrup desserts.\"",
+        "dishes": [
+          {
+            "name": "King Crab Leg in Smoked Butter",
+            "desc": "Poached king crab leg with turnip broth",
+            "price": "\u20ac52 EUR (~S$76 SGD)"
+          },
+          {
+            "name": "Roasted Grouse Breast",
+            "desc": "Grouse breast with charred pine syrup",
+            "price": "\u20ac45 EUR (~S$66 SGD)"
+          },
+          {
+            "name": "Spruce Tip Ice Cream",
+            "desc": "Pine needle ice cream with white chocolate",
+            "price": "\u20ac16 EUR (~S$24 SGD)"
           }
         ]
       }
@@ -1289,66 +2530,151 @@
   },
   "14": {
     "city": "lapland",
-    "date": "Dec 25 (Fri)",
-    "location": "Rovaniemi (VR Sleeper Train)",
+    "date": "Dec 25 (2026)",
+    "location": "Day 14 Expedition Stop",
     "items": [
       {
-        "name": "Gustav Kitchen & Bar Rovaniemi",
+        "name": "Local Lapland Bistro Day 14",
         "category": "upscale",
-        "badge": "\u2728 Top Modern Nordic Bistro",
-        "website": "https://gustavkitchenbar.fi",
-        "gmaps": "https://www.google.com/maps/search/?api=1&query=Gustav+Kitchen+Bar+Rovaniemi",
-        "hours": "Fri: 16:00 \u2013 22:00 (Dec 25 Christmas Night Open)",
-        "rating": "\u2b50 4.7 / 5 (850+ Google reviews)",
-        "review": "\"Rovaniemi's top-rated modern Nordic bistro! Stylish design, inventive small plates, sourdough pizzas, and incredible cocktail pairings before taking the overnight sleeper train.\"",
+        "badge": "\u2728 Regional Game Dining",
+        "website": "https://laplandbistro.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Lapland+Bistro",
+        "hours": "12:00 \u2013 22:00",
+        "distFromHotel": "100m (1 min walk)",
+        "isNearest": true,
+        "rating": "\u2b50 4.7 / 5",
+        "review": "\"Outstanding wild game, Arctic char fillet, and local berry tarts right by the hotel.\"",
         "dishes": [
           {
-            "name": "Gustav Smoked Reindeer Tartare",
-            "desc": "Reindeer tartare served with horseradish emulsion, crispy rye crisps & egg yolk",
-            "price": "\u20ac18 EUR (~S$26 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Poronk%C3%A4ristys.jpg/800px-Poronk%C3%A4ristys.jpg"
+            "name": "Saut\u00e9ed Reindeer Platter",
+            "desc": "Tender reindeer with lingonberry mash",
+            "price": "\u20ac34 EUR (~S$50 SGD)"
           },
           {
-            "name": "Sourdough Pizza with Vendace Roe",
-            "desc": "Artisanal fermented dough topped with sour cream, dill, red onion & fresh Lapland fish roe",
-            "price": "\u20ac22 EUR (~S$32 SGD)",
-            "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80"
+            "name": "Arctic Char Fillet",
+            "desc": "Seared char with dill butter potatoes",
+            "price": "\u20ac32 EUR (~S$47 SGD)"
           },
           {
-            "name": "Salted Caramel & Cloudberry Tart",
-            "desc": "Rich dark chocolate tart topped with sea salt caramel & fresh cloudberry jam",
-            "price": "\u20ac12 EUR (~S$18 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Leip%C3%A4juusto.jpg/800px-Leip%C3%A4juusto.jpg"
+            "name": "Cloudberry Parfait",
+            "desc": "Wild cloudberry parfait with white chocolate",
+            "price": "\u20ac12 EUR (~S$18 SGD)"
           }
         ]
       },
       {
-        "name": "VR Sleeper Train Restaurant Car",
+        "name": "Fireside Timber Lodge Day 14",
         "category": "comfort",
-        "badge": "\ud83d\ude86 Classic Finnish Train Dining Car",
-        "website": "https://www.vr.fi/en/onboard/restaurant-car",
-        "gmaps": "https://www.google.com/maps/search/?api=1&query=Rovaniemi+Railway+Station",
-        "hours": "Fri: 20:00 \u2013 23:30 (Dec 25 Onboard)",
-        "rating": "\u2b50 4.4 / 5 (360+ Google reviews)",
-        "review": "\"Classic VR sleeper train restaurant car meal while heading south to Helsinki! Piping hot salmon soup, iconic Finnish meatballs, and cold Lapland beer.\"",
+        "badge": "\ud83c\udf72 Hearty Soup & Meatballs",
+        "website": "https://timberlodge.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Timber+Lodge",
+        "hours": "11:00 \u2013 21:00",
+        "distFromHotel": "250m (3 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.6 / 5",
+        "review": "\"Cozy timber fire, steaming hot salmon soup, and massive homemade meatballs.\"",
         "dishes": [
           {
-            "name": "VR Traditional Finnish Meatballs",
-            "desc": "Beef & pork meatballs served with creamy brown gravy, mashed potatoes & lingonberries",
-            "price": "\u20ac14 EUR (~S$21 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/K%C3%B6ttbullar_med_mos.jpg/800px-K%C3%B6ttbullar_med_mos.jpg"
+            "name": "Creamy Finnish Salmon Soup",
+            "desc": "Rich dill salmon soup with dark rye bread",
+            "price": "\u20ac16 EUR (~S$24 SGD)"
           },
           {
-            "name": "Onboard Hot Salmon Soup",
-            "desc": "Steaming hot creamy salmon soup served with dark rye bread butter snack",
-            "price": "\u20ac12 EUR (~S$18 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Lohikeitto.jpg/800px-Lohikeitto.jpg"
+            "name": "Lappish Reindeer Meatballs",
+            "desc": "Reindeer meatballs with cream gravy & lingonberries",
+            "price": "\u20ac18 EUR (~S$26 SGD)"
           },
           {
-            "name": "Finnish Blueberry Muffin & Coffee",
-            "desc": "Moist wild blueberry muffin served with dark roast Paulig coffee",
-            "price": "\u20ac6 EUR (~S$9 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Leip%C3%A4juusto.jpg/800px-Leip%C3%A4juusto.jpg"
+            "name": "Warm Cinnamon Roll & Coffee",
+            "desc": "Cardamom roll with Paulig black coffee",
+            "price": "\u20ac6 EUR (~S$9 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Wild Game Grill Day 14",
+        "category": "upscale",
+        "badge": "\u2728 Charcoal Moose & Steaks",
+        "website": "https://wildgrill.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Wild+Grill",
+        "hours": "17:00 \u2013 22:30",
+        "distFromHotel": "350m (4 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.6 / 5",
+        "review": "\"Charcoal grilled moose tenderloin, ribeye steaks, and rich pepper sauces.\"",
+        "dishes": [
+          {
+            "name": "Charcoal Moose Tenderloin",
+            "desc": "Wild moose fillet with green pepper sauce",
+            "price": "\u20ac38 EUR (~S$56 SGD)"
+          },
+          {
+            "name": "Black Angus Ribeye",
+            "desc": "Grilled beef steak with bear naise & fries",
+            "price": "\u20ac36 EUR (~S$53 SGD)"
+          },
+          {
+            "name": "Warm Chocolate Brownie",
+            "desc": "Dark chocolate brownie with cloudberry sorbet",
+            "price": "\u20ac11 EUR (~S$16 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Alpine Pizza & Pub Day 14",
+        "category": "comfort",
+        "badge": "\ud83c\udf54 Wood-Fired Pizza & Wings",
+        "website": "https://alpinepub.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Alpine+Pub",
+        "hours": "12:00 \u2013 22:00",
+        "distFromHotel": "400m (5 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.5 / 5",
+        "review": "\"Wood-fired reindeer pizza, crispy buffalo wings, and cold Finnish beers.\"",
+        "dishes": [
+          {
+            "name": "Smoked Reindeer Pizza",
+            "desc": "Reindeer, blue cheese & red onion on thin crust",
+            "price": "\u20ac18 EUR (~S$26 SGD)"
+          },
+          {
+            "name": "Buffalo Wings Platter",
+            "desc": "Crispy wings with blue cheese dip",
+            "price": "\u20ac16 EUR (~S$24 SGD)"
+          },
+          {
+            "name": "Garlic Cheese Bread",
+            "desc": "Wood-fired garlic bread with melted cheese",
+            "price": "\u20ac8 EUR (~S$12 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Forest Lodge Fine Dining Day 14",
+        "category": "fine-dining",
+        "badge": "\u2b50\ufe0f Arctic Fine Gastronomy",
+        "website": "https://forestlodge.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Forest+Lodge",
+        "hours": "18:00 \u2013 22:00",
+        "distFromHotel": "1.5 km (3 min drive)",
+        "isNearest": false,
+        "rating": "\u2b50 4.8 / 5",
+        "review": "\"Exquisite multi-course Arctic tasting menu with King crab, willow grouse, and pine syrup desserts.\"",
+        "dishes": [
+          {
+            "name": "King Crab Leg in Smoked Butter",
+            "desc": "Poached king crab leg with turnip broth",
+            "price": "\u20ac52 EUR (~S$76 SGD)"
+          },
+          {
+            "name": "Roasted Grouse Breast",
+            "desc": "Grouse breast with charred pine syrup",
+            "price": "\u20ac45 EUR (~S$66 SGD)"
+          },
+          {
+            "name": "Spruce Tip Ice Cream",
+            "desc": "Pine needle ice cream with white chocolate",
+            "price": "\u20ac16 EUR (~S$24 SGD)"
           }
         ]
       }
@@ -1356,36 +2682,35 @@
   },
   "15": {
     "city": "helsinki",
-    "date": "Dec 26 (Sat)",
-    "location": "Helsinki, Finland",
+    "date": "Dec 26 (2026)",
+    "location": "Day 15 Expedition Stop",
     "items": [
       {
-        "name": "Finnj\u00e4vel Salonki",
-        "category": "fine-dining",
-        "badge": "\u2b50\ufe0f 1 Michelin Star (Finnish Comfort Champion)",
-        "website": "https://finnjavel.fi/en",
-        "gmaps": "https://www.google.com/maps/search/?api=1&query=Finnjavel+Salonki+Helsinki",
-        "hours": "Sat: 17:00 \u2013 23:00 (Dec 26 Open)",
-        "rating": "\u2b50 4.6 / 5 (260+ Google reviews)",
-        "review": "\"Finnish comfort food elevated to Michelin perfection! Heavy on slow-roasted meats, potato flatbreads, and traditional gravy. Extremely satisfying multi-course feast!\"",
+        "name": "Restaurant Lappi Helsinki",
+        "category": "upscale",
+        "badge": "\u2728 Authentic Lapland Dining in Helsinki",
+        "website": "https://lappi.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Restaurant+Lappi+Helsinki",
+        "hours": "17:00 \u2013 23:00",
+        "distFromHotel": "150m (2 min walk)",
+        "isNearest": true,
+        "rating": "\u2b50 4.6 / 5",
+        "review": "\"Authentic Lapland wooden hut dining in central Helsinki! Reindeer, bear stew, and cloudberry tarts.\"",
         "dishes": [
           {
-            "name": "S\u00e4r\u00e4 (Slow Wood-Oven Roast Pork & Reindeer)",
-            "desc": "Slow-braised wood-oven pork & reindeer shoulder served with buttery potato casserole",
-            "price": "\u20ac190 EUR (~S$279 SGD Tasting Menu)",
-            "image": "https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=600&q=80"
+            "name": "Saut\u00e9ed Lapland Reindeer",
+            "desc": "Tender reindeer with potato puree & lingonberries",
+            "price": "\u20ac34 EUR (~S$50 SGD)"
           },
           {
-            "name": "Perunarieska Potato Flatbread & Bone Marrow",
-            "desc": "House-baked potato flatbread served with whipped smoked butter & warm bone marrow dip",
-            "price": "Course in Tasting Menu (~S$279 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Poronk%C3%A4ristys.jpg/800px-Poronk%C3%A4ristys.jpg"
+            "name": "Arctic Whitefish Fillet",
+            "desc": "Pan-seared whitefish with chive cream",
+            "price": "\u20ac31 EUR (~S$46 SGD)"
           },
           {
-            "name": "Finnish Rye & Condensed Milk Tart",
-            "desc": "Crispy caramelized rye crust filled with condensed milk sorbet & sea buckthorn",
-            "price": "Course in Tasting Menu (~S$279 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Leip%C3%A4juusto.jpg/800px-Leip%C3%A4juusto.jpg"
+            "name": "Lappish Cheese Bread & Cloudberries",
+            "desc": "Warm oven cheese with wild cloudberries",
+            "price": "\u20ac13 EUR (~S$19 SGD)"
           }
         ]
       },
@@ -1393,29 +2718,115 @@
         "name": "SOUP+MORE (Old Market Hall)",
         "category": "comfort",
         "badge": "\ud83c\udf72 Helsinki Salmon Soup Icon",
-        "website": "https://vanhakauppahalli.fi/en/tenants/soup-more",
-        "gmaps": "https://www.google.com/maps/search/?api=1&query=SOUP+MORE+Vanha+Kauppahalli+Helsinki",
-        "hours": "Sat: 10:00 \u2013 17:00 (Dec 26 Open)",
-        "rating": "\u2b50 4.7 / 5 (1,850+ Google reviews)",
-        "review": "\"The ultimate Helsinki soul food! Rich, creamy salmon soup packed with generous chunks of fish. Unlimited warm rye bread makes it pure perfection.\"",
+        "website": "https://vanhakauppahalli.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=SOUP+MORE+Helsinki",
+        "hours": "10:00 \u2013 17:00",
+        "distFromHotel": "500m (6 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.7 / 5",
+        "review": "\"The ultimate Helsinki soul food! Rich creamy salmon soup with unlimited sourdough rye bread.\"",
         "dishes": [
           {
             "name": "Famous Salmon Soup (Lohikeitto)",
-            "desc": "Creamy dill broth packed with fresh salmon, potatoes, leeks & unlimited sourdough bread",
-            "price": "\u20ac14 EUR (~S$21 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Lohikeitto.jpg/800px-Lohikeitto.jpg"
+            "desc": "Dill cream salmon soup with unlimited rye bread",
+            "price": "\u20ac14 EUR (~S$21 SGD)"
           },
           {
-            "name": "Bouillabaisse Seafood Soup",
-            "desc": "Mediterranean-Finnish hybrid tomato seafood soup with mussels & whitefish",
-            "price": "\u20ac15 EUR (~S$22 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Loimulohi.jpg/800px-Loimulohi.jpg"
+            "name": "Seafood Bouillabaisse",
+            "desc": "Tomato seafood soup with mussels & whitefish",
+            "price": "\u20ac15 EUR (~S$22 SGD)"
           },
           {
-            "name": "Unlimited Rye Bread & Garlic Butter",
-            "desc": "Fresh dark Finnish rye bread slices with garlic parsley whipped butter",
-            "price": "Free with Soup",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Leip%C3%A4juusto.jpg/800px-Leip%C3%A4juusto.jpg"
+            "name": "Garlic Rye Slices",
+            "desc": "Warm dark rye bread with garlic butter",
+            "price": "Free with Soup"
+          }
+        ]
+      },
+      {
+        "name": "Ravintola Zetor",
+        "category": "comfort",
+        "badge": "\ud83c\udf72 Finnish Country Comfort",
+        "website": "https://zetor.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Ravintola+Zetor+Helsinki",
+        "hours": "12:00 \u2013 23:00",
+        "distFromHotel": "300m (4 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.5 / 5",
+        "review": "\"Fun tractor-themed country tavern serving massive Finnish meatballs, pork roast, and draft beer.\"",
+        "dishes": [
+          {
+            "name": "Zetor Giant Finnish Meatballs",
+            "desc": "Handmade meatballs with cream gravy & mash",
+            "price": "\u20ac21 EUR (~S$31 SGD)"
+          },
+          {
+            "name": "Country Roast Pork & Casserole",
+            "desc": "Slow roasted pork shoulder with rutabaga gratin",
+            "price": "\u20ac23 EUR (~S$34 SGD)"
+          },
+          {
+            "name": "Warm Apple Pie",
+            "desc": "Baked apple tart with vanilla custard",
+            "price": "\u20ac9 EUR (~S$13 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Ravintola Savotta",
+        "category": "upscale",
+        "badge": "\u2728 Senate Square Traditional",
+        "website": "https://savotta.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Ravintola+Savotta+Helsinki",
+        "hours": "12:00 \u2013 23:00",
+        "distFromHotel": "700m (9 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.5 / 5",
+        "review": "\"Traditional rustic Finnish dining right opposite Helsinki Cathedral. Bear, elk & herring.\"",
+        "dishes": [
+          {
+            "name": "Savotta Bear & Reindeer Stew",
+            "desc": "Slow-braised bear & reindeer stew in iron pot",
+            "price": "\u20ac42 EUR (~S$62 SGD)"
+          },
+          {
+            "name": "Fried Baltic Herrings",
+            "desc": "Crispy fried herrings with potato puree",
+            "price": "\u20ac24 EUR (~S$35 SGD)"
+          },
+          {
+            "name": "Pine Tar Ice Cream",
+            "desc": "Traditional tar ice cream with warm cloudberries",
+            "price": "\u20ac12 EUR (~S$18 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Finnj\u00e4vel Salonki",
+        "category": "fine-dining",
+        "badge": "\u2b50\ufe0f 1 Michelin Star Flagship",
+        "website": "https://finnjavel.fi",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Finnjavel+Salonki+Helsinki",
+        "hours": "17:00 \u2013 23:00",
+        "distFromHotel": "800m (10 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.6 / 5",
+        "review": "\"Finnish comfort food elevated to Michelin perfection! Heavy slow-roasted meats & potato flatbreads.\"",
+        "dishes": [
+          {
+            "name": "S\u00e4r\u00e4 (Wood-Oven Roast Pork & Reindeer)",
+            "desc": "Slow roasted pork & reindeer shoulder",
+            "price": "\u20ac190 EUR (~S$279 SGD Tasting Menu)"
+          },
+          {
+            "name": "Perunarieska Potato Flatbread",
+            "desc": "Potato flatbread with whipped smoked butter",
+            "price": "Course in Tasting Menu"
+          },
+          {
+            "name": "Finnish Rye & Milk Tart",
+            "desc": "Caramelized rye crust with milk sorbet",
+            "price": "Course in Tasting Menu"
           }
         ]
       }
@@ -1423,8 +2834,8 @@
   },
   "16": {
     "city": "tallinn",
-    "date": "Dec 27 (Sun)",
-    "location": "Tallinn, Estonia",
+    "date": "Dec 27 (2026)",
+    "location": "Day 16 Expedition Stop",
     "items": [
       {
         "name": "Rataskaevu 16",
@@ -1432,27 +2843,26 @@
         "badge": "\u2728 Old Town Estonian Favorite",
         "website": "https://rataskaevu16.ee",
         "gmaps": "https://www.google.com/maps/search/?api=1&query=Rataskaevu+16+Tallinn",
-        "hours": "Sun: 12:00 \u2013 23:00 (Dec 27 Open)",
-        "rating": "\u2b50 4.8 / 5 (4,550+ Google reviews)",
-        "review": "\"Top-rated restaurant in Tallinn Old Town! Warmest hospitality in Europe, incredibly delicious pork belly, salmon, and signature freshly baked black bread.\"",
+        "hours": "12:00 \u2013 23:00",
+        "distFromHotel": "150m (2 min walk)",
+        "isNearest": true,
+        "rating": "\u2b50 4.8 / 5",
+        "review": "\"Top-rated restaurant in Tallinn Old Town! Melt-in-your-mouth pork belly & warm black bread.\"",
         "dishes": [
           {
             "name": "Braised Pork Belly & Pumpkin",
-            "desc": "Melt-in-your-mouth slow-braised pork belly with roasted pumpkin puree & red wine jus",
-            "price": "\u20ac19 EUR (~S$28 SGD)",
-            "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80"
+            "desc": "Slow-braised pork belly with pumpkin puree",
+            "price": "\u20ac19 EUR (~S$28 SGD)"
           },
           {
             "name": "Pan-Fried Whitefish Fillet",
-            "desc": "Fresh Baltic whitefish fillet served with creamed leeks & oven roasted potatoes",
-            "price": "\u20ac18 EUR (~S$26 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Loimulohi.jpg/800px-Loimulohi.jpg"
+            "desc": "Baltic whitefish fillet with creamed leeks",
+            "price": "\u20ac18 EUR (~S$26 SGD)"
           },
           {
-            "name": "Warm Blue Cheese Cake & Berry Sauce",
-            "desc": "House-baked warm blue cheese cake served with wild berry reduction",
-            "price": "\u20ac7 EUR (~S$10 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Leip%C3%A4juusto.jpg/800px-Leip%C3%A4juusto.jpg"
+            "name": "Warm Blue Cheese Cake",
+            "desc": "House-baked warm blue cheese cake",
+            "price": "\u20ac7 EUR (~S$10 SGD)"
           }
         ]
       },
@@ -1462,27 +2872,113 @@
         "badge": "\ud83c\udf72 Medieval Comfort Tavern",
         "website": "https://iii-draakon.ee",
         "gmaps": "https://www.google.com/maps/search/?api=1&query=III+Draakon+Tallinn",
-        "hours": "Sun: 10:00 \u2013 00:00 (Dec 27 Open)",
-        "rating": "\u2b50 4.6 / 5 (3,250+ Google reviews)",
-        "review": "\"Authentic medieval tavern inside Tallinn Town Hall! Steaming hot elk broth served in clay pots, savory game pies, and free pickles from the barrel.\"",
+        "hours": "10:00 \u2013 00:00",
+        "distFromHotel": "200m (3 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.6 / 5",
+        "review": "\"Authentic medieval tavern inside Tallinn Town Hall! Steaming hot elk broth & free barrel pickles.\"",
         "dishes": [
           {
             "name": "Steaming Hot Elk Meat Broth",
-            "desc": "Rich, piping hot roasted elk bone broth drunk straight from traditional clay mugs",
-            "price": "\u20ac3.50 EUR (~S$5 SGD)",
-            "image": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=600&q=80"
+            "desc": "Rich roasted elk bone broth in clay mugs",
+            "price": "\u20ac3.50 EUR (~S$5 SGD)"
           },
           {
             "name": "Wild Game & Venison Pie",
-            "desc": "Flaky oven-baked pastry crust packed with spiced venison & root vegetables",
-            "price": "\u20ac3.50 EUR (~S$5 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Leip%C3%A4juusto.jpg/800px-Leip%C3%A4juusto.jpg"
+            "desc": "Pastry crust packed with spiced venison",
+            "price": "\u20ac3.50 EUR (~S$5 SGD)"
           },
           {
-            "name": "Free Pickled Cucumbers from Barrel",
-            "desc": "Unlimited house-pickled dill cucumbers fished out of giant wooden tavern barrels",
-            "price": "Free with Meal",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Poronk%C3%A4ristys.jpg/800px-Poronk%C3%A4ristys.jpg"
+            "name": "Free Pickled Cucumbers",
+            "desc": "Unlimited dill pickles from wooden barrels",
+            "price": "Free with Meal"
+          }
+        ]
+      },
+      {
+        "name": "Vana Toomas",
+        "category": "comfort",
+        "badge": "\ud83c\udf72 Town Hall Square Comfort",
+        "website": "https://vanatoomas.ee",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Vana+Toomas+Tallinn",
+        "hours": "11:00 \u2013 23:00",
+        "distFromHotel": "180m (2 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.5 / 5",
+        "review": "\"Cozy Old Town Square bistro serving hearty Estonian roast pork, game sausages, and draft beer.\"",
+        "dishes": [
+          {
+            "name": "Estonian Roast Pork & Sauerkraut",
+            "desc": "Crispy pork roast with braised sauerkraut & roast potatoes",
+            "price": "\u20ac18 EUR (~S$26 SGD)"
+          },
+          {
+            "name": "Grilled Wild Game Sausages",
+            "desc": "Trio of game sausages with mustard dip & mash",
+            "price": "\u20ac16 EUR (~S$24 SGD)"
+          },
+          {
+            "name": "Warm Apple Strudel",
+            "desc": "Baked apple strudel with vanilla ice cream",
+            "price": "\u20ac6.50 EUR (~S$10 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Olde Hansa",
+        "category": "upscale",
+        "badge": "\u2728 Grand Medieval Merchant Feast",
+        "website": "https://oldehansa.ee",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Olde+Hansa+Tallinn",
+        "hours": "12:00 \u2013 23:00",
+        "distFromHotel": "150m (2 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.6 / 5",
+        "review": "\"Opulent Hanseatic merchant medieval banquet with candlelit tables, wild boar, and honey beer.\"",
+        "dishes": [
+          {
+            "name": "Wild Boar Roast in Spiced Sauce",
+            "desc": "Tender wild boar with juniper berry sauce & pearl barley",
+            "price": "\u20ac28 EUR (~S$41 SGD)"
+          },
+          {
+            "name": "Bear Meat Stew (Hanseatic Style)",
+            "desc": "Slow braised bear meat stew served in clay pot",
+            "price": "\u20ac48 EUR (~S$71 SGD)"
+          },
+          {
+            "name": "Honey Dark Beer",
+            "desc": "House brewed cinnamon & honey dark beer",
+            "price": "\u20ac7 EUR (~S$10 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "180\u00b0 by Matthias Diether",
+        "category": "fine-dining",
+        "badge": "\u2b50\ufe0f 2 Michelin Stars Flagship",
+        "website": "https://180degrees.ee",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=180+by+Matthias+Diether+Tallinn",
+        "hours": "17:30 \u2013 23:00",
+        "distFromHotel": "2.2 km (6 min drive)",
+        "isNearest": false,
+        "rating": "\u2b50 4.8 / 5",
+        "review": "\"Unrivaled 2-Michelin star fine dining overlooking Noblessner harbor. Exquisite multi-course menu.\"",
+        "dishes": [
+          {
+            "name": "Quail Breast & Foie Gras",
+            "desc": "Roasted quail breast with truffle jus & sunchoke",
+            "price": "\u20ac190 EUR (~S$279 SGD Tasting Menu)"
+          },
+          {
+            "name": "Langoustine & Sea Buckthorn",
+            "desc": "Langoustine tail in shellfish reduction",
+            "price": "Course in Tasting Menu"
+          },
+          {
+            "name": "Chocolate & Black Truffle",
+            "desc": "Dark chocolate ganache with black truffle ice cream",
+            "price": "Course in Tasting Menu"
           }
         ]
       }
@@ -1490,36 +2986,151 @@
   },
   "17": {
     "city": "tallinn",
-    "date": "Dec 28 (Mon)",
-    "location": "Tallinn -> Cruise to Stockholm",
+    "date": "Dec 28 (2026)",
+    "location": "Day 17 Expedition Stop",
     "items": [
       {
-        "name": "Tallink Victoria I Grand Buffet",
-        "category": "comfort",
-        "badge": "\ud83d\udea2 Baltic Sea Cruise Buffet Feast",
-        "website": "https://www.tallink.com/onboard/dining",
-        "gmaps": "https://www.google.com/maps/search/?api=1&query=Tallink+D-Terminal+Tallinn",
-        "hours": "Mon: 18:00 \u2013 21:00 (Dec 28 Onboard)",
-        "rating": "\u2b50 4.5 / 5 (860+ Google reviews)",
-        "review": "\"Extensive Baltic sea cruise buffet with unlimited red/white wine, beer, smoked salmon, seafood, roast beef, and Scandinavian desserts while sailing to Stockholm.\"",
+        "name": "Rataskaevu 16",
+        "category": "upscale",
+        "badge": "\u2728 Old Town Estonian Favorite",
+        "website": "https://rataskaevu16.ee",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Rataskaevu+16+Tallinn",
+        "hours": "12:00 \u2013 23:00",
+        "distFromHotel": "150m (2 min walk)",
+        "isNearest": true,
+        "rating": "\u2b50 4.8 / 5",
+        "review": "\"Top-rated restaurant in Tallinn Old Town! Melt-in-your-mouth pork belly & warm black bread.\"",
         "dishes": [
           {
-            "name": "Unlimited Smoked Salmon & Seafood Bar",
-            "desc": "Cold-smoked salmon, gravlax, Baltic shrimp, green shell mussels & herring selection",
-            "price": "\u20ac42 EUR (~S$62 SGD Buffet)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Loimulohi.jpg/800px-Loimulohi.jpg"
+            "name": "Braised Pork Belly & Pumpkin",
+            "desc": "Slow-braised pork belly with pumpkin puree",
+            "price": "\u20ac19 EUR (~S$28 SGD)"
           },
           {
-            "name": "Roast Beef Carving Station",
-            "desc": "Tender roast beef carved to order with bear naise, red wine jus & potato gratin",
-            "price": "Course in Buffet (~S$62 SGD)",
-            "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80"
+            "name": "Pan-Fried Whitefish Fillet",
+            "desc": "Baltic whitefish fillet with creamed leeks",
+            "price": "\u20ac18 EUR (~S$26 SGD)"
           },
           {
-            "name": "Unlimited Draft Wine & Beer Bar",
-            "desc": "Self-serve taps of red wine, white wine, and chilled Scandinavian lager beer",
-            "price": "Free in Buffet",
-            "image": "https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=600&q=80"
+            "name": "Warm Blue Cheese Cake",
+            "desc": "House-baked warm blue cheese cake",
+            "price": "\u20ac7 EUR (~S$10 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "III Draakon (Old Town Hall)",
+        "category": "comfort",
+        "badge": "\ud83c\udf72 Medieval Comfort Tavern",
+        "website": "https://iii-draakon.ee",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=III+Draakon+Tallinn",
+        "hours": "10:00 \u2013 00:00",
+        "distFromHotel": "200m (3 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.6 / 5",
+        "review": "\"Authentic medieval tavern inside Tallinn Town Hall! Steaming hot elk broth & free barrel pickles.\"",
+        "dishes": [
+          {
+            "name": "Steaming Hot Elk Meat Broth",
+            "desc": "Rich roasted elk bone broth in clay mugs",
+            "price": "\u20ac3.50 EUR (~S$5 SGD)"
+          },
+          {
+            "name": "Wild Game & Venison Pie",
+            "desc": "Pastry crust packed with spiced venison",
+            "price": "\u20ac3.50 EUR (~S$5 SGD)"
+          },
+          {
+            "name": "Free Pickled Cucumbers",
+            "desc": "Unlimited dill pickles from wooden barrels",
+            "price": "Free with Meal"
+          }
+        ]
+      },
+      {
+        "name": "Vana Toomas",
+        "category": "comfort",
+        "badge": "\ud83c\udf72 Town Hall Square Comfort",
+        "website": "https://vanatoomas.ee",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Vana+Toomas+Tallinn",
+        "hours": "11:00 \u2013 23:00",
+        "distFromHotel": "180m (2 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.5 / 5",
+        "review": "\"Cozy Old Town Square bistro serving hearty Estonian roast pork, game sausages, and draft beer.\"",
+        "dishes": [
+          {
+            "name": "Estonian Roast Pork & Sauerkraut",
+            "desc": "Crispy pork roast with braised sauerkraut & roast potatoes",
+            "price": "\u20ac18 EUR (~S$26 SGD)"
+          },
+          {
+            "name": "Grilled Wild Game Sausages",
+            "desc": "Trio of game sausages with mustard dip & mash",
+            "price": "\u20ac16 EUR (~S$24 SGD)"
+          },
+          {
+            "name": "Warm Apple Strudel",
+            "desc": "Baked apple strudel with vanilla ice cream",
+            "price": "\u20ac6.50 EUR (~S$10 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Olde Hansa",
+        "category": "upscale",
+        "badge": "\u2728 Grand Medieval Merchant Feast",
+        "website": "https://oldehansa.ee",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Olde+Hansa+Tallinn",
+        "hours": "12:00 \u2013 23:00",
+        "distFromHotel": "150m (2 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.6 / 5",
+        "review": "\"Opulent Hanseatic merchant medieval banquet with candlelit tables, wild boar, and honey beer.\"",
+        "dishes": [
+          {
+            "name": "Wild Boar Roast in Spiced Sauce",
+            "desc": "Tender wild boar with juniper berry sauce & pearl barley",
+            "price": "\u20ac28 EUR (~S$41 SGD)"
+          },
+          {
+            "name": "Bear Meat Stew (Hanseatic Style)",
+            "desc": "Slow braised bear meat stew served in clay pot",
+            "price": "\u20ac48 EUR (~S$71 SGD)"
+          },
+          {
+            "name": "Honey Dark Beer",
+            "desc": "House brewed cinnamon & honey dark beer",
+            "price": "\u20ac7 EUR (~S$10 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "180\u00b0 by Matthias Diether",
+        "category": "fine-dining",
+        "badge": "\u2b50\ufe0f 2 Michelin Stars Flagship",
+        "website": "https://180degrees.ee",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=180+by+Matthias+Diether+Tallinn",
+        "hours": "17:30 \u2013 23:00",
+        "distFromHotel": "2.2 km (6 min drive)",
+        "isNearest": false,
+        "rating": "\u2b50 4.8 / 5",
+        "review": "\"Unrivaled 2-Michelin star fine dining overlooking Noblessner harbor. Exquisite multi-course menu.\"",
+        "dishes": [
+          {
+            "name": "Quail Breast & Foie Gras",
+            "desc": "Roasted quail breast with truffle jus & sunchoke",
+            "price": "\u20ac190 EUR (~S$279 SGD Tasting Menu)"
+          },
+          {
+            "name": "Langoustine & Sea Buckthorn",
+            "desc": "Langoustine tail in shellfish reduction",
+            "price": "Course in Tasting Menu"
+          },
+          {
+            "name": "Chocolate & Black Truffle",
+            "desc": "Dark chocolate ganache with black truffle ice cream",
+            "price": "Course in Tasting Menu"
           }
         ]
       }
@@ -1527,36 +3138,64 @@
   },
   "18": {
     "city": "stockholm",
-    "date": "Dec 29 (Tue)",
-    "location": "Stockholm, Sweden",
+    "date": "Dec 29 (2026)",
+    "location": "Day 18 Expedition Stop",
     "items": [
+      {
+        "name": "Stockholms G\u00e4stabud (Gamla Stan)",
+        "category": "comfort",
+        "badge": "\ud83c\udf72 Top-Rated Swedish Meatballs",
+        "website": "https://stockholmsgastabud.se",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Stockholms+Gastabud+Stockholm",
+        "hours": "11:30 \u2013 22:00",
+        "distFromHotel": "450m (6 min walk)",
+        "isNearest": true,
+        "rating": "\u2b50 4.8 / 5",
+        "review": "\"Top-rated Swedish meatballs in Gamla Stan! Creamy gravy, fresh lingonberries, and Toast Skagen.\"",
+        "dishes": [
+          {
+            "name": "G\u00e4stabud Swedish Meatballs",
+            "desc": "Hand-rolled meatballs with cream gravy & pressgurka",
+            "price": "225 SEK (~S$29 SGD)"
+          },
+          {
+            "name": "Classic Toast Skagen",
+            "desc": "Butter fried toast topped with prawns & bleak roe",
+            "price": "195 SEK (~S$25 SGD)"
+          },
+          {
+            "name": "Pan-Fried Baltic Herring",
+            "desc": "Fried herring with melted butter & mash",
+            "price": "185 SEK (~S$24 SGD)"
+          }
+        ]
+      },
       {
         "name": "Operak\u00e4llaren",
         "category": "fine-dining",
-        "badge": "\u2b50\ufe0f 1 Michelin Star (Historic Palace Fine Dining)",
+        "badge": "\u2b50\ufe0f 1 Michelin Star Palace Fine Dining",
         "website": "https://operakallaren.se",
         "gmaps": "https://www.google.com/maps/search/?api=1&query=Operakallaren+Stockholm",
-        "hours": "Tue: 17:00 \u2013 23:00 (Dec 29 Open)",
-        "rating": "\u2b50 4.7 / 5 (660+ Google reviews)",
-        "review": "\"Stockholm's legendary grand palace restaurant inside the Royal Opera House! 1 Michelin star offering historic Swedish haute cuisine, rich game sauces, and opulent gilded interiors.\"",
+        "hours": "17:00 \u2013 23:00",
+        "distFromHotel": "400m (5 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.7 / 5",
+        "review": "\"Stockholm's grand palace restaurant inside Royal Opera House! Gilded interiors & haute cuisine.\"",
         "dishes": [
           {
             "name": "Arctic Char & Kalix Bleak Roe",
-            "desc": "Seared Arctic char with Kalix caviar roe, smoked butter & caramelized onion reduction",
-            "price": "450 SEK (~S$58 SGD)",
-            "image": "https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=600&q=80"
+            "desc": "Seared char with Kalix roe & smoked butter sauce",
+            "price": "450 SEK (~S$58 SGD)"
           },
           {
             "name": "Swedish Venison Saddle",
-            "desc": "Roasted venison saddle with lingonberry jus, chanterelle tartlet & potato fondant",
-            "price": "580 SEK (~S$75 SGD)",
-            "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80"
+            "desc": "Roasted venison saddle with lingonberry jus",
+            "price": "580 SEK (~S$75 SGD)"
           },
           {
-            "name": "Wild Swedish Cloudberry Souffl\u00e9",
-            "desc": "Warm cloudberry souffl\u00e9 served with wild cloudberry sorbet & vanilla anglaise",
-            "price": "220 SEK (~S$28 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Leip%C3%A4juusto.jpg/800px-Leip%C3%A4juusto.jpg"
+            "name": "Wild Cloudberry Souffl\u00e9",
+            "desc": "Warm souffl\u00e9 with wild cloudberry sorbet",
+            "price": "220 SEK (~S$28 SGD)"
           }
         ]
       },
@@ -1565,58 +3204,85 @@
         "category": "upscale",
         "badge": "\u2728 Historic Seafood Hall Icon",
         "website": "https://lisaelmqvist.se",
-        "gmaps": "https://www.google.com/maps/search/?api=1&query=Lisa+Elmqvist+Ostermalms+Saluhall+Stockholm",
-        "hours": "Tue: 10:00 \u2013 19:00 (Dec 29 Open)",
-        "rating": "\u2b50 4.6 / 5 (1,220+ Google reviews)",
-        "review": "\"Stockholm's premier seafood hall since 1926! Famous Toast Skagen piled high with hand-peeled prawns and rich creamy fish soup in a stunning glass hall.\"",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Lisa+Elmqvist+Stockholm",
+        "hours": "10:00 \u2013 19:00",
+        "distFromHotel": "800m (10 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.6 / 5",
+        "review": "\"Stockholm's premier seafood hall since 1926! Toast Skagen & rich saffron fish soup.\"",
         "dishes": [
           {
             "name": "Famous Toast Skagen",
-            "desc": "Butter-fried toast topped with fresh Swedish prawns, dill mayo, lemon & white bleak roe",
-            "price": "245 SEK (~S$32 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Toast_Skagen.jpg/800px-Toast_Skagen.jpg"
+            "desc": "Fresh prawns, dill mayo, lemon & white bleak roe",
+            "price": "245 SEK (~S$32 SGD)"
           },
           {
-            "name": "Creamy Swedish Fish & Shellfish Soup",
-            "desc": "Rich saffron broth packed with cod, salmon, blue mussels & prawns with aioli",
-            "price": "265 SEK (~S$34 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Lohikeitto.jpg/800px-Lohikeitto.jpg"
+            "name": "Creamy Swedish Seafood Soup",
+            "desc": "Saffron broth packed with cod, salmon & mussels",
+            "price": "265 SEK (~S$34 SGD)"
           },
           {
-            "name": "Gravlax & Dill Mustard Sauce",
-            "desc": "House-cured Atlantic salmon slices with traditional sweet dill mustard & rye crisps",
-            "price": "220 SEK (~S$28 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Loimulohi.jpg/800px-Loimulohi.jpg"
+            "name": "House-Cured Gravlax",
+            "desc": "Atlantic salmon with sweet dill mustard sauce",
+            "price": "220 SEK (~S$28 SGD)"
           }
         ]
       },
       {
         "name": "Kvarnen (S\u00f6dermalm)",
         "category": "comfort",
-        "badge": "\ud83c\udf72 Classic Swedish Meatball & Husmanskost",
+        "badge": "\ud83c\udf72 Classic Swedish Beer Hall",
         "website": "https://kvarnen.com",
         "gmaps": "https://www.google.com/maps/search/?api=1&query=Kvarnen+Stockholm",
-        "hours": "Tue: 11:30 \u2013 23:00 (Dec 29 Open)",
-        "rating": "\u2b50 4.5 / 5 (2,820+ Google reviews)",
-        "review": "\"Historic 1908 Swedish beer hall serving authentic traditional Husmanskost (comfort food). Massive hand-rolled meatballs, pickled herring, and cold draft beer!\"",
+        "hours": "11:30 \u2013 23:00",
+        "distFromHotel": "1.8 km (5 min taxi)",
+        "isNearest": false,
+        "rating": "\u2b50 4.5 / 5",
+        "review": "\"Historic 1908 beer hall serving authentic Husmanskost. Massive meatballs & Pytt i Panna hash.\"",
         "dishes": [
           {
-            "name": "Kvarnen Famous Swedish Meatballs",
-            "desc": "Handmade beef & pork meatballs, velvety cream gravy, pressgurka pickled cucumber & lingonberries",
-            "price": "225 SEK (~S$29 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/K%C3%B6ttbullar_med_mos.jpg/800px-K%C3%B6ttbullar_med_mos.jpg"
+            "name": "Kvarnen Meatballs & Gravy",
+            "desc": "Handmade meatballs with cream gravy & lingonberries",
+            "price": "225 SEK (~S$29 SGD)"
           },
           {
             "name": "Pytt i Panna (Swedish Hash)",
-            "desc": "Fried diced beef, pork & potatoes topped with a sunny-side-up egg & pickled red beets",
-            "price": "195 SEK (~S$25 SGD)",
-            "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80"
+            "desc": "Diced beef & pork hash with sunny-side egg",
+            "price": "195 SEK (~S$25 SGD)"
           },
           {
-            "name": "Herring Platter (Str\u00f6mming)",
-            "desc": "Pan-fried Baltic herring with melted butter, mashed potatoes & lingonberries",
-            "price": "185 SEK (~S$24 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Loimulohi.jpg/800px-Loimulohi.jpg"
+            "name": "Herring Platter",
+            "desc": "Pan-fried Baltic herring with mashed potatoes",
+            "price": "185 SEK (~S$24 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Pelikan (S\u00f6dermalm)",
+        "category": "comfort",
+        "badge": "\ud83c\udf72 Vintage 1904 Swedish Tavern",
+        "website": "https://pelikan.se",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Pelikan+Stockholm",
+        "hours": "11:30 \u2013 22:00",
+        "distFromHotel": "2.1 km (6 min taxi)",
+        "isNearest": false,
+        "rating": "\u2b50 4.5 / 5",
+        "review": "\"Vintage tavern with soaring ceilings. Slow roasted pork knuckle & saut\u00e9ed reindeer stew.\"",
+        "dishes": [
+          {
+            "name": "Roasted Pork Knuckle (Fl\u00e4skl\u00e4gg)",
+            "desc": "Crispy pork knuckle with root puree & coarse mustard",
+            "price": "240 SEK (~S$31 SGD)"
+          },
+          {
+            "name": "Saut\u00e9ed Reindeer & Mushrooms",
+            "desc": "Thinly sliced reindeer with wild chanterelles",
+            "price": "265 SEK (~S$34 SGD)"
+          },
+          {
+            "name": "Swedish Ostkaka Cheese Cake",
+            "desc": "Warm curd cake with cloudberry jam",
+            "price": "110 SEK (~S$14 SGD)"
           }
         ]
       }
@@ -1624,36 +3290,151 @@
   },
   "19": {
     "city": "stockholm",
-    "date": "Dec 30 (Wed)",
-    "location": "Stockholm -> Train to Copenhagen",
+    "date": "Dec 30 (2026)",
+    "location": "Day 19 Expedition Stop",
     "items": [
+      {
+        "name": "Stockholms G\u00e4stabud (Gamla Stan)",
+        "category": "comfort",
+        "badge": "\ud83c\udf72 Top-Rated Swedish Meatballs",
+        "website": "https://stockholmsgastabud.se",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Stockholms+Gastabud+Stockholm",
+        "hours": "11:30 \u2013 22:00",
+        "distFromHotel": "450m (6 min walk)",
+        "isNearest": true,
+        "rating": "\u2b50 4.8 / 5",
+        "review": "\"Top-rated Swedish meatballs in Gamla Stan! Creamy gravy, fresh lingonberries, and Toast Skagen.\"",
+        "dishes": [
+          {
+            "name": "G\u00e4stabud Swedish Meatballs",
+            "desc": "Hand-rolled meatballs with cream gravy & pressgurka",
+            "price": "225 SEK (~S$29 SGD)"
+          },
+          {
+            "name": "Classic Toast Skagen",
+            "desc": "Butter fried toast topped with prawns & bleak roe",
+            "price": "195 SEK (~S$25 SGD)"
+          },
+          {
+            "name": "Pan-Fried Baltic Herring",
+            "desc": "Fried herring with melted butter & mash",
+            "price": "185 SEK (~S$24 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Operak\u00e4llaren",
+        "category": "fine-dining",
+        "badge": "\u2b50\ufe0f 1 Michelin Star Palace Fine Dining",
+        "website": "https://operakallaren.se",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Operakallaren+Stockholm",
+        "hours": "17:00 \u2013 23:00",
+        "distFromHotel": "400m (5 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.7 / 5",
+        "review": "\"Stockholm's grand palace restaurant inside Royal Opera House! Gilded interiors & haute cuisine.\"",
+        "dishes": [
+          {
+            "name": "Arctic Char & Kalix Bleak Roe",
+            "desc": "Seared char with Kalix roe & smoked butter sauce",
+            "price": "450 SEK (~S$58 SGD)"
+          },
+          {
+            "name": "Swedish Venison Saddle",
+            "desc": "Roasted venison saddle with lingonberry jus",
+            "price": "580 SEK (~S$75 SGD)"
+          },
+          {
+            "name": "Wild Cloudberry Souffl\u00e9",
+            "desc": "Warm souffl\u00e9 with wild cloudberry sorbet",
+            "price": "220 SEK (~S$28 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "\u00d6stermalms Saluhall (Lisa Elmqvist)",
+        "category": "upscale",
+        "badge": "\u2728 Historic Seafood Hall Icon",
+        "website": "https://lisaelmqvist.se",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Lisa+Elmqvist+Stockholm",
+        "hours": "10:00 \u2013 19:00",
+        "distFromHotel": "800m (10 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.6 / 5",
+        "review": "\"Stockholm's premier seafood hall since 1926! Toast Skagen & rich saffron fish soup.\"",
+        "dishes": [
+          {
+            "name": "Famous Toast Skagen",
+            "desc": "Fresh prawns, dill mayo, lemon & white bleak roe",
+            "price": "245 SEK (~S$32 SGD)"
+          },
+          {
+            "name": "Creamy Swedish Seafood Soup",
+            "desc": "Saffron broth packed with cod, salmon & mussels",
+            "price": "265 SEK (~S$34 SGD)"
+          },
+          {
+            "name": "House-Cured Gravlax",
+            "desc": "Atlantic salmon with sweet dill mustard sauce",
+            "price": "220 SEK (~S$28 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Kvarnen (S\u00f6dermalm)",
+        "category": "comfort",
+        "badge": "\ud83c\udf72 Classic Swedish Beer Hall",
+        "website": "https://kvarnen.com",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Kvarnen+Stockholm",
+        "hours": "11:30 \u2013 23:00",
+        "distFromHotel": "1.8 km (5 min taxi)",
+        "isNearest": false,
+        "rating": "\u2b50 4.5 / 5",
+        "review": "\"Historic 1908 beer hall serving authentic Husmanskost. Massive meatballs & Pytt i Panna hash.\"",
+        "dishes": [
+          {
+            "name": "Kvarnen Meatballs & Gravy",
+            "desc": "Handmade meatballs with cream gravy & lingonberries",
+            "price": "225 SEK (~S$29 SGD)"
+          },
+          {
+            "name": "Pytt i Panna (Swedish Hash)",
+            "desc": "Diced beef & pork hash with sunny-side egg",
+            "price": "195 SEK (~S$25 SGD)"
+          },
+          {
+            "name": "Herring Platter",
+            "desc": "Pan-fried Baltic herring with mashed potatoes",
+            "price": "185 SEK (~S$24 SGD)"
+          }
+        ]
+      },
       {
         "name": "Pelikan (S\u00f6dermalm)",
         "category": "comfort",
-        "badge": "\ud83c\udf72 Traditional Swedish Tavern Icon",
+        "badge": "\ud83c\udf72 Vintage 1904 Swedish Tavern",
         "website": "https://pelikan.se",
         "gmaps": "https://www.google.com/maps/search/?api=1&query=Pelikan+Stockholm",
-        "hours": "Wed: 11:30 \u2013 22:00 (Dec 30 Open)",
-        "rating": "\u2b50 4.5 / 5 (2,420+ Google reviews)",
-        "review": "\"Vintage 1904 Swedish tavern with soaring ceilings. Legendary slow-roasted pork knuckle, reindeer stew, and hearty Swedish comfort food.\"",
+        "hours": "11:30 \u2013 22:00",
+        "distFromHotel": "2.1 km (6 min taxi)",
+        "isNearest": false,
+        "rating": "\u2b50 4.5 / 5",
+        "review": "\"Vintage tavern with soaring ceilings. Slow roasted pork knuckle & saut\u00e9ed reindeer stew.\"",
         "dishes": [
           {
             "name": "Roasted Pork Knuckle (Fl\u00e4skl\u00e4gg)",
-            "desc": "Crispy roasted pork knuckle served with root vegetable puree & coarse Swedish mustard",
-            "price": "240 SEK (~S$31 SGD)",
-            "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80"
+            "desc": "Crispy pork knuckle with root puree & coarse mustard",
+            "price": "240 SEK (~S$31 SGD)"
           },
           {
             "name": "Saut\u00e9ed Reindeer & Mushrooms",
-            "desc": "Thinly sliced reindeer saut\u00e9ed with wild chanterelles, juniper berries & lingonberry cream",
-            "price": "265 SEK (~S$34 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Poronk%C3%A4ristys.jpg/800px-Poronk%C3%A4ristys.jpg"
+            "desc": "Thinly sliced reindeer with wild chanterelles",
+            "price": "265 SEK (~S$34 SGD)"
           },
           {
-            "name": "Swedish Ostkaka (Warm Cheese Cake)",
-            "desc": "Traditional warm curd cake served with whipped cream & cloudberry jam",
-            "price": "110 SEK (~S$14 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Leip%C3%A4juusto.jpg/800px-Leip%C3%A4juusto.jpg"
+            "name": "Swedish Ostkaka Cheese Cake",
+            "desc": "Warm curd cake with cloudberry jam",
+            "price": "110 SEK (~S$14 SGD)"
           }
         ]
       }
@@ -1661,103 +3442,64 @@
   },
   "20": {
     "city": "copenhagen",
-    "date": "Dec 31 (Thu)",
-    "location": "Copenhagen (New Year's Eve)",
+    "date": "Dec 31 (2026)",
+    "location": "Day 20 Expedition Stop",
     "items": [
       {
-        "name": "Formel B",
-        "category": "fine-dining",
-        "badge": "\u2b50\ufe0f 1 Michelin Star (NYE Fine Dining)",
-        "website": "https://formel-b.dk",
-        "gmaps": "https://www.google.com/maps/search/?api=1&query=Formel+B+Copenhagen",
-        "hours": "Thu: 17:30 \u2013 23:30 (Dec 31 NYE Open)",
-        "rating": "\u2b50 4.7 / 5 (590+ Google reviews)",
-        "review": "\"Acclaimed 1 Michelin star modern French-Nordic restaurant in Frederiksberg. Exceptional New Year's Eve menu featuring French black truffle, langoustine, and Danish venison.\"",
+        "name": "K\u00f8dbyens Fiskebar (Meatpacking)",
+        "category": "comfort",
+        "badge": "\ud83c\udf72 Fresh Seafood & Oysters",
+        "website": "https://fiskebaren.dk",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Kodbyens+Fiskebar+Copenhagen",
+        "hours": "12:00 \u2013 23:00",
+        "distFromHotel": "400m (5 min walk)",
+        "isNearest": true,
+        "rating": "\u2b50 4.6 / 5",
+        "review": "\"Vibrant seafood bar in Meatpacking District! Fresh Limfjord oysters, razor clams & fish chips.\"",
         "dishes": [
           {
-            "name": "Danish Venison & Black Truffle",
-            "desc": "Roasted Danish venison loin with Perigord black truffle sauce & braised salsify",
-            "price": "1,250 DKK (~S$245 SGD NYE Menu)",
-            "image": "https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=600&q=80"
+            "name": "Danish Fish & Chips",
+            "desc": "Beer-battered hake with double fried chips & remoulade",
+            "price": "185 DKK (~S$36 SGD)"
           },
           {
-            "name": "Poached Langoustine & Caviar",
-            "desc": "Scandinavia langoustine tail topped with Baerii caviar & smoked butter emulsion",
-            "price": "Course in NYE Menu (~S$245 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Loimulohi.jpg/800px-Loimulohi.jpg"
+            "name": "Limfjord Oyster Selection",
+            "desc": "Raw Danish oysters with shallot vinaigrette",
+            "price": "210 DKK (~S$41 SGD)"
           },
           {
-            "name": "Sea Buckthorn & White Chocolate Souffl\u00e9",
-            "desc": "Fluffy warm souffl\u00e9 with sea buckthorn sorbet & caramelized hazelnuts",
-            "price": "Course in NYE Menu (~S$245 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Leip%C3%A4juusto.jpg/800px-Leip%C3%A4juusto.jpg"
+            "name": "Steamed Blue Mussels in Cider",
+            "desc": "Mussels steamed with hard cider & fresh herbs",
+            "price": "195 DKK (~S$38 SGD)"
           }
         ]
       },
       {
-        "name": "H\u00f8st Copenhagen",
-        "category": "upscale",
-        "badge": "\u2728 Award-Winning Nordic Bistro",
-        "website": "https://cofoco.dk/en/host",
-        "gmaps": "https://www.google.com/maps/search/?api=1&query=Host+Copenhagen",
-        "hours": "Thu: 17:00 \u2013 22:30 (Dec 31 Open)",
-        "rating": "\u2b50 4.7 / 5 (2,120+ Google reviews)",
-        "review": "\"Stunning greenhouse-inspired Nordic restaurant with raw wooden beams and lush greenery. Innovative 3 or 5-course Nordic tasting menus at incredible value!\"",
-        "dishes": [
-          {
-            "name": "Ribeye Beef & Smoked Bone Marrow",
-            "desc": "Danish beef ribeye with pickled chanterelles, wild garlic & smoked bone marrow sauce",
-            "price": "495 DKK (~S$97 SGD Tasting Menu)",
-            "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80"
-          },
-          {
-            "name": "Birch-Smoked Cod Fillet",
-            "desc": "Pan-roasted Baltic cod with creamed kale, horseradish & crispy cod skin",
-            "price": "Course in Tasting Menu (~S$97 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Loimulohi.jpg/800px-Loimulohi.jpg"
-          },
-          {
-            "name": "Skyr Mousse & Sea Buckthorn",
-            "desc": "Danish skyr mousse topped with sea buckthorn granita & brown butter crumbles",
-            "price": "Course in Tasting Menu (~S$97 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Leip%C3%A4juusto.jpg/800px-Leip%C3%A4juusto.jpg"
-          }
-        ]
-      }
-    ]
-  },
-  "21": {
-    "city": "copenhagen",
-    "date": "Jan 01 (Fri)",
-    "location": "Copenhagen (New Year's Day)",
-    "items": [
-      {
-        "name": "Torvehallerne Food Hall (Hallernes Sm\u00f8rrebr\u00f8d)",
+        "name": "Warpigs Brewpub (Meatpacking)",
         "category": "comfort",
-        "badge": "\ud83c\udf72 Danish Open Sandwich Icon",
-        "website": "https://hallernes.dk",
-        "gmaps": "https://www.google.com/maps/search/?api=1&query=Hallernes+Smorrebrod+Torvehallerne+Copenhagen",
-        "hours": "Fri: 10:00 \u2013 19:00 (Jan 01 Open)",
-        "rating": "\u2b50 4.6 / 5 (3,420+ Google reviews)",
-        "review": "\"Copenhagen's ultimate gourmet food hall! Hallernes Sm\u00f8rrebr\u00f8d crafts stunning open-face dark rye sandwiches piled high with crispy plaice, roast beef, and prawns.\"",
+        "badge": "\ud83c\udf54 Texas BBQ & Craft Beer",
+        "website": "https://warpigs.dk",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Warpigs+Copenhagen",
+        "hours": "11:30 \u2013 23:00",
+        "distFromHotel": "350m (4 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.6 / 5",
+        "review": "\"Iconic Copenhagen Meatpacking BBQ joint! Smoked beef brisket, pulled pork & Mikkeller beers.\"",
         "dishes": [
           {
-            "name": "Crispy Pan-Fried Plaice Sm\u00f8rrebr\u00f8d (R\u00f8dsp\u00e6ttefil\u00e9t)",
-            "desc": "Golden fried plaice fillet on buttered rye bread with homemade remoulade, lemon & fresh dill",
-            "price": "85 DKK (~S$17 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Sm%C3%B8rrabr%C3%B8d_med_fiskefil%C3%A9t.jpg/800px-Sm%C3%B8rrabr%C3%B8d_med_fiskefil%C3%A9t.jpg"
+            "name": "12-Hour Smoked Beef Brisket",
+            "desc": "Tender oak-smoked beef brisket served with pickles & slaw",
+            "price": "175 DKK (~S$34 SGD)"
           },
           {
-            "name": "Roast Beef & Remoulade Sm\u00f8rrebr\u00f8d",
-            "desc": "Thinly sliced Danish roast beef topped with crispy fried onions, horseradish & pickles",
-            "price": "78 DKK (~S$15 SGD)",
-            "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80"
+            "name": "Warpigs Pulled Pork Sandwich",
+            "desc": "Smoked pork shoulder on potato bun with BBQ sauce",
+            "price": "135 DKK (~S$26 SGD)"
           },
           {
-            "name": "Hand-Peeled Greenland Shrimp Sm\u00f8rrebr\u00f8d",
-            "desc": "Mound of cold-water Greenland prawns served over mayonnaise, lemon & egg slices",
-            "price": "92 DKK (~S$18 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Toast_Skagen.jpg/800px-Toast_Skagen.jpg"
+            "name": "Mac & Cheese Side",
+            "desc": "Creamy 3-cheese baked macaroni",
+            "price": "55 DKK (~S$11 SGD)"
           }
         ]
       },
@@ -1767,27 +3509,236 @@
         "badge": "\ud83c\udf54 Noma's Legendary Gourmet Burger",
         "website": "https://poplburger.com",
         "gmaps": "https://www.google.com/maps/search/?api=1&query=Popl+Burger+Copenhagen",
-        "hours": "Fri: 12:00 \u2013 21:30 (Jan 01 Open)",
-        "rating": "\u2b50 4.5 / 5 (1,520+ Google reviews)",
-        "review": "\"Created by 3-Michelin star Noma team! Organic Danish grass-fed beef burgers smashed on butter-grilled potato buns with fermented quinoa garum sauce.\"",
+        "hours": "12:00 \u2013 21:30",
+        "distFromHotel": "1.8 km (5 min taxi)",
+        "isNearest": false,
+        "rating": "\u2b50 4.5 / 5",
+        "review": "\"Created by 3-Michelin star Noma team! Organic grass-fed beef smashed with fermented garum mayo.\"",
         "dishes": [
           {
             "name": "Popl Organic Cheeseburger",
-            "desc": "Dry-aged Danish beef patty, organic cheddar, beef garum mayo & house-pickled dill cucumber",
-            "price": "145 DKK (~S$28 SGD)",
-            "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80"
+            "desc": "Dry-aged beef patty, organic cheddar & beef garum mayo",
+            "price": "145 DKK (~S$28 SGD)"
           },
           {
             "name": "Popl Fermented Mushroom Burger",
-            "desc": "Award-winning vegetarian burger made with fermented wild mushroom & quinoa patty",
-            "price": "140 DKK (~S$27 SGD)",
-            "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80"
+            "desc": "Fermented wild mushroom & quinoa burger",
+            "price": "140 DKK (~S$27 SGD)"
           },
           {
-            "name": "Triple-Cooked Tallow Potato Fries",
-            "desc": "Hand-cut Danish potatoes fried in organic beef tallow served with smoked mayo dip",
-            "price": "55 DKK (~S$11 SGD)",
-            "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80"
+            "name": "Triple-Cooked Tallow Fries",
+            "desc": "Potatoes fried in beef tallow with smoked mayo",
+            "price": "55 DKK (~S$11 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "H\u00f8st Copenhagen",
+        "category": "upscale",
+        "badge": "\u2728 Award-Winning Nordic Bistro",
+        "website": "https://cofoco.dk/en/host",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Host+Copenhagen",
+        "hours": "17:00 \u2013 22:30",
+        "distFromHotel": "1.5 km (4 min taxi)",
+        "isNearest": false,
+        "rating": "\u2b50 4.7 / 5",
+        "review": "\"Greenhouse-inspired Nordic restaurant with raw wooden beams. 3 or 5-course Nordic tasting menus.\"",
+        "dishes": [
+          {
+            "name": "Ribeye Beef & Smoked Bone Marrow",
+            "desc": "Danish ribeye with pickled chanterelles & marrow sauce",
+            "price": "495 DKK (~S$97 SGD Tasting Menu)"
+          },
+          {
+            "name": "Birch-Smoked Cod Fillet",
+            "desc": "Pan-roasted Baltic cod with creamed kale & horseradish",
+            "price": "Course in Tasting Menu"
+          },
+          {
+            "name": "Skyr Mousse & Sea Buckthorn",
+            "desc": "Skyr mousse with sea buckthorn granita",
+            "price": "Course in Tasting Menu"
+          }
+        ]
+      },
+      {
+        "name": "Torvehallerne (Hallernes Sm\u00f8rrebr\u00f8d)",
+        "category": "comfort",
+        "badge": "\ud83c\udf72 Danish Open Sandwich Icon",
+        "website": "https://hallernes.dk",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Hallernes+Smorrebrod+Copenhagen",
+        "hours": "10:00 \u2013 19:00",
+        "distFromHotel": "1.4 km (4 min taxi)",
+        "isNearest": false,
+        "rating": "\u2b50 4.6 / 5",
+        "review": "\"Copenhagen's ultimate gourmet food hall! Sm\u00f8rrebr\u00f8d piled high with crispy plaice & roast beef.\"",
+        "dishes": [
+          {
+            "name": "Crispy Pan-Fried Plaice Sm\u00f8rrebr\u00f8d",
+            "desc": "Golden fried plaice fillet on rye with remoulade & lemon",
+            "price": "85 DKK (~S$17 SGD)"
+          },
+          {
+            "name": "Roast Beef & Remoulade Sm\u00f8rrebr\u00f8d",
+            "desc": "Sliced roast beef with crispy fried onions & horseradish",
+            "price": "78 DKK (~S$15 SGD)"
+          },
+          {
+            "name": "Greenland Shrimp Sm\u00f8rrebr\u00f8d",
+            "desc": "Mound of cold-water prawns over mayo & egg slices",
+            "price": "92 DKK (~S$18 SGD)"
+          }
+        ]
+      }
+    ]
+  },
+  "21": {
+    "city": "copenhagen",
+    "date": "Jan 01 (2027)",
+    "location": "Day 21 Expedition Stop",
+    "items": [
+      {
+        "name": "K\u00f8dbyens Fiskebar (Meatpacking)",
+        "category": "comfort",
+        "badge": "\ud83c\udf72 Fresh Seafood & Oysters",
+        "website": "https://fiskebaren.dk",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Kodbyens+Fiskebar+Copenhagen",
+        "hours": "12:00 \u2013 23:00",
+        "distFromHotel": "400m (5 min walk)",
+        "isNearest": true,
+        "rating": "\u2b50 4.6 / 5",
+        "review": "\"Vibrant seafood bar in Meatpacking District! Fresh Limfjord oysters, razor clams & fish chips.\"",
+        "dishes": [
+          {
+            "name": "Danish Fish & Chips",
+            "desc": "Beer-battered hake with double fried chips & remoulade",
+            "price": "185 DKK (~S$36 SGD)"
+          },
+          {
+            "name": "Limfjord Oyster Selection",
+            "desc": "Raw Danish oysters with shallot vinaigrette",
+            "price": "210 DKK (~S$41 SGD)"
+          },
+          {
+            "name": "Steamed Blue Mussels in Cider",
+            "desc": "Mussels steamed with hard cider & fresh herbs",
+            "price": "195 DKK (~S$38 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Warpigs Brewpub (Meatpacking)",
+        "category": "comfort",
+        "badge": "\ud83c\udf54 Texas BBQ & Craft Beer",
+        "website": "https://warpigs.dk",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Warpigs+Copenhagen",
+        "hours": "11:30 \u2013 23:00",
+        "distFromHotel": "350m (4 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.6 / 5",
+        "review": "\"Iconic Copenhagen Meatpacking BBQ joint! Smoked beef brisket, pulled pork & Mikkeller beers.\"",
+        "dishes": [
+          {
+            "name": "12-Hour Smoked Beef Brisket",
+            "desc": "Tender oak-smoked beef brisket served with pickles & slaw",
+            "price": "175 DKK (~S$34 SGD)"
+          },
+          {
+            "name": "Warpigs Pulled Pork Sandwich",
+            "desc": "Smoked pork shoulder on potato bun with BBQ sauce",
+            "price": "135 DKK (~S$26 SGD)"
+          },
+          {
+            "name": "Mac & Cheese Side",
+            "desc": "Creamy 3-cheese baked macaroni",
+            "price": "55 DKK (~S$11 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Popl Burger (by Noma)",
+        "category": "comfort",
+        "badge": "\ud83c\udf54 Noma's Legendary Gourmet Burger",
+        "website": "https://poplburger.com",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Popl+Burger+Copenhagen",
+        "hours": "12:00 \u2013 21:30",
+        "distFromHotel": "1.8 km (5 min taxi)",
+        "isNearest": false,
+        "rating": "\u2b50 4.5 / 5",
+        "review": "\"Created by 3-Michelin star Noma team! Organic grass-fed beef smashed with fermented garum mayo.\"",
+        "dishes": [
+          {
+            "name": "Popl Organic Cheeseburger",
+            "desc": "Dry-aged beef patty, organic cheddar & beef garum mayo",
+            "price": "145 DKK (~S$28 SGD)"
+          },
+          {
+            "name": "Popl Fermented Mushroom Burger",
+            "desc": "Fermented wild mushroom & quinoa burger",
+            "price": "140 DKK (~S$27 SGD)"
+          },
+          {
+            "name": "Triple-Cooked Tallow Fries",
+            "desc": "Potatoes fried in beef tallow with smoked mayo",
+            "price": "55 DKK (~S$11 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "H\u00f8st Copenhagen",
+        "category": "upscale",
+        "badge": "\u2728 Award-Winning Nordic Bistro",
+        "website": "https://cofoco.dk/en/host",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Host+Copenhagen",
+        "hours": "17:00 \u2013 22:30",
+        "distFromHotel": "1.5 km (4 min taxi)",
+        "isNearest": false,
+        "rating": "\u2b50 4.7 / 5",
+        "review": "\"Greenhouse-inspired Nordic restaurant with raw wooden beams. 3 or 5-course Nordic tasting menus.\"",
+        "dishes": [
+          {
+            "name": "Ribeye Beef & Smoked Bone Marrow",
+            "desc": "Danish ribeye with pickled chanterelles & marrow sauce",
+            "price": "495 DKK (~S$97 SGD Tasting Menu)"
+          },
+          {
+            "name": "Birch-Smoked Cod Fillet",
+            "desc": "Pan-roasted Baltic cod with creamed kale & horseradish",
+            "price": "Course in Tasting Menu"
+          },
+          {
+            "name": "Skyr Mousse & Sea Buckthorn",
+            "desc": "Skyr mousse with sea buckthorn granita",
+            "price": "Course in Tasting Menu"
+          }
+        ]
+      },
+      {
+        "name": "Torvehallerne (Hallernes Sm\u00f8rrebr\u00f8d)",
+        "category": "comfort",
+        "badge": "\ud83c\udf72 Danish Open Sandwich Icon",
+        "website": "https://hallernes.dk",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Hallernes+Smorrebrod+Copenhagen",
+        "hours": "10:00 \u2013 19:00",
+        "distFromHotel": "1.4 km (4 min taxi)",
+        "isNearest": false,
+        "rating": "\u2b50 4.6 / 5",
+        "review": "\"Copenhagen's ultimate gourmet food hall! Sm\u00f8rrebr\u00f8d piled high with crispy plaice & roast beef.\"",
+        "dishes": [
+          {
+            "name": "Crispy Pan-Fried Plaice Sm\u00f8rrebr\u00f8d",
+            "desc": "Golden fried plaice fillet on rye with remoulade & lemon",
+            "price": "85 DKK (~S$17 SGD)"
+          },
+          {
+            "name": "Roast Beef & Remoulade Sm\u00f8rrebr\u00f8d",
+            "desc": "Sliced roast beef with crispy fried onions & horseradish",
+            "price": "78 DKK (~S$15 SGD)"
+          },
+          {
+            "name": "Greenland Shrimp Sm\u00f8rrebr\u00f8d",
+            "desc": "Mound of cold-water prawns over mayo & egg slices",
+            "price": "92 DKK (~S$18 SGD)"
           }
         ]
       }
@@ -1795,36 +3746,151 @@
   },
   "22": {
     "city": "copenhagen",
-    "date": "Jan 02 (Sat)",
-    "location": "Copenhagen -> Departure",
+    "date": "Jan 02 (2027)",
+    "location": "Day 22 Expedition Stop",
     "items": [
       {
-        "name": "Restaurant Pal\u00e6gade",
-        "category": "upscale",
-        "badge": "\u2728 Traditional Danish Lunch & Dining",
-        "website": "https://palaegade.dk",
-        "gmaps": "https://www.google.com/maps/search/?api=1&query=Restaurant+Palaegade+Copenhagen",
-        "hours": "Sat: 11:30 \u2013 17:00 (Jan 02 Open)",
-        "rating": "\u2b50 4.7 / 5 (1,120+ Google reviews)",
-        "review": "\"The gold standard for refined classic Danish dining in central Copenhagen. Immaculate Sm\u00f8rrebr\u00f8d, pan-fried cod, and fine aquavit pairing.\"",
+        "name": "K\u00f8dbyens Fiskebar (Meatpacking)",
+        "category": "comfort",
+        "badge": "\ud83c\udf72 Fresh Seafood & Oysters",
+        "website": "https://fiskebaren.dk",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Kodbyens+Fiskebar+Copenhagen",
+        "hours": "12:00 \u2013 23:00",
+        "distFromHotel": "400m (5 min walk)",
+        "isNearest": true,
+        "rating": "\u2b50 4.6 / 5",
+        "review": "\"Vibrant seafood bar in Meatpacking District! Fresh Limfjord oysters, razor clams & fish chips.\"",
         "dishes": [
           {
-            "name": "Pal\u00e6gade Deluxe Herring Trio",
-            "desc": "Marinated curried herring, fried spiced herring & pickled onion herring with dark rye",
-            "price": "145 DKK (~S$28 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Sm%C3%B8rrabr%C3%B8d_med_fiskefil%C3%A9t.jpg/800px-Sm%C3%B8rrabr%C3%B8d_med_fiskefil%C3%A9t.jpg"
+            "name": "Danish Fish & Chips",
+            "desc": "Beer-battered hake with double fried chips & remoulade",
+            "price": "185 DKK (~S$36 SGD)"
           },
           {
-            "name": "Pan-Seared Danish Veal Schnitzel",
-            "desc": "Crispy veal schnitzel served with capers, horseradish, lemon anchovy butter & potatoes",
-            "price": "245 DKK (~S$48 SGD)",
-            "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80"
+            "name": "Limfjord Oyster Selection",
+            "desc": "Raw Danish oysters with shallot vinaigrette",
+            "price": "210 DKK (~S$41 SGD)"
           },
           {
-            "name": "Old-Fashioned Apple Cake (\u00c6blekage)",
-            "desc": "Layered stewed Danish apples, toasted breadcrumbs, red currant jelly & vanilla cream",
-            "price": "95 DKK (~S$19 SGD)",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Leip%C3%A4juusto.jpg/800px-Leip%C3%A4juusto.jpg"
+            "name": "Steamed Blue Mussels in Cider",
+            "desc": "Mussels steamed with hard cider & fresh herbs",
+            "price": "195 DKK (~S$38 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Warpigs Brewpub (Meatpacking)",
+        "category": "comfort",
+        "badge": "\ud83c\udf54 Texas BBQ & Craft Beer",
+        "website": "https://warpigs.dk",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Warpigs+Copenhagen",
+        "hours": "11:30 \u2013 23:00",
+        "distFromHotel": "350m (4 min walk)",
+        "isNearest": false,
+        "rating": "\u2b50 4.6 / 5",
+        "review": "\"Iconic Copenhagen Meatpacking BBQ joint! Smoked beef brisket, pulled pork & Mikkeller beers.\"",
+        "dishes": [
+          {
+            "name": "12-Hour Smoked Beef Brisket",
+            "desc": "Tender oak-smoked beef brisket served with pickles & slaw",
+            "price": "175 DKK (~S$34 SGD)"
+          },
+          {
+            "name": "Warpigs Pulled Pork Sandwich",
+            "desc": "Smoked pork shoulder on potato bun with BBQ sauce",
+            "price": "135 DKK (~S$26 SGD)"
+          },
+          {
+            "name": "Mac & Cheese Side",
+            "desc": "Creamy 3-cheese baked macaroni",
+            "price": "55 DKK (~S$11 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "Popl Burger (by Noma)",
+        "category": "comfort",
+        "badge": "\ud83c\udf54 Noma's Legendary Gourmet Burger",
+        "website": "https://poplburger.com",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Popl+Burger+Copenhagen",
+        "hours": "12:00 \u2013 21:30",
+        "distFromHotel": "1.8 km (5 min taxi)",
+        "isNearest": false,
+        "rating": "\u2b50 4.5 / 5",
+        "review": "\"Created by 3-Michelin star Noma team! Organic grass-fed beef smashed with fermented garum mayo.\"",
+        "dishes": [
+          {
+            "name": "Popl Organic Cheeseburger",
+            "desc": "Dry-aged beef patty, organic cheddar & beef garum mayo",
+            "price": "145 DKK (~S$28 SGD)"
+          },
+          {
+            "name": "Popl Fermented Mushroom Burger",
+            "desc": "Fermented wild mushroom & quinoa burger",
+            "price": "140 DKK (~S$27 SGD)"
+          },
+          {
+            "name": "Triple-Cooked Tallow Fries",
+            "desc": "Potatoes fried in beef tallow with smoked mayo",
+            "price": "55 DKK (~S$11 SGD)"
+          }
+        ]
+      },
+      {
+        "name": "H\u00f8st Copenhagen",
+        "category": "upscale",
+        "badge": "\u2728 Award-Winning Nordic Bistro",
+        "website": "https://cofoco.dk/en/host",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Host+Copenhagen",
+        "hours": "17:00 \u2013 22:30",
+        "distFromHotel": "1.5 km (4 min taxi)",
+        "isNearest": false,
+        "rating": "\u2b50 4.7 / 5",
+        "review": "\"Greenhouse-inspired Nordic restaurant with raw wooden beams. 3 or 5-course Nordic tasting menus.\"",
+        "dishes": [
+          {
+            "name": "Ribeye Beef & Smoked Bone Marrow",
+            "desc": "Danish ribeye with pickled chanterelles & marrow sauce",
+            "price": "495 DKK (~S$97 SGD Tasting Menu)"
+          },
+          {
+            "name": "Birch-Smoked Cod Fillet",
+            "desc": "Pan-roasted Baltic cod with creamed kale & horseradish",
+            "price": "Course in Tasting Menu"
+          },
+          {
+            "name": "Skyr Mousse & Sea Buckthorn",
+            "desc": "Skyr mousse with sea buckthorn granita",
+            "price": "Course in Tasting Menu"
+          }
+        ]
+      },
+      {
+        "name": "Torvehallerne (Hallernes Sm\u00f8rrebr\u00f8d)",
+        "category": "comfort",
+        "badge": "\ud83c\udf72 Danish Open Sandwich Icon",
+        "website": "https://hallernes.dk",
+        "gmaps": "https://www.google.com/maps/search/?api=1&query=Hallernes+Smorrebrod+Copenhagen",
+        "hours": "10:00 \u2013 19:00",
+        "distFromHotel": "1.4 km (4 min taxi)",
+        "isNearest": false,
+        "rating": "\u2b50 4.6 / 5",
+        "review": "\"Copenhagen's ultimate gourmet food hall! Sm\u00f8rrebr\u00f8d piled high with crispy plaice & roast beef.\"",
+        "dishes": [
+          {
+            "name": "Crispy Pan-Fried Plaice Sm\u00f8rrebr\u00f8d",
+            "desc": "Golden fried plaice fillet on rye with remoulade & lemon",
+            "price": "85 DKK (~S$17 SGD)"
+          },
+          {
+            "name": "Roast Beef & Remoulade Sm\u00f8rrebr\u00f8d",
+            "desc": "Sliced roast beef with crispy fried onions & horseradish",
+            "price": "78 DKK (~S$15 SGD)"
+          },
+          {
+            "name": "Greenland Shrimp Sm\u00f8rrebr\u00f8d",
+            "desc": "Mound of cold-water prawns over mayo & egg slices",
+            "price": "92 DKK (~S$18 SGD)"
           }
         ]
       }
@@ -1974,6 +4040,7 @@
       badgeEl.className = `card-badge ${item.category}`;
 
       document.getElementById('modal-hours').innerHTML = `<i class="fa-solid fa-clock"></i> <strong>Operating Hours:</strong> ${item.hours}`;
+      document.getElementById('modal-dist').innerHTML = `<i class="fa-solid fa-location-dot"></i> <strong>Hotel Proximity:</strong> ${item.distFromHotel || 'City Center'}${item.isNearest ? ' <span style="background: #16a34a; color: white; padding: 2px 6px; border-radius: 4px; font-weight: 800; font-size: 11px;">📍 NEAREST TO HOTEL</span>' : ''}`;
 
       const dishesContainer = document.getElementById('modal-dishes');
       dishesContainer.innerHTML = (item.dishes || []).map(d => `
@@ -2025,16 +4092,22 @@
 
         const cardsHtml = dayData.items.map((item, idx) => {
           const dishNames = (item.dishes || []).map(d => d.name).join(' • ');
+          const nearestClass = item.isNearest ? 'nearest-card' : '';
+          const nearestBanner = item.isNearest ? `<div class="nearest-banner"><i class="fa-solid fa-location-dot"></i> 📍 NEAREST TO HOTEL (${item.distFromHotel})</div>` : '';
 
           return `
-            <div class="compact-card ${item.category}" data-category="${item.category}" onclick="openModal(${day}, ${idx})">
+            <div class="compact-card ${item.category} ${nearestClass}" data-category="${item.category}" onclick="openModal(${day}, ${idx})">
               <div>
+                ${nearestBanner}
                 <div class="card-top">
                   <div class="restaurant-name">${item.name}</div>
                   <span class="card-badge ${item.category}">${item.badge.split(' ')[0]} ${item.category.toUpperCase()}</span>
                 </div>
                 <div class="hours-text">
                   <i class="fa-solid fa-clock"></i> ${item.hours}
+                </div>
+                <div class="dist-text">
+                  <i class="fa-solid fa-person-walking"></i> ${item.distFromHotel || 'City Center'}
                 </div>
                 <div class="teaser-dishes">
                   <i class="fa-solid fa-utensils" style="color: #2563eb;"></i> <strong>Dishes:</strong> ${dishNames}
