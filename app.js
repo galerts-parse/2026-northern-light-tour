@@ -265,11 +265,266 @@ function renderTourPackageView(payload, activeRoute) {
     navContainer.appendChild(extraLi2);
   }
 
+  // Helper: Detailed Booking & Confirmation Card Generator
+  const getBookingInfoHtml = (dayNum, d) => {
+    let accDetails = '';
+    let transportDetails = '';
+
+    // 1. Rental Car details for Days 1-14
+    if (dayNum >= 1 && dayNum <= 14) {
+      const carStatus = dayNum === 1 ? 'Pick-up @ RVN Airport (5:00 PM)' : (dayNum === 14 ? 'Drop-off @ RVN Airport (8:30 PM)' : 'In Use / Driving');
+      transportDetails = `
+        <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; margin-top: 8px;">
+          <div style="font-weight: 700; color: #0369a1; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
+            <span><i class="fa-solid fa-car"></i> Car Rental: Enterprise Rent-A-Car</span>
+            <span style="background: #e0f2fe; color: #0369a1; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight:700;">Ref: 2130932940</span>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 6px; margin-top: 6px; font-size: 0.82rem; color: #334155;">
+            <div><strong>Confirmation #:</strong> <code style="background: #f1f5f9; padding: 1px 5px; border-radius: 3px; font-weight:700; color: #0284c7;">2130932940</code></div>
+            <div><strong>Renter:</strong> NIM YING NGAN (Enterprise Plus SKDG4SJ)</div>
+            <div><strong>Vehicle Class:</strong> VW Golf or Similar (Automatic)</div>
+            <div><strong>Daily Status:</strong> ${carStatus}</div>
+            <div><strong>Pick-up:</strong> Rovaniemi Airport (Sat Dec 12 @ 5:00 PM)</div>
+            <div><strong>Return:</strong> Rovaniemi Airport (Fri Dec 25 @ 8:30 PM)</div>
+            <div><strong>Total Paid:</strong> $2,561.69 USD (€2,193.60 EUR)</div>
+            <div><strong>Inclusions:</strong> Unlimited km, Zero Excess, CDW, RAP</div>
+          </div>
+        </div>
+      `;
+    }
+
+    // 2. Specific accommodation details per day based on folder PDF bookings
+    if (dayNum === 1) {
+      accDetails = `
+        <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; margin-top: 6px;">
+          <div style="font-weight: 700; color: #d97706; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
+            <span><i class="fa-solid fa-hotel"></i> Accommodation: ${d.hotel}</span>
+            <span class="badge-tag pending">📌 Booking Recommended</span>
+          </div>
+          <div style="font-size: 0.82rem; color: #475569; margin-top: 4px;">
+            <strong>Status:</strong> Unconfirmed in folder — Recommended stay in Rovaniemi after evening flight arrival (5:00 PM car pickup).
+          </div>
+        </div>
+      `;
+    } else if (dayNum === 2 || dayNum === 3) {
+      accDetails = `
+        <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; margin-top: 6px;">
+          <div style="font-weight: 700; color: #15803d; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
+            <span><i class="fa-solid fa-house-chimney"></i> Stuga i Storklinten (Boden, Sweden)</span>
+            <span class="badge-tag confirmed">✅ Confirmed</span>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 6px; margin-top: 6px; font-size: 0.82rem; color: #334155;">
+            <div><strong>Booking Platform:</strong> Booking.com</div>
+            <div><strong>Stay Duration:</strong> 2 Nights (Check-in Dec 13, Check-out Dec 15)</div>
+            <div><strong>Check-in Window:</strong> Sun, Dec 13 (00:00 – 23:59)</div>
+            <div><strong>Check-out Time:</strong> Tue, Dec 15 (until 12:00)</div>
+            <div><strong>Location:</strong> Storklinten Ski Resort, Boden, Sweden</div>
+          </div>
+        </div>
+      `;
+    } else if (dayNum === 4) {
+      accDetails = `
+        <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; margin-top: 6px;">
+          <div style="font-weight: 700; color: #15803d; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
+            <span><i class="fa-solid fa-house-chimney"></i> Northernlight Cabin (Kiruna, Sweden)</span>
+            <span class="badge-tag confirmed">✅ Confirmed</span>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 6px; margin-top: 6px; font-size: 0.82rem; color: #334155;">
+            <div><strong>Booking Platform:</strong> Booking.com</div>
+            <div><strong>Stay Duration:</strong> 1 Night (Dec 15 – Dec 16)</div>
+            <div><strong>Check-in Window:</strong> Tue, Dec 15 (15:00 – 23:59)</div>
+            <div><strong>Check-out Time:</strong> Wed, Dec 16 (until 12:00)</div>
+            <div><strong>Location:</strong> Kiruna, Sweden</div>
+          </div>
+        </div>
+      `;
+    } else if (dayNum >= 5 && dayNum <= 7) {
+      accDetails = `
+        <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; margin-top: 6px;">
+          <div style="font-weight: 700; color: #15803d; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
+            <span><i class="fa-solid fa-building-user"></i> Aurora View Apt – Walk to Train & Ski (Kiruna V / Björkliden)</span>
+            <span class="badge-tag confirmed">✅ Confirmed</span>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 6px; margin-top: 6px; font-size: 0.82rem; color: #334155;">
+            <div><strong>Airbnb Conf Code:</strong> <code style="background: #f1f5f9; padding: 1px 5px; border-radius: 3px; font-weight:700; color: #16a34a;">HM2B8KDQ4H</code></div>
+            <div><strong>Host / Contact:</strong> Renberget (Co-hosts: Malin, Lena, Magnus, Daniel)</div>
+            <div><strong>Address:</strong> GAMMELGÅRDSVÄGEN 10 Lgh, Kiruna V 981 93, Sweden</div>
+            <div><strong>Check-in:</strong> Wed, Dec 16 @ 3:00 PM (Keypad Self Check-in)</div>
+            <div><strong>Check-out:</strong> Sat, Dec 19 @ 12:00 PM</div>
+            <div><strong>Total Paid:</strong> $748.92 SGD (3 Nights)</div>
+          </div>
+        </div>
+      `;
+    } else if (dayNum === 8 || dayNum === 9) {
+      accDetails = `
+        <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; margin-top: 6px;">
+          <div style="font-weight: 700; color: #15803d; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
+            <span><i class="fa-solid fa-building"></i> Cozy Apartment by the Sea 2 Rooms Free Private Parking (Kemi, Finland)</span>
+            <span class="badge-tag confirmed">✅ Confirmed</span>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 6px; margin-top: 6px; font-size: 0.82rem; color: #334155;">
+            <div><strong>Booking Platform:</strong> Booking.com</div>
+            <div><strong>Stay Duration:</strong> 2 Nights (Check-in Dec 19, Check-out Dec 21)</div>
+            <div><strong>Check-in Window:</strong> Sat, Dec 19 (00:00 – 23:59)</div>
+            <div><strong>Check-out Time:</strong> Mon, Dec 21 (11:00 – 12:00)</div>
+            <div><strong>Location:</strong> Kemi, Lapland, Finland</div>
+          </div>
+        </div>
+      `;
+    } else if (dayNum === 10 || dayNum === 11) {
+      accDetails = `
+        <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; margin-top: 6px;">
+          <div style="font-weight: 700; color: #15803d; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
+            <span><i class="fa-solid fa-house-chimney-window"></i> Idyllic Sauna Cottage by the Lake (Posio, Finland)</span>
+            <span class="badge-tag confirmed">✅ Confirmed</span>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 6px; margin-top: 6px; font-size: 0.82rem; color: #334155;">
+            <div><strong>Airbnb Conf Code:</strong> <code style="background: #f1f5f9; padding: 1px 5px; border-radius: 3px; font-weight:700; color: #16a34a;">HMYPAMHXW9</code></div>
+            <div><strong>Host / Contact:</strong> Leena (Co-host: Tuomo)</div>
+            <div><strong>Address:</strong> Rantapolku 1, Posio, Lappi 97900, Finland</div>
+            <div><strong>Check-in:</strong> Mon, Dec 21 @ 3:00 PM (Lockbox Self Check-in)</div>
+            <div><strong>Check-out:</strong> Wed, Dec 23 @ 11:00 AM</div>
+            <div><strong>Total Paid:</strong> $379.67 SGD (2 Nights)</div>
+          </div>
+        </div>
+      `;
+    } else if (dayNum === 12) {
+      accDetails = `
+        <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; margin-top: 6px;">
+          <div style="font-weight: 700; color: #15803d; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
+            <span><i class="fa-solid fa-mountain-city"></i> Apartment with a View at top of Iso-Syöte (Pudasjärvi, Finland)</span>
+            <span class="badge-tag confirmed">✅ Confirmed</span>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 6px; margin-top: 6px; font-size: 0.82rem; color: #334155;">
+            <div><strong>Airbnb Conf Code:</strong> <code style="background: #f1f5f9; padding: 1px 5px; border-radius: 3px; font-weight:700; color: #16a34a;">HMJ88QTC3C</code></div>
+            <div><strong>Host / Contact:</strong> Arto</div>
+            <div><strong>Address:</strong> Isosyötteentie 230 Näköalahuoneisto, Pudasjärvi 93280, Finland</div>
+            <div><strong>Check-in:</strong> Wed, Dec 23 @ 3:00 PM</div>
+            <div><strong>Check-out:</strong> Thu, Dec 24 @ 12:00 PM</div>
+            <div><strong>Total Paid:</strong> $130.10 SGD (1 Night)</div>
+          </div>
+        </div>
+      `;
+    } else if (dayNum === 13) {
+      accDetails = `
+        <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; margin-top: 6px;">
+          <div style="font-weight: 700; color: #15803d; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
+            <span><i class="fa-solid fa-igloo"></i> Syöte Igloos / Iso-Syöte Glass Igloo</span>
+            <span class="badge-tag confirmed">✅ Confirmed</span>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 6px; margin-top: 6px; font-size: 0.82rem; color: #334155;">
+            <div><strong>Booking Platform:</strong> Booking.com</div>
+            <div><strong>Stay Duration:</strong> 1 Night (Dec 24 – Dec 25)</div>
+            <div><strong>Check-in Window:</strong> Thu, Dec 24 (15:00 – 23:59)</div>
+            <div><strong>Check-out Time:</strong> Fri, Dec 25 (06:00 – 12:00)</div>
+            <div><strong>Location:</strong> Iso-Syöte, Pudasjärvi, Finland</div>
+          </div>
+        </div>
+      `;
+    } else if (dayNum === 14) {
+      accDetails = `
+        <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; margin-top: 6px;">
+          <div style="font-weight: 700; color: #15803d; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
+            <span><i class="fa-solid fa-train"></i> VR Santa Claus Express Overnight Sleeper Train 274</span>
+            <span class="badge-tag confirmed">✅ Confirmed</span>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 6px; margin-top: 6px; font-size: 0.82rem; color: #334155;">
+            <div><strong>VR Order No:</strong> <code style="background: #f1f5f9; padding: 1px 5px; border-radius: 3px; font-weight:700; color: #16a34a;">F3080273035361</code></div>
+            <div><strong>Reference #:</strong> <code style="background: #f1f5f9; padding: 1px 5px; border-radius: 3px; font-weight:700; color: #16a34a;">2-PJ34-U4J7-UYEC</code></div>
+            <div><strong>Train Route:</strong> Night Train 274 (Rovaniemi → Helsinki)</div>
+            <div><strong>Departure:</strong> Fri, Dec 25 @ 21:00 (Rovaniemi Railway Station)</div>
+            <div><strong>Arrival:</strong> Sat, Dec 26 @ 09:15 AM (Helsinki Central Station)</div>
+            <div><strong>Cabin Type:</strong> 1 Accessible Sleeper Cabin for 2 people (€299.00 EUR Paid)</div>
+          </div>
+        </div>
+      `;
+    } else if (dayNum === 15) {
+      accDetails = `
+        <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; margin-top: 6px;">
+          <div style="font-weight: 700; color: #d97706; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
+            <span><i class="fa-solid fa-hotel"></i> Hotel U14, Autograph Collection (Helsinki)</span>
+            <span class="badge-tag pending">📌 Booking Recommended</span>
+          </div>
+          <div style="font-size: 0.82rem; color: #475569; margin-top: 4px;">
+            <strong>Recommendation:</strong> Modern Nordic boutique hotel 7 mins walk from Central Station. VR Train 274 arrives at 09:15 AM.
+          </div>
+        </div>
+      `;
+    } else if (dayNum === 16) {
+      accDetails = `
+        <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; margin-top: 6px;">
+          <div style="font-weight: 700; color: #d97706; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
+            <span><i class="fa-solid fa-hotel"></i> Hotel Telegraaf, Autograph Collection (Tallinn)</span>
+            <span class="badge-tag pending">📌 Booking Recommended</span>
+          </div>
+          <div style="font-size: 0.82rem; color: #475569; margin-top: 4px;">
+            <strong>Recommendation:</strong> Historic 1878 telegraph building located directly in Tallinn Old Town near Town Hall Square.
+          </div>
+        </div>
+      `;
+    } else if (dayNum >= 17 && dayNum <= 19) {
+      accDetails = `
+        <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; margin-top: 6px;">
+          <div style="font-weight: 700; color: #d97706; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
+            <span><i class="fa-solid fa-hotel"></i> Sheraton Stockholm Hotel (Stockholm, Sweden)</span>
+            <span class="badge-tag pending">📌 Booking Recommended</span>
+          </div>
+          <div style="font-size: 0.82rem; color: #475569; margin-top: 4px;">
+            <strong>Recommendation:</strong> Waterfront Marriott hotel located next to Stockholm Central Station & Gamla Stan bridge (3 Nights: Dec 28 – Dec 31).
+          </div>
+        </div>
+      `;
+    } else if (dayNum === 20 || dayNum === 21) {
+      accDetails = `
+        <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; margin-top: 6px;">
+          <div style="font-weight: 700; color: #d97706; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
+            <span><i class="fa-solid fa-hotel"></i> Copenhagen Marriott Hotel (Copenhagen, Denmark)</span>
+            <span class="badge-tag pending">📌 Booking Recommended (NYE)</span>
+          </div>
+          <div style="font-size: 0.82rem; color: #475569; margin-top: 4px;">
+            <strong>Recommendation:</strong> Harborfront Marriott hotel 10 mins walk from Tivoli Gardens NYE Fireworks (2 Nights: Dec 31 – Jan 02).
+          </div>
+        </div>
+      `;
+    } else if (dayNum === 22) {
+      accDetails = `
+        <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; margin-top: 6px;">
+          <div style="font-weight: 700; color: #15803d; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
+            <span><i class="fa-solid fa-plane"></i> Flight Home: Singapore Airlines SQ352 Non-stop</span>
+            <span class="badge-tag confirmed">✅ Confirmed Flight</span>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 6px; margin-top: 6px; font-size: 0.82rem; color: #334155;">
+            <div><strong>Flight Number:</strong> SQ352 (Non-stop)</div>
+            <div><strong>Departure:</strong> CPH Terminal 3 @ Sat, Jan 02 @ 12:00 PM</div>
+            <div><strong>Arrival:</strong> SIN Changi @ Sun, Jan 03 @ 07:30 AM</div>
+          </div>
+        </div>
+      `;
+    }
+
+    const hotelLinksHtml = (d.hotelLinks || []).map(hl => `
+      <a href="${hl.url}" target="_blank" class="action-btn blue" style="font-size: 11px; padding: 3px 8px; margin-right: 4px;"><i class="fa-solid fa-arrow-up-right-from-square"></i> Book ${hl.name}</a>
+      ${hl.gmaps ? `<a href="${hl.gmaps}" target="_blank" class="action-btn orange" style="font-size: 11px; padding: 3px 8px;"><i class="fa-solid fa-location-arrow"></i> Hotel GPS</a>` : ''}
+    `).join(' ');
+
+    return `
+      <div class="info-block" style="background: #f8fafc; border: 1px solid #cbd5e1; box-shadow: 0 1px 3px rgba(0,0,0,0.05); margin-bottom: 15px;">
+        <div class="info-block-title" style="color: #1e293b; font-size: 0.92rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; display: flex; justify-content: space-between; align-items: center;">
+          <span><i class="fa-solid fa-file-invoice" style="color: #2563eb;"></i> 📋 Reserved Booking Details & Confirmation References:</span>
+          ${hotelLinksHtml ? `<div>${hotelLinksHtml}</div>` : ''}
+        </div>
+        ${accDetails}
+        ${transportDetails}
+      </div>
+    `;
+  };
+
   // 2. Day Cards
   itineraryData.forEach((d) => {
     const statusCls = d.hotelStatus;
     const statusLabel = statusCls === 'confirmed' ? '✅ Confirmed' : '📌 Booking Pending';
     const tagsHtml = (d.tags || []).map(t => `<span class="chip">#${t}</span>`).join('');
+    const bookingBlockHtml = getBookingInfoHtml(d.day, d);
 
     // Hourly schedule with Google Maps links
     const hourlyHtml = (d.hourlySchedule || []).map(h => `
@@ -367,17 +622,7 @@ function renderTourPackageView(payload, activeRoute) {
         </div>
       </div>
 
-      <div class="info-block">
-        <div class="info-block-title">
-          <i class="fa-solid fa-hotel" style="color: #2563eb;"></i>
-          <span>Accommodation: ${d.hotel}</span>
-          <span class="badge-tag ${statusCls}">${statusLabel}</span>
-        </div>
-        <div style="font-size: 0.85rem; color: #475569; margin-left: 24px; margin-bottom: 6px;">
-          <strong>Booking Ref / Status:</strong> ${d.bookingRef}
-        </div>
-        ${hotelLinksHtml ? `<div style="margin-left: 24px;">${hotelLinksHtml}</div>` : ''}
-      </div>
+      ${bookingBlockHtml}
 
       <div style="margin-bottom: 15px; color: #334155; font-size: 0.95rem;">
         <strong><i class="fa-solid fa-compass" style="color: #2563eb; margin-right: 6px;"></i>Key Highlights:</strong><br/>
