@@ -536,182 +536,151 @@ base_22_days = [
     "aurora": [{"name": "Train Cabin Window", "desc": "Night sky passing outside sleeper train window.", "coords": [65.0121, 25.4651], "gmaps": gmaps("Oulu Railway Station", 65.0121, 25.4651)}]
   },
   {
-    "day": 15, "date": "Dec 26 (Sat)", "title_a": "Helsinki Boxing Day & Löyly Smoke Sauna", "title_b": "Suomenlinna Sea Fortress Island Walk & Löyly Sauna",
-    "location": "Helsinki, Finland", "coords": [60.1699, 24.9384], "distance": "0 km (Transit)",
+    "day": 15, "date": "Dec 26 (Sat)", "title_a": "Helsinki Architecture & Löyly Waterfront Sauna", "title_b": "Oodi Library, Rock Church & Löyly Baltic Sauna Experience",
+    "location": "Helsinki, Finland", "coords": [60.1699, 24.9384], "distance": "0 km (Tram/Walk)",
     "hotel": "Hotel U14 Autograph Collection", "hotelStatus": "confirmed", "bookingRef": "Confirmed Hotel U14 Autograph Collection",
     "food": food_db["Helsinki"],
-    "activities_a": "Arrive Helsinki 9:00 AM; explore Oodi Library & Senate Square; afternoon seaside smoke sauna & Baltic ice dip at Löyly.",
-    "activities_b": "Arrive Helsinki 9:00 AM; ferry to Suomenlinna UNESCO Sea Fortress for 4 km coastal sea-wall walking loop; lunch at SOUP+MORE (Vanha Kauppahalli Lohikeitto); Löyly smoke sauna & Baltic ice dip.",
+    "activities_a": "Arrive Helsinki 9:15 AM via VR train; explore Oodi Central Library & Rock Church; afternoon seaside smoke sauna & Baltic ice dip at Löyly.",
+    "activities_b": "Arrive Helsinki 9:15 AM; Oodi Central Library & Töölönlahti Culture Quarter; Rock Church (Temppeliaukion kirkko); lunch at Old Market Hall (Vanha Kauppahalli SOUP+MORE salmon soup); Löyly urban waterfront sauna & Baltic ice plunge; Ateneum & Design District evening walk.",
     "sched_a": [
-      {"time": "09:00", "activity": "Arrive Helsinki Central Station.", "gmaps": gmaps("Helsinki Central Station")},
-      {"time": "10:45 - 13:00", "activity": "Explore Oodi Library & Senate Square.", "gmaps": gmaps("Oodi Library Helsinki")},
-      {"time": "14:00 - 16:30", "activity": "Löyly seaside smoke sauna & ice dip.", "gmaps": gmaps("Löyly Helsinki Sauna")}
+      {"time": "09:15", "activity": "Arrive Helsinki Central Station via VR Sleeper Train 274.", "gmaps": gmaps("Helsinki Central Station")},
+      {"time": "10:00 - 11:30", "activity": "Explore Oodi Central Library & Senate Square.", "gmaps": gmaps("Oodi Library Helsinki")},
+      {"time": "12:00 - 13:00", "activity": "Visit Rock Church (Temppeliaukion kirkko carved into granite).", "gmaps": gmaps("Rock Church Helsinki")},
+      {"time": "15:00 - 17:30", "activity": "Löyly seaside smoke sauna & ice dip.", "gmaps": gmaps("Löyly Helsinki Sauna")}
     ],
     "sched_b": [
-      {"time": "09:00", "activity": "Arrive Helsinki Central Railway Station.", "gmaps": gmaps("Helsinki Central Station")},
-      {"time": "09:45 - 10:00", "activity": "15-minute ferry ride from Market Square to Suomenlinna Island.", "gmaps": gmaps("Market Square Helsinki Ferry Terminal")},
-      {"time": "10:00 - 12:30", "activity": "4 km coastal sea-wall walking loop around Suomenlinna fortress tunnels & cannons.", "gmaps": gmaps("Suomenlinna Fortress Walk", 60.1472, 24.9872)},
-      {"time": "13:00 - 14:00", "activity": "Lunch at Vanha Kauppahalli SOUP+MORE (Famous creamy Finnish salmon soup Lohikeitto for €12).", "gmaps": gmaps("SOUP+MORE Vanha Kauppahalli Helsinki")},
-      {"time": "15:00 - 17:30", "activity": "Seaside smoke sauna & Baltic sea ice dip at Löyly Helsinki.", "gmaps": gmaps("Löyly Helsinki Sauna")}
+      {"time": "09:15", "activity": "Arrive Helsinki Central Railway Station via VR Sleeper Train 274.", "gmaps": gmaps("Helsinki Central Station")},
+      {"time": "10:00 - 11:45", "activity": "Oodi Central Library & Töölönlahti Culture Quarter (3D labs & timber design).", "gmaps": gmaps("Oodi Library Helsinki")},
+      {"time": "12:00 - 13:00", "activity": "Tour Rock Church (Temppeliaukion kirkko - granite bedrock church & copper dome).", "gmaps": gmaps("Rock Church Helsinki")},
+      {"time": "13:15 - 14:30", "activity": "Lunch at Old Market Hall (Vanha Kauppahalli SOUP+MORE - creamy Finnish salmon soup Lohikeitto €12-€14).", "gmaps": gmaps("Old Market Hall Helsinki")},
+      {"time": "15:00 - 17:30", "activity": "Urban waterfront smoke sauna & Baltic sea ice plunge at Löyly Helsinki.", "gmaps": gmaps("Löyly Helsinki Sauna")},
+      {"time": "18:30 - 20:30", "activity": "Ateneum Art Museum & Punavuori Design District evening walk.", "gmaps": gmaps("Ateneum Art Museum Helsinki")}
     ],
-    "legs": [{"from": "Market Square", "to": "Suomenlinna", "dist": "3 km", "time": "15 mins", "route": "HSL Ferry", "gmaps": gmaps("Helsinki to Suomenlinna Ferry")}],
-    "tickets": [{"item": "Suomenlinna Ferry", "cost": "€3.10", "url": "https://www.hsl.fi/en"}, {"item": "Löyly Sauna 2h", "cost": "€24", "url": "https://www.loylyhelsinki.fi/en/"}],
-    "trails": [
-      {
-        "name": "Suomenlinna UNESCO Sea Fortress Coastal Island Walk",
-        "distance": "4.0 km island loop",
-        "duration": "1h 45m",
-        "elevation": "Flat / Gentle slope",
-        "terrain": "Historic cobblestones, sea-wall ramparts & snowy coastal paths surrounding 18th-century island fortress.",
-        "parkName": "Suomenlinna UNESCO Sea Fortress",
-        "parkUrl": "https://www.suomenlinna.fi/en/",
-        "trailheadGmaps": gmaps("Suomenlinna Fortress Walk", 60.1472, 24.9872)
-      }
+    "legs": [{"from": "Helsinki Central", "to": "Löyly Sauna", "dist": "3 km", "time": "12 mins", "route": "Tram 6", "gmaps": gmaps("Helsinki Central to Loyly Sauna")}],
+    "tickets": [
+      {"item": "Oodi Central Library", "cost": "Free (Open 10:00-20:00)", "url": "https://oodihelsinki.fi/en/"},
+      {"item": "Rock Church (Temppeliaukion)", "cost": "€8 (Open 10:00-17:00)", "url": "https://www.temppeliaukionkirkko.fi/en/"},
+      {"item": "Löyly Sauna 2h Session", "cost": "€23 (Open 13:00-23:00)", "url": "https://www.loylyhelsinki.fi/en/"},
+      {"item": "Ateneum Art Museum Ticket", "cost": "€20 (Open 10:00-18:00)", "url": "https://ateneum.fi/en/"}
     ]
   },
   {
-    "day": 16, "date": "Dec 27 (Sun)", "title_a": "Baltic Sea Ferry Transit & Medieval Tallinn", "title_b": "Lahemaa Viru Bog Snowshoe Hike & Medieval Tallinn",
-    "location": "Tallinn, Estonia", "coords": [59.4370, 24.7536], "distance": "90 km (1h 15m)",
+    "day": 16, "date": "Dec 27 (Sun)", "title_a": "Baltic Ferry & Tallinn Medieval Old Town Walking Tour", "title_b": "Tallinn UNESCO Old Town Pedestrian Tour & Medieval Banquet",
+    "location": "Tallinn, Estonia", "coords": [59.4370, 24.7536], "distance": "0 km (Pedestrian Walk)",
     "hotel": "Hotel Telegraaf, Autograph Collection (Recommended Marriott)", "hotelStatus": "pending", "bookingRef": "Marriott Autograph Collection in Tallinn Old Town",
     "hotelLinks": [{"name": "Hotel Telegraaf (Marriott)", "url": "https://www.marriott.com/en-us/hotels/tllak-hotel-telegraaf-autograph-collection/overview/", "gmaps": gmaps("Hotel Telegraaf Tallinn")}],
     "food": food_db["Tallinn"],
     "activities_a": "Morning 2h Megastar ferry across Baltic Sea; explore UNESCO medieval Old Town, Town Hall Christmas Market & Toompea Hill vista.",
-    "activities_b": "Morning 2h Megastar ferry to Tallinn; 45-min drive east to Lahemaa National Park for Viru Bog 3.5 km snowshoe boardwalk hike; check in at Hotel Telegraaf; cheap pancake feast at Kompressor Pancake Pub.",
+    "activities_b": "Morning 2h Megastar ferry to Tallinn; 100% pedestrian walking tour of UNESCO Medieval Old Town: Town Hall Christmas Market, Toompea Castle, Alexander Nevsky Cathedral, Kohtuotsa panoramic lookout & Olde Hansa medieval banquet.",
     "sched_a": [
       {"time": "10:30 - 12:30", "activity": "Megastar Ferry to Tallinn.", "gmaps": gmaps("Tallinn Passenger Port")},
-      {"time": "14:30 - 17:30", "activity": "Explore Old Town & Christmas Market.", "gmaps": gmaps("Tallinn Old Town")}
+      {"time": "14:00 - 17:30", "activity": "Explore Old Town & Christmas Market.", "gmaps": gmaps("Tallinn Old Town")}
     ],
     "sched_b": [
       {"time": "10:30 - 12:30", "activity": "Megastar Ferry transit across Baltic Sea to Tallinn.", "gmaps": gmaps("Tallinn Passenger Port")},
-      {"time": "13:00 - 13:45", "activity": "Drive 45 mins east to Lahemaa National Park Viru Bog trailhead (55 km).", "gmaps": gmaps("Viru Bog Parking Lahemaa", 59.4714, 25.6600)},
-      {"time": "13:45 - 15:45", "activity": "3.5 km snow-covered peat bog boardwalk hike to Viru Bog observation tower.", "gmaps": gmaps("Viru Bog Watchtower", 59.4714, 25.6600)},
-      {"time": "16:30 - 17:00", "activity": "Return drive & check in at Hotel Telegraaf Old Town.", "gmaps": gmaps("Hotel Telegraaf Tallinn")},
-      {"time": "18:00 - 19:30", "activity": "Pancake feast at Kompressor Pancake Pub (Giant sweet & savory pancakes for €6-€8!).", "gmaps": gmaps("Kompressor Tallinn")}
+      {"time": "13:00 - 13:45", "activity": "Check into Hotel Telegraaf in Tallinn Old Town.", "gmaps": gmaps("Hotel Telegraaf Tallinn")},
+      {"time": "14:00 - 16:00", "activity": "Town Hall Square (Raekoja plats) Christmas Market & 1422 Raeapteek (Europe's oldest pharmacy).", "gmaps": gmaps("Tallinn Town Hall Square", 59.4373, 24.7451)},
+      {"time": "16:00 - 17:45", "activity": "Toompea Hill, Alexander Nevsky Cathedral & Patkuli / Kohtuotsa panoramic city lookouts.", "gmaps": gmaps("Kohtuotsa Viewing Platform Tallinn", 59.4370, 24.7400)},
+      {"time": "18:30 - 20:30", "activity": "Medieval Feast at Olde Hansa (15th-century candlelit tavern) / Kompressor Pancake Pub.", "gmaps": gmaps("Olde Hansa Tallinn")}
     ],
-    "legs": [{"from": "Tallinn Port", "to": "Viru Bog", "dist": "55 km", "time": "45 mins", "route": "Route 1", "gmaps": gmaps("Tallinn Port to Viru Bog Parking")}],
-    "tickets": [{"item": "Megastar Ferry Ticket", "cost": "~€32", "url": "https://www.tallinksilja.com/en"}],
-    "trails": [
-      {
-        "name": "Lahemaa National Park Viru Bog Snowshoe Boardwalk Trail",
-        "distance": "3.5 km round-trip",
-        "duration": "1h 30m",
-        "elevation": "Flat",
-        "terrain": "Wooden boardwalk trail through snow-covered peat bog leading to a 3-story timber observation tower.",
-        "parkName": "RMK Estonia State Forest - Lahemaa",
-        "parkUrl": "https://www.loodusegakoos.ee/where-to-go/national-parks/lahemaa-national-park",
-        "trailheadGmaps": gmaps("Viru Bog Parking Lahemaa", 59.4714, 25.6600)
-      }
+    "legs": [{"from": "Tallinn Port", "to": "Hotel Telegraaf", "dist": "1.2 km", "time": "15 mins walk", "route": "Old Town Walk", "gmaps": gmaps("Tallinn Port to Hotel Telegraaf")}],
+    "tickets": [
+      {"item": "Megastar Ferry Ticket", "cost": "~€32 (Dep 10:30 AM)", "url": "https://www.tallinksilja.com/en"},
+      {"item": "Raeapteek Oldest Pharmacy", "cost": "Free (Open 10:00-18:00)", "url": "https://raeapteek.ee/en/"},
+      {"item": "Olde Hansa Medieval Feast", "cost": "~€30 (Open 11:00-23:00)", "url": "https://www.oldehansa.ee/"},
+      {"item": "St. Nicholas Church (Niguliste)", "cost": "€10 (Open 10:00-17:00)", "url": "https://nigulistemuseum.ekm.ee/en/"}
     ]
   },
   {
-    "day": 17, "date": "Dec 28 (Mon)", "title_a": "Flight TLL -> ARN to Stockholm", "title_b": "Monteliusvägen Cliffside Skyline Walk & Flight to Stockholm",
+    "day": 17, "date": "Dec 28 (Mon)", "title_a": "Tallinn Seaplane Museum & Flight to Stockholm", "title_b": "Lennusadam Seaplane Harbour Museum, Kadriorg Palace & Flight to Stockholm",
     "location": "Stockholm, Sweden", "coords": [59.3293, 18.0686], "distance": "0 km (Flight)",
     "hotel": "Sheraton Stockholm Hotel (Recommended Marriott)", "hotelStatus": "pending", "bookingRef": "Marriott Waterfront Hotel near Central Station",
     "hotelLinks": [{"name": "Sheraton Stockholm (Marriott)", "url": "https://www.marriott.com/en-us/hotels/stosi-sheraton-stockholm-hotel/overview/", "gmaps": gmaps("Sheraton Stockholm Hotel")}],
     "food": food_db["Stockholm"],
-    "activities_a": "Morning visit Kadriorg Palace; late afternoon flight to Stockholm (TLL -> ARN); evening walk through illuminated Norrmalm & Nybroplan.",
-    "activities_b": "Visit Kadriorg Palace & Telliskivi Creative City; flight to Stockholm; Monteliusvägen cliffside skyline walk overlooking Lake Mälaren & Gamla Stan; Sheraton Stockholm Hotel.",
+    "activities_a": "Morning visit Kadriorg Palace & Art Museum; late afternoon flight to Stockholm (TLL -> ARN); evening walk through illuminated Norrmalm & Nybroplan.",
+    "activities_b": "Morning tour Lennusadam Seaplane Harbour Museum (1936 Lembit Submarine) & Kadriorg Palace; lunch at Telliskivi F-Hoone; flight to Stockholm; Monteliusvägen cliffside skyline walk.",
     "sched_a": [
+      {"time": "10:00 - 12:00", "activity": "Kadriorg Art Museum & Palace.", "gmaps": gmaps("Kadriorg Palace Tallinn")},
       {"time": "15:30 - 16:30", "activity": "Flight TLL -> ARN.", "gmaps": gmaps("Stockholm Arlanda Airport")},
       {"time": "18:00", "activity": "Check into Sheraton Stockholm Hotel.", "gmaps": gmaps("Sheraton Stockholm Hotel")}
     ],
     "sched_b": [
-      {"time": "09:30 - 11:30", "activity": "Visit Kadriorg Art Museum Palace grounds & Telliskivi Creative City.", "gmaps": gmaps("Kadriorg Palace Tallinn")},
-      {"time": "15:30 - 16:30", "activity": "Flight TLL -> ARN (SAS / Ryanair, 1h).", "gmaps": gmaps("Stockholm Arlanda Airport")},
-      {"time": "17:00 - 17:30", "activity": "Arlanda Express train to Stockholm Central (18 mins).", "gmaps": gmaps("Stockholm Central Station")},
+      {"time": "09:30 - 11:45", "activity": "Tour Lennusadam Seaplane Harbour Museum (Step inside 1936 Lembit Submarine & 1916 hangars).", "gmaps": gmaps("Seaplane Harbour Tallinn", 59.4514, 24.7500)},
+      {"time": "12:00 - 13:30", "activity": "Lunch at Telliskivi Creative City (F-Hoone cafe) & Kadriorg Palace gardens.", "gmaps": gmaps("Telliskivi Creative City Tallinn")},
+      {"time": "13:30 - 14:15", "activity": "Taxi / Tram to Tallinn Airport (TLL).", "gmaps": gmaps("Tallinn Airport")},
+      {"time": "15:30 - 16:30", "activity": "Flight TLL -> ARN to Stockholm Arlanda Airport (SAS / Ryanair, 1h).", "gmaps": gmaps("Stockholm Arlanda Airport")},
+      {"time": "17:00 - 17:30", "activity": "Arlanda Express train to Stockholm Central Station (18 mins).", "gmaps": gmaps("Stockholm Central Station")},
       {"time": "18:00 - 18:30", "activity": "Check into Sheraton Stockholm Hotel.", "gmaps": gmaps("Sheraton Stockholm Hotel")},
       {"time": "19:00 - 20:30", "activity": "Monteliusvägen cliffside skyline walk overlooking Lake Mälaren & illuminated Gamla Stan.", "gmaps": gmaps("Monteliusvagen Stockholm", 59.3190, 18.0620)}
     ],
     "legs": [{"from": "Arlanda Airport", "to": "Stockholm Central", "dist": "40 km", "time": "18 mins", "route": "Arlanda Express Train", "gmaps": gmaps("Arlanda to Stockholm Central")}],
-    "tickets": [{"item": "Arlanda Express Train", "cost": "~320 SEK", "url": "https://www.arlandaexpress.com/"}],
-    "trails": [
-      {
-        "name": "Monteliusvägen Cliffside Skyline Trail (Stockholm)",
-        "distance": "1.5 km cliffside walk",
-        "duration": "40 mins",
-        "elevation": "+25m cliffside gain",
-        "terrain": "Elevated wooden & paved cliffside trail overlooking Lake Mälaren, City Hall, and Gamla Stan skyline.",
-        "parkName": "Visit Stockholm Official Guide",
-        "parkUrl": "https://www.visitstockholm.com/",
-        "trailheadGmaps": gmaps("Monteliusvagen Stockholm", 59.3190, 18.0620)
-      }
+    "tickets": [
+      {"item": "Lennusadam Seaplane Museum", "cost": "€15 (Open 10:00-19:00)", "url": "https://meremuseum.ee/lennusadam/en/"},
+      {"item": "Kadriorg Palace Museum", "cost": "€12 (Open 10:00-18:00)", "url": "https://kadriorumuuseum.ekm.ee/en/"},
+      {"item": "Arlanda Express Train", "cost": "~320 SEK (18 mins)", "url": "https://www.arlandaexpress.com/"}
     ]
   },
   {
-    "day": 18, "date": "Dec 29 (Tue)", "title_a": "Stockholm Core Day 1", "title_b": "Royal Djurgården Waterfront 6 km Nature Loop & Gamla Stan",
+    "day": 18, "date": "Dec 29 (Tue)", "title_a": "Stockholm Old Town & Royal Palace", "title_b": "Gamla Stan Medieval Quarter, Royal Palace Armory & Östermalms Saluhall",
     "location": "Stockholm, Sweden", "coords": [59.3293, 18.0686], "distance": "0 km (Metro/Walk)",
     "hotel": "Sheraton Stockholm Hotel (Recommended Marriott)", "hotelStatus": "pending", "bookingRef": "Marriott Waterfront Hotel",
     "hotelLinks": [{"name": "Sheraton Stockholm (Marriott)", "url": "https://www.marriott.com/en-us/hotels/stosi-sheraton-stockholm-hotel/overview/", "gmaps": gmaps("Sheraton Stockholm Hotel")}],
     "food": food_db["Stockholm"],
     "activities_a": "Full day of historic Stockholm: cobblestone alleys of Gamla Stan (Old Town), Royal Palace, Stortorget, and Nobel Prize Museum.",
-    "activities_b": "Royal Djurgården waterfront 6 km nature walking loop; Gamla Stan medieval alleys & Royal Palace; lunch at Östermalms Saluhall (Lisaköket Toast Skagen).",
+    "activities_b": "Gamla Stan medieval walking loop; Royal Palace (Kungliga Slottet) & Royal Armory; lunch at Östermalms Saluhall (Lisaköket Toast Skagen); Stockholm City Hall Golden Hall tour & Meatballs for the People dinner.",
     "sched_a": [
       {"time": "09:30 - 12:00", "activity": "Gamla Stan walking tour.", "gmaps": gmaps("Gamla Stan Stockholm")},
       {"time": "15:00 - 17:00", "activity": "Nobel Prize Museum.", "gmaps": gmaps("Nobel Prize Museum Stockholm")}
     ],
     "sched_b": [
-      {"time": "09:30 - 12:00", "activity": "Royal Djurgården waterfront 6 km nature walking loop along Djurgårdsbrunnskanalen.", "gmaps": gmaps("Royal Djurgarden Stockholm", 59.3250, 18.1000)},
-      {"time": "12:30 - 13:30", "activity": "Lunch at Östermalms Saluhall (Lisaköket Toast Skagen & seafood soup).", "gmaps": gmaps("Ostermalms Saluhall Stockholm")},
-      {"time": "14:00 - 16:30", "activity": "Gamla Stan medieval alleys, Stortorget & Royal Palace.", "gmaps": gmaps("Royal Palace Stockholm")},
+      {"time": "09:30 - 12:00", "activity": "Gamla Stan medieval alleys, Stortorget, Mårten Trotzigs Gränd & Royal Palace (Kungliga Slottet).", "gmaps": gmaps("Royal Palace Stockholm")},
+      {"time": "12:30 - 13:45", "activity": "Lunch at Östermalms Saluhall (Lisaköket Toast Skagen & Swedish seafood soup).", "gmaps": gmaps("Ostermalms Saluhall Stockholm")},
+      {"time": "14:00 - 16:00", "activity": "Stockholm City Hall (Stadshuset) Blue Hall & 18-million gold tile Golden Hall tour.", "gmaps": gmaps("Stockholm City Hall", 59.3275, 18.0544)},
+      {"time": "16:30 - 18:00", "activity": "Drottninggatan pedestrian district & NK Department Store.", "gmaps": gmaps("Drottninggatan Stockholm")},
       {"time": "18:30 - 21:00", "activity": "Dinner at Meatballs for the People / Pelikan.", "gmaps": gmaps("Meatballs for the People Stockholm")}
     ],
-    "legs": [{"from": "Sheraton", "to": "Djurgården", "dist": "3 km", "time": "15 mins", "route": "Tram 7", "gmaps": gmaps("Sheraton to Djurgarden")}],
-    "tickets": [{"item": "Royal Palace Ticket", "cost": "~190 SEK", "url": "https://www.kungligaslotten.se/english.html"}],
-    "trails": [
-      {
-        "name": "Royal Djurgården Waterfront 6 km Nature Loop",
-        "distance": "6.0 km loop",
-        "duration": "1h 45m",
-        "elevation": "Flat (+15m)",
-        "terrain": "Paved and packed gravel waterfront promenade along Djurgårdsbrunnskanalen & Royal Djurgården parklands.",
-        "parkName": "Royal National City Park (Kungliga nationalstadsparken)",
-        "parkUrl": "https://www.visitdjurgarden.se/en/",
-        "trailheadGmaps": gmaps("Royal Djurgarden Stockholm", 59.3250, 18.1000)
-      }
+    "legs": [{"from": "Sheraton", "to": "Gamla Stan", "dist": "1 km", "time": "10 mins walk", "route": "Central Walk", "gmaps": gmaps("Sheraton to Gamla Stan")}],
+    "tickets": [
+      {"item": "Royal Palace & Treasury", "cost": "190 SEK (Open 10:00-16:00)", "url": "https://www.kungligaslotten.se/english.html"},
+      {"item": "Stockholm City Hall Tour", "cost": "140 SEK (Open 08:30-16:00)", "url": "https://stadshuset.stockholm/en/"},
+      {"item": "Nobel Prize Museum Ticket", "cost": "140 SEK (Open 11:00-17:00)", "url": "https://nobelprizemuseum.se/en/"}
     ]
   },
   {
-    "day": 19, "date": "Dec 30 (Wed)", "title_a": "Stockholm Core Day 2", "title_b": "Tyresta National Park Primeval Forest Trail & Vasa Museum",
-    "location": "Stockholm, Sweden", "coords": [59.3293, 18.0686], "distance": "0 km (Ferry/Tram)",
+    "day": 19, "date": "Dec 30 (Wed)", "title_a": "Stockholm Museum Island Day", "title_b": "Vasa Museum 17th-Century Warship & ABBA Museum / Skansen Cultural Tour",
+    "location": "Stockholm, Sweden", "coords": [59.3293, 18.0686], "distance": "0 km (Tram 7)",
     "hotel": "Sheraton Stockholm Hotel (Recommended Marriott)", "hotelStatus": "pending", "bookingRef": "Marriott Waterfront Hotel",
     "hotelLinks": [{"name": "Sheraton Stockholm (Marriott)", "url": "https://www.marriott.com/en-us/hotels/stosi-sheraton-stockholm-hotel/overview/", "gmaps": gmaps("Sheraton Stockholm Hotel")}],
     "food": food_db["Stockholm"],
     "activities_a": "Maritime & culture day: tour 17th-century Vasa Museum, explore Djurgården island & Skansen, or visit ABBA The Museum; traditional Swedish dinner.",
-    "activities_b": "30-min drive to Tyresta National Park for primeval pine forest trail hike (500-year-old virgin trees); 17th-century Vasa Museum warship tour; ABBA Museum.",
+    "activities_b": "100% City Museum Day on Djurgården: Vasa Museum (preserved 1628 warship), ABBA The Museum, Nordic Museum (Nordiska Museet) & Skansen Open-Air Museum / Baltic Aquarium.",
     "sched_a": [
       {"time": "09:30 - 12:00", "activity": "Tour Vasa Museum.", "gmaps": gmaps("Vasa Museum Stockholm")},
       {"time": "13:30 - 16:30", "activity": "Visit ABBA The Museum.", "gmaps": gmaps("ABBA The Museum")}
     ],
     "sched_b": [
-      {"time": "08:45 - 09:30", "activity": "Drive 30 mins south to Tyresta National Park village (25 km).", "gmaps": gmaps("Tyresta National Park Village", 59.1833, 18.2333)},
-      {"time": "09:30 - 12:00", "activity": "Tyresta National Park primeval forest trail hike through 500-year-old pine trees & lakes.", "gmaps": gmaps("Tyresta National Park Trailhead", 59.1833, 18.2333)},
-      {"time": "13:00 - 15:30", "activity": "Tour 17th-century Vasa Museum (preserved 1628 warship).", "gmaps": gmaps("Vasa Museum Stockholm")},
-      {"time": "16:00 - 18:00", "activity": "Visit ABBA The Museum.", "gmaps": gmaps("ABBA The Museum")},
-      {"time": "19:00 - 21:30", "activity": "Dinner at Restaurant Tradition (Husmanskost).", "gmaps": gmaps("Restaurant Tradition Stockholm")}
+      {"time": "09:30 - 12:00", "activity": "Tour 17th-century Vasa Museum (Preserved 1628 royal warship with 500+ wooden sculptures).", "gmaps": gmaps("Vasa Museum Stockholm")},
+      {"time": "12:15 - 13:30", "activity": "Lunch at Vasa Museum Restaurant / Skansen Terrassen.", "gmaps": gmaps("Vasa Museum Restaurant")},
+      {"time": "13:30 - 16:00", "activity": "Visit ABBA The Museum (Sing with holograms) OR Nordic Museum (Nordiska Museet Sami & Swedish culture).", "gmaps": gmaps("ABBA The Museum")},
+      {"time": "16:15 - 18:00", "activity": "Explore Skansen Open-Air Museum, glassblowing workshops & Baltic Aquarium.", "gmaps": gmaps("Skansen Stockholm")},
+      {"time": "19:00 - 21:30", "activity": "Dinner at Restaurant Tradition (Authentic Husmanskost).", "gmaps": gmaps("Restaurant Tradition Stockholm")}
     ],
-    "legs": [{"from": "Sheraton", "to": "Tyresta National Park", "dist": "25 km", "time": "30 mins", "route": "Route 73", "gmaps": gmaps("Sheraton to Tyresta National Park")}],
-    "tickets": [{"item": "Vasa Museum Ticket", "cost": "~190 SEK", "url": "https://www.vasamuseet.se/en"}, {"item": "ABBA Museum Ticket", "cost": "~290 SEK", "url": "https://abbathemuseum.com/en/"}],
-    "trails": [
-      {
-        "name": "Tyresta National Park Primeval Forest Trail",
-        "distance": "4.5 km loop",
-        "duration": "1h 30m",
-        "elevation": "+40m",
-        "terrain": "Snowy dirt paths, exposed granite rocks, and wooden bridges through 500-year-old virgin pine forest & lake shorelines.",
-        "parkName": "Sveriges Nationalparker - Tyresta",
-        "parkUrl": "https://www.sverigesnationalparker.se/park/tyresta-nationalpark/",
-        "trailheadGmaps": gmaps("Tyresta National Park Trailhead", 59.1833, 18.2333)
-      }
+    "legs": [{"from": "Sheraton", "to": "Vasa Museum", "dist": "3 km", "time": "10 mins", "route": "Tram 7", "gmaps": gmaps("Sheraton to Vasa Museum")}],
+    "tickets": [
+      {"item": "Vasa Museum Ticket", "cost": "190 SEK (Open 08:30-17:00)", "url": "https://www.vasamuseet.se/en"},
+      {"item": "ABBA The Museum Ticket", "cost": "290 SEK (Open 10:00-18:00)", "url": "https://abbathemuseum.com/en/"},
+      {"item": "Nordic Museum Ticket", "cost": "170 SEK (Open 10:00-17:00)", "url": "https://www.nordiskamuseet.se/en"},
+      {"item": "Skansen Museum Ticket", "cost": "245 SEK (Open 10:00-15:00)", "url": "https://www.skansen.se/en/"}
     ]
   },
   {
-    "day": 20, "date": "Dec 31 (Thu)", "title_a": "High-Speed Train & NYE Tivoli Celebration", "title_b": "Copenhagen Lakes & Kastellet Star-Fortress Walk + Tivoli NYE",
+    "day": 20, "date": "Dec 31 (Thu)", "title_a": "High-Speed Train & NYE Tivoli Celebration", "title_b": "SJ High-Speed Train & Copenhagen City Highlights + Tivoli NYE Gala",
     "location": "Copenhagen, Denmark", "coords": [55.6761, 12.5683], "distance": "0 km (Train)",
     "hotel": "Copenhagen Marriott Hotel (Recommended Marriott)", "hotelStatus": "pending", "bookingRef": "Marriott Harborfront Hotel near Tivoli",
     "hotelLinks": [{"name": "Copenhagen Marriott Hotel", "url": "https://www.marriott.com/en-us/hotels/cphdk-copenhagen-marriott-hotel/overview/", "gmaps": gmaps("Copenhagen Marriott Hotel")}],
     "food": food_db["Copenhagen"],
     "activities_a": "Morning SJ High-Speed Train from Stockholm Central to Copenhagen Central (5h 10m via Öresund Bridge); check in; New Year's Eve gala dinner & midnight fireworks at Tivoli Gardens.",
-    "activities_b": "SJ High-Speed Train to Copenhagen; Kastellet 17th-century star-fortress & Little Mermaid coastal walk; Copenhagen Lakes (Søerne); Tivoli Gardens NYE gala dinner & midnight fireworks.",
+    "activities_b": "SJ High-Speed Train across Öresund Bridge; Rundetaarn (Round Tower spiral ramp view); Nyhavn waterfront harbor stroll; Tivoli Gardens NYE gala dinner & midnight fireworks.",
     "sched_a": [
       {"time": "08:20 - 13:30", "activity": "SJ High-Speed Train to Copenhagen.", "gmaps": gmaps("Copenhagen Central Station")},
       {"time": "19:00 - 01:00", "activity": "Tivoli Gardens NYE Gala & Fireworks.", "gmaps": gmaps("Tivoli Gardens Copenhagen")}
@@ -719,66 +688,40 @@ base_22_days = [
     "sched_b": [
       {"time": "08:20 - 13:30", "activity": "SJ High-Speed Train from Stockholm Central to Copenhagen Central (5h 10m via Öresund Bridge).", "gmaps": gmaps("Copenhagen Central Station")},
       {"time": "14:00 - 14:45", "activity": "Check into Copenhagen Marriott Hotel.", "gmaps": gmaps("Copenhagen Marriott Hotel")},
-      {"time": "15:00 - 17:00", "activity": "Kastellet 17th-century star-fortress ramparts walk & Little Mermaid coastal path.", "gmaps": gmaps("Kastellet Copenhagen", 55.6914, 12.5950)},
-      {"time": "19:00 - 23:30", "activity": "New Year's Eve Gala Dinner at Tivoli Gardens Restaurant.", "gmaps": gmaps("Tivoli Gardens Copenhagen")},
+      {"time": "15:00 - 17:00", "activity": "Rundetaarn (Round Tower spiral ramp panoramic view) & Nyhavn waterfront canal walk.", "gmaps": gmaps("Nyhavn Copenhagen", 55.6797, 12.5914)},
+      {"time": "19:00 - 23:30", "activity": "New Year's Eve Gala Dinner & winter light illuminations at Tivoli Gardens.", "gmaps": gmaps("Tivoli Gardens Copenhagen")},
       {"time": "00:00 - 01:00", "activity": "Spectacular Midnight Fireworks over Tivoli Gardens.", "gmaps": gmaps("Tivoli Gardens Copenhagen")}
     ],
     "legs": [{"from": "Stockholm", "to": "Copenhagen", "dist": "650 km", "time": "5h 10m", "route": "SJ High Speed Train", "gmaps": gmaps("Stockholm to Copenhagen Train")}],
-    "tickets": [{"item": "SJ High-Speed Train", "cost": "~€65", "url": "https://www.sj.se/en"}, {"item": "Tivoli NYE Admission & Gala", "cost": "~1,170 DKK", "url": "https://www.tivoli.dk/en"}],
-    "trails": [
-      {
-        "name": "Kastellet 17th-Century Star-Fortress & Coastal Ramparts Walk",
-        "distance": "3.0 km circuit",
-        "duration": "50 mins",
-        "elevation": "Flat (+10m)",
-        "terrain": "Grassy fortress rampart earthen walls, gravel paths, and cobblestone harbor promenade past the Little Mermaid.",
-        "parkName": "Kastellet Copenhagen Official Site",
-        "parkUrl": "https://www.kongeligeslotte.dk/en/kastellet.html",
-        "trailheadGmaps": gmaps("Kastellet Copenhagen", 55.6914, 12.5950)
-      }
+    "tickets": [
+      {"item": "SJ High-Speed Train Ticket", "cost": "~€65 (Dep 08:20 AM)", "url": "https://www.sj.se/en"},
+      {"item": "Tivoli NYE Admission & Gala", "cost": "~1,170 DKK (Open 11:00-00:30)", "url": "https://www.tivoli.dk/en"},
+      {"item": "Rundetaarn Round Tower", "cost": "40 DKK (Open 10:00-18:00)", "url": "https://www.rundetaarn.dk/en/"}
     ]
   },
   {
-    "day": 21, "date": "Jan 01 (Fri)", "title_a": "New Year's Day in Copenhagen", "title_b": "Amager Strandpark Coastal Dune Walk & CopenHill Roof Trek",
+    "day": 21, "date": "Jan 01 (Fri)", "title_a": "New Year's Day Copenhagen Palaces & Culture", "title_b": "Rosenborg Castle Crown Jewels, Amalienborg Guard Change & Torvehallerne",
     "location": "Copenhagen, Denmark", "coords": [55.6761, 12.5683], "distance": "0 km (Metro/Walk)",
     "hotel": "Copenhagen Marriott Hotel (Recommended Marriott)", "hotelStatus": "pending", "bookingRef": "Marriott Harborfront Hotel",
     "hotelLinks": [{"name": "Copenhagen Marriott Hotel", "url": "https://www.marriott.com/en-us/hotels/cphdk-copenhagen-marriott-hotel/overview/", "gmaps": gmaps("Copenhagen Marriott Hotel")}],
     "food": food_db["Copenhagen"],
     "activities_a": "Relaxed New Year's Day stroll; view CopenHill rooftop architecture, Amalienborg Palace royal guard change, and Nyhavn / Strøget cafe culture.",
-    "activities_b": "Amager Strandpark coastal dune sea walk; CopenHill rooftop mountain urban trek & panorama; Amalienborg Palace royal guard change; Torvehallerne Hallernes Smørrebrød.",
+    "activities_b": "Rosenborg Castle & Danish Crown Jewels tour; Amalienborg Palace royal guard changing ceremony; Christiansborg Palace Royal Reception Rooms; Torvehallerne gourmet food market.",
     "sched_a": [
-      {"time": "12:00 - 12:45", "activity": "Amalienborg Palace Royal Guard Change.", "gmaps": gmaps("Amalienborg Palace")},
-      {"time": "13:00 - 15:00", "activity": "Visit CopenHill rooftop view.", "gmaps": gmaps("CopenHill Copenhagen")}
+      {"time": "10:00 - 11:45", "activity": "Rosenborg Castle & Crown Jewels.", "gmaps": gmaps("Rosenborg Castle Copenhagen")},
+      {"time": "12:00 - 12:45", "activity": "Amalienborg Palace Royal Guard Change.", "gmaps": gmaps("Amalienborg Palace Copenhagen")}
     ],
     "sched_b": [
-      {"time": "09:30 - 11:30", "activity": "Amager Strandpark coastal dune sea walk along Öresund strait.", "gmaps": gmaps("Amager Strandpark Copenhagen", 55.6550, 12.6350)},
-      {"time": "12:00 - 12:45", "activity": "Amalienborg Palace Royal Guard Changing Ceremony.", "gmaps": gmaps("Amalienborg Palace Copenhagen")},
-      {"time": "13:00 - 15:00", "activity": "CopenHill rooftop urban mountain trek & panoramic city viewpoint.", "gmaps": gmaps("CopenHill Copenhagen", 55.6810, 12.6200)},
-      {"time": "15:30 - 17:00", "activity": "Open-faced sandwich feast at Torvehallerne Hallernes Smørrebrød & DØP Hot Dog.", "gmaps": gmaps("Torvehallerne Copenhagen")}
+      {"time": "10:00 - 11:45", "activity": "Rosenborg Castle 400-year-old Renaissance tour & Danish Crown Jewels vault.", "gmaps": gmaps("Rosenborg Castle Copenhagen", 55.6858, 12.5772)},
+      {"time": "12:00 - 12:45", "activity": "Amalienborg Palace Royal Life Guard Changing Ceremony.", "gmaps": gmaps("Amalienborg Palace Copenhagen")},
+      {"time": "13:00 - 15:00", "activity": "Christiansborg Palace Royal Reception Rooms & Great Hall tapestries.", "gmaps": gmaps("Christiansborg Palace Copenhagen", 55.6762, 12.5805)},
+      {"time": "15:30 - 17:30", "activity": "Open-faced sandwich feast at Torvehallerne Hallernes Smørrebrød & DØP Organic Hot Dog.", "gmaps": gmaps("Torvehallerne Copenhagen")}
     ],
-    "legs": [{"from": "Marriott", "to": "Amager Strandpark", "dist": "5 km", "time": "12 mins", "route": "Metro M2", "gmaps": gmaps("Copenhagen Marriott to Amager Strandpark")}],
-    "tickets": [{"item": "CopenHill Viewpoint", "cost": "Free", "url": "https://www.copenhill.dk/en"}],
-    "trails": [
-      {
-        "name": "Amager Strandpark Coastal Dune & Lagoon Promenade",
-        "distance": "3.5 km stretch",
-        "duration": "1h 00m",
-        "elevation": "Flat",
-        "terrain": "Paved seaside promenade, sandy dunes, and wooden boardwalk pier overlooking the Öresund Strait.",
-        "parkName": "Amager Strandpark Official Park Page",
-        "parkUrl": "https://www.amager-strand.dk/",
-        "trailheadGmaps": gmaps("Amager Strandpark Copenhagen", 55.6550, 12.6350)
-      },
-      {
-        "name": "CopenHill Rooftop Mountain Urban Trek",
-        "distance": "0.8 km roof incline",
-        "duration": "30 mins",
-        "elevation": "+85m vertical roof gain",
-        "terrain": "Synthetic turf and paved stepped ramp ascending the architectural rooftop of CopenHill power plant.",
-        "parkName": "CopenHill Urban Activity Center",
-        "parkUrl": "https://www.copenhill.dk/en",
-        "trailheadGmaps": gmaps("CopenHill Copenhagen", 55.6810, 12.6200)
-      }
+    "legs": [{"from": "Marriott", "to": "Rosenborg Castle", "dist": "2.5 km", "time": "10 mins Metro M2", "route": "Metro M2", "gmaps": gmaps("Copenhagen Marriott to Rosenborg Castle")}],
+    "tickets": [
+      {"item": "Rosenborg Castle & Crown Jewels", "cost": "140 DKK (Open 10:00-16:00)", "url": "https://www.kongeligeslotte.dk/en/rosenborg-castle.html"},
+      {"item": "Christiansborg Palace Ticket", "cost": "175 DKK (Open 10:00-17:00)", "url": "https://www.kongeligeslotte.dk/en/christiansborg-palace.html"},
+      {"item": "Designmuseum Danmark Ticket", "cost": "130 DKK (Open 10:00-18:00)", "url": "https://designmuseum.dk/en/"}
     ]
   },
   {
