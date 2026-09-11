@@ -105,6 +105,28 @@ base_22_days = [
     ],
     "legs": [{"from": "Rovaniemi", "to": "Storklinten", "dist": "235 km", "time": "2h 45m", "route": "E75 & Route 99", "gmaps": gmaps("Rovaniemi to Storklinten")}],
     "tickets": [{"item": "Kukkolankoski Rapids", "cost": "Free", "url": "https://www.kukkolaforsen.se/"}],
+    "trails": [
+      {
+        "name": "Gammelstad Church Town UNESCO Medieval Walking Loop",
+        "distance": "1.8 km loop",
+        "duration": "45 mins",
+        "elevation": "Flat",
+        "terrain": "Snow-covered historic cobblestones & wooden pathways among 400 medieval cottage houses.",
+        "parkName": "Gammelstad UNESCO Visitor Center",
+        "parkUrl": "https://www.gammelstadsviken.se/",
+        "trailheadGmaps": gmaps("Gammelstad Church Town Luleå", 65.6458, 22.0289)
+      },
+      {
+        "name": "Kukkolankoski Frozen Rapids Bridge Walk",
+        "distance": "0.6 km round-trip",
+        "duration": "25 mins",
+        "elevation": "Flat",
+        "terrain": "Snowy wooden suspension bridge & viewing boardwalk over roaring frozen Torne river rapids.",
+        "parkName": "Kukkolaforsen Sweden",
+        "parkUrl": "https://www.kukkolaforsen.se/",
+        "trailheadGmaps": gmaps("Kukkolankoski Rapids", 65.9600, 24.0300)
+      }
+    ],
     "aurora": [{"name": "Storklinten Fell Top", "desc": "High vantage point above pine canopy (3 mins drive).", "coords": [65.8252, 21.6886], "gmaps": gmaps("Storklinten Fell", 65.8252, 21.6886)}, {"name": "Bodträsket Lake Shore", "desc": "Dark frozen lake vista (10 mins drive north).", "coords": [65.8800, 21.7200], "gmaps": gmaps("Bodtrasket Lake", 65.8800, 21.7200)}]
   },
   {
@@ -127,6 +149,18 @@ base_22_days = [
     ],
     "legs": [{"from": "Cabin", "to": "Trails", "dist": "0 km", "time": "0 mins", "route": "Walk", "gmaps": gmaps("Storklinten Trails")}],
     "tickets": [{"item": "Snowshoe Rental Day", "cost": "~200 SEK", "url": "https://storklinten.se/"}],
+    "trails": [
+      {
+        "name": "Storklinten Fell Summit Snowshoe & Forest Trail",
+        "distance": "3.2 km round-trip loop",
+        "duration": "1h 45m",
+        "elevation": "+180m climb to summit",
+        "terrain": "Deep powder snow & groomed forest tracks right outside cabin door. Snowshoes/XC skis required off-piste.",
+        "parkName": "Storklinten Outdoor Resort",
+        "parkUrl": "https://storklinten.se/",
+        "trailheadGmaps": gmaps("Storklinten Summit Trail", 65.8252, 21.6886)
+      }
+    ],
     "aurora": [{"name": "Storklinten Fell Summit Clearings", "desc": "Right outside cabin door (0-500m walk).", "coords": [65.8252, 21.6886], "gmaps": gmaps("Storklinten Fell")}]
   },
   {
@@ -150,6 +184,18 @@ base_22_days = [
     ],
     "legs": [{"from": "Storklinten", "to": "Jukkasjärvi", "dist": "280 km", "time": "3h 30m", "route": "E10", "gmaps": gmaps("Storklinten to Jukkasjarvi")}],
     "tickets": [{"item": "ICEHOTEL Day Ticket", "cost": "~349 SEK", "url": "https://www.icehotel.com/"}, {"item": "Nutti Sámi Siida", "cost": "~220 SEK", "url": "https://nuttisami.se/"}],
+    "trails": [
+      {
+        "name": "Luossavaara Mountain Peak Trail (Kiruna)",
+        "distance": "2.4 km round-trip",
+        "duration": "1h 00m",
+        "elevation": "+120m climb",
+        "terrain": "Exposed alpine tundra ridge overlooking Kiruna iron ore mine & Arctic plateau.",
+        "parkName": "Kiruna Outdoor Recreation Area",
+        "parkUrl": "https://kirunalapland.se/en/",
+        "trailheadGmaps": gmaps("Luossavaara Peak Viewpoint", 67.8700, 20.2100)
+      }
+    ],
     "aurora": [{"name": "Aptasvaara Mountain Lookout", "desc": "15 mins south of Kiruna.", "coords": [67.8100, 20.3500], "gmaps": gmaps("Aptasvaara Mountain", 67.8100, 20.3500)}]
   },
   {
@@ -172,12 +218,24 @@ base_22_days = [
     ],
     "legs": [{"from": "Kiruna", "to": "Björkliden", "dist": "100 km", "time": "1h 15m", "route": "E10", "gmaps": gmaps("Kiruna to Bjorkliden")}],
     "tickets": [{"item": "Aurora Sky Station Chairlift", "cost": "~895 SEK", "url": "https://www.stfturist.se/en/explore/aurora-sky-station/"}],
+    "trails": [
+      {
+        "name": "Abisko Canyon Marble Gorge Trail",
+        "distance": "2.0 km round-trip loop",
+        "duration": "1h 15m",
+        "elevation": "Flat / Slight stair descent",
+        "terrain": "Snowy canyon rim wooden boardwalks with handrails, packed snow along Abiskojåkka river gorge & frozen waterfalls.",
+        "parkName": "Swedish National Parks - Abisko",
+        "parkUrl": "https://www.nationalparksofsweden.se/national-park-page/abisko-national-park/",
+        "trailheadGmaps": gmaps("Abisko National Park Canyon", 68.3600, 18.7800)
+      }
+    ],
     "aurora": [{"name": "Mount Nuolja Sky Station Summit", "desc": "World famous Blue Hole elevation view.", "coords": [68.3614, 18.7208], "gmaps": gmaps("Mount Nuolja Summit", 68.3614, 18.7208)}]
   },
   {
     "day": 6, "date": "Dec 17 (Thu)", "title_a": "Zero-Driving Alpine Tundra & Aurora Blue Hole Night 2", "title_b": "Kårsavagge Frozen Valley Snowmobile & Lapporten Alpine Trek",
     "location": "Abisko / Björkliden, Sweden", "coords": [68.4064, 18.6811], "distance": "0 km (0h - Rest Day)",
-    "hotel": "Aurora View Apt – Walk to Train & Ski (Björkliden)", "hotelStatus": "confirmed", "bookingRef": "Airbnb Ref: HM2B8KDQ4H (Night 2 of 3)",
+    "hotel": "Aurora View Apt – Walk to Train & Ski (Björkliden)", "hotelStatus": "confirmed", "bookingRef": "Booking.com (Night 2 of 3)",
     "food": food_db["Abisko"],
     "activities_a": "Guided alpine snowmobile safari across mountain passes toward Norwegian border (Riksgränsen); Lapporten valley views; night aurora watch.",
     "activities_b": "Guided Kårsavagge Frozen Valley Snowmobile Expedition & Silverfallet frozen waterfall trek; STF Abisko visitor center & Lake Torneträsk night aurora watch.",
@@ -195,6 +253,18 @@ base_22_days = [
     ],
     "legs": [{"from": "Björkliden", "to": "Trails", "dist": "0 km", "time": "0 mins", "route": "Snowmobile", "gmaps": gmaps("Bjorkliden Base")}],
     "tickets": [{"item": "Snowmobile Safari (3h)", "cost": "~1,950 SEK", "url": "https://abiskoguesthouse.com/"}],
+    "trails": [
+      {
+        "name": "Silverfallet (Rakkasjokk) Frozen Waterfall Trail",
+        "distance": "1.2 km round-trip",
+        "duration": "45 mins",
+        "elevation": "-40m descent to lake",
+        "terrain": "Snowy Birch forest path leading to a multi-tiered frozen waterfall canyon opening onto Lake Torneträsk ice.",
+        "parkName": "Björkliden Outdoor Area",
+        "parkUrl": "https://bjorkliden.com/en/",
+        "trailheadGmaps": gmaps("Silverfallet Waterfall Bjorkliden", 68.4100, 18.6700)
+      }
+    ],
     "aurora": [{"name": "Lake Torneträsk Beach Layby", "desc": "Wide open vista facing north over lake.", "coords": [68.3500, 18.8000], "gmaps": gmaps("Lake Tornetrask Beach Layby", 68.3500, 18.8000)}]
   },
   {
@@ -216,6 +286,18 @@ base_22_days = [
     ],
     "legs": [{"from": "Björkliden", "to": "Silverfallet", "dist": "5 km", "time": "8 mins", "route": "E10", "gmaps": gmaps("Bjorkliden to Silverfallet")}],
     "tickets": [{"item": "Husky Safari (3h)", "cost": "~2,500 SEK", "url": "https://visitabisko.com/"}],
+    "trails": [
+      {
+        "name": "Trollsjön (Rissájaure) Canyon Rim Snowshoe Trek",
+        "distance": "4.0 km round-trip winter trail",
+        "duration": "2h 00m",
+        "elevation": "+140m climb",
+        "terrain": "Snow-covered glacial U-valley canyon rim along Kärkevagge valley. Firm snowpack & exposed arctic wind conditions. Snowshoes recommended.",
+        "parkName": "STF Abisko Mountain Trails",
+        "parkUrl": "https://www.swedishtouristassociation.com/",
+        "trailheadGmaps": gmaps("Laktatjakka Layby Trailhead", 68.4200, 18.5200)
+      }
+    ],
     "aurora": [{"name": "Björkliden Overlook Layby", "desc": "Elevated panorama over lake & Lapporten.", "coords": [68.4064, 18.6811], "gmaps": gmaps("Bjorkliden Overlook", 68.4064, 18.6811)}]
   },
   {
@@ -237,6 +319,18 @@ base_22_days = [
     ],
     "legs": [{"from": "Björkliden", "to": "Kemi", "dist": "340 km", "time": "4h 00m", "route": "E10 & E4", "gmaps": gmaps("Bjorkliden to Kemi")}],
     "tickets": [{"item": "Sea-Ice Shoreline Trail", "cost": "Free (No Ticket Needed)", "url": "https://experience365.fi/"}, {"item": "SnowExperience365 Ticket", "cost": "€18/pax", "url": "https://experience365.fi/"}],
+    "trails": [
+      {
+        "name": "Bothnian Bay Sea-Ice Shoreline Trail",
+        "distance": "2.5 km round-trip ice walk",
+        "duration": "1h 00m",
+        "elevation": "Flat ocean surface",
+        "terrain": "1-meter thick frozen ocean sea-ice pack covered in dry windblown snow. 100% free open public access groomed trail from Kemi Inner Harbour.",
+        "parkName": "Kemi Sea-Ice Experience Zone",
+        "parkUrl": "https://experience365.fi/",
+        "trailheadGmaps": gmaps("Kemi Inner Harbour Ice Trail", 65.7363, 24.5637)
+      }
+    ],
     "aurora": [{"name": "Inner Harbour Coastal Promenade", "desc": "Dark shoreline facing north over frozen bay.", "coords": [65.7363, 24.5637], "gmaps": gmaps("Kemi Harbour Promenade", 65.7363, 24.5637)}]
   },
   {
@@ -281,6 +375,18 @@ base_22_days = [
     ],
     "legs": [{"from": "Kemi", "to": "Korouoma Trailhead", "dist": "140 km", "time": "1h 50m", "route": "Road 81", "gmaps": gmaps("Kemi to Korouoma Canyon Parking")}],
     "tickets": [{"item": "Ice Cleats / Crampons", "cost": "€12/pair", "url": "https://posiolapland.com/"}],
+    "trails": [
+      {
+        "name": "Korouoma Canyon Frozen Waterfalls Trail (Koronjää Loop)",
+        "distance": "5.0 km round-trip loop",
+        "duration": "2h 30m - 3h 00m",
+        "elevation": "-80m descent into gorge / +80m climb out",
+        "terrain": "Steep descent via snowy wooden stairways & switchbacks into canyon. Hard-packed snow & glare ice along Korojoki riverbed. Wooden suspension bridge crossing. Ice crampons/microspikes strongly recommended.",
+        "parkName": "Metsähallitus Korouoma Nature Reserve",
+        "parkUrl": "https://www.nationalparks.fi/korouoma",
+        "trailheadGmaps": gmaps("Saukkovaara Parking Korouoma", 66.1492, 27.5258)
+      }
+    ],
     "aurora": [{"name": "Rantapolku Private Lake Dock", "desc": "Dark horizon over frozen Lake Kitkajärvi.", "coords": [66.1089, 28.1633], "gmaps": gmaps("Rantapolku Posio", 66.1089, 28.1633)}]
   },
   {
@@ -302,6 +408,18 @@ base_22_days = [
     ],
     "legs": [{"from": "Posio Cottage", "to": "Riisitunturi Trailhead", "dist": "30 km", "time": "25 mins", "route": "Road 3470", "gmaps": gmaps("Posio to Riisitunturi")}],
     "tickets": [{"item": "Snowshoe Rental", "cost": "€20/day", "url": "https://posiolapland.com/"}],
+    "trails": [
+      {
+        "name": "Riisitunturi Summit Crown Snow-Tree Loop (Riisin rääpäsy Trail)",
+        "distance": "4.3 km round-trip loop",
+        "duration": "2h 15m",
+        "elevation": "+110m climb to summit",
+        "terrain": "Pristine open fell trail past world-famous heavy frost-covered spruce trees ('tykky' snow monsters). Exposed windy summit ridge, open wilderness hut & campfire site.",
+        "parkName": "Metsähallitus Riisitunturi National Park",
+        "parkUrl": "https://www.nationalparks.fi/riisitunturinp",
+        "trailheadGmaps": gmaps("Riisitunturi Trailhead", 66.2167, 28.5667)
+      }
+    ],
     "aurora": [{"name": "Riisitunturi Park Base Parking", "desc": "Pristine fell skies framed by snow trees.", "coords": [66.2167, 28.5667], "gmaps": gmaps("Riisitunturi Parking", 66.2167, 28.5667)}]
   },
   {
@@ -323,6 +441,18 @@ base_22_days = [
     ],
     "legs": [{"from": "Posio", "to": "Iso-Syöte Fell Top", "dist": "75 km", "time": "55 mins", "route": "Road 863", "gmaps": gmaps("Posio to Iso-Syote")}],
     "tickets": [{"item": "Iso-Syöte Ski Pass 3h", "cost": "€42/pax", "url": "https://syote.fi/en/"}],
+    "trails": [
+      {
+        "name": "Syöte National Park Crown-Snow Forest Snowshoe Trail",
+        "distance": "3.5 km round-trip",
+        "duration": "1h 45m",
+        "elevation": "+90m climb",
+        "terrain": "Ancient spruce forest canopy heavily laden with winter snow crowns. Packed snow trails with deep powder off-piste.",
+        "parkName": "Metsähallitus Syöte National Park",
+        "parkUrl": "https://www.nationalparks.fi/syotenp",
+        "trailheadGmaps": gmaps("Syote National Park Visitor Centre", 65.6265, 27.6083)
+      }
+    ],
     "aurora": [{"name": "Iso-Syöte Fell Summit Deck", "desc": "Highest elevation in southern Lapland.", "coords": [65.6265, 27.6083], "gmaps": gmaps("Iso-Syote Fell Summit", 65.6265, 27.6083)}]
   },
   {
@@ -367,6 +497,18 @@ base_22_days = [
     ],
     "legs": [{"from": "Iso-Syöte", "to": "Vikaköngäs", "dist": "150 km", "time": "1h 50m", "route": "Road 81", "gmaps": gmaps("Iso-Syote to Vikakongas")}],
     "tickets": [{"item": "VR Sleeper Cabin", "cost": "~€210", "url": "https://www.vr.fi/en"}],
+    "trails": [
+      {
+        "name": "Vikaköngäs Suspension Bridge & Rapids Trail (Arctic Circle Hiking Area)",
+        "distance": "2.8 km round-trip loop",
+        "duration": "1h 15m",
+        "elevation": "Flat / Gentle slope",
+        "terrain": "Wooden suspension bridge spanning roaring frozen river rapids, leading onto well-groomed pine forest snow trails with lean-to campfire shelters.",
+        "parkName": "Metsähallitus Arctic Circle Hiking Area",
+        "parkUrl": "https://www.nationalparks.fi/arcticcircle",
+        "trailheadGmaps": gmaps("Vikakongas Suspension Bridge", 66.6500, 26.0500)
+      }
+    ],
     "aurora": [{"name": "Train Cabin Window", "desc": "Night sky passing outside sleeper train window.", "coords": [65.0121, 25.4651], "gmaps": gmaps("Oulu Railway Station", 65.0121, 25.4651)}]
   },
   {

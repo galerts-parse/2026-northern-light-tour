@@ -332,6 +332,25 @@ function renderTourPackageView(payload, activeRoute) {
       </div>
     `).join('');
 
+    // Outdoor Trails & Terrain Details
+    const trailsHtml = (d.trails || []).map(tr => `
+      <div style="background: #f0fdf4; border: 1px solid #bbf7d0; padding: 12px; border-radius: 8px; margin-top: 10px;">
+        <div style="font-weight: 700; color: #15803d; font-size: 0.9rem; display: flex; justify-content: space-between; align-items: center;">
+          <span><i class="fa-solid fa-person-hiking"></i> Outdoor Trail: ${tr.name}</span>
+          ${tr.parkUrl ? `<a href="${tr.parkUrl}" target="_blank" class="action-btn green" style="font-size: 10px; padding: 2px 6px;"><i class="fa-solid fa-tree"></i> ${tr.parkName || 'Park Site'}</a>` : ''}
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px; margin-top: 8px; font-size: 0.82rem; color: #334155;">
+          <div><strong>Walk Distance:</strong> ${tr.distance}</div>
+          <div><strong>Duration:</strong> ${tr.duration}</div>
+          ${tr.elevation ? `<div><strong>Elevation Profile:</strong> ${tr.elevation}</div>` : ''}
+        </div>
+        <div style="margin-top: 6px; font-size: 0.82rem; color: #475569; border-top: 1px dashed #cbd5e1; padding-top: 6px;">
+          <strong>Terrain & Gear:</strong> ${tr.terrain}
+        </div>
+        ${tr.trailheadGmaps ? `<a href="${tr.trailheadGmaps}" target="_blank" class="action-btn orange" style="font-size: 10px; padding: 2px 6px; margin-top: 6px; display: inline-flex;"><i class="fa-solid fa-location-arrow"></i> Trailhead / Parking GPS</a>` : ''}
+      </div>
+    `).join('');
+
     const card = document.createElement('div');
     card.id = `day-${d.day}`;
     card.className = 'day-card';
@@ -369,6 +388,8 @@ function renderTourPackageView(payload, activeRoute) {
         <div class="info-block-title"><i class="fa-solid fa-clock" style="color: #2563eb;"></i> Hourly Schedule Breakdown:</div>
         ${hourlyHtml}
       </div>
+
+      ${trailsHtml}
 
       ${foodHtml}
 
