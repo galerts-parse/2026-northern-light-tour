@@ -759,6 +759,32 @@ base_22_days = [
   }
 ]
 
+# Supermarket Database by Day
+supermarket_db = {
+    1: {"name": "S-Market Rovakatu (Central Rovaniemi)", "address": "Rovakatu 26 (400m / 5 mins walk from Airbnb)", "hours": "Sat Dec 12: 07:00 – 22:00", "gmaps": gmaps("S-Market Rovakatu Rovaniemi")},
+    2: {"name": "Coop Harads", "address": "Edeforsvägen 55, Harads (15 km / 15 mins drive from cabin)", "hours": "Sun Dec 13: 09:00 – 19:00", "gmaps": gmaps("Coop Harads Sweden")},
+    3: {"name": "Coop Harads", "address": "Edeforsvägen 55, Harads (15 km / 15 mins drive)", "hours": "Mon Dec 14: 08:00 – 20:00", "gmaps": gmaps("Coop Harads Sweden")},
+    4: {"name": "ICA Supermarket Kiruna", "address": "Österleden 2, Kiruna (2 km / 5 mins drive)", "hours": "Tue Dec 15: 07:00 – 22:00", "gmaps": gmaps("ICA Supermarket Kiruna")},
+    5: {"name": "ICA Nära Lapplandia", "address": "Kiruna V (1 km / 3 mins drive from Aurora View Apt)", "hours": "Wed Dec 16: 08:00 – 21:00", "gmaps": gmaps("ICA Nara Kiruna")},
+    6: {"name": "Coop Extra Kiruna", "address": "Österleden 8, Kiruna (2 km / 5 mins drive)", "hours": "Thu Dec 17: 07:00 – 22:00", "gmaps": gmaps("Coop Extra Kiruna")},
+    7: {"name": "ICA Supermarket Kiruna", "address": "Österleden 2, Kiruna (2 km / 5 mins drive)", "hours": "Fri Dec 18: 07:00 – 22:00", "gmaps": gmaps("ICA Supermarket Kiruna")},
+    8: {"name": "K-Citymarket Kemi", "address": "Karjalahdenkatu 7 (900m / 3 mins drive from sea apt)", "hours": "Sat Dec 19: 07:00 – 22:00", "gmaps": gmaps("K-Citymarket Kemi")},
+    9: {"name": "S-Market Kemi", "address": "Valtakatu 7, Kemi (900m / 3 mins drive)", "hours": "Sun Dec 20: 09:00 – 21:00", "gmaps": gmaps("S-Market Kemi")},
+    10: {"name": "S-Market Posio", "address": "Posiontie 44 (1.2 km / 3 mins drive from Rantapolku 1 cottage)", "hours": "Mon Dec 21: 07:00 – 21:00", "gmaps": gmaps("S-Market Posio")},
+    11: {"name": "K-Market Muikku Posio", "address": "Posiontie 40 (1.1 km / 3 mins drive)", "hours": "Tue Dec 22: 08:00 – 20:00", "gmaps": gmaps("K-Market Muikku Posio")},
+    12: {"name": "K-Market Iso-Syöte", "address": "Romekievarintie 1, Syöte (3 km down fell)", "hours": "Wed Dec 23: 09:00 – 19:00", "gmaps": gmaps("K-Market Iso-Syote")},
+    13: {"name": "K-Market Iso-Syöte", "address": "Romekievarintie 1 (2 km from Igloos)", "hours": "🎄 Thu Dec 24 (Christmas Eve): 08:00 – 14:00 (Short Holiday Hours! Stock up early!)", "gmaps": gmaps("K-Market Iso-Syote")},
+    14: {"name": "S-Market Rovaniemi Railway Station", "address": "Rovaniemi Railway Station hall", "hours": "🎄 Fri Dec 25 (Christmas Day): 10:00 – 18:00 (Station Market Open)", "gmaps": gmaps("S-Market Rovaniemi Railway Station")},
+    15: {"name": "S-Market Helsinki Central Station (Kluuvi)", "address": "Helsinki Station / Kluuvi basement (2 mins walk from Scandic)", "hours": "🎁 Sat Dec 26 (Boxing Day): 09:00 – 22:00", "gmaps": gmaps("S-Market Helsinki Central Station")},
+    16: {"name": "Rimi Express Old Town Tallinn", "address": "Aia 7, Tallinn Old Town (450m / 6 mins walk from apt)", "hours": "Sun Dec 27: 08:00 – 22:00", "gmaps": gmaps("Rimi Express Old Town Tallinn")},
+    17: {"name": "Rimi Express D-Terminal Tallinn", "address": "Lootsi 8, Tallinn D-Terminal (200m before boarding)", "hours": "Mon Dec 28: 08:00 – 21:00", "gmaps": gmaps("Rimi Express D-Terminal Tallinn")},
+    18: {"name": "Coop Centralstationen Stockholm", "address": "Stockholm Central lower concourse (250m / 3 mins walk from Sheraton)", "hours": "Tue Dec 29: 06:00 – 23:00", "gmaps": gmaps("Coop Centralstationen Stockholm")},
+    19: {"name": "Hemköp Stockholm City", "address": "Klarabergsgatan 50 (400m / 5 mins walk from Sheraton)", "hours": "Wed Dec 30: 07:00 – 22:00", "gmaps": gmaps("Hemkop Stockholm City")},
+    20: {"name": "Lidl Vesterbrogade Copenhagen", "address": "Vesterbrogade 27 (250m / 3 mins walk from Four Points Flex)", "hours": "🎉 Thu Dec 31 (New Year's Eve): 07:00 – 15:00 (Early NYE Closing! Stock up early!)", "gmaps": gmaps("Lidl Vesterbrogade Copenhagen")},
+    21: {"name": "7-Eleven Copenhagen Central Station", "address": "Copenhagen Central Station (300m / 4 mins walk)", "hours": "🎆 Fri Jan 01 (New Year's Day): Open 24 Hours (7-Eleven / Station Market)", "gmaps": gmaps("7-Eleven Copenhagen Central Station")},
+    22: {"name": "7-Eleven / Lagkagehuset CPH Airport Terminal 3", "address": "CPH Airport Terminal 3", "hours": "Sat Jan 02: 05:00 – 22:00", "gmaps": gmaps("CPH Airport Terminal 3")}
+}
+
 # Generate 22 full days for Route A and Route B
 days_route_a = []
 days_route_b = []
@@ -771,7 +797,8 @@ for item in base_22_days:
         "distance": item["distance"], "hotel": item["hotel"], "hotelStatus": item["hotelStatus"], "bookingRef": item["bookingRef"],
         "hotelLinks": item.get("hotelLinks", []), "foodGuide": item["food"], "activities": item["activities_a"],
         "scheduleNotes": item["title_a"], "tags": ["Route A Baseline"], "hourlySchedule": item["sched_a"],
-        "drivingLegs": item["legs"], "ticketCosts": item.get("tickets", []), "auroraSpots": item.get("aurora", []), "trails": item.get("trails", [])
+        "drivingLegs": item["legs"], "ticketCosts": item.get("tickets", []), "auroraSpots": item.get("aurora", []), "trails": item.get("trails", []),
+        "supermarket": supermarket_db.get(item["day"], {})
     }
     days_route_a.append(da)
 
@@ -783,7 +810,8 @@ for item in base_22_days:
         "hotelLinks": item.get("hotelLinks", []), "foodGuide": item["food"], "activities": item["activities_b"],
         "scheduleNotes": "Route B High-Action Upgrade: " + item["title_b"], "tags": ["Route B High-Action", "Nature Walk", "Local Food"],
         "hourlySchedule": item["sched_b"], "drivingLegs": item["legs"], "ticketCosts": item.get("tickets", []),
-        "auroraSpots": item.get("aurora", []), "trails": item.get("trails", [])
+        "auroraSpots": item.get("aurora", []), "trails": item.get("trails", []),
+        "supermarket": supermarket_db.get(item["day"], {})
     }
     days_route_b.append(db)
 

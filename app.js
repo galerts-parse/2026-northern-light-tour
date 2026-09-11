@@ -653,6 +653,25 @@ function renderTourPackageView(payload, activeRoute) {
       </div>
     `).join('');
 
+    // Supermarket info block
+    let supermarketHtml = '';
+    if (d.supermarket && d.supermarket.name) {
+      const sm = d.supermarket;
+      supermarketHtml = `
+        <div class="info-block" style="background: #f0fdf4; border: 1px solid #bbf7d0; margin-bottom: 15px;">
+          <div class="info-block-title" style="color: #15803d; font-size: 0.88rem; display: flex; justify-content: space-between; align-items: center;">
+            <span><i class="fa-solid fa-cart-shopping"></i> 🛒 Nearest Local Supermarket & Grocery Store:</span>
+            ${sm.gmaps ? `<a href="${sm.gmaps}" target="_blank" class="action-btn orange" style="font-size: 10px; padding: 2px 6px;"><i class="fa-solid fa-location-arrow"></i> Supermarket GPS</a>` : ''}
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 6px; margin-top: 6px; font-size: 0.82rem; color: #1e293b;">
+            <div><strong>Store:</strong> ${sm.name}</div>
+            <div><strong>Location:</strong> ${sm.address}</div>
+            <div style="grid-column: 1 / -1; color: #166534; background: #dcfce7; padding: 4px 8px; border-radius: 4px;"><strong>Operating Hours on Date:</strong> ${sm.hours}</div>
+          </div>
+        </div>
+      `;
+    }
+
     const card = document.createElement('div');
     card.id = `day-${d.day}`;
     card.className = 'day-card';
@@ -665,11 +684,13 @@ function renderTourPackageView(payload, activeRoute) {
         <div class="day-meta">
           <span><i class="fa-solid fa-location-dot"></i> ${d.location}</span>
           <span><i class="fa-solid fa-car"></i> ${d.distance}</span>
+          <a href="food.html#day-${d.day}" class="action-btn blue" style="font-size: 11px; padding: 3px 8px;"><i class="fa-solid fa-utensils"></i> 🍽️ Food Options</a>
           <a href="${d.gmaps}" target="_blank" class="action-btn orange" style="font-size: 11px; padding: 3px 8px;"><i class="fa-solid fa-location-arrow"></i> Day GPS</a>
         </div>
       </div>
 
       ${bookingBlockHtml}
+      ${supermarketHtml}
 
       <div style="margin-bottom: 15px; color: #334155; font-size: 0.95rem;">
         <strong><i class="fa-solid fa-compass" style="color: #2563eb; margin-right: 6px;"></i>Key Highlights:</strong><br/>
