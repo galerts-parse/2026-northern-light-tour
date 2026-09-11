@@ -697,7 +697,7 @@ for item in base_22_days:
         "distance": item["distance"], "hotel": item["hotel"], "hotelStatus": item["hotelStatus"], "bookingRef": item["bookingRef"],
         "hotelLinks": item.get("hotelLinks", []), "foodGuide": item["food"], "activities": item["activities_a"],
         "scheduleNotes": item["title_a"], "tags": ["Route A Baseline"], "hourlySchedule": item["sched_a"],
-        "drivingLegs": item["legs"], "ticketCosts": item.get("tickets", []), "auroraSpots": item.get("aurora", [])
+        "drivingLegs": item["legs"], "ticketCosts": item.get("tickets", []), "auroraSpots": item.get("aurora", []), "trails": item.get("trails", [])
     }
     days_route_a.append(da)
 
@@ -708,7 +708,8 @@ for item in base_22_days:
         "distance": item["distance"], "hotel": item["hotel"], "hotelStatus": item["hotelStatus"], "bookingRef": item["bookingRef"],
         "hotelLinks": item.get("hotelLinks", []), "foodGuide": item["food"], "activities": item["activities_b"],
         "scheduleNotes": "Route B High-Action Upgrade: " + item["title_b"], "tags": ["Route B High-Action", "Nature Walk", "Local Food"],
-        "hourlySchedule": item["sched_b"], "drivingLegs": item["legs"], "ticketCosts": item.get("tickets", []), "auroraSpots": item.get("aurora", [])
+        "hourlySchedule": item["sched_b"], "drivingLegs": item["legs"], "ticketCosts": item.get("tickets", []),
+        "auroraSpots": item.get("aurora", []), "trails": item.get("trails", [])
     }
     days_route_b.append(db)
 
