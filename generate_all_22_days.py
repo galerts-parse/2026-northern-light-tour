@@ -61,8 +61,8 @@ base_22_days = [
   {
     "day": 1, "date": "Dec 12 (Sat)", "title_a": "Gateway Arrival & AWD SUV Pickup", "title_b": "Ounasvaara Sunset Forest Walk & Gateway Arrival",
     "location": "Rovaniemi, Finland", "coords": [66.5039, 25.7294], "distance": "10 km (15 mins)",
-    "hotel": "Home in Rovaniemi (Airbnb)", "hotelStatus": "confirmed", "bookingRef": "Airbnb Conf: HMKWJX2QWA (Host: Riitta | $294.48 SGD)",
-    "hotelLinks": [{"name": "Home in Rovaniemi (Airbnb)", "url": "https://www.airbnb.com.sg/trips/v1/1772503509687523474/ro/RESERVATION2_CHECKIN/HMKWJX2QWA", "gmaps": gmaps("Rovaniemi Finland")}],
+    "hotel": "Home in Rovaniemi (Airbnb)", "hotelStatus": "confirmed", "bookingRef": "Airbnb (Confirmed)",
+    "hotelLinks": [{"name": "Home in Rovaniemi (Airbnb)", "url": "https://www.airbnb.com", "gmaps": gmaps("Rovaniemi Finland")}],
     "food": food_db["Rovaniemi"],
     "activities_a": "Fly SIN -> MUC -> RVN (Arrive 5:15 PM); pick up AWD SUV rental; evening walk in central Rovaniemi; dinner at Nili / Gustav.",
     "activities_b": "Fly SIN -> MUC -> RVN (Arrive 5:15 PM); pick up AWD SUV rental; Ounasvaara Winter Forest Walk overlooking frozen Kemijoki river; dinner at Ravintola Roka Street Bistro.",
@@ -96,7 +96,7 @@ base_22_days = [
   {
     "day": 2, "date": "Dec 13 (Sun)", "title_a": "Sweden Border Crossing & Torne Valley", "title_b": "Gammelstad UNESCO Church Town Snow Walk & Torne Valley",
     "location": "Harads / Storklinten, Sweden", "coords": [65.8252, 21.6886], "distance": "235 km (2h 45m)",
-    "hotel": "Stuga i Storklinten (Boden)", "hotelStatus": "confirmed", "bookingRef": "Booking.com (Check-in 13 Dec - Check-out 15 Dec)",
+    "hotel": "Stuga i Storklinten (Boden)", "hotelStatus": "confirmed", "bookingRef": "Booking.com (Confirmed)",
     "food": food_db["Boden"],
     "activities_a": "Drive west through Torne Valley; cross border at Tornio-Haparanda; stop at frozen Kukkolankoski rapids; check into cabin; sauna & dinner.",
     "activities_b": "Drive west through Torne Valley; cross border at Tornio-Haparanda; stop at Kukkolankoski rapids; Gammelstad Church Town UNESCO walking loop (400 medieval cottage village); Storklinten sauna & Empes Gatukök fast food.",
@@ -144,7 +144,7 @@ base_22_days = [
   {
     "day": 3, "date": "Dec 14 (Mon)", "title_a": "Zero-Driving Rest & Nature Day", "title_b": "Storklinten Fell-Top Snowshoe Trek & Forest Trail",
     "location": "Harads / Storklinten, Sweden", "coords": [65.8252, 21.6886], "distance": "0 km (0h - Rest Day)",
-    "hotel": "Stuga i Storklinten (Boden)", "hotelStatus": "confirmed", "bookingRef": "Booking.com (Night 2 of 2)",
+    "hotel": "Stuga i Storklinten (Boden)", "hotelStatus": "confirmed", "bookingRef": "Booking.com (Confirmed)",
     "food": food_db["Boden"],
     "activities_a": "Arctic wellness & snow day; outdoor snowshoeing / cross-country skiing; wood-fired saunas & cold plunge; night aurora watching.",
     "activities_b": "Storklinten Fell-Top Snowshoe Trek & Forest Trail; Treehotel Harads forest walk; wood-fired saunas & cold plunge; night aurora photo hunt from fell clearings.",
@@ -178,7 +178,7 @@ base_22_days = [
   {
     "day": 4, "date": "Dec 15 (Tue)", "title_a": "ICEHOTEL 37 Opening Week & Sámi Reindeer", "title_b": "Luossavaara Peak Sunrise Viewpoint & ICEHOTEL 37",
     "location": "Jukkasjärvi / Kiruna, Sweden", "coords": [67.8557, 20.2253], "distance": "280 km (3h 30m)",
-    "hotel": "Northernlight cabin (Kiruna)", "hotelStatus": "confirmed", "bookingRef": "Booking.com (Check-in 15 Dec)",
+    "hotel": "Northernlight cabin (Kiruna)", "hotelStatus": "confirmed", "bookingRef": "Booking.com (Confirmed)",
     "food": food_db["Kiruna"],
     "activities_a": "Drive north across Swedish Lapland tundra; tour freshly opened ICEHOTEL 37 hand-carved ice art suites; Icebar drink; Nutti Sámi Siida reindeer feeding.",
     "activities_b": "Luossavaara Peak Sunrise Viewpoint & Kiruna iron mine panorama; ICEHOTEL 37 art suites & Icebar; Nutti Sámi Siida reindeer trek; Spis Mat & Dryck / Empes Gatukök dinner.",
@@ -213,7 +213,7 @@ base_22_days = [
   {
     "day": 5, "date": "Dec 16 (Wed)", "title_a": "Abisko National Park & Aurora Sky Station Night 1", "title_b": "Abisko Canyon Marble Gorge & Frozen Waterfall Trek",
     "location": "Abisko / Björkliden, Sweden", "coords": [68.4064, 18.6811], "distance": "100 km (1h 15m)",
-    "hotel": "Aurora View Apt – Walk to Train & Ski (Björkliden)", "hotelStatus": "confirmed", "bookingRef": "Airbnb Ref: HM2B8KDQ4H (Host: Renberget)",
+    "hotel": "Aurora View Apt – Walk to Train & Ski (Björkliden)", "hotelStatus": "confirmed", "bookingRef": "Airbnb (Confirmed)",
     "food": food_db["Abisko"],
     "activities_a": "Scenic mountain drive along Lake Torneträsk; explore Abisko Canyon frozen waterfalls; night chairlift ride to mountaintop Aurora Sky Station.",
     "activities_b": "Abisko Canyon Marble Gorge & Frozen Waterfall snow trek; Lake Torneträsk shoreline walk; mountaintop Aurora Sky Station night chairlift.",
@@ -247,7 +247,7 @@ base_22_days = [
   {
     "day": 6, "date": "Dec 17 (Thu)", "title_a": "Zero-Driving Alpine Tundra & Aurora Blue Hole Night 2", "title_b": "Kårsavagge Frozen Valley Snowmobile & Lapporten Alpine Trek",
     "location": "Abisko / Björkliden, Sweden", "coords": [68.4064, 18.6811], "distance": "0 km (0h - Rest Day)",
-    "hotel": "Aurora View Apt – Walk to Train & Ski (Björkliden)", "hotelStatus": "confirmed", "bookingRef": "Booking.com (Night 2 of 3)",
+    "hotel": "Aurora View Apt – Walk to Train & Ski (Björkliden)", "hotelStatus": "confirmed", "bookingRef": "Booking.com (Confirmed)",
     "food": food_db["Abisko"],
     "activities_a": "Guided alpine snowmobile safari across mountain passes toward Norwegian border (Riksgränsen); Lapporten valley views; night aurora watch.",
     "activities_b": "Guided Kårsavagge Frozen Valley Snowmobile Expedition & Silverfallet frozen waterfall trek; STF Abisko visitor center & Lake Torneträsk night aurora watch.",
@@ -282,7 +282,7 @@ base_22_days = [
   {
     "day": 7, "date": "Dec 18 (Fri)", "title_a": "Zero-Driving Husky Safari & Peak Aurora Night 3", "title_b": "Trollsjön (Rissájaure) Canyon Snowshoe & Husky Safari",
     "location": "Abisko / Björkliden, Sweden", "coords": [68.4064, 18.6811], "distance": "0 km (0h - Rest Day)",
-    "hotel": "Aurora View Apt – Walk to Train & Ski (Björkliden)", "hotelStatus": "confirmed", "bookingRef": "Airbnb Ref: HM2B8KDQ4H (Night 3 of 3)",
+    "hotel": "Aurora View Apt – Walk to Train & Ski (Björkliden)", "hotelStatus": "confirmed", "bookingRef": "Airbnb (Confirmed)",
     "food": food_db["Abisko"],
     "activities_a": "Morning 3-hour husky sledding safari through Arctic birch forest; visit Silverfallet frozen waterfall beach; dinner at Abisko Mountain Lodge; night aurora watch.",
     "activities_b": "Morning 3-hour husky sledding safari; Trollsjön (Rissájaure) Canyon Valley snowshoe hike; Silverfallet frozen waterfall beach walk; Abisko Mountain Lodge dinner.",
@@ -315,7 +315,7 @@ base_22_days = [
   {
     "day": 8, "date": "Dec 19 (Sat)", "title_a": "Finland Re-entry & SnowCastle of Kemi", "title_b": "Bothnian Bay Sea-Ice Trail & SnowCastle of Kemi",
     "location": "Kemi, Finland", "coords": [65.7363, 24.5637], "distance": "340 km (4h 00m)",
-    "hotel": "Cozy Apartment by the Sea 2 Rooms (Kemi)", "hotelStatus": "confirmed", "bookingRef": "Booking.com (Check-in 19 Dec - Check-out 21 Dec)",
+    "hotel": "Cozy Apartment by the Sea 2 Rooms (Kemi)", "hotelStatus": "confirmed", "bookingRef": "Booking.com (Confirmed)",
     "food": food_db["Kemi"],
     "activities_a": "Cross-border drive south to Finnish Bothnian coast; cross border at Tornio; check in; explore SnowExperience365 indoor ice castle and ice bar.",
     "activities_b": "Cross-border drive south; Bothnian Bay Sea-Ice Trail walk onto thick frozen sea ice (Free public access); SnowExperience365 ice castle; Sataman Krouvi salmon soup dinner.",
@@ -348,7 +348,7 @@ base_22_days = [
   {
     "day": 9, "date": "Dec 20 (Sun)", "title_a": "Sampo Icebreaker Cruise & Sea Ice Floating", "title_b": "Sampo Icebreaker & Ajos Peninsula Ice Ridge Trail",
     "location": "Kemi, Finland", "coords": [65.7363, 24.5637], "distance": "20 km (20m local)",
-    "hotel": "Cozy Apartment by the Sea 2 Rooms (Kemi)", "hotelStatus": "confirmed", "bookingRef": "Booking.com (Night 2 of 2)",
+    "hotel": "Cozy Apartment by the Sea 2 Rooms (Kemi)", "hotelStatus": "confirmed", "bookingRef": "Booking.com (Confirmed)",
     "food": food_db["Kemi"],
     "activities_a": "Official Sampo Icebreaker Cruise: crush sea ice, engine room tour, survival drysuit floating in open sea-ice pool; coastal sauna.",
     "activities_b": "Official Sampo Icebreaker Cruise & drysuit ice float; Ajos Peninsula sunset ice ridge trail walk; coastal sauna & Lumihiutale seafood dinner.",
@@ -369,7 +369,7 @@ base_22_days = [
   {
     "day": 10, "date": "Dec 21 (Mon)", "title_a": "Check-in Rantapolku 1 Posio", "title_b": "Korouoma Frozen Waterfalls Canyon 5 km Loop Hike",
     "location": "Posio, Finland", "coords": [66.1089, 28.1633], "distance": "170 km (2h 15m)",
-    "hotel": "Idyllic sauna cottage by the lake (Rantapolku 1, Posio)", "hotelStatus": "confirmed", "bookingRef": "Airbnb Ref: HMYPAMHXW9 (Host: Leena)",
+    "hotel": "Idyllic sauna cottage by the lake (Rantapolku 1, Posio)", "hotelStatus": "confirmed", "bookingRef": "Airbnb (Confirmed)",
     "food": food_db["Posio"],
     "activities_a": "Scenic drive east to Posio; stop at S-Market Posio for groceries; check into Airbnb (Rantapolku 1); evening lakeside sauna & quiet aurora watch.",
     "activities_b": "Drive Kemi to Posio; Korouoma Frozen Waterfalls Canyon 5 km loop hike (Koronjää trail past 60m giant blue icefalls & Mammoth Falls); check in at Rantapolku 1 cottage; lakeside sauna.",
@@ -404,7 +404,7 @@ base_22_days = [
   {
     "day": 11, "date": "Dec 22 (Tue)", "title_a": "Riisitunturi National Park World-Class Tykky Trees", "title_b": "Riisitunturi Summit Crown-Snow Tree Circuit + Campfire Feast",
     "location": "Posio, Finland", "coords": [66.1089, 28.1633], "distance": "60 km (50m roundtrip)",
-    "hotel": "Idyllic sauna cottage by the lake (Rantapolku 1, Posio)", "hotelStatus": "confirmed", "bookingRef": "Airbnb Ref: HMYPAMHXW9 (Night 2 of 2)",
+    "hotel": "Idyllic sauna cottage by the lake (Rantapolku 1, Posio)", "hotelStatus": "confirmed", "bookingRef": "Airbnb (Confirmed)",
     "food": food_db["Posio"],
     "activities_a": "Drive to Riisitunturi National Park; 10:30 AM golden twilight snowshoe hike (Riisin rääpäsy 4.3 km trail) among Tykky snow-sculpture trees; campfire lunch.",
     "activities_b": "Riisitunturi Summit Crown Snow-Tree Circuit snowshoe hike; campfire sausage & hot berry tea lunch in open wilderness hut; night aurora photo hunt at summit.",
@@ -437,7 +437,7 @@ base_22_days = [
   {
     "day": 12, "date": "Dec 23 (Wed)", "title_a": "Easy 1h Hop to Iso-Syöte Fell", "title_b": "Syöte National Park Crown-Snow Forest Snowshoe Trail",
     "location": "Iso-Syöte, Finland", "coords": [65.6265, 27.6083], "distance": "75 km (55 mins)",
-    "hotel": "Apartment with a view at the top of Iso-Syöte (Host Arto)", "hotelStatus": "confirmed", "bookingRef": "Airbnb Confirmed (Host: Arto)",
+    "hotel": "Apartment with a view at the top of Iso-Syöte (Host Arto)", "hotelStatus": "confirmed", "bookingRef": "Airbnb (Confirmed)",
     "food": food_db["Iso-Syöte"],
     "activities_a": "Short 55-minute drive to Iso-Syöte fell summit; check in; afternoon downhill skiing or panoramic fell-top spa; dinner at Restaurant Hilltop.",
     "activities_b": "Drive to Iso-Syöte; Syöte National Park Crown-Snow Forest snowshoe trail trek through ancient spruce canopy; fell summit downhill skiing or spa; Restaurant Hilltop dinner.",
@@ -470,7 +470,7 @@ base_22_days = [
   {
     "day": 13, "date": "Dec 24 (Thu)", "title_a": "Confirmed Booking: Iso-Syöte Treehouse / Igloo (Christmas Eve)", "title_b": "Pyhitys Fell Panoramic Winter Ridge Hike & Glass Igloo Feast",
     "location": "Iso-Syöte, Finland", "coords": [65.6265, 27.6083], "distance": "0 km (0h - Rest Day)",
-    "hotel": "Syöte Igloos / Iso-Syöte Treehouse", "hotelStatus": "confirmed", "bookingRef": "Booking.com (Check-in 24 Dec)",
+    "hotel": "Syöte Igloos / Iso-Syöte Treehouse", "hotelStatus": "confirmed", "bookingRef": "Booking.com (Confirmed)",
     "food": food_db["Iso-Syöte"],
     "activities_a": "Check into confirmed Syöte Treehouse / Igloo; Christmas Eve feast, private fell-top sauna, panoramic glass view of snow-covered spruce canopy.",
     "activities_b": "Pyhitys Fell Panoramic Winter Ridge Hike (360-degree views of southern Lapland); check into Syöte Glass Igloo / Treehouse; Christmas Eve gala feast.",
@@ -503,7 +503,7 @@ base_22_days = [
   {
     "day": 14, "date": "Dec 25 (Fri)", "title_a": "Santa Claus Village & VR Express Sleeper Train", "title_b": "Arctic Circle Hiking Area Suspension Bridge Walk & Sleeper Train",
     "location": "En-Route VR Night Train", "coords": [66.5039, 25.7294], "distance": "160 km (2h 00m)",
-    "hotel": "VR Santa Claus Express Sleeper Train (9:00 PM)", "hotelStatus": "confirmed", "bookingRef": "VR Train Booking (Rovaniemi -> Helsinki)",
+    "hotel": "VR Santa Claus Express Sleeper Train (9:00 PM)", "hotelStatus": "confirmed", "bookingRef": "VR Train Booking (Confirmed)",
     "food": food_db["Rovaniemi"],
     "activities_a": "Drive to Rovaniemi; explore Santa Claus Village & post office; return AWD SUV at station ($0 drop-off fee); board 9:00 PM VR Sleeper Train.",
     "activities_b": "Drive to Rovaniemi; Arctic Circle Hiking Area (Vikaköngäs suspension bridge walk over roaring frozen rapids); Santa Claus Village; 9:00 PM VR Sleeper Train.",
@@ -538,7 +538,7 @@ base_22_days = [
   {
     "day": 15, "date": "Dec 26 (Sat)", "title_a": "Helsinki Architecture & Löyly Waterfront Sauna", "title_b": "Oodi Library, Rock Church & Löyly Baltic Sauna Experience",
     "location": "Helsinki, Finland", "coords": [60.1699, 24.9384], "distance": "0 km (Tram/Walk)",
-    "hotel": "Scandic Grand Central Helsinki", "hotelStatus": "confirmed", "bookingRef": "Booking.com Conf: 6224.239.118 (PIN: 0930 | €140 / ~S$206)",
+    "hotel": "Scandic Grand Central Helsinki", "hotelStatus": "confirmed", "bookingRef": "Booking.com (Confirmed)",
     "hotelLinks": [{"name": "Scandic Grand Central Helsinki", "url": "https://www.scandichotels.com/hotels/finland/helsinki/scandic-grand-central-helsinki", "gmaps": gmaps("Scandic Grand Central Helsinki")}],
     "food": food_db["Helsinki"],
     "activities_a": "Arrive Helsinki 9:15 AM via VR train; explore Oodi Central Library & Rock Church; afternoon seaside smoke sauna & Baltic ice dip at Löyly.",
@@ -568,7 +568,7 @@ base_22_days = [
   {
     "day": 16, "date": "Dec 27 (Sun)", "title_a": "Baltic Ferry & Tallinn Medieval Old Town Walking Tour", "title_b": "Tallinn UNESCO Old Town Pedestrian Tour & Medieval Banquet",
     "location": "Tallinn, Estonia", "coords": [59.4370, 24.7536], "distance": "0 km (Pedestrian Walk)",
-    "hotel": "Tallinn City Apartments - Town Hall Square", "hotelStatus": "confirmed", "bookingRef": "Booking.com Conf: 6719.652.299 (PIN: 5042 | €125 / ~S$184)",
+    "hotel": "Tallinn City Apartments - Town Hall Square", "hotelStatus": "confirmed", "bookingRef": "Booking.com (Confirmed)",
     "hotelLinks": [{"name": "Tallinn City Apartments", "url": "https://www.booking.com/hotel/ee/tallinn-city-apartments.html", "gmaps": gmaps("Tallinn City Apartments Town Hall Square")}],
     "food": food_db["Tallinn"],
     "activities_a": "Morning 2h Megastar ferry across Baltic Sea; explore UNESCO medieval Old Town, Town Hall Christmas Market & Toompea Hill vista.",
@@ -595,7 +595,7 @@ base_22_days = [
   {
     "day": 17, "date": "Dec 28 (Mon)", "title_a": "Tallinn Museums & Baltic Queen Overnight Cruise", "title_b": "Lennusadam Seaplane Museum, Kadriorg Palace & Tallink Silja Baltic Queen Cruise to Stockholm",
     "location": "Overnight Cruise (Baltic Sea)", "coords": [59.4450, 24.7600], "distance": "0 km (Ferry Transit)",
-    "hotel": "Tallink Silja Line M/S Baltic Queen Overnight Cruise", "hotelStatus": "confirmed", "bookingRef": "Tallink Conf: 75550929 (Sea-View Cabin)",
+    "hotel": "Tallink Silja Line M/S Baltic Queen Overnight Cruise", "hotelStatus": "confirmed", "bookingRef": "Tallink Silja Line (Confirmed)",
     "hotelLinks": [{"name": "Tallink Silja Baltic Queen Cruise", "url": "https://www.tallinksilja.com/en", "gmaps": gmaps("Tallinn D-Terminal")} ],
     "food": food_db["Tallinn"],
     "activities_a": "Morning visit Kadriorg Palace & Art Museum; afternoon Lennusadam Seaplane Museum; 18:00 board Tallink Silja M/S Baltic Queen overnight cruise to Stockholm.",
@@ -622,7 +622,7 @@ base_22_days = [
   {
     "day": 18, "date": "Dec 29 (Tue)", "title_a": "Cruise Archipelago Arrival & Stockholm Old Town", "title_b": "Stockholm Archipelago Arrival, Gamla Stan Medieval Quarter & Royal Palace",
     "location": "Stockholm, Sweden", "coords": [59.3293, 18.0686], "distance": "0 km (Metro/Walk)",
-    "hotel": "Sheraton Stockholm Hotel", "hotelStatus": "confirmed", "bookingRef": "Marriott Conf #90629030 (88,000 Points)",
+    "hotel": "Sheraton Stockholm Hotel", "hotelStatus": "confirmed", "bookingRef": "Marriott Bonvoy (Confirmed)",
     "hotelLinks": [{"name": "Sheraton Stockholm (Marriott)", "url": "https://www.marriott.com/en-us/hotels/stosi-sheraton-stockholm-hotel/overview/", "gmaps": gmaps("Sheraton Stockholm Hotel")}],
     "food": food_db["Stockholm"],
     "activities_a": "Arrive Stockholm 10:30 AM via Baltic Queen cruise; Gamla Stan walking tour, Royal Palace, Stortorget & Nobel Prize Museum.",
@@ -650,7 +650,7 @@ base_22_days = [
   {
     "day": 19, "date": "Dec 30 (Wed)", "title_a": "Stockholm Museum Island Day", "title_b": "Vasa Museum 17th-Century Warship & ABBA Museum / Skansen Cultural Tour",
     "location": "Stockholm, Sweden", "coords": [59.3293, 18.0686], "distance": "0 km (Tram 7)",
-    "hotel": "Sheraton Stockholm Hotel", "hotelStatus": "confirmed", "bookingRef": "Marriott Conf #90629030 (Night 2 of 2)",
+    "hotel": "Sheraton Stockholm Hotel", "hotelStatus": "confirmed", "bookingRef": "Marriott Bonvoy (Confirmed)",
     "hotelLinks": [{"name": "Sheraton Stockholm (Marriott)", "url": "https://www.marriott.com/en-us/hotels/stosi-sheraton-stockholm-hotel/overview/", "gmaps": gmaps("Sheraton Stockholm Hotel")}],
     "food": food_db["Stockholm"],
     "activities_a": "Maritime & culture day: tour 17th-century Vasa Museum, explore Djurgården island & Skansen, or visit ABBA The Museum; traditional Swedish dinner.",
@@ -677,7 +677,7 @@ base_22_days = [
   {
     "day": 20, "date": "Dec 31 (Thu)", "title_a": "High-Speed Train & NYE Tivoli Celebration", "title_b": "SJ High-Speed Train & Copenhagen City Highlights + Tivoli NYE Gala",
     "location": "Copenhagen, Denmark", "coords": [55.6761, 12.5683], "distance": "0 km (Train)",
-    "hotel": "Four Points Flex by Sheraton Copenhagen City", "hotelStatus": "confirmed", "bookingRef": "Marriott Conf #90492813 (55,000 Points)",
+    "hotel": "Four Points Flex by Sheraton Copenhagen City", "hotelStatus": "confirmed", "bookingRef": "Marriott Bonvoy (Confirmed)",
     "hotelLinks": [{"name": "Four Points Flex Copenhagen", "url": "https://www.marriott.com/en-us/hotels/cphfp-four-points-flex-copenhagen-city/overview/", "gmaps": gmaps("Four Points Flex by Sheraton Copenhagen City")}],
     "food": food_db["Copenhagen"],
     "activities_a": "Morning SJ High-Speed Train from Stockholm Central to Copenhagen Central (5h 10m via Öresund Bridge); check in; New Year's Eve gala dinner & midnight fireworks at Tivoli Gardens.",
@@ -703,7 +703,7 @@ base_22_days = [
   {
     "day": 21, "date": "Jan 01 (Fri)", "title_a": "New Year's Day Copenhagen Palaces & Culture", "title_b": "Rosenborg Castle Crown Jewels, Amalienborg Guard Change & Torvehallerne",
     "location": "Copenhagen, Denmark", "coords": [55.6761, 12.5683], "distance": "0 km (Metro/Walk)",
-    "hotel": "Four Points Flex by Sheraton Copenhagen City", "hotelStatus": "confirmed", "bookingRef": "Marriott Conf #90492813 (Night 2 of 2)",
+    "hotel": "Four Points Flex by Sheraton Copenhagen City", "hotelStatus": "confirmed", "bookingRef": "Marriott Bonvoy (Confirmed)",
     "hotelLinks": [{"name": "Four Points Flex Copenhagen", "url": "https://www.marriott.com/en-us/hotels/cphfp-four-points-flex-copenhagen-city/overview/", "gmaps": gmaps("Four Points Flex by Sheraton Copenhagen City")}],
     "food": food_db["Copenhagen"],
     "activities_a": "Relaxed New Year's Day stroll; view CopenHill rooftop architecture, Amalienborg Palace royal guard change, and Nyhavn / Strøget cafe culture.",
@@ -728,7 +728,7 @@ base_22_days = [
   {
     "day": 22, "date": "Jan 02 (Sat)", "title_a": "SQ352 Non-stop to Singapore", "title_b": "King's Garden (Kongens Have) Morning Stroll & Flight Home",
     "location": "Flight Home (In Flight)", "coords": [55.6180, 12.6508], "distance": "0 km (Metro)",
-    "hotel": "In Flight (Singapore Airlines SQ352)", "hotelStatus": "confirmed", "bookingRef": "SQ352 Non-stop (Dep CPH 12:00 PM, Arr SIN Jan 03 7:30 AM)",
+    "hotel": "In Flight (Singapore Airlines SQ352)", "hotelStatus": "confirmed", "bookingRef": "Singapore Airlines SQ352 (Confirmed)",
     "food": food_db["Copenhagen"],
     "activities_a": "Morning 13-minute Metro to CPH Airport; depart on Singapore Airlines SQ352 non-stop to Singapore at 12:00 PM (Arrive SIN Jan 03, 7:30 AM).",
     "activities_b": "King's Garden (Kongens Have) morning castle stroll; 13-minute Metro to CPH Airport; depart on Singapore Airlines SQ352 non-stop to Singapore at 12:00 PM.",

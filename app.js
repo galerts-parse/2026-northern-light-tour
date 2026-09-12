@@ -265,49 +265,58 @@ function renderTourPackageView(payload, activeRoute) {
     navContainer.appendChild(extraLi2);
   }
 
-  // Helper: Detailed Booking & Confirmation Card Generator
+  // Helper: Detailed Booking & Confirmation Card Generator (Confidentiality Enforced)
   const getBookingInfoHtml = (dayNum, d) => {
     let accDetails = '';
     let transportDetails = '';
 
-    // 1. Rental Car details for Days 1-14
-    if (dayNum >= 1 && dayNum <= 14) {
-      const carStatus = dayNum === 1 ? 'Pick-up @ RVN Airport (5:00 PM)' : (dayNum === 14 ? 'Drop-off @ RVN Airport (8:30 PM)' : 'In Use / Driving');
+    // 1. Rental Car details ONLY for Day 1 (Pick-up) and Day 14 (Drop-off)
+    if (dayNum === 1) {
       transportDetails = `
         <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; margin-top: 8px;">
           <div style="font-weight: 700; color: #0369a1; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
-            <span><i class="fa-solid fa-car"></i> Car Rental: Enterprise Rent-A-Car</span>
-            <span style="background: #e0f2fe; color: #0369a1; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight:700;">Ref: 2130932940</span>
+            <span><i class="fa-solid fa-car"></i> Car Rental Pick-up: Enterprise Rent-A-Car</span>
+            <span class="badge-tag confirmed">✅ Pick-up Day</span>
           </div>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 6px; margin-top: 6px; font-size: 0.82rem; color: #334155;">
-            <div><strong>Confirmation #:</strong> <code style="background: #f1f5f9; padding: 1px 5px; border-radius: 3px; font-weight:700; color: #0284c7;">2130932940</code></div>
-            <div><strong>Renter:</strong> NIM YING NGAN (Enterprise Plus SKDG4SJ)</div>
+            <div><strong>Booking Agency:</strong> Enterprise Rent-A-Car</div>
             <div><strong>Vehicle Class:</strong> VW Golf or Similar (Automatic)</div>
-            <div><strong>Daily Status:</strong> ${carStatus}</div>
-            <div><strong>Pick-up:</strong> Rovaniemi Airport (Sat Dec 12 @ 5:00 PM)</div>
-            <div><strong>Return:</strong> Rovaniemi Airport (Fri Dec 25 @ 8:30 PM)</div>
-            <div><strong>Total Paid:</strong> $2,561.69 USD (€2,193.60 EUR)</div>
-            <div><strong>Inclusions:</strong> Unlimited km, Zero Excess, CDW, RAP</div>
+            <div><strong>Pick-up Location:</strong> Rovaniemi Airport (Sat Dec 12 @ 5:00 PM)</div>
+            <div><strong>Return Location:</strong> Rovaniemi Airport (Fri Dec 25 @ 8:30 PM)</div>
+            <div><strong>Coverage:</strong> Unlimited km, Zero Excess, CDW, RAP</div>
+          </div>
+        </div>
+      `;
+    } else if (dayNum === 14) {
+      transportDetails = `
+        <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; margin-top: 8px;">
+          <div style="font-weight: 700; color: #0369a1; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
+            <span><i class="fa-solid fa-car"></i> Car Rental Return / Drop-off: Enterprise Rent-A-Car</span>
+            <span class="badge-tag confirmed">✅ Drop-off Day</span>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 6px; margin-top: 6px; font-size: 0.82rem; color: #334155;">
+            <div><strong>Booking Agency:</strong> Enterprise Rent-A-Car</div>
+            <div><strong>Drop-off Location:</strong> Rovaniemi Airport (Fri Dec 25 @ 8:30 PM)</div>
+            <div><strong>Vehicle Class:</strong> VW Golf or Similar (Automatic)</div>
           </div>
         </div>
       `;
     }
 
-    // 2. Specific accommodation details per day based on folder PDF bookings
+    // 2. Specific accommodation details per day (Confidential fields removed)
     if (dayNum === 1) {
       accDetails = `
         <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; margin-top: 6px;">
           <div style="font-weight: 700; color: #15803d; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
-            <span><i class="fa-solid fa-house-chimney"></i> Home in Rovaniemi (Airbnb)</span>
+            <span><i class="fa-solid fa-house-chimney"></i> Home in Rovaniemi</span>
             <span class="badge-tag confirmed">✅ Confirmed</span>
           </div>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 6px; margin-top: 6px; font-size: 0.82rem; color: #334155;">
-            <div><strong>Airbnb Conf Code:</strong> <code style="background: #f1f5f9; padding: 1px 5px; border-radius: 3px; font-weight:700; color: #16a34a;">HMKWJX2QWA</code></div>
-            <div><strong>Host:</strong> Riitta (Co-host: Yrjö)</div>
+            <div><strong>Booking Agency:</strong> Airbnb</div>
             <div><strong>Stay Duration:</strong> 1 Night (Check-in Sat Dec 12, Check-out Sun Dec 13)</div>
             <div><strong>Check-in:</strong> Sat, Dec 12 @ 3:00 PM</div>
             <div><strong>Check-out:</strong> Sun, Dec 13 @ 12:00 PM</div>
-            <div><strong>Total Paid:</strong> $294.48 SGD</div>
+            <div><strong>Address / Location:</strong> Central Rovaniemi, Lapland, Finland</div>
           </div>
         </div>
       `;
@@ -315,15 +324,15 @@ function renderTourPackageView(payload, activeRoute) {
       accDetails = `
         <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; margin-top: 6px;">
           <div style="font-weight: 700; color: #15803d; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
-            <span><i class="fa-solid fa-house-chimney"></i> Stuga i Storklinten (Boden, Sweden)</span>
+            <span><i class="fa-solid fa-house-chimney"></i> Stuga i Storklinten</span>
             <span class="badge-tag confirmed">✅ Confirmed</span>
           </div>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 6px; margin-top: 6px; font-size: 0.82rem; color: #334155;">
-            <div><strong>Booking Platform:</strong> Booking.com</div>
+            <div><strong>Booking Agency:</strong> Booking.com</div>
             <div><strong>Stay Duration:</strong> 2 Nights (Check-in Dec 13, Check-out Dec 15)</div>
             <div><strong>Check-in Window:</strong> Sun, Dec 13 (00:00 – 23:59)</div>
             <div><strong>Check-out Time:</strong> Tue, Dec 15 (until 12:00)</div>
-            <div><strong>Location:</strong> Storklinten Ski Resort, Boden, Sweden</div>
+            <div><strong>Address / Location:</strong> Storklinten Ski Resort, Boden, Sweden</div>
           </div>
         </div>
       `;
@@ -331,15 +340,15 @@ function renderTourPackageView(payload, activeRoute) {
       accDetails = `
         <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; margin-top: 6px;">
           <div style="font-weight: 700; color: #15803d; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
-            <span><i class="fa-solid fa-house-chimney"></i> Northernlight Cabin (Kiruna, Sweden)</span>
+            <span><i class="fa-solid fa-house-chimney"></i> Northernlight Cabin</span>
             <span class="badge-tag confirmed">✅ Confirmed</span>
           </div>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 6px; margin-top: 6px; font-size: 0.82rem; color: #334155;">
-            <div><strong>Booking Platform:</strong> Booking.com</div>
+            <div><strong>Booking Agency:</strong> Booking.com</div>
             <div><strong>Stay Duration:</strong> 1 Night (Dec 15 – Dec 16)</div>
             <div><strong>Check-in Window:</strong> Tue, Dec 15 (15:00 – 23:59)</div>
             <div><strong>Check-out Time:</strong> Wed, Dec 16 (until 12:00)</div>
-            <div><strong>Location:</strong> Kiruna, Sweden</div>
+            <div><strong>Address / Location:</strong> Kiruna, Sweden</div>
           </div>
         </div>
       `;
@@ -347,16 +356,15 @@ function renderTourPackageView(payload, activeRoute) {
       accDetails = `
         <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; margin-top: 6px;">
           <div style="font-weight: 700; color: #15803d; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
-            <span><i class="fa-solid fa-building-user"></i> Aurora View Apt – Walk to Train & Ski (Kiruna V / Björkliden)</span>
+            <span><i class="fa-solid fa-building-user"></i> Aurora View Apt – Walk to Train & Ski</span>
             <span class="badge-tag confirmed">✅ Confirmed</span>
           </div>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 6px; margin-top: 6px; font-size: 0.82rem; color: #334155;">
-            <div><strong>Airbnb Conf Code:</strong> <code style="background: #f1f5f9; padding: 1px 5px; border-radius: 3px; font-weight:700; color: #16a34a;">HM2B8KDQ4H</code></div>
-            <div><strong>Host / Contact:</strong> Renberget (Co-hosts: Malin, Lena, Magnus, Daniel)</div>
+            <div><strong>Booking Agency:</strong> Airbnb</div>
             <div><strong>Address:</strong> GAMMELGÅRDSVÄGEN 10 Lgh, Kiruna V 981 93, Sweden</div>
-            <div><strong>Check-in:</strong> Wed, Dec 16 @ 3:00 PM (Keypad Self Check-in)</div>
+            <div><strong>Check-in:</strong> Wed, Dec 16 @ 3:00 PM</div>
             <div><strong>Check-out:</strong> Sat, Dec 19 @ 12:00 PM</div>
-            <div><strong>Total Paid:</strong> $748.92 SGD (3 Nights)</div>
+            <div><strong>Stay Duration:</strong> 3 Nights</div>
           </div>
         </div>
       `;
@@ -364,15 +372,15 @@ function renderTourPackageView(payload, activeRoute) {
       accDetails = `
         <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; margin-top: 6px;">
           <div style="font-weight: 700; color: #15803d; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
-            <span><i class="fa-solid fa-building"></i> Cozy Apartment by the Sea 2 Rooms Free Private Parking (Kemi, Finland)</span>
+            <span><i class="fa-solid fa-building"></i> Cozy Apartment by the Sea</span>
             <span class="badge-tag confirmed">✅ Confirmed</span>
           </div>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 6px; margin-top: 6px; font-size: 0.82rem; color: #334155;">
-            <div><strong>Booking Platform:</strong> Booking.com</div>
+            <div><strong>Booking Agency:</strong> Booking.com</div>
             <div><strong>Stay Duration:</strong> 2 Nights (Check-in Dec 19, Check-out Dec 21)</div>
             <div><strong>Check-in Window:</strong> Sat, Dec 19 (00:00 – 23:59)</div>
             <div><strong>Check-out Time:</strong> Mon, Dec 21 (11:00 – 12:00)</div>
-            <div><strong>Location:</strong> Kemi, Lapland, Finland</div>
+            <div><strong>Address / Location:</strong> Kemi, Lapland, Finland</div>
           </div>
         </div>
       `;
@@ -380,16 +388,15 @@ function renderTourPackageView(payload, activeRoute) {
       accDetails = `
         <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; margin-top: 6px;">
           <div style="font-weight: 700; color: #15803d; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
-            <span><i class="fa-solid fa-house-chimney-window"></i> Idyllic Sauna Cottage by the Lake (Posio, Finland)</span>
+            <span><i class="fa-solid fa-house-chimney-window"></i> Idyllic Sauna Cottage by the Lake</span>
             <span class="badge-tag confirmed">✅ Confirmed</span>
           </div>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 6px; margin-top: 6px; font-size: 0.82rem; color: #334155;">
-            <div><strong>Airbnb Conf Code:</strong> <code style="background: #f1f5f9; padding: 1px 5px; border-radius: 3px; font-weight:700; color: #16a34a;">HMYPAMHXW9</code></div>
-            <div><strong>Host / Contact:</strong> Leena (Co-host: Tuomo)</div>
+            <div><strong>Booking Agency:</strong> Airbnb</div>
             <div><strong>Address:</strong> Rantapolku 1, Posio, Lappi 97900, Finland</div>
-            <div><strong>Check-in:</strong> Mon, Dec 21 @ 3:00 PM (Lockbox Self Check-in)</div>
+            <div><strong>Check-in:</strong> Mon, Dec 21 @ 3:00 PM</div>
             <div><strong>Check-out:</strong> Wed, Dec 23 @ 11:00 AM</div>
-            <div><strong>Total Paid:</strong> $379.67 SGD (2 Nights)</div>
+            <div><strong>Stay Duration:</strong> 2 Nights</div>
           </div>
         </div>
       `;
@@ -397,16 +404,15 @@ function renderTourPackageView(payload, activeRoute) {
       accDetails = `
         <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; margin-top: 6px;">
           <div style="font-weight: 700; color: #15803d; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
-            <span><i class="fa-solid fa-mountain-city"></i> Apartment with a View at top of Iso-Syöte (Pudasjärvi, Finland)</span>
+            <span><i class="fa-solid fa-mountain-city"></i> Apartment with a View at top of Iso-Syöte</span>
             <span class="badge-tag confirmed">✅ Confirmed</span>
           </div>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 6px; margin-top: 6px; font-size: 0.82rem; color: #334155;">
-            <div><strong>Airbnb Conf Code:</strong> <code style="background: #f1f5f9; padding: 1px 5px; border-radius: 3px; font-weight:700; color: #16a34a;">HMJ88QTC3C</code></div>
-            <div><strong>Host / Contact:</strong> Arto</div>
+            <div><strong>Booking Agency:</strong> Airbnb</div>
             <div><strong>Address:</strong> Isosyötteentie 230 Näköalahuoneisto, Pudasjärvi 93280, Finland</div>
             <div><strong>Check-in:</strong> Wed, Dec 23 @ 3:00 PM</div>
             <div><strong>Check-out:</strong> Thu, Dec 24 @ 12:00 PM</div>
-            <div><strong>Total Paid:</strong> $130.10 SGD (1 Night)</div>
+            <div><strong>Stay Duration:</strong> 1 Night</div>
           </div>
         </div>
       `;
@@ -418,11 +424,11 @@ function renderTourPackageView(payload, activeRoute) {
             <span class="badge-tag confirmed">✅ Confirmed</span>
           </div>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 6px; margin-top: 6px; font-size: 0.82rem; color: #334155;">
-            <div><strong>Booking Platform:</strong> Booking.com</div>
+            <div><strong>Booking Agency:</strong> Booking.com</div>
             <div><strong>Stay Duration:</strong> 1 Night (Dec 24 – Dec 25)</div>
             <div><strong>Check-in Window:</strong> Thu, Dec 24 (15:00 – 23:59)</div>
             <div><strong>Check-out Time:</strong> Fri, Dec 25 (06:00 – 12:00)</div>
-            <div><strong>Location:</strong> Iso-Syöte, Pudasjärvi, Finland</div>
+            <div><strong>Address / Location:</strong> Iso-Syöte, Pudasjärvi, Finland</div>
           </div>
         </div>
       `;
@@ -430,16 +436,15 @@ function renderTourPackageView(payload, activeRoute) {
       accDetails = `
         <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; margin-top: 6px;">
           <div style="font-weight: 700; color: #15803d; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
-            <span><i class="fa-solid fa-train"></i> VR Santa Claus Express Overnight Sleeper Train 274</span>
+            <span><i class="fa-solid fa-train"></i> VR Santa Claus Express Overnight Sleeper Train</span>
             <span class="badge-tag confirmed">✅ Confirmed</span>
           </div>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 6px; margin-top: 6px; font-size: 0.82rem; color: #334155;">
-            <div><strong>VR Order No:</strong> <code style="background: #f1f5f9; padding: 1px 5px; border-radius: 3px; font-weight:700; color: #16a34a;">F3080273035361</code></div>
-            <div><strong>Reference #:</strong> <code style="background: #f1f5f9; padding: 1px 5px; border-radius: 3px; font-weight:700; color: #16a34a;">2-PJ34-U4J7-UYEC</code></div>
+            <div><strong>Booking Agency:</strong> VR Finland</div>
             <div><strong>Train Route:</strong> Night Train 274 (Rovaniemi → Helsinki)</div>
             <div><strong>Departure:</strong> Fri, Dec 25 @ 21:00 (Rovaniemi Railway Station)</div>
             <div><strong>Arrival:</strong> Sat, Dec 26 @ 09:15 AM (Helsinki Central Station)</div>
-            <div><strong>Cabin Type:</strong> 1 Accessible Sleeper Cabin for 2 people (€299.00 EUR Paid)</div>
+            <div><strong>Cabin Type:</strong> Private Sleeper Cabin for 2 people</div>
           </div>
         </div>
       `;
@@ -451,12 +456,11 @@ function renderTourPackageView(payload, activeRoute) {
             <span class="badge-tag confirmed">✅ Confirmed</span>
           </div>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 6px; margin-top: 6px; font-size: 0.82rem; color: #334155;">
-            <div><strong>Booking Platform:</strong> Booking.com</div>
-            <div><strong>Confirmation Number:</strong> <code style="background: #f1f5f9; padding: 1px 5px; border-radius: 3px; font-weight:700; color: #16a34a;">6224.239.118</code> (PIN: 0930)</div>
-            <div><strong>Address:</strong> 13 Vilhonkatu, Kluuvi, 00100 Helsinki, Finland (+358 300 308401)</div>
+            <div><strong>Booking Agency:</strong> Booking.com</div>
+            <div><strong>Address:</strong> 13 Vilhonkatu, Kluuvi, 00100 Helsinki, Finland</div>
+            <div><strong>Hotel Phone:</strong> +358 300 308401</div>
             <div><strong>Check-in:</strong> Sat, Dec 26 @ 16:00</div>
             <div><strong>Check-out:</strong> Sun, Dec 27 @ 12:00 PM</div>
-            <div><strong>Price:</strong> €140 EUR (~S$206 SGD)</div>
           </div>
         </div>
       `;
@@ -468,12 +472,11 @@ function renderTourPackageView(payload, activeRoute) {
             <span class="badge-tag confirmed">✅ Confirmed</span>
           </div>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 6px; margin-top: 6px; font-size: 0.82rem; color: #334155;">
-            <div><strong>Booking Platform:</strong> Booking.com</div>
-            <div><strong>Confirmation Number:</strong> <code style="background: #f1f5f9; padding: 1px 5px; border-radius: 3px; font-weight:700; color: #16a34a;">6719.652.299</code> (PIN: 5042)</div>
-            <div><strong>Address:</strong> Kullasepa Street 11, Tallinn City-Centre, 10132 Tallinn, Estonia (+372 525 5321)</div>
+            <div><strong>Booking Agency:</strong> Booking.com</div>
+            <div><strong>Address:</strong> Kullasepa Street 11, Tallinn City-Centre, 10132 Tallinn, Estonia</div>
+            <div><strong>Hotel Phone:</strong> +372 525 5321</div>
             <div><strong>Check-in:</strong> Sun, Dec 27 @ 16:00</div>
             <div><strong>Check-out:</strong> Mon, Dec 28 @ 12:00 PM</div>
-            <div><strong>Price:</strong> €125 EUR (~S$184 SGD)</div>
           </div>
         </div>
       `;
@@ -485,12 +488,12 @@ function renderTourPackageView(payload, activeRoute) {
             <span class="badge-tag confirmed">✅ Confirmed</span>
           </div>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 6px; margin-top: 6px; font-size: 0.82rem; color: #334155;">
-            <div><strong>Booking Conf #:</strong> <code style="background: #f1f5f9; padding: 1px 5px; border-radius: 3px; font-weight:700; color: #16a34a;">75550929</code></div>
-            <div><strong>Vessel Name:</strong> M/S Baltic Queen (Tallink Silja Line)</div>
+            <div><strong>Booking Agency:</strong> Tallink Silja Line</div>
+            <div><strong>Vessel Name:</strong> M/S Baltic Queen</div>
             <div><strong>Route:</strong> Tallinn D-Terminal → Stockholm Värtahamnen</div>
             <div><strong>Departure:</strong> Mon, Dec 28 @ 18:00 (Check-in 17:00 at D-Terminal)</div>
             <div><strong>Arrival:</strong> Tue, Dec 29 @ 10:30 AM (Stockholm Värtahamnen)</div>
-            <div><strong>Cabin & Price:</strong> Private Sea-View Cabin</div>
+            <div><strong>Cabin Type:</strong> Private Sea-View Cabin</div>
           </div>
         </div>
       `;
@@ -498,14 +501,14 @@ function renderTourPackageView(payload, activeRoute) {
       accDetails = `
         <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; margin-top: 6px;">
           <div style="font-weight: 700; color: #15803d; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
-            <span><i class="fa-solid fa-hotel"></i> Sheraton Stockholm Hotel (Stockholm, Sweden)</span>
+            <span><i class="fa-solid fa-hotel"></i> Sheraton Stockholm Hotel</span>
             <span class="badge-tag confirmed">✅ Confirmed</span>
           </div>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 6px; margin-top: 6px; font-size: 0.82rem; color: #334155;">
-            <div><strong>Marriott Conf #:</strong> <code style="background: #f1f5f9; padding: 1px 5px; border-radius: 3px; font-weight:700; color: #16a34a;">90629030</code></div>
-            <div><strong>Address:</strong> Tegelbacken 6, 101 23 Stockholm, Sweden (+46-8-4123400)</div>
+            <div><strong>Booking Agency:</strong> Marriott Bonvoy Points</div>
+            <div><strong>Address:</strong> Tegelbacken 6, 101 23 Stockholm, Sweden</div>
+            <div><strong>Hotel Phone:</strong> +46-8-4123400</div>
             <div><strong>Stay Duration:</strong> 2 Nights (Check-in Tue Dec 29 @ 16:00, Check-out Thu Dec 31 @ 12:00)</div>
-            <div><strong>Redemption Rate:</strong> 88,000 Marriott Bonvoy Points (Points Booking)</div>
             <div><strong>Room Type:</strong> Classic Guest Room (1 King Bed)</div>
           </div>
         </div>
@@ -520,14 +523,14 @@ function renderTourPackageView(payload, activeRoute) {
       accDetails = `
         <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; margin-top: 6px;">
           <div style="font-weight: 700; color: #15803d; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
-            <span><i class="fa-solid fa-hotel"></i> Four Points Flex by Sheraton Copenhagen City (Copenhagen, Denmark)</span>
+            <span><i class="fa-solid fa-hotel"></i> Four Points Flex by Sheraton Copenhagen City</span>
             <span class="badge-tag confirmed">✅ Confirmed</span>
           </div>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 6px; margin-top: 6px; font-size: 0.82rem; color: #334155;">
-            <div><strong>Marriott Conf #:</strong> <code style="background: #f1f5f9; padding: 1px 5px; border-radius: 3px; font-weight:700; color: #16a34a;">90492813</code></div>
-            <div><strong>Address:</strong> Helgolandsgade 14, 1653 Copenhagen, Denmark (+45 20353888)</div>
+            <div><strong>Booking Agency:</strong> Marriott Bonvoy Points</div>
+            <div><strong>Address:</strong> Helgolandsgade 14, 1653 Copenhagen, Denmark</div>
+            <div><strong>Hotel Phone:</strong> +45 20353888</div>
             <div><strong>Stay Duration:</strong> 2 Nights (Check-in Thu Dec 31 @ 14:00, Check-out Sat Jan 02 @ 11:00)</div>
-            <div><strong>Redemption Rate:</strong> 55,000 Marriott Bonvoy Points (Points Booking)</div>
             <div><strong>Room Type:</strong> Efficient Double Room (1 Double Bed)</div>
           </div>
           ${sjRemark}
@@ -541,6 +544,7 @@ function renderTourPackageView(payload, activeRoute) {
             <span class="badge-tag confirmed">✅ Confirmed Flight</span>
           </div>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 6px; margin-top: 6px; font-size: 0.82rem; color: #334155;">
+            <div><strong>Booking Agency:</strong> Singapore Airlines</div>
             <div><strong>Flight Number:</strong> SQ352 (Non-stop)</div>
             <div><strong>Departure:</strong> CPH Terminal 3 @ Sat, Jan 02 @ 12:00 PM</div>
             <div><strong>Arrival:</strong> SIN Changi @ Sun, Jan 03 @ 07:30 AM</div>
