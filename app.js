@@ -404,15 +404,16 @@ function renderTourPackageView(payload, activeRoute) {
       accDetails = `
         <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px; margin-top: 6px;">
           <div style="font-weight: 700; color: #15803d; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
-            <span><i class="fa-solid fa-mountain-city"></i> Apartment with a View at top of Iso-Syöte</span>
+            <span><i class="fa-solid fa-house-chimney-window"></i> Hakamajat Cottages</span>
             <span class="badge-tag confirmed">✅ Confirmed</span>
           </div>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 6px; margin-top: 6px; font-size: 0.82rem; color: #334155;">
-            <div><strong>Booking Agency:</strong> Airbnb</div>
-            <div><strong>Address:</strong> Isosyötteentie 230 Näköalahuoneisto, Pudasjärvi 93280, Finland</div>
-            <div><strong>Check-in:</strong> Wed, Dec 23 @ 3:00 PM</div>
-            <div><strong>Check-out:</strong> Thu, Dec 24 @ 12:00 PM</div>
-            <div><strong>Stay Duration:</strong> 1 Night</div>
+            <div><strong>Booking Agency:</strong> Booking.com</div>
+            <div><strong>Address:</strong> 18 Karsikkolammentie, 93280 Syöte, Finland</div>
+            <div><strong>Hotel Phone:</strong> +358 40 5057096</div>
+            <div><strong>Check-in:</strong> Wed, Dec 23 @ 16:00 – 22:00</div>
+            <div><strong>Check-out:</strong> Thu, Dec 24 @ 07:00 – 12:00</div>
+            <div><strong>Stay Duration:</strong> 1 Night (One-Bedroom Chalet)</div>
           </div>
         </div>
       `;

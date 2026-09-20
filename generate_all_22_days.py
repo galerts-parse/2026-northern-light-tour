@@ -437,7 +437,7 @@ base_22_days = [
   {
     "day": 12, "date": "Dec 23 (Wed)", "title_a": "Easy 1h Hop to Iso-Syöte Fell", "title_b": "Syöte National Park Crown-Snow Forest Snowshoe Trail",
     "location": "Iso-Syöte, Finland", "coords": [65.6265, 27.6083], "distance": "75 km (55 mins)",
-    "hotel": "Apartment with a view at the top of Iso-Syöte (Host Arto)", "hotelStatus": "confirmed", "bookingRef": "Airbnb (Confirmed)",
+    "hotel": "Hakamajat Cottages", "hotelStatus": "confirmed", "bookingRef": "Booking.com (Confirmed)",
     "food": food_db["Iso-Syöte"],
     "activities_a": "Short 55-minute drive to Iso-Syöte fell summit; check in; afternoon downhill skiing or panoramic fell-top spa; dinner at Restaurant Hilltop.",
     "activities_b": "Drive to Iso-Syöte; Syöte National Park Crown-Snow Forest snowshoe trail trek through ancient spruce canopy; fell summit downhill skiing or spa; Restaurant Hilltop dinner.",
@@ -706,23 +706,24 @@ base_22_days = [
     "hotel": "Four Points Flex by Sheraton Copenhagen City", "hotelStatus": "confirmed", "bookingRef": "Marriott Bonvoy (Confirmed)",
     "hotelLinks": [{"name": "Four Points Flex Copenhagen", "url": "https://www.marriott.com/en-us/hotels/cphfp-four-points-flex-copenhagen-city/overview/", "gmaps": gmaps("Four Points Flex by Sheraton Copenhagen City")}],
     "food": food_db["Copenhagen"],
-    "activities_a": "Relaxed New Year's Day stroll; view CopenHill rooftop architecture, Amalienborg Palace royal guard change, and Nyhavn / Strøget cafe culture.",
-    "activities_b": "Rosenborg Castle & Danish Crown Jewels tour; Amalienborg Palace royal guard changing ceremony; Christiansborg Palace Royal Reception Rooms; Torvehallerne gourmet food market.",
+    "activities_a": "Relaxed New Year's Day stroll; 12:00 PM Confirmed Lunch at Marchal (1 Michelin Star @ Hotel d'Angleterre); Amalienborg Palace royal guard change & Nyhavn canal walk.",
+    "activities_b": "Rosenborg Castle & Danish Crown Jewels tour; 12:00 PM Confirmed Lunch at Marchal (1 Michelin Star @ Hotel d'Angleterre); Amalienborg Palace royal guard changing ceremony & Christiansborg Palace tour.",
     "sched_a": [
-      {"time": "10:00 - 11:45", "activity": "Rosenborg Castle & Crown Jewels.", "gmaps": gmaps("Rosenborg Castle Copenhagen")},
-      {"time": "12:00 - 12:45", "activity": "Amalienborg Palace Royal Guard Change.", "gmaps": gmaps("Amalienborg Palace Copenhagen")}
+      {"time": "10:00 - 11:30", "activity": "Rosenborg Castle & Crown Jewels.", "gmaps": gmaps("Rosenborg Castle Copenhagen")},
+      {"time": "12:00 - 14:00", "activity": "⭐ CONFIRMED LUNCH: Marchal (1 Michelin Star @ Hotel d'Angleterre - Smart Casual).", "gmaps": gmaps("Marchal Hotel d'Angleterre Copenhagen")},
+      {"time": "14:30 - 16:00", "activity": "Amalienborg Palace Royal Guard Change & Nyhavn canal walk.", "gmaps": gmaps("Amalienborg Palace Copenhagen")}
     ],
     "sched_b": [
-      {"time": "10:00 - 11:45", "activity": "Rosenborg Castle 400-year-old Renaissance tour & Danish Crown Jewels vault.", "gmaps": gmaps("Rosenborg Castle Copenhagen", 55.6858, 12.5772)},
-      {"time": "12:00 - 12:45", "activity": "Amalienborg Palace Royal Life Guard Changing Ceremony.", "gmaps": gmaps("Amalienborg Palace Copenhagen")},
-      {"time": "13:00 - 15:00", "activity": "Christiansborg Palace Royal Reception Rooms & Great Hall tapestries.", "gmaps": gmaps("Christiansborg Palace Copenhagen", 55.6762, 12.5805)},
-      {"time": "15:30 - 17:30", "activity": "Open-faced sandwich feast at Torvehallerne Hallernes Smørrebrød & DØP Organic Hot Dog.", "gmaps": gmaps("Torvehallerne Copenhagen")}
+      {"time": "10:00 - 11:30", "activity": "Rosenborg Castle 400-year-old Renaissance tour & Danish Crown Jewels vault.", "gmaps": gmaps("Rosenborg Castle Copenhagen", 55.6858, 12.5772)},
+      {"time": "12:00 - 14:00", "activity": "⭐ CONFIRMED LUNCH: Marchal (1 Michelin Star @ Hotel d'Angleterre - Smart Casual).", "gmaps": gmaps("Marchal Hotel d'Angleterre Copenhagen")},
+      {"time": "14:30 - 16:00", "activity": "Amalienborg Palace Royal Life Guard Changing Ceremony & Nyhavn walk.", "gmaps": gmaps("Amalienborg Palace Copenhagen")},
+      {"time": "16:30 - 18:30", "activity": "Christiansborg Palace Royal Reception Rooms & Great Hall tapestries.", "gmaps": gmaps("Christiansborg Palace Copenhagen", 55.6762, 12.5805)}
     ],
     "legs": [{"from": "Marriott", "to": "Rosenborg Castle", "dist": "2.5 km", "time": "10 mins Metro M2", "route": "Metro M2", "gmaps": gmaps("Copenhagen Marriott to Rosenborg Castle")}],
     "tickets": [
+      {"item": "✅ CONFIRMED: Marchal Lunch Reservation (12:00 PM)", "cost": "Confirmed (2 Pax)", "url": "https://www.dangleterre.com/dining/marchal"},
       {"item": "Rosenborg Castle & Crown Jewels", "cost": "140 DKK (Open 10:00-16:00)", "url": "https://www.kongeligeslotte.dk/en/rosenborg-castle.html"},
-      {"item": "Christiansborg Palace Ticket", "cost": "175 DKK (Open 10:00-17:00)", "url": "https://www.kongeligeslotte.dk/en/christiansborg-palace.html"},
-      {"item": "Designmuseum Danmark Ticket", "cost": "130 DKK (Open 10:00-18:00)", "url": "https://designmuseum.dk/en/"}
+      {"item": "Christiansborg Palace Ticket", "cost": "175 DKK (Open 10:00-17:00)", "url": "https://www.kongeligeslotte.dk/en/christiansborg-palace.html"}
     ]
   },
   {
